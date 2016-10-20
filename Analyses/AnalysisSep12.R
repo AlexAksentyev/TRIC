@@ -11,6 +11,8 @@ library(parallel); library(doParallel)
 
 registerDoParallel(detectCores())
 
+# this should go to testing
+
 get2012Data() -> Data12
 # slopes <- Data12$Slopes; Base <- Data12$Data %>% filter(FSgl=="F")
 # Data <- Data12$Data %>% filter(FSgl=="T")

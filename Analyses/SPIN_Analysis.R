@@ -8,6 +8,8 @@ library(ggfortify)
 
 thick = 6.92e13
 
+## testing renaming
+
 registerDoParallel(detectCores())
 
 get2012Data() -> Data12

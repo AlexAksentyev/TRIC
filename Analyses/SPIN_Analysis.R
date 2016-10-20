@@ -15,10 +15,10 @@ Data <- Data12$Data
 Data %>% filter(Run %in% c(967:976), Cell=="In") %>% mutate(Run = as.numeric(Run), uts = UTS-UTS[1])-> Data
 
 #### plotting the nine cycles ####
-plot(range(Data$uts), with(Data, c(min(BCT2), max(BCT2))), 
-     type="n", xlab="Time, sec", ylab = "Average Current, ADC"
-); legend("topleft", bty="n", lty=1, col=c("blue","red"), legend=paste("Target",c("off", "on")))
-Data %>% d_ply("Run", function(r) r%>%with(lines(BCT2~uts, col=c("Chopper" = "blue", "On" = "red")[Targ[1]])))
+# plot(range(Data$uts), with(Data, c(min(BCT2), max(BCT2))), 
+#      type="n", xlab="Time, sec", ylab = "Average Current, ADC"
+# ); legend("topleft", bty="n", lty=1, col=c("blue","red"), legend=paste("Target",c("off", "on")))
+# Data %>% d_ply("Run", function(r) r%>%with(lines(BCT2~uts, col=c("Chopper" = "blue", "On" = "red")[Targ[1]])))
 ##same with ggplot
 Data %>% ggplot(aes(uts, BCT2, col=Targ)) + 
   scale_color_manual(breaks=c("Chopper","On"), labels=c("Off","On"), values=c("darkgray", "black")) + 

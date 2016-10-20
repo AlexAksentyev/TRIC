@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  20 OCT 2016 17:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  20 OCT 2016 18:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -540,61 +540,61 @@ Package color Info: Driver file: pdftex.def on input line 137.
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \CS with sig. 'sO{}' on line 16.
+. Defining command \CS with sig. 'sO{}' on line 17.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \slp with sig. 'sO{}' on line 17.
+. Defining command \slp with sig. 'sO{}' on line 18.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \Thick with sig. 'O{}' on line 18.
+. Defining command \Thick with sig. 'O{}' on line 19.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \SE with sig. 'sm' on line 20.
+. Defining command \SE with sig. 'sm' on line 21.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \bkt with sig. 'sm' on line 22.
+. Defining command \bkt with sig. 'sm' on line 23.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \ADCcode with sig. 'O{ }' on line 25.
+. Defining command \ADCcode with sig. 'O{ }' on line 26.
 .................................................
-Class revtex4-1 Info: Patching LaTeX tabular. on input line 30.
-Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 30.
+Class revtex4-1 Info: Patching LaTeX tabular. on input line 31.
+Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 31.
 
-Class revtex4-1 Info: cite was not loaded (OK!) on input line 30.
-Class revtex4-1 Info: mcite was not loaded (OK!) on input line 30.
-Class revtex4-1 Info: multicol was not loaded (OK!) on input line 30.
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 31.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 31.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 31.
 
 (./Analysis-2012.aux)
 \openout1 = `Analysis-2012.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 30.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 30.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 31.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 31.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    ... okay on input line 31.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -662,103 +662,118 @@ Package caption Info: threeparttable package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \openout3 = `Analysis-2012Notes.bib'.
 
-LaTeX Font Info:    Calculating math sizes for size <6.99997> on input line 54.
+LaTeX Font Info:    Calculating math sizes for size <6.99997> on input line 55.
 
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <3.49998> not available
-(Font)              size <5> substituted on input line 54.
+(Font)              size <5> substituted on input line 55.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.49998> not available
-(Font)              size <5> substituted on input line 54.
+(Font)              size <5> substituted on input line 55.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.49998> not available
-(Font)              size <5> substituted on input line 54.
+(Font)              size <5> substituted on input line 55.
 
-<../img/TheNineCycles.png, id=1, 526.21594pt x 581.92406pt>
-File: ../img/TheNineCycles.png Graphic file (type png)
+Package epstopdf Info: Source file: <../img/TheNineCycles.eps>
+(epstopdf)                    date: 2016-10-20 17:59:13
+(epstopdf)                    size: 775904 bytes
+(epstopdf)             Output file: <../img/TheNineCycles-eps-converted-to.pdf>
 
-<use ../img/TheNineCycles.png>
-Package pdftex.def Info: ../img/TheNineCycles.png used on input line 70.
-(pdftex.def)             Requested size: 205.22339pt x 226.94946pt.
+(epstopdf)             Command: <repstopdf --outfile=../img/TheNineCycles-eps-c
+onverted-to.pdf ../img/TheNineCycles.eps>
+(epstopdf)             \includegraphics on input line 71.
+runsystem(repstopdf --outfile=../img/TheNineCycles-eps-converted-to.pdf ../img/
+TheNineCycles.eps)...executed safely (allowed).
 
-<../img/Offset_model_Common_GAM.png, id=2, 526.21594pt x 581.92406pt>
+Package epstopdf Info: Result file: <../img/TheNineCycles-eps-converted-to.pdf>
+.
+
+! Package pdftex.def Error: File `../img/TheNineCycles-eps-converted-to.pdf' no
+t found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.71 ...hics[scale=\scl]{../img/TheNineCycles.eps}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+<../img/Offset_model_Common_GAM.png, id=1, 526.21594pt x 581.92406pt>
 File: ../img/Offset_model_Common_GAM.png Graphic file (type png)
 
 <use ../img/Offset_model_Common_GAM.png>
 Package pdftex.def Info: ../img/Offset_model_Common_GAM.png used on input line 
-98.
+99.
 (pdftex.def)             Requested size: 205.22339pt x 226.94946pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <../img/TheNineCycles.png
->]
-
-LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix]
- on input line 125.
-
-<../img/Run969_Res_VS_Fit.png, id=17, 526.21594pt x 581.92406pt>
+<../img/Run969_Res_VS_Fit.png, id=2, 526.21594pt x 581.92406pt>
 File: ../img/Run969_Res_VS_Fit.png Graphic file (type png)
 
 <use ../img/Run969_Res_VS_Fit.png>
-Package pdftex.def Info: ../img/Run969_Res_VS_Fit.png used on input line 130.
+Package pdftex.def Info: ../img/Run969_Res_VS_Fit.png used on input line 131.
 (pdftex.def)             Requested size: 205.22339pt x 226.94946pt.
 
-<../img/Run969_residual_PACF.png, id=18, 526.21594pt x 581.92406pt>
+<../img/Run969_residual_PACF.png, id=3, 526.21594pt x 581.92406pt>
 File: ../img/Run969_residual_PACF.png Graphic file (type png)
 
 <use ../img/Run969_residual_PACF.png>
-Package pdftex.def Info: ../img/Run969_residual_PACF.png used on input line 134
+Package pdftex.def Info: ../img/Run969_residual_PACF.png used on input line 135
 .
 (pdftex.def)             Requested size: 205.22339pt x 226.94946pt.
 
-Overfull \hbox (9.0pt too wide) in paragraph at lines 129--137
+Overfull \hbox (9.0pt too wide) in paragraph at lines 130--138
  []$[]$ 
  []
 
 
-Overfull \hbox (9.0pt too wide) in paragraph at lines 129--137
+Overfull \hbox (9.0pt too wide) in paragraph at lines 130--138
  []$ 
  []
 
-[2 <../img/Offset_model_Common_GAM.png (PNG copy)> <../img/Run969_Res_VS_Fit.pn
-g (PNG copy)> <../img/Run969_residual_PACF.png (PNG copy)>]
-<../img/Cross-Section_all.png, id=24, 526.21594pt x 581.92406pt>
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix]
+ on input line 148.
+
+<../img/Cross-Section_all.png, id=18, 526.21594pt x 581.92406pt>
 File: ../img/Cross-Section_all.png Graphic file (type png)
 
 <use ../img/Cross-Section_all.png>
-Package pdftex.def Info: ../img/Cross-Section_all.png used on input line 173.
+Package pdftex.def Info: ../img/Cross-Section_all.png used on input line 174.
 (pdftex.def)             Requested size: 205.22339pt x 226.94946pt.
 
-<../img/Slopes-2012_big.png, id=25, 526.21594pt x 581.92406pt>
+<../img/Slopes-2012_big.png, id=19, 526.21594pt x 581.92406pt>
 File: ../img/Slopes-2012_big.png Graphic file (type png)
 
 <use ../img/Slopes-2012_big.png>
-Package pdftex.def Info: ../img/Slopes-2012_big.png used on input line 177.
+Package pdftex.def Info: ../img/Slopes-2012_big.png used on input line 178.
 (pdftex.def)             Requested size: 205.22339pt x 226.94946pt.
 
 No file Analysis-2012.bbl.
-[3 <../img/Cross-Section_all.png (PNG copy)>] [4 <../img/Slopes-2012_big.png (P
-NG copy)>] (./Analysis-2012.aux)
+[2 <../img/Offset_model_Common_GAM.png (PNG copy)> <../img/Run969_Res_VS_Fit.pn
+g (PNG copy)> <../img/Run969_residual_PACF.png (PNG copy)>] [3 <../img/Cross-Se
+ction_all.png (PNG copy)> <../img/Slopes-2012_big.png (PNG copy)>]
+(./Analysis-2012.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 3.25002pt have occured.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right .
-
-
  ) 
 Here is how much of TeX's memory you used:
  12634 strings out of 494466
- 226192 string characters out of 6172530
- 288893 words of memory out of 5000000
- 15755 multiletter control sequences out of 15000+600000
- 8806 words of font info for 34 fonts, out of 8000000 for 9000
+ 226106 string characters out of 6172530
+ 293893 words of memory out of 5000000
+ 15753 multiletter control sequences out of 15000+600000
+ 8973 words of font info for 35 fonts, out of 8000000 for 9000
  452 hyphenation exceptions out of 8191
  42i,14n,40p,10382b,497s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr
@@ -770,11 +785,12 @@ fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy7.pfb>
-Output written on Analysis-2012.pdf (4 pages, 416217 bytes).
+/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.
+pfb>
+Output written on Analysis-2012.pdf (3 pages, 412559 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
- 40 compressed objects within 1 object stream
+ 63 PDF objects out of 1000 (max. 8388607)
+ 41 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -21,7 +21,7 @@ Data %>% filter(Run %in% c(967:976), Cell=="In") %>% mutate(Run = as.numeric(Run
 # Data %>% d_ply("Run", function(r) r%>%with(lines(BCT2~uts, col=c("Chopper" = "blue", "On" = "red")[Targ[1]])))
 ##same with ggplot
 Data %>% ggplot(aes(uts, BCT2, col=Targ)) + 
-  scale_color_manual(breaks=c("Chopper","On"), labels=c("Off","On"), values=c("darkgray", "black")) + 
+  scale_color_manual(breaks=c("Chopper","On"), labels=c("Off","On"), values=c("black", "red")) + 
   geom_point() + 
   theme_minimal() + theme(legend.position = "top", legend.title=element_blank()) +
   labs(x="Time, seconds", y="Average current, ADC")
@@ -79,6 +79,9 @@ Data %>% ddply("Run", function(.sub){
 #### testing ####
 Data %>% filter(Run==969) -> Run969; b = Run969$BCT2[Run969$FSgl=="F"]; Run969%>%mutate(BCT2=BCT2-b)%>%filter(FSgl=="T")->Run969
 m = fit.(Run969, model=TRUE, .subset=c(45,15))
+ggplot(Run969,aes(Clock, log(BCT2))) + geom_line() + geom_smooth(method="lm", col="red", size=.75) + 
+  theme_minimal() + labs(y="Logarithm of average current")
+
 autoplot(m, which=1) + theme_minimal() + ggtitle("")
 autoplot(pacf(m$residuals, lag=600, main="", plot=FALSE)) + theme_minimal() + labs(y="Partial ACF")
 

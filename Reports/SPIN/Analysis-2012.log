@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  20 OCT 2016 18:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  21 OCT 2016 11:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -517,98 +517,78 @@ dgroup }{\global \@minipagefalse \hb@xt@ \hsize {\hfil \unhbox \@tempboxa \hfil
 Package: threeparttable 2003/06/13  v 3.0
 \@tempboxb=\box60
 )
-(/usr/share/texlive/texmf-dist/tex/latex/soul/soul.sty
-Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
-\SOUL@word=\toks23
-\SOUL@lasttoken=\toks24
-\SOUL@cmds=\toks25
-\SOUL@buffer=\toks26
-\SOUL@token=\toks27
-\SOUL@spaceskip=\skip64
-\SOUL@ttwidth=\dimen166
-\SOUL@uldp=\dimen167
-\SOUL@ulht=\dimen168
-)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2014/04/23 v1.1a Standard LaTeX Color (DPC)
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \CS with sig. 'sO{}' on line 15.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \slp with sig. 'sO{}' on line 16.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \Thick with sig. 'O{}' on line 17.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SE with sig. 'sm' on line 19.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \bkt with sig. 'sm' on line 21.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ADCcode with sig. 'O{ }' on line 24.
+.................................................
+Class revtex4-1 Info: Patching LaTeX tabular. on input line 29.
+Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 29.
 
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
-File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
-)
-Package color Info: Driver file: pdftex.def on input line 137.
-)
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \CS with sig. 'sO{}' on line 16.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \slp with sig. 'sO{}' on line 17.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \Thick with sig. 'O{}' on line 18.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \SE with sig. 'sm' on line 20.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \bkt with sig. 'sm' on line 22.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \ADCcode with sig. 'O{ }' on line 25.
-.................................................
-Class revtex4-1 Info: Patching LaTeX tabular. on input line 30.
-Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 30.
-
-Class revtex4-1 Info: cite was not loaded (OK!) on input line 30.
-Class revtex4-1 Info: mcite was not loaded (OK!) on input line 30.
-Class revtex4-1 Info: multicol was not loaded (OK!) on input line 30.
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 29.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 29.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 29.
 
 (./Analysis-2012.aux)
 \openout1 = `Analysis-2012.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 30.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 30.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 29.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    ... okay on input line 29.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count145
-\scratchdimen=\dimen169
+\scratchdimen=\dimen166
 \scratchbox=\box61
 \nofMPsegments=\count146
 \nofMParguments=\count147
-\everyMPshowfont=\toks28
+\everyMPshowfont=\toks23
 \MPscratchCnt=\count148
-\MPscratchDim=\dimen170
+\MPscratchDim=\dimen167
 \MPnumerator=\count149
 \makeMPintoPDFobject=\count150
-\everyMPtoPDFconversion=\toks29
+\everyMPtoPDFconversion=\toks24
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -685,168 +665,139 @@ Package epstopdf Info: Source file: <img/TheNineCycles.eps>
 (epstopdf)                    size: 1712051 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/TheNineCycles-eps-conv
 erted-to.pdf img/TheNineCycles.eps>
-(epstopdf)             \includegraphics on input line 70.
+(epstopdf)             \includegraphics on input line 82.
 Package epstopdf Info: Output file is already uptodate.
 <img/TheNineCycles-eps-converted-to.pdf, id=1, 525.965pt x 582.175pt>
 File: img/TheNineCycles-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/TheNineCycles-eps-converted-to.pdf>
 Package pdftex.def Info: img/TheNineCycles-eps-converted-to.pdf used on input l
-ine 70.
+ine 82.
 (pdftex.def)             Requested size: 205.12552pt x 227.04733pt.
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./img/TheNineCycles-eps
+-converted-to.pdf>]
 Package epstopdf Info: Source file: <img/Offset_model_Common_GAM.eps>
 (epstopdf)                    date: 2016-10-20 18:11:17
 (epstopdf)                    size: 8249 bytes
 (epstopdf)             Output file: <img/Offset_model_Common_GAM-eps-converted-
 to.pdf>
+(epstopdf)                    date: 2016-10-20 18:13:12
+(epstopdf)                    size: 11356 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/Offset_model_Common_GA
 M-eps-converted-to.pdf img/Offset_model_Common_GAM.eps>
-(epstopdf)             \includegraphics on input line 98.
-runsystem(repstopdf --outfile=img/Offset_model_Common_GAM-eps-converted-to.pdf 
-img/Offset_model_Common_GAM.eps)...executed safely (allowed).
+(epstopdf)             \includegraphics on input line 107.
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <img/Offset_model_Common_GAM-eps-converted-
-to.pdf>
-(epstopdf)                    date: 2016-10-20 18:13:12
-(epstopdf)                    size: 11356 bytes.
-
-<img/Offset_model_Common_GAM-eps-converted-to.pdf, id=2, 525.965pt x 398.48875p
-t>
+<img/Offset_model_Common_GAM-eps-converted-to.pdf, id=22, 525.965pt x 398.48875
+pt>
 File: img/Offset_model_Common_GAM-eps-converted-to.pdf Graphic file (type pdf)
  <use img/Offset_model_Common_GAM-eps-converted-to.pdf>
 Package pdftex.def Info: img/Offset_model_Common_GAM-eps-converted-to.pdf used 
-on input line 98.
+on input line 107.
 (pdftex.def)             Requested size: 205.12552pt x 155.40999pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./img/TheNineCycles-eps-
-converted-to.pdf>]
-
-LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix]
- on input line 125.
-
 Package epstopdf Info: Source file: <img/Run969_Res_VS_Fit.eps>
 (epstopdf)                    date: 2016-10-20 18:11:36
 (epstopdf)                    size: 132209 bytes
 (epstopdf)             Output file: <img/Run969_Res_VS_Fit-eps-converted-to.pdf
 >
+(epstopdf)                    date: 2016-10-20 18:13:12
+(epstopdf)                    size: 240099 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/Run969_Res_VS_Fit-eps-
 converted-to.pdf img/Run969_Res_VS_Fit.eps>
-(epstopdf)             \includegraphics on input line 130.
-runsystem(repstopdf --outfile=img/Run969_Res_VS_Fit-eps-converted-to.pdf img/Ru
-n969_Res_VS_Fit.eps)...executed safely (allowed).
+(epstopdf)             \includegraphics on input line 139.
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <img/Run969_Res_VS_Fit-eps-converted-to.pdf
->
-(epstopdf)                    date: 2016-10-20 18:13:12
-(epstopdf)                    size: 240099 bytes.
 <img/Run969_Res_VS_Fit-eps-converted-to.pdf, id=23, 525.965pt x 398.48875pt>
 File: img/Run969_Res_VS_Fit-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/Run969_Res_VS_Fit-eps-converted-to.pdf>
 Package pdftex.def Info: img/Run969_Res_VS_Fit-eps-converted-to.pdf used on inp
-ut line 130.
+ut line 139.
 (pdftex.def)             Requested size: 205.12552pt x 155.40999pt.
 Package epstopdf Info: Source file: <img/Run969_residual_PACF.eps>
 (epstopdf)                    date: 2016-10-20 18:11:52
 (epstopdf)                    size: 33699 bytes
 (epstopdf)             Output file: <img/Run969_residual_PACF-eps-converted-to.
 pdf>
+(epstopdf)                    date: 2016-10-20 18:13:12
+(epstopdf)                    size: 14381 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/Run969_residual_PACF-e
 ps-converted-to.pdf img/Run969_residual_PACF.eps>
-(epstopdf)             \includegraphics on input line 134.
-runsystem(repstopdf --outfile=img/Run969_residual_PACF-eps-converted-to.pdf img
-/Run969_residual_PACF.eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <img/Run969_residual_PACF-eps-converted-to.
-pdf>
-(epstopdf)                    date: 2016-10-20 18:13:12
-(epstopdf)                    size: 14381 bytes.
+(epstopdf)             \includegraphics on input line 143.
+Package epstopdf Info: Output file is already uptodate.
 
 <img/Run969_residual_PACF-eps-converted-to.pdf, id=24, 525.965pt x 398.48875pt>
 File: img/Run969_residual_PACF-eps-converted-to.pdf Graphic file (type pdf)
 <use img/Run969_residual_PACF-eps-converted-to.pdf>
 Package pdftex.def Info: img/Run969_residual_PACF-eps-converted-to.pdf used on 
-input line 134.
+input line 143.
 (pdftex.def)             Requested size: 205.12552pt x 155.40999pt.
 
-Overfull \hbox (9.0pt too wide) in paragraph at lines 129--137
+Overfull \hbox (9.0pt too wide) in paragraph at lines 138--146
  []$[]$ 
  []
 
 
-Overfull \hbox (9.0pt too wide) in paragraph at lines 129--137
+Overfull \hbox (9.0pt too wide) in paragraph at lines 138--146
  []$ 
  []
 
+[2 <./img/Offset_model_Common_GAM-eps-converted-to.pdf> <./img/Run969_Res_VS_Fi
+t-eps-converted-to.pdf> <./img/Run969_residual_PACF-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <img/Cross-Section_all.eps>
 (epstopdf)                    date: 2016-10-20 18:12:17
 (epstopdf)                    size: 9009 bytes
 (epstopdf)             Output file: <img/Cross-Section_all-eps-converted-to.pdf
 >
+(epstopdf)                    date: 2016-10-20 18:13:13
+(epstopdf)                    size: 11600 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/Cross-Section_all-eps-
 converted-to.pdf img/Cross-Section_all.eps>
-(epstopdf)             \includegraphics on input line 173.
-runsystem(repstopdf --outfile=img/Cross-Section_all-eps-converted-to.pdf img/Cr
-oss-Section_all.eps)...executed safely (allowed).
+(epstopdf)             \includegraphics on input line 182.
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <img/Cross-Section_all-eps-converted-to.pdf
->
-(epstopdf)                    date: 2016-10-20 18:13:13
-(epstopdf)                    size: 11600 bytes.
-<img/Cross-Section_all-eps-converted-to.pdf, id=25, 525.965pt x 398.48875pt>
+<img/Cross-Section_all-eps-converted-to.pdf, id=52, 525.965pt x 398.48875pt>
 File: img/Cross-Section_all-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/Cross-Section_all-eps-converted-to.pdf>
 Package pdftex.def Info: img/Cross-Section_all-eps-converted-to.pdf used on inp
-ut line 173.
+ut line 182.
 (pdftex.def)             Requested size: 205.12552pt x 155.40999pt.
 Package epstopdf Info: Source file: <img/Slopes-2012_big.eps>
 (epstopdf)                    date: 2016-10-20 18:12:37
 (epstopdf)                    size: 10548 bytes
 (epstopdf)             Output file: <img/Slopes-2012_big-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-10-20 18:13:13
+(epstopdf)                    size: 13035 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/Slopes-2012_big-eps-co
 nverted-to.pdf img/Slopes-2012_big.eps>
-(epstopdf)             \includegraphics on input line 177.
-runsystem(repstopdf --outfile=img/Slopes-2012_big-eps-converted-to.pdf img/Slop
-es-2012_big.eps)...executed safely (allowed).
+(epstopdf)             \includegraphics on input line 186.
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <img/Slopes-2012_big-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-10-20 18:13:13
-(epstopdf)                    size: 13035 bytes.
-
-<img/Slopes-2012_big-eps-converted-to.pdf, id=26, 525.965pt x 398.48875pt>
+<img/Slopes-2012_big-eps-converted-to.pdf, id=53, 525.965pt x 398.48875pt>
 File: img/Slopes-2012_big-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/Slopes-2012_big-eps-converted-to.pdf>
 Package pdftex.def Info: img/Slopes-2012_big-eps-converted-to.pdf used on input
- line 177.
+ line 186.
 (pdftex.def)             Requested size: 205.12552pt x 155.40999pt.
 
 No file Analysis-2012.bbl.
-[2 <./img/Offset_model_Common_GAM-eps-converted-to.pdf> <./img/Run969_Res_VS_Fi
-t-eps-converted-to.pdf> <./img/Run969_residual_PACF-eps-converted-to.pdf>]
 [3 <./img/Cross-Section_all-eps-converted-to.pdf> <./img/Slopes-2012_big-eps-co
 nverted-to.pdf>] (./Analysis-2012.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 3.25002pt have occured.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right .
-
-
  ) 
 Here is how much of TeX's memory you used:
- 12635 strings out of 494466
- 226533 string characters out of 6172530
- 301893 words of memory out of 5000000
- 15756 multiletter control sequences out of 15000+600000
- 8806 words of font info for 34 fonts, out of 8000000 for 9000
+ 12437 strings out of 494466
+ 223929 string characters out of 6172530
+ 283529 words of memory out of 5000000
+ 15566 multiletter control sequences out of 15000+600000
+ 8660 words of font info for 34 fonts, out of 8000000 for 9000
  452 hyphenation exceptions out of 8191
- 42i,14n,40p,10382b,497s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,13n,40p,10382b,484s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texli
@@ -856,11 +807,12 @@ fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy7.pfb>
-Output written on Analysis-2012.pdf (3 pages, 2102914 bytes).
+/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.
+pfb>
+Output written on Analysis-2012.pdf (3 pages, 2114745 bytes).
 PDF statistics:
- 109 PDF objects out of 1000 (max. 8388607)
- 74 compressed objects within 1 object stream
+ 113 PDF objects out of 1000 (max. 8388607)
+ 77 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

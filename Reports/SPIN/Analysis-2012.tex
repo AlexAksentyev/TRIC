@@ -10,8 +10,7 @@
 \usepackage{subcaption}
 \usepackage{threeparttable}
 
-\usepackage{soul}
-\usepackage{color}
+\usepackage{url}
 
 \DeclareDocumentCommand{\CS}{sO{}}{\IfBooleanTF{#1}{\hat{\sigma}_{#2}}{\sigma_{#2}}}
 \DeclareDocumentCommand{\slp}{sO{}}{\IfBooleanTF{#1}{\hat{\beta}_{#2}}{\beta_{#2}}}
@@ -34,6 +33,7 @@ In this paper we summarize the procedure of estimating unpolarized $pp$ cross se
 
 
 \section{Theory}
+\subsection{Physics}
 The intensity of a particle beam revolving inside an accelerator decreases according to the Beer-Lambert law:
 \[
 	I_{n+1} = I_n \cdot \exp\bkt{-\sum_{i=i}^N \CS[i]\cdot\int_0^L n_i(z)\td z},
@@ -48,25 +48,37 @@ Simplifying this expression in case of uniform attenuation, one obtains:
 where $\Thick[i] = n_i\cdot\ell_i$ is the thickness of the corresponding attenuating species.
 
 For average beam current, integration of the above yields
-\[
+\begin{equation}\label{eq:CurrentDecay}
 	I_t = I_0 \cdot \exp\bkt{\slp\cdot t},
-\]
-with $\slp = \sum_i \slp[i] = - \nu\cdot\sum_i \sfrac1\tau_i$, $\nu$ --- the beam revolution frequency.
+\end{equation}
+with $\slp = \sum_i \slp[i] = - \nu\cdot\sum_i \sfrac1\tau_i$, $\nu$ --- the beam revolution frequency. 
 
 Within the confines of the experiment, an unpolarized proton beam interacts with an unpolarized deuterium target with cross section $\CS[0]$; to that add all extra-target losses, to produce the following expression for beam loss:
-\[
+\begin{equation}\label{eq:SlopeModel}
 	\slp = \nu\CS[0]\Thick + \nu\CS[x]\Thick[x].
-\]
+\end{equation}
 
-We estimate $\beta$ by fitting a linear model to the logarithmized beam current data. Since $\CS[x]\Thick[x]$ is independent from the target state, an estimate of cross section is obtained from 
+Since $\CS[x]\Thick[x]$ is independent from target state, an estimate of cross section is obtained from 
 \begin{equation}
 	\CS*[0] = \frac{\slp*[off] - \slp*[on]}{\nu\Thick[on]}.
 \end{equation}
 
+\subsection{Statistics}
+
+We estimate $\slp$ by fitting a linear model to the logarithmized beam current data: $\ln I_t = \ln I_0 + \slp\cdot t + \epsilon_t$; therefore, the data must satisfy the four principal assumptions justifying the use of linear regression:~\cite{RegDiag}
+\begin{enumerate}
+	\item Linearity and additivity of the relationship;
+	\item Statistical independence of the errors;
+	\item homoscedasticity of the errors;
+	\item Normality of the error distribuion.
+\end{enumerate}
+
+
+
 \section{Overview of data}
 The analyzed data came from nine one-hour-long cycles, in four of which the target was turned on (FIG.~\ref{fig:TheNine}). The experiments of this set were performed with an electron-cooled beam bunched using the barrier bucket.
 
-\begin{figure}
+\begin{figure}[h]
 \includegraphics[scale=\scl]{img/TheNineCycles.eps}
 \caption{The nine analyzed cycles.\label{fig:TheNine}}
 \end{figure} 
@@ -87,12 +99,9 @@ To make correct slope estimates, we subtract offset $\Delta$ from the data. This
 	\lambda_t	&= {I_0}^{-1}\cdot \Delta_t\cdot\exp\bkt{-\slp\cdot t}.
 \end{align*}
 
-In the favorable case of a constant offset, it still must be removed in order to have a fixed estimate of slope. At this stage, estimation was done assuming offset was constant within a cycle, and only changed from cycle to cycle.
+In the favorable case of a constant offset, it still must be removed in order to have a constant slope to estimate. At this stage, estimation was done assuming offset was constant within a cycle, and only changed from cycle to cycle.
 
-Since we did not have baseline data for two cycles, their offsets were estimated assuming a linear drift and fitting the cycles' baseline medians (FIG.~\ref{fig:OffsetModel}). Each cycle's data were subtracted its respective offset, and were fitted an ordinary least squares regression model of the form
-\begin{equation}
-	\ln\bkt{\tilde{I}_t} = \ln\bkt{I_0} + \slp\cdot t + \delta_t.
-\end{equation}
+Since we did not have baseline data for two cycles, their offsets were estimated assuming a linear drift and fitting the cycles' baseline medians (FIG.~\ref{fig:OffsetModel}). Each cycle's data were then subtracted its respective offset, and fitted a linear model via ordinary least squares.
 
 \begin{figure}[h]
 \includegraphics[scale=\scl]{img/Offset_model_Common_GAM.eps}
@@ -178,5 +187,8 @@ Unsound		& Far			& 5			& 518				& 20 \\
 \caption{Slope estimates.\label{fig:Slopes}}
 \end{figure}
 
+\begin{thebibliography}{9}
+\bibitem{RegDiag} \url{http://people.duke.edu/~rnau/testing.htm}
+\end{thebibliography}
 
 \end{document}

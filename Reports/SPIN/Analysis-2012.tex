@@ -23,7 +23,7 @@
 
 \DeclareDocumentCommand{\ADCcode}{O{ }}{unit{#1}}
 
-\newcommand{\scl}{.39}
+\newcommand{\scl}{.4}
 
 
 \begin{document}
@@ -31,6 +31,13 @@
 In this paper we summarize the procedure of estimating unpolarized $pp$ cross section from beam current data in a transmission experiment. Also, the estimate.
 \end{abstractname}
 
+\section{TRIC program}
+
+Tests of T-symmetry have been lacking in precision, due to the absence of null observables to observe. It was proved~\cite{NoNullObs} that no vanishing observable exists for T-symmetry; however, the proof hinges on the bilinearity of observables with respect to probability amplitudes. There is, however, one relationship which, in one unique case, links a bilinear observable, and a linear one.
+
+On the basis of the optical theorem, H.E. Conzett showed~\cite{Conzett} that cross section asymmetry in polarized pd scattering does not violate P-symmatry, and does not depend on the reaction dynamics, and thus serves as a legitimate null observable of T-symmetry.
+
+This is the physical foundation of TRIC (Time-Reversal Invariance at COSY).
 
 \section{Theory}
 \subsection{Physics}
@@ -110,7 +117,7 @@ Since we did not have baseline data for two cycles, their offsets were estimated
 
 The models' reduced chi-squares deviate from one in the fourth decimal place; however, one should note that the data do not pass linearity tests, and are likely to have structural slope changes as well (see TABLE~\ref{tbl:CycleChars}). Since the model residuals exhibit serial correlation (FIG.~\ref{fig:Run969}), the slope estimates' standard errors are estimated with robust estimators.
 
-\begin{table}
+\begin{table}[h]
 \centering
 \begin{threeparttable}
 	\caption{Characteristics of a typical cycle.\label{tbl:CycleChars}}
@@ -183,15 +190,26 @@ Unsound		& Far			& 5			& 518				& 20 \\
 \end{table}
 
 \begin{figure}
+\begin{subfigure}{.5\textwidth}
 \includegraphics[scale=\scl]{img/Cross-Section_all.eps}
 \caption{Cross section estimates.\label{fig:CS-all}}
-\end{figure}%
-\begin{figure}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
 \includegraphics[scale=\scl]{img/Slopes-2012_big.eps}
 \caption{Slope estimates.\label{fig:Slopes}}
+\end{subfigure}
+\caption{Results.}
 \end{figure}
 
+
 \begin{thebibliography}{9}
+\bibitem{NoNullObs}
+Arash, Firooz, Michael J. Moravcsik, and Gary R. Goldstein. “Dynamics-Independent Null Experiment for Testing Time-Reversal Invariance.” Physical Review Letters 54, no. 25 (1985): 2649.
+\url{https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.54.2649}
+
+\bibitem{Conzett}
+Homer E. Conzett. “On Null Tests of Time-Reversal Lnvariance,” 6. Paris, France, 1990. \url{https://publications.lbl.gov/islandora/object/ir%3A93728/datastream/PDF/download/citation.pdf}
+
 \bibitem{RegDiag} \url{http://people.duke.edu/~rnau/testing.htm}
 \end{thebibliography}
 

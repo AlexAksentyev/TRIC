@@ -89,7 +89,7 @@ f = log(BCT2)~uts
 harvtest(f, data=Run969)
 raintest(f, data=Run969)
 sctest(f, from=45, to = nrow(Run969)-15, data=Run969, type="aveF")
-sctest(f, from=45, to = nrow(Run969)-15, data=Run969, type="Rec-CUSUM")
+sctest(f, from=45, to = nrow(Run969)-15, data=Run969, type="ME")
 bptest(f, data=Run969)
 dwtest(f, data=Run969)
 

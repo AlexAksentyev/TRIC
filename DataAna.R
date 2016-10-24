@@ -111,7 +111,7 @@ rbeta. <- function(.slp, .fields = NULL){
   
   .data %>% mutate(
     Estimate = .data[,3]/.data[,4],
-    SE = Estimate * sqrt((.data[,5]/.data[,3])^2 + (.data[,6]/.data[4])^2)
+    SE = Estimate * sqrt((.data[,5]/.data[,3])^2 + (.data[,6]/.data[,4])^2)
   ) -> B
   
   B %>% mutate(

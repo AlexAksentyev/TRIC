@@ -73,7 +73,7 @@ scan4change <- function(.sub, plot.it = FALSE, size = .1, ...){
   return(.stats) 
 }
 
-dbeta. <- function(.slp, .fields = NULL){
+pair.up <- function(.slp, .fields = NULL){
   .f = c("Unit", "Estimate", "SE")
   if(is.null(.fields)) .fields = .f else c(.f, .fields) %>% unique -> .fields
   llply(
@@ -84,11 +84,42 @@ dbeta. <- function(.slp, .fields = NULL){
     }
   ) -> fl
   
-  do.call(cbind, fl) -> .data
+  do.call(cbind, fl)
+}
+
+dbeta. <- function(.slp, .fields = NULL){
+  # .f = c("Unit", "Estimate", "SE")
+  # if(is.null(.fields)) .fields = .f else c(.f, .fields) %>% unique -> .fields
+  # llply(
+  #   .fields, function(f){
+  #     expand.grid(.slp[[1]][,f], .slp[[2]][,f]) -> x
+  #     names(x) <- paste(f, names(.slp), sep=".")
+  #     return(x)
+  #   }
+  # ) -> fl
+  
+  # do.call(cbind, fl) -> .data
+  pair.up(.slp, .fields) -> .data
   .data %>% mutate(
     Estimate = .data[,3] - .data[,4],
     SE = sqrt(.data[,5]^2 + .data[,6]^2) #ideally this should take account of correlation
   )
+}
+
+rbeta. <- function(.slp, .fields = NULL){
+  pair.up(.slp, .fields) -> .data
+  
+  .data %>% mutate(
+    Estimate = .data[,3]/.data[,4],
+    SE = Estimate * sqrt((.data[,5]/.data[,3])^2 + (.data[,6]/.data[4])^2)
+  ) -> B
+  
+  B %>% mutate(
+    SE = SE * 2/(1+Estimate)^2,
+    Estimate = (Estimate - 1)/(Estimate + 1)
+  ) -> R
+  
+  R
 }
 
 nl.sys2 <- function(x, estr. = WMN){

@@ -99,7 +99,7 @@ get2016Data <- function(){
     ddply(
       .(T.Spin, B.Spin, Unit, FABS), 
       function(.sub) {fit.(.sub,plot.it=FALSE) %>% c(Clock = .sub$UTS[1])}, .parallel = TRUE
-      ) %>% mutate(Clock = as.POSIXct(Clock, origin="1970-1-1")) %>% .outliers -> slopes16
+      ) %>% mutate(Clock = as.POSIXct(Clock, origin="1970-1-1")) %>% .markOutliers -> slopes16
   
   return(list(Data = Data16, Slopes = slopes16))
 }

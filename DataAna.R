@@ -1,7 +1,96 @@
+source("DataPrep.R")
+
 library(Hmisc)
-# library(nlme)
-# library(lawstat)
-# library(tseries)
+library(parallel); library(doParallel)
+
+registerDoParallel(detectCores())
+
+
+
+get2016Data <- function(){
+  list(
+    "3" = cleanData(loadData(from = "2016-6-30 20:20:00", to = "2016-6-30 21:50:00")),
+    "1" = cleanData(loadData(from = "2016-6-30 22:50:00", to = "2016-7-1 08:00:00"))
+  ) %>% 
+    ldply(.id = "T.Spin", .parallel = TRUE) -> Data16 #all data #%>% 
+  # filter(FSgl == "T", eCool == "Acc", !is.na(FABS)) -> Data16
+  
+  base = Data16 %>% filter(FSgl=="F"); ADC2o = median(base$BCT2)
+  
+  Data16 %>% filter(FSgl == "T", eCool == "Acc", !is.na(FABS)) %>% mutate(BCT2 = BCT2 - ADC2o) %>%
+    ddply(
+      .(T.Spin, B.Spin, Unit, FABS), 
+      function(.sub) {fit.(.sub,plot.it=FALSE) %>% c(Clock = .sub$UTS[1])}, .parallel = TRUE
+    ) %>% mutate(Clock = as.POSIXct(Clock, origin="1970-1-1")) %>% .markOutliers -> slopes16
+  
+  return(list(Data = Data16, Slopes = slopes16))
+}
+
+get2012Data <- function(){ #not removing offset
+  require(forecast)
+  
+  ## preparing metadata
+  where = "~/Analysis/Sep12/BCTAnalyser/results/"
+  readODS::read_ods(paste(where, "RunMetadata(1).ods",sep="/"), sheet=2) %>% 
+    filter(Run %in% c(935:937, 942:977)) -> MD
+  for(obs in c("eCool.I", "Bunch", "Cell", "Targ", "RF.V", "BB.V", "Beam")) ## could use sapply(, factor) instead of loop
+    MD[,obs] <- factor(MD[,obs])
+  
+  MD %>% mutate(
+    Start = paste(day, Start, sep = " "),
+    Stop = paste(day, Stop, sep = " "),
+    UTS.Stt = timeToUTS(Start, format = "%Y-%m-%d %H:%M:%S"),
+    UTS.Stp = timeToUTS(Stop, format = "%Y-%m-%d %H:%M:%S"),
+    Size = UTS.Stp-UTS.Stt+1,
+    Quality = derivedFactor("bad" = Quality=="bad", "ok" = is.na(Quality))
+  ) %>% dplyr::select(-day,-Beam, -Comment) -> MD
+  
+  .from = MD$Start %>% first; .to = MD$Stop %>% last
+  
+  MD %>% expandRows("Size") -> MD
+  
+  rownames(MD) %>% strsplit(".", fixed=TRUE) %>% 
+    laply(function(e) {e <- as.numeric(e); if(length(e) <2) 0 else e[2]}) -> addage
+  MD %>% mutate(UTS = UTS.Stt + addage) -> MD
+  
+  #### loading & modifying data 
+  .flds = c("WD", "Month", "Day", "Time", "Year", paste0("BCT",1:8))
+  loadData("CosyAll_2012-09-25_15-53-06.dat", "~/Analysis/Sep12/DevReader/Data/", Fields = .flds, from=.from, to=.to) -> Data12
+  
+  MD %>% dplyr::select(Run, UTS, eCool.I, Bunch, RF.V, BB.V, Cell, Targ, Quality) %>% 
+    join(Data12, by="UTS", type="right") %>% dlply("Run") -> Data12
+  
+  names(Data12) %>% as.numeric -> .runs; .runs <- .runs[1:30]
+  bri = .runs>=965 | .runs %in% 941:944; 
+  sri = !.runs %in% .runs[bri]
+  
+  .dumbCut <- (function(.data, x) mutate(.data, FSgl = derivedFactor("F" = BCT2 < x, .default = "T")))
+  
+  list(
+    Small = ldply(Data12[which(sri)], .id = "Run") %>% .dumbCut(2700), 
+    Big = ldply(Data12[which(bri)], .id = "Run") %>% .dumbCut(5000)
+  ) %>% ldply(.id = "Size") %>% ddply(.(Size,Run), .unitize) -> Data12
+  
+  Data12 %>% ddply("Size", function(u) {filter(u, FSgl=="F")$BCT2 %>% median -> b; mutate(u, BCT2 = BCT2-b)}) -> Data12
+  
+  ## fitting for slopes
+  Data12 %>% filter(FSgl == "T", Cell == "In") %>%
+    ddply(.(Run, Unit), function(.sub) {
+      fit.(.sub, .subset = c(45, 15)) -> .stats
+      
+      data.frame(
+        Estimate = .stats[1], SE = .stats[2], Chi2 = .stats[3], I0 = .stats[4],
+        Quality = .sub$Quality[5],
+        eCool.I = .sub$eCool.I[5],
+        Targ = .sub$Targ[5],
+        Bunch = .sub$Bunch[5],
+        Size = .sub$Size[5],
+        Clock = .sub$UTS[1] %>% as.POSIXct(origin="1970-1-1")
+      )
+    }, .parallel = TRUE) %>% .markOutliers -> slopes12
+  
+  return(list(Data = Data12, Slopes = slopes12))
+}
 
 fit. = function(.sub, plot.it = FALSE, model = FALSE, .legend = c("Chi2"), .subset = NULL, .obs = "Unit", ...){
   .sub %>% mutate(uts = UTS - UTS[1]) -> .sub
@@ -71,55 +160,6 @@ scan4change <- function(.sub, plot.it = FALSE, size = .1, ...){
   #   slp. <- slp.[which.max(slp.$Estimate),]
   # 
   return(.stats) 
-}
-
-pair.up <- function(.slp, .fields = NULL){
-  .f = c("Unit", "Estimate", "SE")
-  if(is.null(.fields)) .fields = .f else c(.f, .fields) %>% unique -> .fields
-  llply(
-    .fields, function(f){
-      expand.grid(.slp[[1]][,f], .slp[[2]][,f]) -> x
-      names(x) <- paste(f, names(.slp), sep=".")
-      return(x)
-    }
-  ) -> fl
-  
-  do.call(cbind, fl)
-}
-
-dbeta. <- function(.slp, .fields = NULL){
-  # .f = c("Unit", "Estimate", "SE")
-  # if(is.null(.fields)) .fields = .f else c(.f, .fields) %>% unique -> .fields
-  # llply(
-  #   .fields, function(f){
-  #     expand.grid(.slp[[1]][,f], .slp[[2]][,f]) -> x
-  #     names(x) <- paste(f, names(.slp), sep=".")
-  #     return(x)
-  #   }
-  # ) -> fl
-  
-  # do.call(cbind, fl) -> .data
-  pair.up(.slp, .fields) -> .data
-  .data %>% mutate(
-    Estimate = .data[,3] - .data[,4],
-    SE = sqrt(.data[,5]^2 + .data[,6]^2) #ideally this should take account of correlation
-  )
-}
-
-rbeta. <- function(.slp, .fields = NULL){
-  pair.up(.slp, .fields) -> .data
-  
-  .data %>% mutate(
-    Estimate = .data[,3]/.data[,4],
-    SE = Estimate * sqrt((.data[,5]/.data[,3])^2 + (.data[,6]/.data[,4])^2)
-  ) -> B
-  
-  B %>% mutate(
-    SE = SE * 2/(1+Estimate)^2,
-    Estimate = (Estimate - 1)/(Estimate + 1)
-  ) -> R
-  
-  R
 }
 
 nl.sys2 <- function(x, estr. = WMN){

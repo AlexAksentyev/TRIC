@@ -1,7 +1,7 @@
 source("Utilities.R")
 library(dplyr)
 
-## core functions
+## core functions ####
 loadData <- function(file = "CosyAll_2016-06-24_11-57-53.dat", where = "~/Analysis/Jun16/DevReader/Data/", ...){
   require(data.table); require(tidyr)
   
@@ -160,6 +160,7 @@ getABS <- function(.file, .where = "./Data/", .frame = TRUE){
   return(ABS)
 }
 
+## support functions ####
 findModes<- function(x) {
   require(quantmod)
   

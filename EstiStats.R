@@ -1,5 +1,3 @@
-source("DataPrep.R")
-source("DataAna.R")
 
 #### experiment-related estimates ####
 ResolStD <- function(ErrorStD, IniBeamCurrent) return(ErrorStD/IniBeamCurrent)
@@ -34,10 +32,9 @@ StateTime <- function(IntPeriod, EstCoef, ResolStD, QIPrec, BeamTime){
 
 
 ###### commonly used statistics ####
-library(Hmisc)
 MDE = function(x){d = density(x$Estimate[!is.na(x$Estimate)]); d$x[which.max(d$y)]}
 MDN = function(x) median(x$Estimate, na.rm = TRUE)
-WMN = function(x) wtd.mean(x$Estimate, 1/x$SE^2, na.rm = TRUE)
+WMN = function(x) weighted.mean(x$Estimate, 1/x$SE^2, na.rm = TRUE)
 
 L2Norm. <- function(X, standardize = TRUE){
   X <- X/sum(X); d = length(X)
@@ -51,6 +48,7 @@ L2Norm. <- function(X, standardize = TRUE){
 }
 
 .chi2 <- function(x) {m = mean(x); v = var(x); sum((x-m)^2)/v/(length(x)-1)}
+.se <- function(x) {sd(x$Estimate)/sqrt(nrow(x))}
 
 .collect.stats <- function(m){
   require(sandwich)
@@ -79,143 +77,51 @@ L2Norm. <- function(X, standardize = TRUE){
 }
 
 ##### slope statistic ####
-library(dplyr); library(plyr); library(splitstackshape)
-library(parallel); library(doParallel)
-source("DataPrep.R")
-
-registerDoParallel(detectCores())
-
-get2016Data <- function(){
-  list(
-    "3" = cleanData(loadData(from = "2016-6-30 20:20:00", to = "2016-6-30 21:50:00")),
-    "1" = cleanData(loadData(from = "2016-6-30 22:50:00", to = "2016-7-1 08:00:00"))
-  ) %>% 
-    ldply(.id = "T.Spin", .parallel = TRUE) -> Data16 #all data #%>% 
-    # filter(FSgl == "T", eCool == "Acc", !is.na(FABS)) -> Data16
+pair.up <- function(.slp, .fields = NULL){
+  .f = c("Unit", "Estimate", "SE")
+  if(is.null(.fields)) .fields = .f else c(.f, .fields) %>% unique -> .fields
+  llply(
+    .fields, function(f){
+      expand.grid(.slp[[1]][,f], .slp[[2]][,f]) -> x
+      names(x) <- paste(f, names(.slp), sep=".")
+      return(x)
+    }
+  ) -> fl
   
-  base = Data16 %>% filter(FSgl=="F"); ADC2o = median(base$BCT2)
-
-  Data16 %>% filter(FSgl == "T", eCool == "Acc", !is.na(FABS)) %>% mutate(BCT2 = BCT2 - ADC2o) %>%
-    ddply(
-      .(T.Spin, B.Spin, Unit, FABS), 
-      function(.sub) {fit.(.sub,plot.it=FALSE) %>% c(Clock = .sub$UTS[1])}, .parallel = TRUE
-      ) %>% mutate(Clock = as.POSIXct(Clock, origin="1970-1-1")) %>% .markOutliers -> slopes16
-  
-  return(list(Data = Data16, Slopes = slopes16))
+  do.call(cbind, fl)
 }
 
-get2012Data <- function(){
-  require(forecast); require(changepoint)
-
-  ## preparing metadata
-  where = "~/Analysis/Sep12/BCTAnalyser/results/"
-  readODS::read_ods(paste(where, "RunMetadata(1).ods",sep="/"), sheet=2) %>% 
-    filter(Run %in% c(935:937, 942:977)) -> MD
-  for(obs in c("eCool.I", "Bunch", "Cell", "Targ", "RF.V", "BB.V", "Beam")) ## could use sapply(, factor) instead of loop
-    MD[,obs] <- factor(MD[,obs])
+dbeta. <- function(.slp, .fields = NULL){
+  # .f = c("Unit", "Estimate", "SE")
+  # if(is.null(.fields)) .fields = .f else c(.f, .fields) %>% unique -> .fields
+  # llply(
+  #   .fields, function(f){
+  #     expand.grid(.slp[[1]][,f], .slp[[2]][,f]) -> x
+  #     names(x) <- paste(f, names(.slp), sep=".")
+  #     return(x)
+  #   }
+  # ) -> fl
   
-  MD %>% mutate(
-    Start = paste(day, Start, sep = " "),
-    Stop = paste(day, Stop, sep = " "),
-    UTS.Stt = timeToUTS(Start, format = "%Y-%m-%d %H:%M:%S"),
-    UTS.Stp = timeToUTS(Stop, format = "%Y-%m-%d %H:%M:%S"),
-    Size = UTS.Stp-UTS.Stt+1,
-    Quality = derivedFactor("bad" = Quality=="bad", "ok" = is.na(Quality))
-  ) %>% dplyr::select(-day,-Beam, -Comment) -> MD
-  
-  .from = MD$Start %>% first; .to = MD$Stop %>% last
-  
-  MD %>% expandRows("Size") -> MD
-  
-  rownames(MD) %>% strsplit(".", fixed=TRUE) %>% 
-    laply(function(e) {e <- as.numeric(e); if(length(e) <2) 0 else e[2]}) -> addage
-  MD %>% mutate(UTS = UTS.Stt + addage) -> MD
-  
-  #### loading & modifying data 
-  .flds = c("WD", "Month", "Day", "Time", "Year", paste0("BCT",1:8))
-  loadData("CosyAll_2012-09-25_15-53-06.dat", "~/Analysis/Sep12/DevReader/Data/", Fields = .flds, from=.from, to=.to) -> Data12
-  
-  MD %>% dplyr::select(Run, UTS, eCool.I, Bunch, RF.V, BB.V, Cell, Targ, Quality) %>% 
-    join(Data12, by="UTS", type="right") %>% dlply("Run") -> Data12
-  
-  names(Data12) %>% as.numeric -> .runs; .runs <- .runs[1:30]
-  bri = .runs>=965 | .runs %in% 941:944; 
-  sri = !.runs %in% .runs[bri]
-  
-  .dumbCut <- (function(.data, x) mutate(.data, FSgl = derivedFactor("F" = BCT2 < x, .default = "T")))
-  
-  list(
-    Small = ldply(Data12[which(sri)], .id = "Run") %>% .dumbCut(2700), 
-    Big = ldply(Data12[which(bri)], .id = "Run") %>% .dumbCut(5000)
-  ) %>% ldply(.id = "Size") %>% ddply(.(Size,Run), .unitize) -> Data12
-  
-  # ## finding correct cycle offsets
-  # Data12 = Data12 %>% ddply("Size", function(.sub){
-  #     .sub %>% filter(FSgl=="F") %>% .markOutliers(what="BCT2") %>% filter(FOut=="F") -> .subb
-  #     cpt.mean(.subb$BCT2)@cpts -> brk
-  #     
-  #     .subb %>% mutate(Group = rep(.subb$Run[brk], diff(c(0,brk)))) -> .subb
-  #     mosaic::median(BCT2~Group, data=.subb)->bct2o
-  #     bct2o%>%rep(c(length(which(.sub$Run <= names(bct2o)[1])), length(which(.sub$Run > names(bct2o)[1])))) -> bct2o
-  #     
-  #     .sub %>% mutate(BCT2o = bct2o)
-  #   })
-  
-  ## fitting for slopes
-  Data12 %>% filter(FSgl == "T", Cell == "In") %>%
-    ddply(.(Run, Unit), function(.sub) {
-      fit.(.sub, .subset = c(45, 15)) -> .stats
-      
-      data.frame(
-        Estimate = .stats[1], SE = .stats[2], Chi2 = .stats[3], I0 = .stats[4],
-        Quality = .sub$Quality[5],
-        eCool.I = .sub$eCool.I[5],
-        Targ = .sub$Targ[5],
-        Bunch = .sub$Bunch[5],
-        Size = .sub$Size[5],
-        Clock = .sub$UTS[1] %>% as.POSIXct(origin="1970-1-1")
-      )
-  }, .parallel = TRUE) %>% .markOutliers -> slopes12
-  
-  return(list(Data = Data12, Slopes = slopes12))
+  # do.call(cbind, fl) -> .data
+  pair.up(.slp, .fields) -> .data
+  .data %>% mutate(
+    Estimate = .data[,3] - .data[,4],
+    SE = sqrt(.data[,5]^2 + .data[,6]^2) #ideally this should take account of correlation
+  )
 }
 
-extractARMA <- function(u, out.pct = c(15,5)){
-  n = nrow(u)
-  if(n >= 270){
-    lv <- ceiling(out.pct/100*c(1,-1)*n) + c(1, n)
-    us <- slice(u, lv[1]:lv[2])
-    us$BCT2 %>% Arima(c(4,0,4), include.drift=TRUE) -> .arima
-    .arima$coef -> phima; .arima %>% vcov %>% diag %>% sqrt -> ses; abs(phima/ses) ->tscore
-    qt(tscore, n-1, lower.tail=FALSE)->pvals
-    
-    plot((us$BCT2), type="l", main = paste(u$Run[1], u$Unit[1], sep="-")); lines(fitted(.arima), col="red")
-    
-    cbind(phima,ses,tscore,pvals) %>% as.data.frame() #%>% cbind(data.frame(CName=names(phima))) %>% print
-  }
+rbeta. <- function(.slp, .fields = NULL){
+  pair.up(.slp, .fields) -> .data
   
-}
-
-
-
-
-
-#### testing ####
-f <- function(u){
-  with(u, plot(BCT2~UTS, col=FSgl, main = u$Unit[1]))
+  .data %>% mutate(
+    Estimate = .data[,3]/.data[,4],
+    SE = Estimate * sqrt((.data[,5]/.data[,3])^2 + (.data[,6]/.data[,4])^2)
+  ) -> B
   
-  ub = filter(u, FSgl == "F")
-  us = filter(u, FSgl == "T", eCool == "Acc", !is.na(FABS)) %>% mutate(BCT2 = BCT2 - ub$BCT2 %>% median)
+  B %>% mutate(
+    SE = SE * 2/(1+Estimate)^2,
+    Estimate = (Estimate - 1)/(Estimate + 1)
+  ) -> R
   
-  us %>% ddply("FABS", function(.sub) {fit.(.sub,plot.it=FALSE) -> .stats 
-                 data.frame(
-                   T.Spin = .sub$T.Spin[1],
-                   B.Spin = .sub$B.Spin[1],
-                   Clock = .sub$UTS[1] %>% as.POSIXct(origin="1970-1-1"),
-                   Estimate = .stats[1],
-                   SE = .stats[2],
-                   Chi2 = .stats[3],
-                   I0 = .stats[4]
-                 )})
-  
+  R
 }

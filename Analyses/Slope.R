@@ -1,12 +1,9 @@
+source("DataAna.R")
+
 
 library(dplyr); library(plyr); library(splitstackshape)
 library(parallel); library(doParallel)
 
-source("Utilities.R")
-source("EstiStats.R")
-source("DataPrep.R")
-source("Parameters.R")
-source("DataAna.R")
 
 source("Parameters.R")
 thick = 6.92e13

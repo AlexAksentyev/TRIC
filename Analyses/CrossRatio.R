@@ -17,6 +17,14 @@ dlply(filter(slopes, FABS == "T"), "B.Spin")[c("D","U")] %>% rbeta.("Clock") %>%
 dlply(filter(slopes, FABS == "T"), "B.Spin")[c("D","U")] %>% dbeta.("Clock") %>% .closeness.factor -> Don
 dlply(filter(slopes, FABS == "F"), "B.Spin")[c("D","U")] %>% rbeta.("Clock") %>% .closeness.factor -> Roff
 
+filter(slopes12, Targ=="Valve", Bunch=="BB") -> slp.vlv
+slp.vlv %>%filter(Run>=937) %>% ddply("Size",.markOutliers) -> slp.vlv
+slp.vlv%>%filter(FOut=="F")%>%with(boxplot(Estimate~Size))
+
+list(Vlv = slp.vlv, On = filter(slopes, FABS=="T",B.Spin=="N")) %>% rbeta. -> Rx
+x = mutate(Rx, SE = .5*SE/Estimate^2, Estimate = -.5*(Estimate+1)/Estimate) %>%
+  .markOutliers() %>% filter(FOut=="F")
+mx = WMN(x); vx = .se(x)^2
 
 rbind(
   Ron %>% dplyr::select(Estimate, SE, Closeness) %>% mutate(Targ = "On"),
@@ -25,7 +33,7 @@ rbind(
 
 PtP = Pt*mean(abs(Pb))
 
-R %>% mutate(Estimate = Estimate/PtP, SE = SE/PtP, Stat="R") -> Ayy.R
+Ayy.R = mutate(R, SE = sqrt(Estimate^2*vx + mx^2*SE^2 + vx*SE^2)/PtP, Estimate = Estimate/PtP*(1+mx), Stat="R")
 a = 2*PtP*nu*d*Rho.on*500e-27
 Ayy.D = transmute(Don, Estimate = Estimate/a, SE = SE/a, Targ="On", Stat="D", Closeness = Closeness)
 

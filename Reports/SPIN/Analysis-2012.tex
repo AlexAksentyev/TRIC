@@ -72,15 +72,17 @@ Since $\CS[x]\Thick[x]$ is independent from target state, an estimate of cross s
 
 \subsection{Statistics}
 
-We estimate $\slp$ by fitting a linear model to the logarithmized beam current data: $\ln I_t = \ln I_0 + \slp\cdot t + \epsilon_t$; therefore, the data must satisfy the four principal assumptions justifying the use of linear regression:~\cite{RegDiag}
+We estimate $\slp$ by fitting a linear model to logarithmized beam current data: $\ln I_t = \ln I_0 + \slp\cdot t + \epsilon_t$; therefore, the data must satisfy the four Gauss-Markov assumptions in order for the slope estimator to be BLUE:
 \begin{enumerate}
 	\item Linearity and additivity of the relationship;
-	\item Statistical independence of the errors;
-	\item homoscedasticity of the errors;
-	\item Normality of the error distribuion.
+	\item Strict exogeneity;
+	\item No serial correlation of the errors;
+	\item Homoscedasticity of the errors.
 \end{enumerate}
 
+Linearity is crucial for the validity of regression, while endogeneity causes bias in the estimate.
 
+Heteroskedasticity and serial correlation do not cause estimator bias; however, they make it inefficient. This problem can be dealt with by generalized least squares. 
 
 \section{Overview of data}
 The analyzed data came from nine one-hour-long cycles, in four of which the target was turned on (FIG.~\ref{fig:TheNine}). The experiments of this set were performed with an electron-cooled beam bunched using the barrier bucket.
@@ -106,7 +108,7 @@ To make correct slope estimates, we subtract offset $\Delta$ from the data. This
 	\lambda_t	&= {I_0}^{-1}\cdot \Delta_t\cdot\exp\bkt{-\slp\cdot t}.
 \end{align*}
 
-In the favorable case of a constant offset, it still must be removed in order to have a constant slope to estimate. At this stage, estimation was done assuming offset was constant within a cycle, and only changed from cycle to cycle.
+In the favorable case of a constant offset, it still must be removed in order to have a constant slope to estimate. A time-dependent offset violates the exogeneity assumption, and hence biases the slope estimates. At this stage, estimation was done assuming offset was constant within a cycle, and only changed from cycle to cycle.
 
 Since we did not have baseline data for two cycles, their offsets were estimated assuming a linear drift and fitting the cycles' baseline medians (FIG.~\ref{fig:OffsetModel}). Each cycle's data were then subtracted its respective offset, and fitted a linear model via ordinary least squares.
 

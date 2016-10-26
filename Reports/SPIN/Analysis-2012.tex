@@ -108,11 +108,7 @@ To make correct slope estimates, we subtract offset $\Delta$ from the data. This
 	\lambda_t	&= {I_0}^{-1}\cdot \Delta_t\cdot\exp\bkt{-\slp\cdot t}.
 \end{align*}
 
-<<<<<<< HEAD
 In the favorable case of a constant offset, it still must be removed in order to have a constant slope to estimate. A time-dependent offset violates the exogeneity assumption, and hence biases the slope estimates. At this stage, estimation was done assuming offset was constant within a cycle, and only changed from cycle to cycle.
-=======
-In the favorable case of a constant offset, it still must be removed in order to have a constant slope to estimate. A time-dependent offset violates the strict exogeneity assumption, and hence biases the slope estimates. At this stage, estimation was done assuming offset was constant within a cycle, and only changed from cycle to cycle.
->>>>>>> testing
 
 Since we did not have baseline data for two cycles, their offsets were estimated assuming a linear drift and fitting the cycles' baseline medians (FIG.~\ref{fig:OffsetModel}). Each cycle's data were then subtracted its respective offset, and fitted a linear model via ordinary least squares.
 

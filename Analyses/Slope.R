@@ -1,3 +1,17 @@
+## "Using the results themselves to argue for their validity...
+## "Although one might ... believe that his ... telescope 
+## might have produced spurious spots of light, it is extremely implausible that 
+## the TELESCOPE would CREATE images that would appear to be eclipses 
+## and other PHENOMENA CONSISTENT with the motions of a small planetary system. 
+## It would have been even more implausible to believe that the created spots would satisfy 
+## Kepler’s Third Law (R3/T2= constant)."
+
+## Explore the properties of the slope estimates to show that they estimate what we need
+## fit them, for example, on the beam spin state; on the target state.
+## explore the Ayy estimate-s/-or that way as well
+
+
+
 source("DataAna.R")
 
 

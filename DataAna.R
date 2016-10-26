@@ -1,6 +1,8 @@
 source("DataPrep.R")
+source("EstiStats.R")
 
 library(Hmisc)
+library(mosaic); library(plyr); library(dplyr)
 library(parallel); library(doParallel)
 
 registerDoParallel(detectCores())
@@ -27,7 +29,7 @@ get2016Data <- function(){
 }
 
 get2012Data <- function(){ #not removing offset
-  require(forecast)
+  require(forecast); require(splitstackshape)
   
   ## preparing metadata
   where = "~/Analysis/Sep12/BCTAnalyser/results/"

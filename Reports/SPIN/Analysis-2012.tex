@@ -11,7 +11,7 @@
 \usepackage{threeparttable}
 
 \usepackage{url}
-\usepackage{hyperref}
+%\usepackage{hyperref}
 
 \DeclareDocumentCommand{\CS}{sO{}}{\IfBooleanTF{#1}{\hat{\sigma}_{#2}}{\sigma_{#2}}}
 \DeclareDocumentCommand{\slp}{sO{}}{\IfBooleanTF{#1}{\hat{\beta}_{#2}}{\beta_{#2}}}
@@ -24,7 +24,7 @@
 
 \DeclareDocumentCommand{\ADCcode}{O{ }}{unit{#1}}
 
-\newcommand{\scl}{.43}
+\newcommand{\scl}{.41}
 
 
 \begin{document}
@@ -34,7 +34,7 @@ We summarize the procedure of estimating unpolarized $pp$ cross section from bea
 
 \section{TRIC program}
 
-TRIC is a transmission experiment planned at the cooler synchrotron COSY-Juelich for the purpose of testing Time-Reversal Invariance. Its physical foundation is the use of a genuine null-observale for T-symmetry, --- the total cross section asymmetry in double-polarized proton-deuteron scattering, --- provided by the optical theorem.~\cite{Conzett} TRIC is aimed at achieving the accuracy of $10^{-6}$ in the cross section asymmetry estimate.
+TRIC (test of Time-Reversal Invariance at COSY) is a transmission experiment planned at the cooler synchrotron COSY-Juelich for the purpose of testing Time-Reversal Invariance. Its physical foundation is the use of a genuine null-observale for T-symmetry, --- the total cross section asymmetry in double-polarized proton-deuteron scattering, --- provided by the optical theorem.~\cite{Conzett} TRIC is aimed at achieving the accuracy of $10^{-6}$ in the cross section asymmetry estimate.
 
 The total cross section in a double-polarized scattering involves a number of polarization-dependent terms:
 \[
@@ -187,7 +187,9 @@ An estimate of a cross section estimate's standard error (SE) is made by adding 
 This is done so because depending on whether an on-slope is paired with the preceding or succeding off-slope, the covariance term changes sign. Since there's no criterion favoring either of the two mappings, the covariance term was omitted.
 
 \section{Results}
-The summary statistics of cross section estimates, grouped by soundness and closeness of the slope estimates they are based on, are presented in TABLE~\ref{tbl:CS-all} and FIG.~\ref{fig:CS-all}; the slopes themselves are shown in FIG.~\ref{fig:Slopes}. Grouped density estimates with rectangular kernel are shown in FIG.~\ref{fig:CS-dens}.
+The summary statistics of cross section estimates, grouped by soundness and closeness of the slope estimates they are based on, are presented in TABLE~\ref{tbl:CS-all} and FIG.~\ref{fig:CS-all}; the slopes themselves are shown in FIG.~\ref{fig:Slopes}. Group density estimates with the rectangular kernel are shown in FIG.~\ref{fig:CS-dens}.
+
+Our best estimate for cross section is $507 \pm 7$ a.u.
 
 \begin{table}[t]
 \centering
@@ -224,14 +226,14 @@ All			& 				& 20		& 535				& 10 \\
 
 \begin{thebibliography}{9}
 \bibitem{Conzett}
-Homer E. Conzett. ``On Null Tests of Time-Reversal Invariance,'' 6. Paris, France, 1990. \url{https://publications.lbl.gov/islandora/object/ir%3A93728/datastream/PDF/download/citation.pdf}
+Homer E. Conzett. ``On Null Tests of Time-Reversal Invariance,'' 6. Paris, France, 1990. %\url{https://publications.lbl.gov/islandora/object/ir%3A93728/datastream/PDF/download/citation.pdf}
 
 \bibitem{Proposal}
 P.D. Eversheim, et al. ``Test of Time-Reversal Invariance in Proton-Deuteron Scattering.''
-\url{https://apps.fz-juelich.de/pax/paxwiki/images/8/8c/215-TRI_Prop_sum.pdf}
+%\url{https://apps.fz-juelich.de/pax/paxwiki/images/8/8c/215-TRI_Prop_sum.pdf}
 
 \bibitem{GaussMarkov}
-D.S.G. Pollock. ``Topics in Econometrics.'' \url{http://www.le.ac.uk/users/dsgp1/COURSES/TOPICS/gausmkov.pdf}
+D.S.G. Pollock. ``Topics in Econometrics.'' %\url{http://www.le.ac.uk/users/dsgp1/COURSES/TOPICS/gausmkov.pdf}
 
 \end{thebibliography}
 

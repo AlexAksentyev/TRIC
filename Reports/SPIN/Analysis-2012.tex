@@ -23,21 +23,27 @@
 
 \DeclareDocumentCommand{\ADCcode}{O{ }}{unit{#1}}
 
-\newcommand{\scl}{.4}
+\newcommand{\scl}{.39}
 
 
 \begin{document}
 \begin{abstractname}
-In this paper we summarize the procedure of estimating unpolarized $pp$ cross section from beam current data in a transmission experiment. Also, the estimate.
+We summarize the procedure of estimating unpolarized $pp$ cross section from beam current data in a transmission experiment. The  physical foundation of the presented methodology is the use of the optical theorem. Estimation is done by 
 \end{abstractname}
 
 \section{TRIC program}
 
-Tests of T-symmetry have been lacking in precision, due to the absence of null observables to observe. It was proved~\cite{NoNullObs} that no vanishing observable exists for T-symmetry; however, the proof hinges on the bilinearity of observables with respect to probability amplitudes. There is, however, one relationship which, in one unique case, links a bilinear observable, and a linear one.
+TRIC is a transmission experiment performed at the cooler synchrotron COSY, Juelich for the purpose of testing Time-Reversal Invariance. Its physical foundation is the use of a genuine null-observale for T-symmetry, --- the total cross section asymmetry in double-polarized, elastic proton-deuteron scattering, --- provided by the optical theorem~\cite{Conzett}. TRIC is aimed at achieving the accuracy of at least $10^{-4}$ in the cross section asymmetry estimate.
 
-On the basis of the optical theorem, H.E. Conzett showed~\cite{Conzett} that cross section asymmetry in polarized pd scattering does not violate P-symmatry, and does not depend on the reaction dynamics, and thus serves as a legitimate null observable of T-symmetry.
+The total cross section in a double-polarized scattering involves a number of polarization-dependent terms:
+\[
+	\CS[tot] = \CS[0]\cdot\bkt{1 + \sum_{i,j} A_{i,j} P_iP^t_j},
+\]
+where $P^t_j$ and $P_i$ are respectively the $j$-projection of target and $i$-projection of beam polarizations, $\CS[0]$ is the unpolarized cross section component, and $A_{i,j}$ is the appropriate asymmetry. The asymmetry that serves as the null-observable of T-symmetry is $A_{y,xz}$, all others being faking observables. 
 
-This is the physical foundation of TRIC (Time-Reversal Invariance at COSY).
+TRIC's experimental design limits the influence of all faking observables to below the experimental accuracy; except for that of $A_{y,y}$, caused by the misalignment of the deuteron source and proton beam.~\cite[p. 9]{Proposal} Thus arises the problem of knowing the extent to which vector target polarization must be controlled, for which the knowledge of the value of $A_{y,y}$ is required. 
+
+Unpolarized cross section is a parameter in both estimators' distributions, and hence it must be known as well. 
 
 \section{Theory}
 \subsection{Physics}
@@ -72,17 +78,28 @@ Since $\CS[x]\Thick[x]$ is independent from target state, an estimate of cross s
 
 \subsection{Statistics}
 
-We estimate $\slp$ by fitting a linear model to logarithmized beam current data: $\ln I_t = \ln I_0 + \slp\cdot t + \epsilon_t$; therefore, the data must satisfy the four Gauss-Markov assumptions in order for the slope estimator to be BLUE:
+We estimate $\slp$ by fitting a linear model to logarithmized beam current data, $\ln I_t = \ln I_0 + \slp\cdot t + \epsilon_t$, using the least squares method. In order that the estimate be minimum-variance mean-unbiased, the data must satisfy the Gauss-Markov assumptions:
 \begin{enumerate}
 	\item Linearity and additivity of the relationship;
-	\item Strict exogeneity;
+	\item Independence of the time and error variables (strict exogeneity);
 	\item No serial correlation of the errors;
-	\item Homoscedasticity of the errors.
+	\item Constant variance of the errors (homoskedasticity).
 \end{enumerate}
 
-Linearity is crucial for the validity of regression, while endogeneity causes bias in the estimate.
+Linearity is necessary for the validity of using linear regression; homoskedasticity and absence of serial correlation are required for the efficiency, and exogeneity for the consistency of the estimator.
 
-Heteroskedasticity and serial correlation do not cause estimator bias; however, they make it inefficient. This problem can be dealt with by generalized least squares. 
+This means the following series of questions has to be answered in order to verify the validity of our results:
+\begin{enumerate}
+	\item Is the logarithm of beam current a linear function of time?
+	\item Are the errors uncorrelated with time?
+		\begin{itemize}
+			\item Is measurement time measured with neglectable error?
+			\item Are there predictors other than time?
+			\item Is there among omitted variables a predictor dependent on current?
+		\end{itemize}
+	\item What is the interpretation of the slope?
+\end{enumerate}
+
 
 \section{Overview of data}
 The analyzed data came from nine one-hour-long cycles, in four of which the target was turned on (FIG.~\ref{fig:TheNine}). The experiments of this set were performed with an electron-cooled beam bunched using the barrier bucket.
@@ -119,7 +136,7 @@ Since we did not have baseline data for two cycles, their offsets were estimated
 
 The models' reduced chi-squares deviate from one in the fourth decimal place; however, one should note that the data do not pass linearity tests, and are likely to have structural slope changes as well (see TABLE~\ref{tbl:CycleChars}). Since the model residuals exhibit serial correlation (FIG.~\ref{fig:Run969}), the slope estimates' standard errors are estimated with robust estimators.
 
-\begin{table}[h]
+\begin{table}
 \centering
 \begin{threeparttable}
 	\caption{Characteristics of a typical cycle.\label{tbl:CycleChars}}
@@ -205,14 +222,13 @@ Unsound		& Far			& 5			& 518				& 20 \\
 
 
 \begin{thebibliography}{9}
-\bibitem{NoNullObs}
-Arash, Firooz, Michael J. Moravcsik, and Gary R. Goldstein. “Dynamics-Independent Null Experiment for Testing Time-Reversal Invariance.” Physical Review Letters 54, no. 25 (1985): 2649.
-\url{https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.54.2649}
-
 \bibitem{Conzett}
 Homer E. Conzett. “On Null Tests of Time-Reversal Lnvariance,” 6. Paris, France, 1990. \url{https://publications.lbl.gov/islandora/object/ir%3A93728/datastream/PDF/download/citation.pdf}
 
-\bibitem{RegDiag} \url{http://people.duke.edu/~rnau/testing.htm}
+\bibitem{Proposal}
+P.D. Eversheim, et al. ``Test of Time-Reversal Invariance in Proton-Deuteron Scattering.''
+\url{https://apps.fz-juelich.de/pax/paxwiki/images/9/9e/Tric_cosyProposals.pdf}
+
 \end{thebibliography}
 
 \end{document}

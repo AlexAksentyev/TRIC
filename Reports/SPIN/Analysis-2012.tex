@@ -11,6 +11,7 @@
 \usepackage{threeparttable}
 
 \usepackage{url}
+\usepackage{hyperref}
 
 \DeclareDocumentCommand{\CS}{sO{}}{\IfBooleanTF{#1}{\hat{\sigma}_{#2}}{\sigma_{#2}}}
 \DeclareDocumentCommand{\slp}{sO{}}{\IfBooleanTF{#1}{\hat{\beta}_{#2}}{\beta_{#2}}}
@@ -23,7 +24,7 @@
 
 \DeclareDocumentCommand{\ADCcode}{O{ }}{unit{#1}}
 
-\newcommand{\scl}{.39}
+\newcommand{\scl}{.43}
 
 
 \begin{document}
@@ -33,32 +34,27 @@ We summarize the procedure of estimating unpolarized $pp$ cross section from bea
 
 \section{TRIC program}
 
-TRIC is a transmission experiment performed at the cooler synchrotron COSY, Juelich for the purpose of testing Time-Reversal Invariance. Its physical foundation is the use of a genuine null-observale for T-symmetry, --- the total cross section asymmetry in double-polarized, elastic proton-deuteron scattering, --- provided by the optical theorem~\cite{Conzett}. TRIC is aimed at achieving the accuracy of at least $10^{-4}$ in the cross section asymmetry estimate.
+TRIC is a transmission experiment planned at the cooler synchrotron COSY-Juelich for the purpose of testing Time-Reversal Invariance. Its physical foundation is the use of a genuine null-observale for T-symmetry, --- the total cross section asymmetry in double-polarized proton-deuteron scattering, --- provided by the optical theorem.~\cite{Conzett} TRIC is aimed at achieving the accuracy of $10^{-6}$ in the cross section asymmetry estimate.
 
 The total cross section in a double-polarized scattering involves a number of polarization-dependent terms:
 \[
 	\CS[tot] = \CS[0]\cdot\bkt{1 + \sum_{i,j} A_{i,j} P_iP^t_j},
 \]
-where $P^t_j$ and $P_i$ are respectively the $j$-projection of target and $i$-projection of beam polarizations, $\CS[0]$ is the unpolarized cross section component, and $A_{i,j}$ is the appropriate asymmetry. The asymmetry that serves as the null-observable of T-symmetry is $A_{y,xz}$, all others being faking observables. 
+where $P^t_j$ and $P_i$ are respectively the $j$-projection of target and $i$-projection of beam polarizations, $\CS[0]$ is the unpolarized cross section component, and $A_{i,j}$ is the appropriate asymmetry.
 
-TRIC's experimental design limits the influence of all faking observables to below the experimental accuracy; except for that of $A_{y,y}$, caused by the misalignment of the deuteron source and proton beam.~\cite[p. 9]{Proposal} Thus arises the problem of knowing the extent to which vector target polarization must be controlled, for which the knowledge of the value of $A_{y,y}$ is required. 
+The asymmetry that serves as the null-observable of T-symmetry is $A_{y,xz}$, all others being faking observables. TRIC's experimental design limits the influence of all faking observables to below the experimental accuracy; except for that of $A_{y,y}$, caused by the misalignment of the target and beam polarizations.~\cite[p. 11]{Proposal} Thus arises the problem of knowing the extent to which vector target polarization must be controlled, for which the knowledge of the value of $A_{y,y}$ is required. 
 
 Unpolarized cross section is a parameter in both estimators' distributions, and hence it must be known as well. 
 
 \section{Theory}
 \subsection{Physics}
 The intensity of a particle beam revolving inside an accelerator decreases according to the Beer-Lambert law:
-\[
-	I_{n+1} = I_n \cdot \exp\bkt{-\sum_{i=i}^N \CS[i]\cdot\int_0^L n_i(z)\td z},
-\]
-where $L$ is the beam path length, $N$ is the number of attenuating species, $\CS[i]$ is the attenuation cross section, $n$ is the number of passed revolutions.
-
-Simplifying this expression in case of uniform attenuation, one obtains:
 \begin{align*}
-	I_{n+1} &= I_n \cdot \exp\bkt{-\sum_{i=i}^N \CS[i]\cdot \Thick[i]} \\
+	I_{n+1} &= I_n \cdot \exp\bkt{-\sum_{i=i}^N \CS[i]\cdot\int_0^L n_i(z)\td z} \\
+			&= I_n \cdot \exp\bkt{-\sum_{i=i}^N \CS[i]\cdot \Thick[i]} \\
 			&= I_n \cdot \exp\bkt{-\sum_i\frac1\tau_i},
 \end{align*}
-where $\Thick[i] = n_i\cdot\ell_i$ is the thickness of the corresponding attenuating species.
+where $L$ is the beam path length, $N$ is the number of attenuating species, $\CS[i]$ is the attenuation cross section, $n$ is the number of passed revolutions, $\Thick[i] = \int_L n_i(z)\td z$ is the thickness of the corresponding attenuating species.
 
 For average beam current, integration of the above yields
 \begin{equation}\label{eq:CurrentDecay}
@@ -66,24 +62,25 @@ For average beam current, integration of the above yields
 \end{equation}
 with $\slp = \sum_i \slp[i] = - \nu\cdot\sum_i \sfrac1\tau_i$, $\nu$ --- the beam revolution frequency. 
 
-Within the confines of the experiment, an unpolarized proton beam interacts with an unpolarized deuterium target with cross section $\CS[0]$; to that add all extra-target losses, to produce the following expression for beam loss:
+Within the confines of the experiment, an unpolarized proton beam interacts with an unpolarized deuterium target with cross section $\CS[0]$; to that add all extra-target losses ($\CS[x]\Thick[x]$), to produce the following expression for beam loss:
 \begin{equation}\label{eq:SlopeModel}
-	\slp = \nu\CS[0]\Thick + \nu\CS[x]\Thick[x].
+	\slp = -\nu\bkt{\CS[0]\Thick + \CS[x]\Thick[x]}.
 \end{equation}
 
-Since $\CS[x]\Thick[x]$ is independent from target state, an estimate of cross section is obtained from 
+Since $\CS[x]\Thick[x]$ is independent from target state, an estimate of cross section is obtained from  
 \begin{equation}
-	\CS*[0] = \frac{\slp*[off] - \slp*[on]}{\nu\Thick[on]}.
+	\CS*[0] = \frac{\slp*[off] - \slp*[on]}{\nu\Thick[on]},
 \end{equation}
+where $\slp*[on/off]$ is the slope estimate in an on-/off-cycle.
 
 \subsection{Statistics}
 
-We estimate $\slp$ by fitting a linear model to logarithmized beam current data, $\ln I_t = \ln I_0 + \slp\cdot t + \epsilon_t$, using the least squares method. In order that the estimate be minimum-variance mean-unbiased, the data must satisfy the Gauss-Markov assumptions:
+We estimate $\slp$ by fitting a linear model to logarithmized beam current data, $\ln I_t = \ln I_0 + \slp\cdot t + \epsilon_t$, using the least squares method. In order that the estimate be minimum-variance mean-unbiased, the data must satisfy the Gauss-Markov conditions:~\cite{GaussMarkov}
 \begin{enumerate}
 	\item Linearity and additivity of the relationship;
 	\item Independence of the time and error variables (strict exogeneity);
-	\item No serial correlation of the errors;
-	\item Constant variance of the errors (homoskedasticity).
+	\item No serial correlation of the error;
+	\item Constant variance of the error (homoskedasticity).
 \end{enumerate}
 
 Linearity is necessary for the validity of using linear regression; homoskedasticity and absence of serial correlation are required for the efficiency, and exogeneity for the consistency of the estimator.
@@ -102,11 +99,11 @@ This means the following series of questions has to be answered in order to veri
 
 
 \section{Overview of data}
-The analyzed data came from nine one-hour-long cycles, in four of which the target was turned on (FIG.~\ref{fig:TheNine}). The experiments of this set were performed with an electron-cooled beam bunched using the barrier bucket.
+The analyzed data came from nine one-hour-long cycles, in four of which the target was turned on (FIG.~\ref{fig:TheNine}). The experiments of this set were performed in 2012, with an electron-cooled beam bunched using the barrier bucket system.
 
 \begin{figure}[h]
 \includegraphics[scale=\scl]{img/TheNineCycles.eps}
-\caption{The nine analyzed cycles.\label{fig:TheNine}}
+\caption{The average beam current as a function of time for cycles with the target turned on (red) and off (black).\label{fig:TheNine}}
 \end{figure} 
 
 The measurements were taken with a Beam Current Transformer (BCT). Based on inter-cycle data (baseline), it was concluded that the BCT offset systematically drifted toward zero by approximately 3.5 \ADCcode[s] per cycle during the cycles of interest.
@@ -131,7 +128,7 @@ Since we did not have baseline data for two cycles, their offsets were estimated
 
 \begin{figure}[h]
 \includegraphics[scale=\scl]{img/Offset_model_Common_GAM.eps}
-\caption{Offset model.\label{fig:OffsetModel}}
+\caption{The median current before a cycle as a function of cycle number, used as estimates of the data offset. The offsets for cycles 969 and 971 (red) were estimated via a linear fit (dotted line).\label{fig:OffsetModel}}
 \end{figure}
 
 The models' reduced chi-squares deviate from one in the fourth decimal place; however, one should note that the data do not pass linearity tests, and are likely to have structural slope changes as well (see TABLE~\ref{tbl:CycleChars}). Since the model residuals exhibit serial correlation (FIG.~\ref{fig:Run969}), the slope estimates' standard errors are estimated with robust estimators.
@@ -163,7 +160,7 @@ The models' reduced chi-squares deviate from one in the fourth decimal place; ho
 \centering
 \begin{subfigure}{.5\textwidth}
 \includegraphics[scale=\scl]{img/Run969_Data_AND_Fit.eps}
-\caption{Data and fit.}
+\caption{Logarithm of measurement data as a function of time. The fitted line is colored red.}
 \end{subfigure}
 \begin{subfigure}{.5\textwidth}
 \includegraphics[scale=\scl]{img/Run969_Res_VS_Fit.eps}
@@ -173,12 +170,12 @@ The models' reduced chi-squares deviate from one in the fourth decimal place; ho
 \includegraphics[scale=\scl]{img/Run969_residual_PACF.eps}
 \caption{The partial Auto-Correlation Function of the residuals.}
 \end{subfigure}
-\caption{A typical cycle.\label{fig:Run969}}
+\caption{Some diagnostic plots for a typical cycle.\label{fig:Run969}}
 \end{figure}
 
 \section{Estimation of cross section}
 
-In estimating cross section, only the estimates from adjacent cycles are used. This is done to minimize the effect of drifts of environmental variables such as target thickness, which is estimated to increase by $.5~ \sfrac{\%}{\mathrm{hour}}$. (The thickness by which the slope differences are divided, assumed constant, was provided by a Schottky measurement.)
+In estimating cross section, only the estimates from adjacent cycles are used. This is done to minimize the effect of drifts of environmental variables such as target thickness, which is estimated to increase by $0.5~ \sfrac{\%}{\mathrm{hour}}$. (The thickness by which the slope differences are divided, assumed constant, was provided by a Schottky measurement.)
 
 This reduces the number of estimates from 20 to seven, of which three are deemed unsound according to Tukey's range test (with the range parameter corresponding to ten standard deviations). 
 
@@ -189,14 +186,12 @@ An estimate of a cross section estimate's standard error (SE) is made by adding 
 
 This is done so because depending on whether an on-slope is paired with the preceding or succeding off-slope, the covariance term changes sign. Since there's no criterion favoring either of the two mappings, the covariance term was omitted.
 
-
 \section{Results}
+The summary statistics of cross section estimates, grouped by soundness and closeness of the slope estimates they are based on, are presented in TABLE~\ref{tbl:CS-all} and FIG.~\ref{fig:CS-all}; the slopes themselves are shown in FIG.~\ref{fig:Slopes}. Grouped density estimates with rectangular kernel are shown in FIG.~\ref{fig:CS-dens}.
 
-The summary statistics of cross section estimates, grouped by soundness and closeness of the slope estimates they are based on, are presented in TABLE~\ref{tbl:CS-all} and FIG.~\ref{fig:CS-all}. The slopes themselves are shown in FIG.~\ref{fig:Slopes}.
-
-\begin{table}
+\begin{table}[t]
 \centering
-\caption{Cross section estimates' statistics\label{tbl:CS-all}}
+\caption{Cross section summary statistics. \label{tbl:CS-all}}
 \begin{tabular}{llrcr}
 \hline\hline
 Soundness	& Closeness		& \#		& Mean (a.u.)		& SE (a.u.) \\
@@ -205,17 +200,23 @@ Sound		& Close			& 4			& 507				& 7  \\
 Sound		& Far			& 8			& 549				& 14 \\
 Unsound		& Close			& 3			& 560				& 39 \\
 Unsound		& Far			& 5			& 518				& 20 \\
+\hline
+All			& 				& 20		& 535				& 10 \\
 \end{tabular}
-\end{table}
+\end{table}~
 
 \begin{figure}
 \begin{subfigure}{.5\textwidth}
 \includegraphics[scale=\scl]{img/Cross-Section_all.eps}
-\caption{Cross section estimates.\label{fig:CS-all}}
-\end{subfigure}
+\caption{Cross section estimates plotted against their off-cycle number.\label{fig:CS-all}}
+\end{subfigure}~
 \begin{subfigure}{.5\textwidth}
 \includegraphics[scale=\scl]{img/Slopes-2012_big.eps}
 \caption{Slope estimates.\label{fig:Slopes}}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+\includegraphics[scale=\scl]{img/Cross-Section_dens.eps}
+\caption{Cross section density estimates for each category of results.\label{fig:CS-dens}}
 \end{subfigure}
 \caption{Results.}
 \end{figure}
@@ -223,11 +224,14 @@ Unsound		& Far			& 5			& 518				& 20 \\
 
 \begin{thebibliography}{9}
 \bibitem{Conzett}
-Homer E. Conzett. “On Null Tests of Time-Reversal Lnvariance,” 6. Paris, France, 1990. \url{https://publications.lbl.gov/islandora/object/ir%3A93728/datastream/PDF/download/citation.pdf}
+Homer E. Conzett. ``On Null Tests of Time-Reversal Invariance,'' 6. Paris, France, 1990. \url{https://publications.lbl.gov/islandora/object/ir%3A93728/datastream/PDF/download/citation.pdf}
 
 \bibitem{Proposal}
 P.D. Eversheim, et al. ``Test of Time-Reversal Invariance in Proton-Deuteron Scattering.''
-\url{https://apps.fz-juelich.de/pax/paxwiki/images/9/9e/Tric_cosyProposals.pdf}
+\url{https://apps.fz-juelich.de/pax/paxwiki/images/8/8c/215-TRI_Prop_sum.pdf}
+
+\bibitem{GaussMarkov}
+D.S.G. Pollock. ``Topics in Econometrics.'' \url{http://www.le.ac.uk/users/dsgp1/COURSES/TOPICS/gausmkov.pdf}
 
 \end{thebibliography}
 

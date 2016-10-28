@@ -39,15 +39,19 @@ get2012Data <- function(){ #not removing offset
     MD[,obs] <- factor(MD[,obs])
   
   MD %>% mutate(
-    Start = paste(day, Start, sep = " "),
-    Stop = paste(day, Stop, sep = " "),
-    UTS.Stt = timeToUTS(Start, format = "%Y-%m-%d %H:%M:%S"),
-    UTS.Stp = timeToUTS(Stop, format = "%Y-%m-%d %H:%M:%S"),
+    Start = paste(day, Start, sep = " ")%>%as.POSIXct(origin="1970-1-1"),
+    Stop = c(Start[-1]-1, paste(day[nrow(MD)], Stop[nrow(MD)], sep = " ")%>%as.POSIXct(origin="1970-1-1")),
+    UTS.Stt = as.numeric(Start),
+    UTS.Stp = as.numeric(Stop),
     Size = UTS.Stp-UTS.Stt+1,
     Quality = derivedFactor("bad" = Quality=="bad", "ok" = is.na(Quality))
   ) %>% dplyr::select(-day,-Beam, -Comment) -> MD
   
   .from = MD$Start %>% first; .to = MD$Stop %>% last
+  
+  ## a cycle starts where current goes to zero
+  ## I can load the part of the file .from--.to, find the lines where BCT2 is zero
+  ## and mark the times at those lines as Start
   
   MD %>% expandRows("Size") -> MD
   

@@ -24,7 +24,7 @@
 
 \DeclareDocumentCommand{\ADCcode}{O{ }}{unit{#1}}
 
-\newcommand{\scl}{.41}
+\newcommand{\scl}{.4}
 
 
 \begin{document}
@@ -124,14 +124,11 @@ To make correct slope estimates, we subtract offset $\Delta$ from the data. This
 
 In the favorable case of a constant offset, it still must be removed in order to have a constant slope to estimate. A time-dependent offset violates the exogeneity assumption, and hence biases the slope estimates. At this stage, estimation was done assuming offset was constant within a cycle, and only changed from cycle to cycle.
 
-Since we did not have baseline data for two cycles, their offsets were estimated assuming a linear drift and fitting the cycles' baseline medians (FIG.~\ref{fig:OffsetModel}). Each cycle's data were then subtracted its respective offset, and fitted a linear model via ordinary least squares.
-
-\begin{figure}[h]
-\includegraphics[scale=\scl]{img/Offset_model_Common_GAM.eps}
-\caption{The median current before a cycle as a function of cycle number, used as estimates of the data offset. The offsets for cycles 969 and 971 (red) were estimated via a linear fit (dotted line).\label{fig:OffsetModel}}
-\end{figure}
-
-The models' reduced chi-squares deviate from one in the fourth decimal place; however, one should note that the data do not pass linearity tests, and are likely to have structural slope changes as well (see TABLE~\ref{tbl:CycleChars}). Since the model residuals exhibit serial correlation (FIG.~\ref{fig:Run969}), the slope estimates' standard errors are estimated with robust estimators.
+%Since we did not have baseline data for two cycles, their offsets were estimated assuming a linear drift and fitting the cycles' baseline medians (FIG.~\ref{fig:OffsetModel}). 
+%\begin{figure}[h]
+%\includegraphics[scale=\scl]{img/Offset_model_Common_GAM.eps}
+%\caption{The median current before a cycle as a function of cycle number, used as estimates of the data offset. The offsets for cycles 969 and 971 (red) were estimated via a linear fit (dotted line).\label{fig:OffsetModel}}
+%\end{figure}
 
 \begin{table}
 \centering
@@ -145,7 +142,7 @@ The models' reduced chi-squares deviate from one in the fourth decimal place; ho
 	-				& Rainbow				& 0\% \\
 	Constant slope	& Chow\tnote{a}		 	& 100\% \\
 	-				& Moving estimates		& 1\% \\
-	Homoskedasticity& Breusch-Pagan 		& 82\% \\
+	Homoskedasticity& Breusch-Pagan 		& 17\% \\
 	Autocorrelation & Durbin-Watson			& 0\% \\
 	\hline\hline
 	\end{tabular}
@@ -155,12 +152,13 @@ The models' reduced chi-squares deviate from one in the fourth decimal place; ho
 \end{threeparttable}
 \end{table}
 
+Each cycle's data were subtracted its respective offset, and fitted a linear model via ordinary least squares. The models' reduced chi-squares deviate from one in the fourth decimal place; however, one should note that the data do not pass linearity tests, and are likely to have structural slope changes as well (see TABLE~\ref{tbl:CycleChars}). Since the model residuals exhibit serial correlation (FIG.~\ref{fig:Run969}), the slope estimates' standard errors are estimated with robust estimators.
 
 \begin{figure}
 \centering
 \begin{subfigure}{.5\textwidth}
 \includegraphics[scale=\scl]{img/Run969_Data_AND_Fit.eps}
-\caption{Logarithm of measurement data as a function of time. The fitted line is colored red.}
+\caption{Logarithm of measurement data as a function of time. The fitted line is colored red, the gray dashed lines mark the fit region.}
 \end{subfigure}
 \begin{subfigure}{.5\textwidth}
 \includegraphics[scale=\scl]{img/Run969_Res_VS_Fit.eps}
@@ -187,11 +185,7 @@ An estimate of a cross section estimate's standard error (SE) is made by adding 
 This is done so because depending on whether an on-slope is paired with the preceding or succeding off-slope, the covariance term changes sign. Since there's no criterion favoring either of the two mappings, the covariance term was omitted.
 
 \section{Results}
-The summary statistics of cross section estimates, grouped by soundness and closeness of the slope estimates they are based on, are presented in TABLE~\ref{tbl:CS-all} and FIG.~\ref{fig:CS-all}; the slopes themselves are shown in FIG.~\ref{fig:Slopes}. Group density estimates with the rectangular kernel are shown in FIG.~\ref{fig:CS-dens}.
-
-Our best estimate for cross section is $507 \pm 7$ a.u.
-
-\begin{table}[t]
+\begin{table}
 \centering
 \caption{Cross section summary statistics. \label{tbl:CS-all}}
 \begin{tabular}{llrcr}
@@ -199,22 +193,38 @@ Our best estimate for cross section is $507 \pm 7$ a.u.
 Soundness	& Closeness		& \#		& Mean (a.u.)		& SE (a.u.) \\
 \hline
 Sound		& Close			& 4			& 507				& 7  \\
-Sound		& Far			& 8			& 549				& 14 \\
-Unsound		& Close			& 3			& 560				& 39 \\
-Unsound		& Far			& 5			& 518				& 20 \\
+Sound		& Far			& 8			& 553				& 14 \\
+Unsound		& Close			& 3			& 562				& 36 \\
+Unsound		& Far			& 5			& 515				& 20 \\
 \hline
-All			& 				& 20		& 535				& 10 \\
+All			& 				& 20		& 536				& 10 \\
 \end{tabular}
-\end{table}~
+\end{table}
+
+The summary statistics of cross section estimates, grouped by soundness and closeness of the slope estimates they are based on, are presented in TABLE~\ref{tbl:CS-all} and FIG.~\ref{fig:CS-all}; the slopes themselves are shown in FIG.~\ref{fig:Slopes} and summarized in TABLE~\ref{tbl:Slp-big}. Group density estimates with the rectangular kernel are shown in FIG.~\ref{fig:CS-dens}.
+
+\begin{table}
+\centering
+\caption{Slope summary statistics. \label{tbl:Slp-big}}
+\begin{tabular}{llrr}
+\hline\hline
+Target		& \#		& Mean (a.u.)						& SE (a.u.) \\
+\hline
+Off			& 5			& $-9.04\cdot 10^{-5}$				& $6\cdot 10^{-7}$  \\
+On			& 4			& $-1.20\cdot 10^{-4}$				& $1\cdot 10^{-6}$ \\
+\end{tabular}
+\end{table}
+
+Our best estimate for cross section is $507 \pm 7$ a.u. 
 
 \begin{figure}
 \begin{subfigure}{.5\textwidth}
 \includegraphics[scale=\scl]{img/Cross-Section_all.eps}
 \caption{Cross section estimates plotted against their off-cycle number.\label{fig:CS-all}}
-\end{subfigure}~
+\end{subfigure}
 \begin{subfigure}{.5\textwidth}
 \includegraphics[scale=\scl]{img/Slopes-2012_big.eps}
-\caption{Slope estimates.\label{fig:Slopes}}
+\caption{Slope estimates as a function of time.\label{fig:Slopes}}
 \end{subfigure}
 \begin{subfigure}{.5\textwidth}
 \includegraphics[scale=\scl]{img/Cross-Section_dens.eps}

@@ -1,5 +1,5 @@
 source("EstiStats.R")
-source("DataPrep.R")
+source("DataAna.R")
 source("Parameters.R")
 
 library(dplyr); library(plyr); library(mosaic)
@@ -10,89 +10,108 @@ thick = 6.92e13
 
 registerDoParallel(detectCores())
 
-get2012Data() -> Data12
-Data <- Data12$Data
-Data %>% filter(Run %in% c(967:976), Cell=="In") %>% mutate(Run = as.numeric(Run), uts = UTS-UTS[1])-> Data
+#### preparing data for analysis ####
+## fetch metadata
+.runs = 967:976
+where = "~/Analysis/Sep12/BCTAnalyser/results/"
+readODS::read_ods(paste(where, "RunMetadata(1).ods",sep="/"), sheet=2) %>% 
+  filter(Run %in% .runs) %>% mutate(
+    Start = paste(day, Start, sep = " ")%>%as.POSIXct(origin="1970-1-1")-30,
+    Stop = paste(day, Stop, sep = " ")%>%as.POSIXct(origin="1970-1-1")+30
+  ) -> MD
+for(obs in c("eCool.I", "Bunch", "Cell", "Targ", "RF.V", "BB.V", "Beam")) ## could use sapply(, factor) instead of loop
+  MD[,obs] <- factor(MD[,obs])
+
+## load data
+.flds = c("WD", "Month", "Day", "Time", "Year", paste0("BCT",1:8))
+loadData("CosyAll_2012-09-25_15-53-06.dat", "~/Analysis/Sep12/DevReader/Data/", 
+         Fields = .flds, from=first(MD$Start), to=last(MD$Stop)
+) -> Data12
+
+## find when cycles begin
+filter(Data12, BCT2==0) %>% mutate(H = hour(Clock)) %>% 
+  group_by(H) %>% dplyr::summarize(Clock = first(Clock)) -> CycSrt
+
+## correct metadata
+MD %>% mutate(
+  Start = CycSrt$Clock, Stop = c(Start[-1]-1, last(Stop)),
+  UTS.Stt = as.numeric(Start),
+    UTS.Stp = as.numeric(Stop),
+    Size = UTS.Stp-UTS.Stt+1,
+    Quality = derivedFactor("bad" = Quality=="bad", "ok" = is.na(Quality))
+  ) %>% dplyr::select(-day,-Beam, -Comment) -> MD
+
+MD %>%expandRows("Size") -> MD
+rownames(MD) %>% strsplit(".", fixed=TRUE) %>% 
+  laply(function(e) {e <- as.numeric(e); if(length(e) <2) 0 else e[2]}) -> addage
+MD %>% mutate(UTS = UTS.Stt + addage) -> MD
+
+## add metadata to cycles
+MD %>% dplyr::select(Run, UTS, eCool.I, Bunch, RF.V, BB.V, Cell, Targ, Quality) %>% 
+  join(Data12, by="UTS", type="right") %>% filter(!is.na(Run)) -> Data12 ## offset before the first cycle is discarded
+
+## classify signal & base, exclude wrong cycle
+.dumbCut <- (function(.data, x) mutate(.data, FSgl = derivedFactor("F" = BCT2 < x, .default = "T")))
+
+Data12 %>% .dumbCut(5000) %>% filter(Cell=="In") -> Data
 
 #### plotting the nine cycles ####
-# plot(range(Data$uts), with(Data, c(min(BCT2), max(BCT2))), 
-#      type="n", xlab="Time, sec", ylab = "Average Current, ADC"
-# ); legend("topleft", bty="n", lty=1, col=c("blue","red"), legend=paste("Target",c("off", "on")))
-# Data %>% d_ply("Run", function(r) r%>%with(lines(BCT2~uts, col=c("Chopper" = "blue", "On" = "red")[Targ[1]])))
-##same with ggplot
-Data %>% ggplot(aes(uts, BCT2, col=Targ)) + 
+Data %>% ggplot(aes(Clock, BCT2, col=Targ)) + 
   scale_color_manual(name="Target state", breaks=c("Chopper","On"), labels=c("Off","On"), values=c("black", "red")) + 
   geom_point() + 
   theme_minimal() + theme(legend.position = "top", legend.title=element_text()) +
-  labs(x="Time (seconds)", y="I (a.u.)")
+  labs(x="Time (local)", y="I (a.u.)")
 
-base = Data %>% filter(FSgl=="F") %>% .markOutliers("BCT2") %>% filter(FOut=="F")
-base %>% mutate(GRP = derivedFactor("Before" = Run<972, "After" = Run>973, .default="973")) -> base
-.summary <- function(.dat) .dat%>%group_by(Run)%>%dplyr::summarise(BCT2o = median(BCT2), SE = sd(BCT2)/sqrt(n()))
-bmtot.dat = .summary(base)
-bmtot = lm(BCT2o~Run, data=bmtot.dat)
-base%>%filter(GRP!="973")%>%ddply("GRP", function(g) lm(BCT2o~Run, data=.summary(g)) %>% .collect.stats) %>% 
-  rbind.fill(bmtot %>% .collect.stats %>% t %>% as.data.frame()) 
-
-## chi2 is best when total fit (last row); hence don't separate base into two groups to predict offsets
-PredBCT2o = data.frame(
-  Run = c(969, 971)%>%rep(each=3), 
-  BCT2o = c(
-    predict(bmtot, data.frame(Run=c(969)), interval="predict",level=.68), 
-    predict(bmtot, data.frame(Run=c(971)), interval="predict",level=.68)
-    # predict(bmtot, data.frame(Run=c(973)), interval="predict",level=.68)
-  ), 
-  FSgl = "F" %>% rep(each=3)
-)
-
-PredBCT2o %>% dplyr::select(-FSgl) %>% mutate(Group="Fit") %>% 
-  group_by(Run) %>% dplyr::summarise(SE = (max(BCT2o)-min(BCT2o))/2, BCT2o=median(BCT2o), GRP=Group[1]) %>% 
-  rbind(mutate(bmtot.dat, GRP="Data")) %>%
-  ggplot(aes(Run, BCT2o)) + geom_pointrange(aes(ymin=BCT2o-SE, ymax=BCT2o+SE, col=GRP)) + 
-  geom_smooth(method="gam", col="black", lty=3) +
-  theme_minimal()  + theme(legend.position = "top", legend.title=element_blank()) + 
-  scale_color_manual(values=c("black","red")) + 
-  labs(y="Baseline median", x="Cycle")
-
-#### fill the missing offset data ####
-PredBCT2o %>% group_by(Run) %>% 
-  dplyr::summarise(BCT2=median(BCT2o), FSgl="F") %>% 
-  rbind.fill(Data) -> Data
+#### baseline analysis ####
+base = Data %>% filter(FSgl=="F", BCT2 != 0) %>% .markOutliers("BCT2") %>% filter(FOut=="F")
+mosaic::median(BCT2~Run, data=base) -> bmed
+data.frame(Run = as.factor(names(bmed)), Med = bmed) -> bmed
+## see if there's correlation between beam current and offset !!!!!!!!!!!!!!!!!!!!!##
+##!!!!!!!!!!!!!!!!!!!!!! simultaneity => exogeneity !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!##
+Data%>%filter(FSgl=="T") %>% daply("Run", function(r) median(r$BCT2[100:140])) -> I0
+df = cbind(bmed, I0)
 
 #### fit ####
-Data %>% ddply("Run", function(.sub){
-  .sub %>% filter(FSgl=="F") %>% .markOutliers("BCT2") %>% filter(FOut=="F") -> b
-  .sub %>% mutate(BCT2 = BCT2 - median(b$BCT2)) %>% filter(FSgl=="T") -> .sub
-  .sub %>% fit.(.subset = c(45, 15)) -> .stats
+Data %>% ddply("Run", function(r) {
+  b = filter(r, FSgl=="F", BCT2 != 0)$BCT2 %>% median
+  mutate(r, BCT2 = BCT2-b) %>% filter(FSgl=="T") -> .sub
+  cat(r$Run[1]); cat("\n")
+  
+  fit.(.sub, .subset = c(45, 15)) -> .stats; cat(.stats);cat("\n")
   
   data.frame(
+    Unit=1,
     Estimate = .stats[1], SE = .stats[2], Chi2 = .stats[3], I0 = .stats[4],
     Quality = .sub$Quality[5],
     eCool.I = .sub$eCool.I[5],
     Targ = .sub$Targ[5],
     Bunch = .sub$Bunch[5],
-    Size = .sub$Size[5],
     Clock = .sub$UTS[1] %>% as.POSIXct(origin="1970-1-1")
   )
-}) %>% mutate(Unit=1) %>% ddply("Targ", .markOutliers) -> slopes
+}, .parallel=TRUE) %>% ddply("Targ", .markOutliers) -> slopes
 
 #### testing ####
-Data %>% filter(Run==969) -> Run969; b = Run969$BCT2[Run969$FSgl=="F"]; Run969%>%mutate(BCT2=BCT2-b)%>%filter(FSgl=="T")->Run969
-m = fit.(Run969, model=TRUE, .subset=c(45,15))
-ggplot(Run969,aes(Clock, log(BCT2))) + geom_line() + geom_smooth(method="lm", col="red", size=.75) + 
-  theme_minimal() + labs(y="ln I", x="Local time")
+.sub=c(45,15)
+Data %>% filter(Run==969) %>% mutate(uts=UTS-UTS[1]) -> Run969
+b = filter(Run969, FSgl=="F", BCT2 != 0)$BCT2 %>% median
+Run969%>%mutate(BCT2=BCT2-b)%>%filter(FSgl=="T")->Run969
+m = fit.(Run969, model=TRUE, .subset=.sub); .sub <- c(0, nrow(Run969))+c(1,-1)*.sub
+slice(Run969, 20:nrow(Run969))%>%ggplot(aes(uts, log(BCT2))) + geom_line() + geom_smooth(method="lm", col="red", size=.75) + 
+  theme_minimal() + labs(y="ln I", x="Time (seconds)") + 
+  geom_vline(xintercept=Run969$uts[.sub], col="gray",linetype=2)
 
 autoplot(m, which=1) + theme_minimal() + ggtitle("") + labs(y=expression(ln~I[i]~-~(hat(alpha)~+~hat(beta)~t)), x=expression(hat(alpha)~+~hat(beta)~t))
 autoplot(pacf(m$residuals, lag=600, main="", plot=FALSE)) + theme_minimal() + labs(y="Partial ACF")
 
 
 library(lmtest); library(strucchange)
-f = log(BCT2)~uts
+f = log(BCT1)~uts
+Run969 <- slice(Run969, .sub[1]:.sub[2])
 
 harvtest(f, data=Run969)
 raintest(f, data=Run969)
-sctest(f, from=45, to = nrow(Run969)-15, data=Run969, type="aveF")
-sctest(f, from=45, to = nrow(Run969)-15, data=Run969, type="ME")
+sctest(f, data=Run969, type="aveF")
+sctest(f, data=Run969, type="ME")
 bptest(f, data=Run969)
 dwtest(f, data=Run969)
 
@@ -134,15 +153,6 @@ ggplot(cs0mb, aes(Estimate, col=Closeness)) +
   geom_density(trim=TRUE, kernel="rect",bw=10) + 
   geom_segment(aes(x=Estimate, xend=Estimate, y=0, yend=.005, col=Closeness)) +
   theme_minimal() + labs(x=expression(hat(sigma)[0]~"(a.u.)"), y="Kernel density") + theme(legend.position="top")
-
-library(beanplot)
-beanplot(
-  Estimate~Closeness/Soundness, data=cs0mb,
-  side="both", col=list("black","red"),
-  kernel="rect", what=c(0,1,1,1),
-  xlab="Soundness",ylab=expression(hat(sigma)[0])
-)
-
 
 #### slopes ####
 fancy_scientific <- function(l) {

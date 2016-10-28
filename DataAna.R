@@ -102,8 +102,8 @@ fit. = function(.sub, plot.it = FALSE, model = FALSE, .legend = c("Chi2"), .subs
   .sub %>% mutate(uts = UTS - UTS[1]) -> .sub
   
   if(!is.null(.subset)) {
-    .subset = .subset*c(1,-1) + c(0, dim(.sub)[1]); .subset = .subset[1]:.subset[2]
-  } else .subset = 1:dim(.sub)[1]
+    .subset = .subset*c(1,-1) + c(0, nrow(.sub)); .subset = .subset[1]:.subset[2]
+  } else .subset = 1:nrow(.sub)
   
   m <- lm(log(BCT2) ~ uts, data = .sub, subset = .subset)
   m$model$UTS <- .sub$UTS[.subset]

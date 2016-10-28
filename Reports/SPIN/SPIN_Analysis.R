@@ -66,7 +66,7 @@ Data %>% ggplot(aes(Clock, BCT2, col=Targ)) +
 ## shows that BCT2 = 0 is just stack overflow ##
 # Data%>%filter(Run==971) %>% slice(1:60) -> xcheck
 # ggplot(xcheck, aes(x=Clock)) + geom_point(aes(y=BCT1, col="BCT1")) + geom_point(aes(y=BCT2/10, col="BCT2/10")) +
-#   geom_vline(xintercept=xcheck$UTS[4], col="red") +
+#   geom_vline(xintercept=xcheck$UTS[4], col="black") +
 #   theme_minimal() + ggtitle("Run 971; first minute") + labs(y="Current, ADC")
 #################################
 

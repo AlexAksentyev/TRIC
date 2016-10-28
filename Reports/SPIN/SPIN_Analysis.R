@@ -21,10 +21,10 @@ Data %>% filter(Run %in% c(967:976), Cell=="In") %>% mutate(Run = as.numeric(Run
 # Data %>% d_ply("Run", function(r) r%>%with(lines(BCT2~uts, col=c("Chopper" = "blue", "On" = "red")[Targ[1]])))
 ##same with ggplot
 Data %>% ggplot(aes(uts, BCT2, col=Targ)) + 
-  scale_color_manual(breaks=c("Chopper","On"), labels=c("Off","On"), values=c("black", "red")) + 
+  scale_color_manual(name="Target state", breaks=c("Chopper","On"), labels=c("Off","On"), values=c("black", "red")) + 
   geom_point() + 
-  theme_minimal() + theme(legend.position = "top", legend.title=element_blank()) +
-  labs(x="Time, seconds", y="Average current, ADC")
+  theme_minimal() + theme(legend.position = "top", legend.title=element_text()) +
+  labs(x="Time (seconds)", y="I (a.u.)")
 
 base = Data %>% filter(FSgl=="F") %>% .markOutliers("BCT2") %>% filter(FOut=="F")
 base %>% mutate(GRP = derivedFactor("Before" = Run<972, "After" = Run>973, .default="973")) -> base
@@ -80,9 +80,9 @@ Data %>% ddply("Run", function(.sub){
 Data %>% filter(Run==969) -> Run969; b = Run969$BCT2[Run969$FSgl=="F"]; Run969%>%mutate(BCT2=BCT2-b)%>%filter(FSgl=="T")->Run969
 m = fit.(Run969, model=TRUE, .subset=c(45,15))
 ggplot(Run969,aes(Clock, log(BCT2))) + geom_line() + geom_smooth(method="lm", col="red", size=.75) + 
-  theme_minimal() + labs(y="Logarithm of average current")
+  theme_minimal() + labs(y="ln I", x="Local time")
 
-autoplot(m, which=1) + theme_minimal() + ggtitle("")
+autoplot(m, which=1) + theme_minimal() + ggtitle("") + labs(y=expression(ln~I[i]~-~(hat(alpha)~+~hat(beta)~t)), x=expression(hat(alpha)~+~hat(beta)~t))
 autoplot(pacf(m$residuals, lag=600, main="", plot=FALSE)) + theme_minimal() + labs(y="Partial ACF")
 
 
@@ -117,7 +117,7 @@ cs0mb %>% ggplot(aes(Run.Chopper, Estimate, shape = Soundness, col = Closeness))
   geom_pointrange(aes(ymin=Estimate-SE, ymax=Estimate+SE)) + 
   theme_minimal() + theme(legend.position="top") + 
   scale_color_manual(values=c("black","red"))+
-  labs(x="Off-cycle", y="Cross section estimate")
+  labs(x="Off-cycle", y=expression(hat(sigma)[0]~"(a.u.)"))
 
 cs0mb%>%group_by(Soundness, Closeness) %>% 
   dplyr::summarise(
@@ -126,7 +126,22 @@ cs0mb%>%group_by(Soundness, Closeness) %>%
     W.MEAN = weighted.mean(Estimate),
     SD = sd(Estimate),
     SE = SD/sqrt(NUM)
-  )
+  ) 
+
+ggplot(cs0mb, aes(Estimate, col=Closeness)) +
+  facet_grid(Soundness~., scale="free_y", space="free_y") +
+  scale_color_manual(breaks=c("Close","Far"), values=c("black","red")) + 
+  geom_density(trim=TRUE, kernel="rect",bw=10) + 
+  geom_segment(aes(x=Estimate, xend=Estimate, y=0, yend=.005, col=Closeness)) +
+  theme_minimal() + labs(x=expression(hat(sigma)[0]~"(a.u.)"), y="Kernel density") + theme(legend.position="top")
+
+library(beanplot)
+beanplot(
+  Estimate~Closeness/Soundness, data=cs0mb,
+  side="both", col=list("black","red"),
+  kernel="rect", what=c(0,1,1,1),
+  xlab="Soundness",ylab=expression(hat(sigma)[0])
+)
 
 
 #### slopes ####
@@ -152,7 +167,7 @@ slopes %>% mutate(
   theme_minimal() +
   theme(legend.position="top", legend.title=element_blank()) + 
   facet_grid(Targ~., space="free_y", scale="free_y", labeller = as_labeller(c("Chopper" = "Off", "On" = "On")),switch="y") + 
-  labs(y="Slope estimate")
+  labs(y=expression(hat(beta)))
 
 slopes%>%group_by(Targ) %>% 
   dplyr::summarise(

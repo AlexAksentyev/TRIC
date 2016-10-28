@@ -2,7 +2,7 @@ source("EstiStats.R")
 source("DataAna.R")
 source("Parameters.R")
 
-library(dplyr); library(plyr); library(mosaic)
+library(dplyr); library(plyr); library(mosaic); library(splitstackshape)
 library(parallel); library(doParallel)
 library(ggfortify)
 

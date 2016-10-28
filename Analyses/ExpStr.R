@@ -38,8 +38,3 @@ optimize(
 
 lm(BoxCox(BCT2, lambda=lamb)~uts, data=tRun) -> tm_19
 autoplot(tm,1); autoplot(tm_19,1)
-
-######################################3
-get2016Data() -> Data
-
-

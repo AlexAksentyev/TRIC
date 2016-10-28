@@ -62,9 +62,17 @@ Data %>% ggplot(aes(Clock, BCT2, col=Targ)) +
   theme_minimal() + theme(legend.position = "top", legend.title=element_text()) +
   labs(x="Time (local)", y="I (a.u.)")
 
+##################################
+## shows that BCT2 = 0 is just stack overflow ##
+# Data%>%filter(Run==971) %>% slice(1:60) -> xcheck
+# ggplot(xcheck, aes(x=Clock)) + geom_point(aes(y=BCT1, col="BCT1")) + geom_point(aes(y=BCT2/10, col="BCT2/10")) +
+#   geom_vline(xintercept=xcheck$UTS[4], col="red") +
+#   theme_minimal() + ggtitle("Run 971; first minute") + labs(y="Current, ADC")
+#################################
+
 #### baseline analysis ####
-base = Data %>% filter(FSgl=="F", BCT2 != 0) %>% .markOutliers("BCT2") %>% filter(FOut=="F")
-mosaic::median(BCT2~Run, data=base) -> bmed
+base = Data %>% filter(FSgl=="F", BCT2 != 0) %>% .markOutliers("BCT1") %>% filter(FOut=="F")
+mosaic::median(BCT1~Run, data=base) -> bmed
 data.frame(Run = as.factor(names(bmed)), Med = bmed) -> bmed
 ## see if there's correlation between beam current and offset !!!!!!!!!!!!!!!!!!!!!##
 ##!!!!!!!!!!!!!!!!!!!!!! simultaneity => exogeneity !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!##

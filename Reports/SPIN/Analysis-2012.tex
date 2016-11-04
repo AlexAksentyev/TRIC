@@ -9,6 +9,7 @@
 
 \usepackage{subcaption}
 \usepackage{threeparttable}
+\usepackage{multirow}
 
 \usepackage{url}
 %\usepackage{hyperref}
@@ -90,7 +91,7 @@ This means the following series of questions has to be answered in order to veri
 	\item Is the logarithm of beam current a linear function of time?
 	\item Are the errors uncorrelated with time?
 		\begin{itemize}
-			\item Is measurement time measured with neglectable error?
+			\item Is measurement time measured with negligible error?
 			\item Are there predictors other than time?
 			\item Is there among omitted variables a predictor dependent on current?
 		\end{itemize}
@@ -99,14 +100,22 @@ This means the following series of questions has to be answered in order to veri
 
 
 \section{Overview of data}
-The analyzed data came from nine one-hour-long cycles, in four of which the target was turned on (FIG.~\ref{fig:TheNine}). The experiments of this set were performed in 2012, with an electron-cooled beam bunched using the barrier bucket.
+The analyzed data came from nine one-hour-long cycles, in four of which the target was turned on (FIG.~\ref{fig:Cycs2012}). The experiments of this set were performed in 2012, with an electron-cooled beam bunched using the barrier bucket.
 
 \begin{figure}[h]
-\includegraphics[scale=\scl]{img/TheNineCycles.eps}
-\caption{The average beam current as a function of time for cycles with the target turned on (red) and off (black).\label{fig:TheNine}}
+\begin{subfigure}{.5\textwidth}
+\includegraphics[scale=\scl]{img/Cycles2012.eps}
+\caption{Experiment in 2012.\label{fig:Cycs2012}}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+\includegraphics[scale=\scl]{img/Cycles2016.eps}
+\caption{Experiment in 2016.\label{fig:Cycs2016}}
+\end{subfigure} 
+\caption{Average beam current as a function of time for cycles with the target turned on (red) and off (black).}
 \end{figure} 
 
 The measurements were taken with a Beam Current Transformer (BCT). Based on inter-cycle data (baseline), it was concluded that the BCT offset systematically drifted toward zero by approximately 3.5 \ADCcode[s] per cycle during the cycles of interest.
+
 
 
 \section{Estimation of slope}
@@ -175,7 +184,14 @@ Each cycle's data were subtracted its respective offset, and fitted a linear mod
 
 In estimating cross section, only the estimates from adjacent cycles are used. This is done to minimize the effect of drifts of environmental variables such as target thickness, which is estimated to increase by $0.5~ \sfrac{\%}{\mathrm{hour}}$. (The thickness by which the slope differences are divided, assumed constant, was provided by a Schottky measurement.)
 
-This reduces the number of estimates from 20 to seven, of which three are deemed unsound according to Tukey's range test (with the range parameter corresponding to ten standard deviations). 
+This reduces the number of estimates from 20 to seven. As can be observed in FIG.~\ref{fig:SlpOnI02012}, the biggest predictor of slope is beam current. It follows then that when obtainig a cross section estimate, the difference in the involved estimates' beam intensities has to be taken into account. We do that by first fitting the cycle slopes on the initial beam currents, and 
+
+\begin{figure}
+\includegraphics[scale=\scl]{img/Slope_VS_IniCurrent.eps}
+\caption{Slope estimates plotted against initial beam current.\label{fig:SlpOnI02012}}
+\end{figure}
+
+%, of which three are deemed unsound according to Tukey's range test (with the range parameter corresponding to ten standard deviations). 
 
 An estimate of a cross section estimate's standard error (SE) is made by adding the squared standard errors of the paired slopes, not taking account of the covariance term:
 \begin{equation}
@@ -184,21 +200,34 @@ An estimate of a cross section estimate's standard error (SE) is made by adding 
 
 This is done so because depending on whether an on-slope is paired with the preceding or succeding off-slope, the covariance term changes sign. Since there's no criterion favoring either of the two mappings, the covariance term was omitted.
 
+\pagebreak
+
 \section{Results}
 \begin{table}
 \centering
+\begin{threeparttable}
 \caption{Cross section summary statistics. \label{tbl:CS-all}}
-\begin{tabular}{llrcr}
+\begin{tabular}{c|llrcr}
 \hline\hline
-Soundness	& Closeness		& \#		& Mean (a.u.)		& SE (a.u.) \\
+Year						& Soundness		& Closeness		& \#		& Mean\tnote{a} (a.u.)	& SE (a.u.) \\
 \hline
-Sound		& Close			& 4			& 507				& 7  \\
-Sound		& Far			& 8			& 553				& 14 \\
-Unsound		& Close			& 3			& 562				& 36 \\
-Unsound		& Far			& 5			& 515				& 20 \\
-\hline
-All			& 				& 20		& 536				& 10 \\
+\multirow{4}{*}{2012}		& Sound			& Close			& 4			& 507(507)				& 7  \\
+							& Sound			& Far			& 8			& 553(563)				& 14 \\
+							& Unsound		& Close			& 3			& 562(580)				& 36 \\
+							& Unsound		& Far			& 5			& 515(512)				& 20 \\
+							& All			& 				& 20		& 536(544)				& 10 \\
+\hline					
+\multirow{4}{*}{2016}		& Sound			& Close			& 40		& 409(411)				& 48 \\
+							& Sound			& Far			& 92		& 396(385)				& 34 \\
+							& Unsound		& Close			& 4			& 1400(1418)			& 170\\
+							& Unsound		& Far			& 8			& 1453(1457)			& 69 \\
+							& All			& 				& 144		& 486(473)				& 35 \\
+\hline\hline
 \end{tabular}
+\begin{tablenotes}
+\item[a] The value in parenteses is the weighted mean with measurements' variance estimates used as weights.
+\end{tablenotes}
+\end{threeparttable}
 \end{table}
 
 The summary statistics of cross section estimates, grouped by soundness and closeness of the slope estimates they are based on, are presented in TABLE~\ref{tbl:CS-all} and FIG.~\ref{fig:CS-all}; the slopes themselves are shown in FIG.~\ref{fig:Slopes} and summarized in TABLE~\ref{tbl:Slp-big}. Group density estimates with the rectangular kernel are shown in FIG.~\ref{fig:CS-dens}.
@@ -219,7 +248,7 @@ Our best estimate for cross section is $507 \pm 7$ a.u.
 
 \begin{figure}
 \begin{subfigure}{.5\textwidth}
-\includegraphics[scale=\scl]{img/Cross-Section_all.eps}
+\includegraphics[scale=\scl]{img/Cross-Section2012_all.eps}
 \caption{Cross section estimates plotted against their off-cycle number.\label{fig:CS-all}}
 \end{subfigure}
 \begin{subfigure}{.5\textwidth}
@@ -227,7 +256,7 @@ Our best estimate for cross section is $507 \pm 7$ a.u.
 \caption{Slope estimates as a function of time.\label{fig:Slopes}}
 \end{subfigure}
 \begin{subfigure}{.5\textwidth}
-\includegraphics[scale=\scl]{img/Cross-Section_dens.eps}
+\includegraphics[scale=\scl]{img/Cross-Section2012_dens.eps}
 \caption{Cross section density estimates for each category of results.\label{fig:CS-dens}}
 \end{subfigure}
 \caption{Results.}

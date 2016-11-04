@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  2 NOV 2016 09:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  4 NOV 2016 17:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -517,75 +517,78 @@ dgroup }{\global \@minipagefalse \hb@xt@ \hsize {\hfil \unhbox \@tempboxa \hfil
 Package: threeparttable 2003/06/13  v 3.0
 \@tempboxb=\box60
 )
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
+\bigstrutjot=\dimen166
+)
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \CS with sig. 'sO{}' on line 16.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \slp with sig. 'sO{}' on line 17.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \Thick with sig. 'O{}' on line 18.
+. Defining command \CS with sig. 'sO{}' on line 17.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \SE with sig. 'sm' on line 20.
+. Defining command \slp with sig. 'sO{}' on line 18.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \bkt with sig. 'sm' on line 22.
+. Defining command \Thick with sig. 'O{}' on line 19.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \ADCcode with sig. 'O{ }' on line 25.
+. Defining command \SE with sig. 'sm' on line 21.
 .................................................
-Class revtex4-1 Info: Patching LaTeX tabular. on input line 30.
-Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 30.
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \bkt with sig. 'sm' on line 23.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ADCcode with sig. 'O{ }' on line 26.
+.................................................
+Class revtex4-1 Info: Patching LaTeX tabular. on input line 31.
+Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 31.
 
-Class revtex4-1 Info: cite was not loaded (OK!) on input line 30.
-Class revtex4-1 Info: mcite was not loaded (OK!) on input line 30.
-Class revtex4-1 Info: multicol was not loaded (OK!) on input line 30.
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 31.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 31.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 31.
 
 (./Analysis-2012.aux)
 \openout1 = `Analysis-2012.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 30.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 30.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 31.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 31.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    ... okay on input line 31.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count145
-\scratchdimen=\dimen166
+\scratchdimen=\dimen167
 \scratchbox=\box61
 \nofMPsegments=\count146
 \nofMParguments=\count147
 \everyMPshowfont=\toks23
 \MPscratchCnt=\count148
-\MPscratchDim=\dimen167
+\MPscratchDim=\dimen168
 \MPnumerator=\count149
 \makeMPintoPDFobject=\count150
 \everyMPtoPDFconversion=\toks24
@@ -642,45 +645,68 @@ Package caption Info: threeparttable package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \openout3 = `Analysis-2012Notes.bib'.
 
-LaTeX Font Info:    Calculating math sizes for size <6.99997> on input line 63.
+LaTeX Font Info:    Calculating math sizes for size <6.99997> on input line 64.
 
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <3.49998> not available
-(Font)              size <5> substituted on input line 63.
+(Font)              size <5> substituted on input line 64.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.49998> not available
-(Font)              size <5> substituted on input line 63.
+(Font)              size <5> substituted on input line 64.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.49998> not available
-(Font)              size <5> substituted on input line 63.
-
-
-Underfull \hbox (badness 2318) in paragraph at lines 93--94
- []\OT1/cmr/m/n/10 Is mea-sure-ment time mea-sured with ne-
- []
+(Font)              size <5> substituted on input line 64.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Package epstopdf Info: Source file: <img/TheNineCycles.eps>
+Package epstopdf Info: Source file: <img/Cycles2012.eps>
 (epstopdf)                    date: 2016-10-28 17:09:06
 (epstopdf)                    size: 794744 bytes
-(epstopdf)             Output file: <img/TheNineCycles-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-10-28 17:09:06
+(epstopdf)             Output file: <img/Cycles2012-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-04 16:33:51
 (epstopdf)                    size: 1753393 bytes
-(epstopdf)             Command: <repstopdf --outfile=img/TheNineCycles-eps-conv
-erted-to.pdf img/TheNineCycles.eps>
-(epstopdf)             \includegraphics on input line 105.
+(epstopdf)             Command: <repstopdf --outfile=img/Cycles2012-eps-convert
+ed-to.pdf img/Cycles2012.eps>
+(epstopdf)             \includegraphics on input line 107.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/TheNineCycles-eps-converted-to.pdf, id=15, 525.965pt x 582.175pt>
-File: img/TheNineCycles-eps-converted-to.pdf Graphic file (type pdf)
+<img/Cycles2012-eps-converted-to.pdf, id=15, 525.965pt x 582.175pt>
+File: img/Cycles2012-eps-converted-to.pdf Graphic file (type pdf)
 
-<use img/TheNineCycles-eps-converted-to.pdf>
-Package pdftex.def Info: img/TheNineCycles-eps-converted-to.pdf used on input l
-ine 105.
+<use img/Cycles2012-eps-converted-to.pdf>
+Package pdftex.def Info: img/Cycles2012-eps-converted-to.pdf used on input line
+ 107.
 (pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
+Package epstopdf Info: Source file: <img/Cycles2016.eps>
+(epstopdf)                    date: 2016-11-04 16:24:17
+(epstopdf)                    size: 644129 bytes
+(epstopdf)             Output file: <img/Cycles2016-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-04 16:25:46
+(epstopdf)                    size: 1404880 bytes
+(epstopdf)             Command: <repstopdf --outfile=img/Cycles2016-eps-convert
+ed-to.pdf img/Cycles2016.eps>
+(epstopdf)             \includegraphics on input line 111.
+Package epstopdf Info: Output file is already uptodate.
+
+<img/Cycles2016-eps-converted-to.pdf, id=16, 525.965pt x 582.175pt>
+File: img/Cycles2016-eps-converted-to.pdf Graphic file (type pdf)
+
+<use img/Cycles2016-eps-converted-to.pdf>
+Package pdftex.def Info: img/Cycles2016-eps-converted-to.pdf used on input line
+ 111.
+(pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
+
+Overfull \hbox (9.0pt too wide) in paragraph at lines 106--114
+ []$[]$ 
+ []
+
+
+Overfull \hbox (9.0pt too wide) in paragraph at lines 106--114
+ []$ 
+ []
+
 Package epstopdf Info: Source file: <img/Run969_Data_AND_Fit.eps>
 (epstopdf)                    date: 2016-10-28 17:09:06
 (epstopdf)                    size: 50563 bytes
@@ -690,15 +716,14 @@ df>
 (epstopdf)                    size: 26787 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/Run969_Data_AND_Fit-ep
 s-converted-to.pdf img/Run969_Data_AND_Fit.eps>
-(epstopdf)             \includegraphics on input line 160.
+(epstopdf)             \includegraphics on input line 169.
 Package epstopdf Info: Output file is already uptodate.
-
-<img/Run969_Data_AND_Fit-eps-converted-to.pdf, id=16, 525.965pt x 582.175pt>
+<img/Run969_Data_AND_Fit-eps-converted-to.pdf, id=17, 525.965pt x 582.175pt>
 File: img/Run969_Data_AND_Fit-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/Run969_Data_AND_Fit-eps-converted-to.pdf>
 Package pdftex.def Info: img/Run969_Data_AND_Fit-eps-converted-to.pdf used on i
-nput line 160.
+nput line 169.
 (pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
 Package epstopdf Info: Source file: <img/Run969_Res_VS_Fit.eps>
 (epstopdf)                    date: 2016-10-28 17:09:06
@@ -709,15 +734,15 @@ Package epstopdf Info: Source file: <img/Run969_Res_VS_Fit.eps>
 (epstopdf)                    size: 244730 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/Run969_Res_VS_Fit-eps-
 converted-to.pdf img/Run969_Res_VS_Fit.eps>
-(epstopdf)             \includegraphics on input line 164.
+(epstopdf)             \includegraphics on input line 173.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/Run969_Res_VS_Fit-eps-converted-to.pdf, id=17, 525.965pt x 582.175pt>
+<img/Run969_Res_VS_Fit-eps-converted-to.pdf, id=18, 525.965pt x 582.175pt>
 File: img/Run969_Res_VS_Fit-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/Run969_Res_VS_Fit-eps-converted-to.pdf>
 Package pdftex.def Info: img/Run969_Res_VS_Fit-eps-converted-to.pdf used on inp
-ut line 164.
+ut line 173.
 (pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
 Package epstopdf Info: Source file: <img/Run969_residual_PACF.eps>
 (epstopdf)                    date: 2016-10-28 17:09:06
@@ -728,56 +753,83 @@ pdf>
 (epstopdf)                    size: 14230 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/Run969_residual_PACF-e
 ps-converted-to.pdf img/Run969_residual_PACF.eps>
-(epstopdf)             \includegraphics on input line 168.
+(epstopdf)             \includegraphics on input line 177.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/Run969_residual_PACF-eps-converted-to.pdf, id=18, 525.965pt x 582.175pt>
+<img/Run969_residual_PACF-eps-converted-to.pdf, id=19, 525.965pt x 582.175pt>
 File: img/Run969_residual_PACF-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/Run969_residual_PACF-eps-converted-to.pdf>
 Package pdftex.def Info: img/Run969_residual_PACF-eps-converted-to.pdf used on 
-input line 168.
+input line 177.
 (pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
 
-Overfull \hbox (9.0pt too wide) in paragraph at lines 159--171
+Overfull \hbox (9.0pt too wide) in paragraph at lines 168--180
  []$[]$ 
  []
 
 
-Overfull \hbox (9.0pt too wide) in paragraph at lines 159--171
+Overfull \hbox (9.0pt too wide) in paragraph at lines 168--180
  []$ 
  []
 
 
-Overfull \hbox (9.0pt too wide) in paragraph at lines 159--171
+Overfull \hbox (9.0pt too wide) in paragraph at lines 168--180
  []$ 
  []
 
 
-LaTeX Warning: Float too large for page by 122.59756pt on input line 172.
+LaTeX Warning: Float too large for page by 122.59756pt on input line 181.
 
-[2 <./img/TheNineCycles-eps-converted-to.pdf>]
+[2 <./img/Cycles2012-eps-converted-to.pdf> <./img/Cycles2016-eps-converted-to.p
+df>]
 
 LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix]
- on input line 203.
+ on input line 186.
 
-Package epstopdf Info: Source file: <img/Cross-Section_all.eps>
-(epstopdf)                    date: 2016-10-28 17:09:06
+Package epstopdf Info: Source file: <img/Slope_VS_IniCurrent.eps>
+(epstopdf)                    date: 2016-11-04 17:27:36
+(epstopdf)                    size: 10315 bytes
+(epstopdf)             Output file: <img/Slope_VS_IniCurrent-eps-converted-to.p
+df>
+(epstopdf)             Command: <repstopdf --outfile=img/Slope_VS_IniCurrent-ep
+s-converted-to.pdf img/Slope_VS_IniCurrent.eps>
+(epstopdf)             \includegraphics on input line 190.
+runsystem(repstopdf --outfile=img/Slope_VS_IniCurrent-eps-converted-to.pdf img/
+Slope_VS_IniCurrent.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <img/Slope_VS_IniCurrent-eps-converted-to.p
+df>
+(epstopdf)                    date: 2016-11-04 17:29:52
+(epstopdf)                    size: 12732 bytes.
+<img/Slope_VS_IniCurrent-eps-converted-to.pdf, id=39, 525.965pt x 582.175pt>
+File: img/Slope_VS_IniCurrent-eps-converted-to.pdf Graphic file (type pdf)
+
+<use img/Slope_VS_IniCurrent-eps-converted-to.pdf>
+Package pdftex.def Info: img/Slope_VS_IniCurrent-eps-converted-to.pdf used on i
+nput line 190.
+(pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
+ [3 <./img/Run969_Data_AND_Fit-eps-converted-to.pdf> <./img/Run969_Res_VS_Fit-e
+ps-converted-to.pdf> <./img/Run969_residual_PACF-eps-converted-to.pdf> <./img/S
+lope_VS_IniCurrent-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <img/Cross-Section2012_all.eps>
+(epstopdf)                    date: 2016-11-04 16:41:16
 (epstopdf)                    size: 9038 bytes
-(epstopdf)             Output file: <img/Cross-Section_all-eps-converted-to.pdf
->
-(epstopdf)                    date: 2016-10-28 17:09:06
+(epstopdf)             Output file: <img/Cross-Section2012_all-eps-converted-to
+.pdf>
+(epstopdf)                    date: 2016-11-04 16:41:23
 (epstopdf)                    size: 12739 bytes
-(epstopdf)             Command: <repstopdf --outfile=img/Cross-Section_all-eps-
-converted-to.pdf img/Cross-Section_all.eps>
-(epstopdf)             \includegraphics on input line 222.
+(epstopdf)             Command: <repstopdf --outfile=img/Cross-Section2012_all-
+eps-converted-to.pdf img/Cross-Section2012_all.eps>
+(epstopdf)             \includegraphics on input line 251.
 Package epstopdf Info: Output file is already uptodate.
-<img/Cross-Section_all-eps-converted-to.pdf, id=31, 525.965pt x 582.175pt>
-File: img/Cross-Section_all-eps-converted-to.pdf Graphic file (type pdf)
 
-<use img/Cross-Section_all-eps-converted-to.pdf>
-Package pdftex.def Info: img/Cross-Section_all-eps-converted-to.pdf used on inp
-ut line 222.
+<img/Cross-Section2012_all-eps-converted-to.pdf, id=81, 525.965pt x 582.175pt>
+File: img/Cross-Section2012_all-eps-converted-to.pdf Graphic file (type pdf)
+
+<use img/Cross-Section2012_all-eps-converted-to.pdf>
+Package pdftex.def Info: img/Cross-Section2012_all-eps-converted-to.pdf used on
+ input line 251.
 (pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
 Package epstopdf Info: Source file: <img/Slopes-2012_big.eps>
 (epstopdf)                    date: 2016-10-28 17:09:06
@@ -787,69 +839,66 @@ Package epstopdf Info: Source file: <img/Slopes-2012_big.eps>
 (epstopdf)                    size: 12696 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/Slopes-2012_big-eps-co
 nverted-to.pdf img/Slopes-2012_big.eps>
-(epstopdf)             \includegraphics on input line 226.
+(epstopdf)             \includegraphics on input line 255.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/Slopes-2012_big-eps-converted-to.pdf, id=32, 525.965pt x 582.175pt>
+<img/Slopes-2012_big-eps-converted-to.pdf, id=82, 525.965pt x 582.175pt>
 File: img/Slopes-2012_big-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/Slopes-2012_big-eps-converted-to.pdf>
 Package pdftex.def Info: img/Slopes-2012_big-eps-converted-to.pdf used on input
- line 226.
+ line 255.
 (pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
-Package epstopdf Info: Source file: <img/Cross-Section_dens.eps>
-(epstopdf)                    date: 2016-10-28 17:09:06
-(epstopdf)                    size: 48912 bytes
-(epstopdf)             Output file: <img/Cross-Section_dens-eps-converted-to.pd
-f>
-(epstopdf)                    date: 2016-10-28 17:09:06
-(epstopdf)                    size: 12973 bytes
-(epstopdf)             Command: <repstopdf --outfile=img/Cross-Section_dens-eps
--converted-to.pdf img/Cross-Section_dens.eps>
-(epstopdf)             \includegraphics on input line 230.
+Package epstopdf Info: Source file: <img/Cross-Section2012_dens.eps>
+(epstopdf)                    date: 2016-11-04 16:40:41
+(epstopdf)                    size: 47825 bytes
+(epstopdf)             Output file: <img/Cross-Section2012_dens-eps-converted-t
+o.pdf>
+(epstopdf)                    date: 2016-11-04 16:41:23
+(epstopdf)                    size: 12894 bytes
+(epstopdf)             Command: <repstopdf --outfile=img/Cross-Section2012_dens
+-eps-converted-to.pdf img/Cross-Section2012_dens.eps>
+(epstopdf)             \includegraphics on input line 259.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/Cross-Section_dens-eps-converted-to.pdf, id=33, 525.965pt x 582.175pt>
-File: img/Cross-Section_dens-eps-converted-to.pdf Graphic file (type pdf)
-
-<use img/Cross-Section_dens-eps-converted-to.pdf>
-Package pdftex.def Info: img/Cross-Section_dens-eps-converted-to.pdf used on in
-put line 230.
+<img/Cross-Section2012_dens-eps-converted-to.pdf, id=83, 525.965pt x 582.175pt>
+File: img/Cross-Section2012_dens-eps-converted-to.pdf Graphic file (type pdf)
+<use img/Cross-Section2012_dens-eps-converted-to.pdf>
+Package pdftex.def Info: img/Cross-Section2012_dens-eps-converted-to.pdf used o
+n input line 259.
 (pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
 
-Overfull \hbox (9.0pt too wide) in paragraph at lines 221--233
+Overfull \hbox (9.0pt too wide) in paragraph at lines 250--262
  []$[]$ 
  []
 
 
-Overfull \hbox (9.0pt too wide) in paragraph at lines 221--233
+Overfull \hbox (9.0pt too wide) in paragraph at lines 250--262
  []$ 
  []
 
 
-Overfull \hbox (9.0pt too wide) in paragraph at lines 221--233
+Overfull \hbox (9.0pt too wide) in paragraph at lines 250--262
  []$ 
  []
 
 
-LaTeX Warning: Float too large for page by 122.59756pt on input line 234.
+LaTeX Warning: Float too large for page by 122.59756pt on input line 263.
 
-[3 <./img/Run969_Data_AND_Fit-eps-converted-to.pdf> <./img/Run969_Res_VS_Fit-ep
-s-converted-to.pdf> <./img/Run969_residual_PACF-eps-converted-to.pdf>] [4 <./im
-g/Cross-Section_all-eps-converted-to.pdf> <./img/Slopes-2012_big-eps-converted-
-to.pdf> <./img/Cross-Section_dens-eps-converted-to.pdf>]
 No file Analysis-2012.bbl.
-[5] (./Analysis-2012.aux)
+[4] [5 <./img/Cross-Section2012_all-eps-converted-to.pdf> <./img/Slopes-2012_bi
+g-eps-converted-to.pdf> <./img/Cross-Section2012_dens-eps-converted-to.pdf>]
+(./Analysis-2012.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 3.25002pt have occured.
 
  ) 
 Here is how much of TeX's memory you used:
- 12454 strings out of 494466
- 224325 string characters out of 6172530
- 288619 words of memory out of 5000000
- 15582 multiletter control sequences out of 15000+600000
+ 12481 strings out of 494466
+ 225098 string characters out of 6172530
+ 290904 words of memory out of 5000000
+ 15603 multiletter control sequences out of 15000+600000
  8828 words of font info for 34 fonts, out of 8000000 for 9000
  452 hyphenation exceptions out of 8191
  42i,13n,40p,10382b,526s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -866,10 +915,10 @@ s/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on Analysis-2012.pdf (5 pages, 2208125 bytes).
+Output written on Analysis-2012.pdf (5 pages, 3620572 bytes).
 PDF statistics:
- 153 PDF objects out of 1000 (max. 8388607)
- 105 compressed objects within 2 object streams
+ 174 PDF objects out of 1000 (max. 8388607)
+ 119 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

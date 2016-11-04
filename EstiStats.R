@@ -57,6 +57,7 @@ L2Norm. <- function(X, standardize = TRUE){
     Estimate = summary(m)$coefficients[2, 1], 
     SE       = sqrt(vcovHAC(m)[2,2]),
     Chi2     = chi2,
+    RSE      = summary(m)$sigma,
     I0       = exp(summary(m)$coefficients[1, 1]),
     Start    = m$UTS[1]
   )

@@ -38,3 +38,20 @@ optimize(
 
 lm(BoxCox(BCT2, lambda=lamb)~uts, data=tRun) -> tm_19
 autoplot(tm,1); autoplot(tm_19,1)
+
+
+get2016Data() -> Data16
+slopes16 <- Data16$Slopes; Data16 <- Data16$Data
+
+#### PANEL ANALYSIS ####
+# Suppose the offset does indeed depend on beam current. We have multiple cycles with varying beam intensities;
+# presumably, the offsets for each are different. If we panel-analyze them, we should see a difference in 
+
+##### MACHINE LEARNING #####  
+run = filter(Data16, Unit == 1, FABS=="T", FSgl=="T", eCool=="Acc") %>% mutate(uts=UTS-UTS[1])
+f = log(BCT2) ~ uts
+run%>%with(plot(log(BCT2)~uts))
+nnet(f, data=run, size=3) -> x
+lm(f, data=run) -> y
+with(y, points(fitted.values~run$uts, col="red"))
+with(x, points(fitted.values~run$uts, col="blue"))

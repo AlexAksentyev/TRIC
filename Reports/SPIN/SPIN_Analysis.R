@@ -76,7 +76,7 @@ mosaic::median(BCT1~Run, data=base) -> bmed
 data.frame(Run = as.factor(names(bmed)), Med = bmed) -> bmed
 ## see if there's correlation between beam current and offset !!!!!!!!!!!!!!!!!!!!!##
 ##!!!!!!!!!!!!!!!!!!!!!! simultaneity => exogeneity !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!##
-Data%>%filter(FSgl=="T") %>% daply("Run", function(r) median(r$BCT2[100:140])) -> I0
+Data%>%filter(FSgl=="T") %>% daply("Run", function(r) median(r$BCT2[nrow(r):(nrow(r)-40)])) -> I0
 df = cbind(bmed, I0)
 
 #### fit ####

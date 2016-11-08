@@ -22,78 +22,78 @@ get2016Data <- function(){
   Data16 %>% filter(FSgl == "T", eCool == "Acc", !is.na(FABS)) %>% mutate(BCT2 = BCT2 - ADC2o) %>%
     ddply(
       .(T.Spin, B.Spin, Unit, FABS), 
-      function(.sub) {fit.(.sub,plot.it=FALSE) %>% c(Clock = .sub$UTS[1])}, .parallel = TRUE
+      function(.sub) {fit.(.sub,plot.it=FALSE) %>% c(Clock = .sub$UTS[1], I0m = .sub$BCT2[60:120]%>%median)}, .parallel = TRUE
     ) %>% mutate(Clock = as.POSIXct(Clock, origin="1970-1-1")) %>% .markOutliers -> slopes16
   
   return(list(Data = Data16, Slopes = slopes16))
 }
 
-get2012Data <- function(){ #not removing offset
-  require(forecast); require(splitstackshape)
+get2012Data <- function(){
+  require(splitstackshape)
   
-  ## preparing metadata
+  .runs = 967:976
+  
+  ## fetch metadata
   where = "~/Analysis/Sep12/BCTAnalyser/results/"
   readODS::read_ods(paste(where, "RunMetadata(1).ods",sep="/"), sheet=2) %>% 
-    filter(Run %in% c(935:937, 942:977)) -> MD
+    filter(Run %in% .runs) %>% mutate(
+      Start = paste(day, Start, sep = " ")%>%as.POSIXct(origin="1970-1-1")-30,
+      Stop = paste(day, Stop, sep = " ")%>%as.POSIXct(origin="1970-1-1")+30
+    ) -> MD
   for(obs in c("eCool.I", "Bunch", "Cell", "Targ", "RF.V", "BB.V", "Beam")) ## could use sapply(, factor) instead of loop
     MD[,obs] <- factor(MD[,obs])
   
+  ## load data
+  .flds = c("WD", "Month", "Day", "Time", "Year", paste0("BCT",1:8))
+  loadData("CosyAll_2012-09-25_15-53-06.dat", "~/Analysis/Sep12/DevReader/Data/", 
+           Fields = .flds, from=first(MD$Start), to=last(MD$Stop)
+  ) -> Data12
+  
+  ## find when cycles begin
+  filter(Data12, BCT2==0) %>% mutate(H = hour(Clock)) %>% 
+    group_by(H) %>% dplyr::summarize(Clock = first(Clock)) -> CycSrt
+  
+  ## correct metadata
   MD %>% mutate(
-    Start = paste(day, Start, sep = " ")%>%as.POSIXct(origin="1970-1-1"),
-    Stop = c(Start[-1]-1, paste(day[nrow(MD)], Stop[nrow(MD)], sep = " ")%>%as.POSIXct(origin="1970-1-1")),
+    Start = CycSrt$Clock, Stop = c(Start[-1]-1, last(Stop)),
     UTS.Stt = as.numeric(Start),
     UTS.Stp = as.numeric(Stop),
     Size = UTS.Stp-UTS.Stt+1,
     Quality = derivedFactor("bad" = Quality=="bad", "ok" = is.na(Quality))
   ) %>% dplyr::select(-day,-Beam, -Comment) -> MD
   
-  .from = MD$Start %>% first; .to = MD$Stop %>% last
-  
-  ## a cycle starts where current goes to zero
-  ## I can load the part of the file .from--.to, find the lines where BCT2 is zero
-  ## and mark the times at those lines as Start
-  
-  MD %>% expandRows("Size") -> MD
-  
+  MD %>%expandRows("Size") -> MD
   rownames(MD) %>% strsplit(".", fixed=TRUE) %>% 
     laply(function(e) {e <- as.numeric(e); if(length(e) <2) 0 else e[2]}) -> addage
   MD %>% mutate(UTS = UTS.Stt + addage) -> MD
   
-  #### loading & modifying data 
-  .flds = c("WD", "Month", "Day", "Time", "Year", paste0("BCT",1:8))
-  loadData("CosyAll_2012-09-25_15-53-06.dat", "~/Analysis/Sep12/DevReader/Data/", Fields = .flds, from=.from, to=.to) -> Data12
-  
+  ## add metadata to cycles
   MD %>% dplyr::select(Run, UTS, eCool.I, Bunch, RF.V, BB.V, Cell, Targ, Quality) %>% 
-    join(Data12, by="UTS", type="right") %>% dlply("Run") -> Data12
+    join(Data12, by="UTS", type="right") %>% filter(!is.na(Run)) -> Data12 ## offset before the first cycle is discarded
   
-  names(Data12) %>% as.numeric -> .runs; .runs <- .runs[1:30]
-  bri = .runs>=965 | .runs %in% 941:944; 
-  sri = !.runs %in% .runs[bri]
+  .dumbCut <- function(.data, x) mutate(.data, FSgl = derivedFactor("F" = BCT2 < x, .default = "T"))
   
-  .dumbCut <- (function(.data, x) mutate(.data, FSgl = derivedFactor("F" = BCT2 < x, .default = "T")))
-  
-  list(
-    Small = ldply(Data12[which(sri)], .id = "Run") %>% .dumbCut(2700), 
-    Big = ldply(Data12[which(bri)], .id = "Run") %>% .dumbCut(5000)
-  ) %>% ldply(.id = "Size") %>% ddply(.(Size,Run), .unitize) -> Data12
-  
-  Data12 %>% ddply("Size", function(u) {filter(u, FSgl=="F")$BCT2 %>% median -> b; mutate(u, BCT2 = BCT2-b)}) -> Data12
+  Data12 %>% .dumbCut(5000) %>% filter(Cell=="In") -> Data12
   
   ## fitting for slopes
-  Data12 %>% filter(FSgl == "T", Cell == "In") %>%
-    ddply(.(Run, Unit), function(.sub) {
-      fit.(.sub, .subset = c(45, 15)) -> .stats
-      
-      data.frame(
-        Estimate = .stats[1], SE = .stats[2], Chi2 = .stats[3], I0 = .stats[4],
-        Quality = .sub$Quality[5],
-        eCool.I = .sub$eCool.I[5],
-        Targ = .sub$Targ[5],
-        Bunch = .sub$Bunch[5],
-        Size = .sub$Size[5],
-        Clock = .sub$UTS[1] %>% as.POSIXct(origin="1970-1-1")
-      )
-    }, .parallel = TRUE) %>% .markOutliers -> slopes12
+  Data12 %>% ddply("Run", function(r) {
+    b = filter(r, FSgl=="F", BCT2 != 0)$BCT2 %>% median
+    mutate(r, BCT2 = BCT2-b) %>% filter(FSgl=="T") -> .sub
+    cat(r$Run[1]); cat("\n")
+    
+    fit.(.sub, .subset = c(45, 15)) -> .stats; cat(.stats);cat("\n")
+    
+    data.frame(
+      Unit=1,
+      Estimate = .stats[1], SE = .stats[2], Chi2 = .stats[3], 
+      I0 = .sub$BCT2[60:120]%>%median,
+      Quality = .sub$Quality[5],
+      eCool.I = .sub$eCool.I[5],
+      Targ = .sub$Targ[5],
+      Bunch = .sub$Bunch[5],
+      Clock = .sub$UTS[1] %>% as.POSIXct(origin="1970-1-1")
+    )
+  }, .parallel=TRUE) %>% ddply("Targ", .markOutliers) -> slopes12
   
   return(list(Data = Data12, Slopes = slopes12))
 }

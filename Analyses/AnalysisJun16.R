@@ -15,38 +15,11 @@ registerDoParallel(detectCores())
 get2016Data() -> Data16
 slopes.uc <- Data16$Slopes; Data <- Data16$Data
 
-############## Working the offset #######################################################
-## reunite base and signal
-rle(Data$FSgl%>%as.numeric()) -> x
-length(x$values)/2 -> npair; rep(1:npair, x$lengths[c(TRUE,FALSE)]+x$lengths[c(FALSE,TRUE)]) -> Data$Unit
-## reassign offsep spin bits
-Data %>% ddply("Unit", function(u) {
-  uspin = filter(u, FSgl=="T", eCool=="Acc", !is.na(FABS))$B.Spin%>%unique
-  u%>%mutate(B.Spin = uspin)
-}) -> Datap
-
-Datap %>% filter(FSgl=="F") %>% .outliers("BCT2") %>% filter(FOut=="F", !is.na(B.Spin)) %>% 
-  mutate(Clock = as.POSIXct(UTS, origin="1970-1-1")) -> base
-
-base %>% group_by(Unit) %>% dplyr::summarise(NUM = n(), RMN = mean(BCT2), SE = sd(BCT2)/sqrt(n()))
-
-base %>% ddply("Unit", function(u) mutate(u, Clock = Clock[1])) %>% 
-  ggplot(aes(Clock,BCT2)) + geom_boxplot(aes(group=Unit, col=B.Spin)) +
-  geom_smooth(aes(col=B.Spin), method="loess") + 
-  geom_smooth(method="loess", linetype=2, col="black") +
-  theme_minimal() + ggtitle("Offset boxplot")
-
-
-
-
-
-
-Data %>% ddply("Unit", f, .parallel = TRUE) -> slopes
 ###########################################################################################
 
 a = ExpParameters["Rev.f"]*ExpParameters["Pol.targ"]*ExpParameters["Targ.len"]*ExpParameters["Targ.dens.on"]; names(a)<-NULL
 dP = -diff(Pb)
-beta <- filter(slopes, FABS == "F"); boff <- filter(slopes, FABS == "F", B.Spin == "N")
+beta <- filter(slopes, FABS == "T"); boff <- filter(slopes, FABS == "F", B.Spin == "N")
 bU = filter(beta, B.Spin == "U"); bD = filter(beta, B.Spin == "D"); bN = filter(beta, B.Spin == "N");
 bUD = filter(beta, B.Spin != "N")
 

@@ -1,0 +1,106 @@
+\documentclass{article}
+\usepackage[left=1cm,top=1cm,right=1cm,bottom=1cm]{geometry}
+
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{subcaption}
+
+\usepackage{xparse}
+
+\usepackage[standard,amsmath,thmmarks,hyperref,thref]{ntheorem}	
+
+\theoremseparator{.}
+\theorembodyfont{\normalfont}
+\theoremsymbol{\ensuremath{\qed}}
+\renewtheorem{Definition}{Def.}
+
+\newcommand{\err}{\epsilon}
+\DeclareDocumentCommand{\CS}{sO{}}{\IfBooleanTF{#1}{\hat{\sigma}_{#2}}{\sigma_{#2}}}
+\DeclareDocumentCommand{\slp}{sO{}}{\IfBooleanTF{#1}{\hat{\beta}_{#2}}{\beta_{#2}}}
+\DeclareDocumentCommand{\Thick}{O{}}{\Theta_{#1}}
+
+\DeclareDocumentCommand{\SE}{sm}{\IfBooleanTF{#1}{\hat{\sigma}\bkt*{#2}}{\sigma\bkt*{#2}}}
+
+\DeclareDocumentCommand{\bkt}{sm}{\IfBooleanTF{#1}{\left[ #2 \right]}{\left(#2\right)}}
+\newcommand{\td}{\mathrm{d}}
+
+\DeclareDocumentCommand{\Ayy}{sO{}}{\IfBooleanTF{#1}{\hat{A}_{y,y}}{A_{y,y}}^{#2}}
+\DeclareDocumentCommand{\D}{s}{\IfBooleanTF{#1}{\hat{D}}{D}}
+\DeclareDocumentCommand{\R}{s}{\IfBooleanTF{#1}{\hat{R}}{R}}
+\DeclareDocumentCommand{\DP}{s}{\IfBooleanTF{#1}{(P^+ - P^-)}{\Delta P}}
+\DeclareDocumentCommand{\SP}{s}{\IfBooleanTF{#1}{(P^+ + P^-)}{\Sigma P}}
+
+\newcommand{\congd}{\overset{d}{\cong}}
+
+\begin{document}
+
+\section{$\Ayy$ estimators}
+
+Assuming the model for the slope of $\ln I_t = \ln I_0 + \slp t + \err_t$ is 
+\[
+\slp = -\nu\CS[X]\Thick[X] - \nu\CS[0]\Thick\bkt{1 + PP^t \Ayy},
+\]
+two ways to construct the estimator for $\Ayy$ are via the slope difference $\D = \slp^- - \slp^+ = \nu\CS[0]\Thick P^t \DP* \Ayy$, with the corresponding \emph{difference} estimator 
+\[
+	\Ayy*[D] = \bkt{\nu\CS[0]\Thick}^{-1}\cdot\frac{\D*}{P^t\DP},
+\]
+or the slope ratio $\delta = \slp^+/\slp^-$, and the R-statistic
+\[
+	\R = \frac{\delta - 1}{\delta + 1} = \frac{\DP* P^t\Ayy}{2\cdot\bkt{1 + x} + \SP* P^t\Ayy}, ~x = \frac{\CS[X]\Thick[X]}{\CS[0]\Thick},
+\]
+with
+\[
+	\Ayy*[R] = \frac{2\R*}{P^t\bkt{\DP -\R*\cdot\SP}}\cdot\bkt{1+x}.
+\]
+
+\section{Comparison of the estimators}
+\begin{Definition}[Congruent in distribution]
+\emph{Congruent in distribution} means 
+\[
+	X \congd Y \Leftrightarrow f(X|\theta) = f(g(Y)|\theta).
+\]
+The transformation $g$ is called the d-congruency transformation.
+\end{Definition}
+We can compare whether $\Ayy*[D]$ and $\Ayy*[R]$ are congruent in distribution by using the QQ-plot. Here it is:
+\begin{figure}[h]
+\centering
+\begin{subfigure}{.5\textwidth}
+\includegraphics[scale=.5]{R_D_QQPlot}
+\caption{Red line $y = a + b\cdot x$.}
+\end{subfigure}~
+\begin{subfigure}{.5\textwidth}
+\includegraphics[scale=.5]{R_gD_QQPlot}
+\caption{Red line $y = x$.}
+\end{subfigure}
+\caption{QQ-Plot for the sample quantiles of the R vs D statistics.}
+\end{figure}
+
+If the distributions of the D- and R-stats are linearly related, the points of the QQ-plot will lie on a line. The transformation $g(\D*) = \alpha + \beta\D* = \frac{2\R*}{P^t\bkt{\DP - \R*\SP}}$.
+
+This means that
+\begin{equation*}
+\begin{cases}
+	\Ayy*[R] &= g(\D*)\cdot(1+x), \\
+	\D* 	 &= \Ayy*[D]\cdot\bkt{P^t\DP\nu\CS[0]\Thick};
+\end{cases}
+\end{equation*}
+hence
+\[
+	\Ayy*[R] = (1+x) \cdot \bkt*{\alpha + \beta\cdot\bkt{P^t\DP\nu\CS[0]\Thick}\cdot\Ayy*[D]}
+\]
+
+%\section{Estimation of $x$}
+%
+%Assume the following model:
+%\begin{equation*}
+%\begin{cases}
+%	\slp[0] &= -\nu\CS[X]\Thick[X], \\
+%	\slp[1] &= -\nu\CS[X]\Thick[X] - \nu\CS[0]\Thick\bkt{1 + PP^t\Ayy}.
+%\end{cases}
+%\end{equation*}
+%
+%Then, we can write the model $\slp[1] = \alpha + \beta\slp[0] + \err$, where $\beta$ should be 
+
+
+
+\end{document}

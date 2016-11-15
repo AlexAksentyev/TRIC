@@ -11,7 +11,7 @@ days = 30; H = days*24*3600
 Duty = .7
 
 ## WATCH OUT FOR TESTING FACTOR
-Sigma0 = 100e-27 *Factor$CS;
+Sigma0 = 70e-27 *Factor$CS;
 Tint = 1 *Factor$Tint;
 MeanSlope = Sigma0*Rho.on*d*nu *Factor$Slope 
 p1Dt = MeanSlope*Tint *Factor$LoseProb;
@@ -20,7 +20,7 @@ rStD = ErrorStD/I0
 N0 = I0/(1.6e-19*nu);
 
 EstCoef <- function(CSec, BeamPol, TargPol, TargDens, TargLen, RevFreq){
-  C = 1/(2*CSec*BeamPol*TargPol*TargDens*TargLen*RevFreq)
+  C = -1/(CSec*diff(BeamPol)*TargPol*TargDens*TargLen*RevFreq)
   return(C)
 }
 

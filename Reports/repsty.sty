@@ -1,0 +1,33 @@
+\ProvidesPackage{repsty}
+
+% PAGE STYLE
+\usepackage[left=1cm,top=1cm,right=1cm,bottom=1.5cm]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{parskip}
+
+% PACKAGES
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{subcaption}
+
+\usepackage{xparse}
+\usepackage{xfrac}
+
+% SYNTACTIC DEFINITIONS
+\newcommand{\err}{\epsilon}
+
+\DeclareDocumentCommand{\CS}{sO{}}{\IfBooleanTF{#1}{\hat{\sigma}_{#2}}{\sigma_{#2}}}
+\DeclareDocumentCommand{\slp}{sO{}}{\IfBooleanTF{#1}{\hat{\beta}_{#2}}{\beta_{#2}}}
+\DeclareDocumentCommand{\Thick}{O{}}{\Theta_{#1}}
+
+\DeclareDocumentCommand{\SE}{sm}{\IfBooleanTF{#1}{\hat{\sigma}\bkt*{#2}}{\sigma\bkt*{#2}}}
+\newcommand{\avg}[1]{\langle #1\rangle}
+
+\DeclareDocumentCommand{\bkt}{sm}{\IfBooleanTF{#1}{\left[ #2 \right]}{\left(#2\right)}}
+\newcommand{\td}{\mathrm{d}}
+
+\DeclareDocumentCommand{\Ayy}{sO{}}{\IfBooleanTF{#1}{\hat{A}_{y,y}}{A_{y,y}}^{#2}}
+\DeclareDocumentCommand{\D}{s}{\IfBooleanTF{#1}{\hat{D}}{D}}
+\DeclareDocumentCommand{\R}{s}{\IfBooleanTF{#1}{\hat{R}}{R}}
+\DeclareDocumentCommand{\DP}{s}{\IfBooleanTF{#1}{(P^+ - P^-)}{\Delta P}}
+\DeclareDocumentCommand{\SP}{s}{\IfBooleanTF{#1}{(P^+ + P^-)}{\Sigma P}}

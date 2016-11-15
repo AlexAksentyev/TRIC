@@ -27,15 +27,17 @@
 
 \newcommand{\scl}{.4}
 
+\DeclareDocumentCommand{\Ayy}{s}{\IfBooleanT{#1}{\hat}A_{y,y}}
+
 
 \begin{document}
 \begin{abstractname}
-We summarize a procedure of estimating unpolarized $pp$ cross section from beam current data in a transmission experiment. The  physical foundation of the presented methodology is the use of the optical theorem.
+We summarize a procedure of estimating unpolarized $pp$ cross section from beam current data in a transmission experiment. The methodology presented is grounded in the use of the optical theorem.
 \end{abstractname}
 
 \section{TRIC program}
 
-TRIC (test of Time-Reversal Invariance at COSY) is a transmission experiment planned at the cooler synchrotron COSY-Juelich for the purpose of testing Time-Reversal Invariance. Its physical foundation is the use of a genuine null-observale for T-symmetry, --- the total cross section asymmetry in double-polarized proton-deuteron scattering, --- provided by the optical theorem.~\cite{Conzett} TRIC is aimed at achieving the accuracy of $10^{-6}$ in the cross section asymmetry estimate.
+TRIC (test of Time-Reversal Invariance at COSY) is a transmission experiment planned at the cooler synchrotron COSY-Juelich for the purpose of testing Time-Reversal Invariance. Its physical foundation is the use of a genuine null-observale for T-symmetry, --- the total cross section asymmetry in double-polarized proton-deuteron scattering, --- whoose existence is guaranteed by the optical theorem.~\cite{Conzett} TRIC is aimed at achieving the accuracy of $10^{-6}$ in the cross section asymmetry estimate.
 
 The total cross section in a double-polarized scattering involves a number of polarization-dependent terms:
 \[
@@ -57,7 +59,7 @@ The intensity of a particle beam revolving inside an accelerator decreases accor
 \end{align*}
 where $L$ is the beam path length, $N$ is the number of attenuating species, $\CS[i]$ is the attenuation cross section, $n$ is the number of passed revolutions, $\Thick[i] = \int_L n_i(z)\td z$ is the thickness of the corresponding attenuating species.
 
-For average beam current, integration of the above yields
+For the average beam current, integration of the above yields
 \begin{equation}\label{eq:CurrentDecay}
 	I_t = I_0 \cdot \exp\bkt{\slp\cdot t},
 \end{equation}
@@ -68,11 +70,20 @@ Within the confines of the experiment, an unpolarized proton beam interacts with
 	\slp = -\nu\bkt{\CS[0]\Thick + \CS[x]\Thick[x]}.
 \end{equation}
 
-Since $\CS[x]\Thick[x]$ is independent from target state, an estimate of cross section is obtained from  
+Since $\CS[x]\Thick[x]$ is independent from the target state, an estimate of the cross section is obtained from  
 \begin{equation}
 	\CS*[0] = \frac{\slp*[off] - \slp*[on]}{\nu\Thick[on]},
 \end{equation}
 where $\slp*[on/off]$ is the slope estimate in an on-/off-cycle.
+
+The expression for the polarized beam loss is 
+\[
+	\slp = -\nu\bkt{\CS[0](1 + \Ayy P_y^t P_y)\Thick[on] + \CS[x]\Thick[x]},
+\]
+from which an asymmetry estimate can be computed as the difference between the slopes with spin states \emph{up} and \emph{down}:
+\[
+	\Ayy* = \frac{\slp*[on]^- - \slp*[on]^+}{\nu P_y^t\Delta P_y\cdot \CS[0]\Thick[on]}.
+\]
 
 \subsection{Statistics}
 
@@ -93,45 +104,48 @@ This means the following series of questions has to be answered in order to veri
 		\begin{itemize}
 			\item Is measurement time measured with negligible error?
 			\item Are there predictors other than time?
-			\item Is there among omitted variables a predictor dependent on current?
+			\item Is there among the omitted variables a predictor dependent on current?
 		\end{itemize}
 	\item What is the interpretation of the slope?
 \end{enumerate}
 
+Below, we will be concerned with the former two.
 
 \section{Overview of data}
-The analyzed data came from nine one-hour-long cycles, in four of which the target was turned on (FIG.~\ref{fig:Cycs2012}). The experiments of this set were performed in 2012, with an electron-cooled beam bunched using the barrier bucket.
+We have analyzed two data sets: one was measured in 2012, the other in 2016. 
+
+In the 2012 experiment, the beam and the target both consisted of unpolarized protons; the beam was cooled using electron cooling and bunched by the barrier bucket; the cycles lasted for one hour each. In the 2016 experiment the proton beam was scattered on the deuteron target, both polarized; the beam had undergone RF-bunching and electron-cooling; the cycles lasted for 12 minutes, the first half of which the target was turned on, in the second off; the beam spin state alternated from spin up to spin down through no spin, while the target spin state remained constant (spin up). 
 
 \begin{figure}[h]
 \begin{subfigure}{.5\textwidth}
 \includegraphics[scale=\scl]{img/Cycles2012.eps}
-\caption{Experiment in 2012.\label{fig:Cycs2012}}
+\caption{Experiment in 2012. The cycles with the target are drawn in red, those without in black. \label{fig:Cycs2012}}
 \end{subfigure}
 \begin{subfigure}{.5\textwidth}
 \includegraphics[scale=\scl]{img/Cycles2016.eps}
-\caption{Experiment in 2016.\label{fig:Cycs2016}}
+\caption{Experiment in 2016. The cycles are colored according to the beam spin state.\label{fig:Cycs2016}}
 \end{subfigure} 
-\caption{Average beam current as a function of time for cycles with the target turned on (red) and off (black).}
+\caption{Average beam current as a function of time.}
 \end{figure} 
 
-The measurements were taken with a Beam Current Transformer (BCT). Based on inter-cycle data (baseline), it was concluded that the BCT offset systematically drifted toward zero by approximately 3.5 \ADCcode[s] per cycle during the cycles of interest.
+%The measurements were taken with a Beam Current Transformer (BCT). Based on inter-cycle data (baseline), it was concluded that the BCT offset systematically drifted toward zero by approximately 3.5 \ADCcode[s] per cycle during the cycles of interest.
 
 
 
 \section{Estimation of slope}
 
-To make correct slope estimates, we subtract offset $\Delta$ from the data. This is done  because
+To make correct slope estimates, we subtract the offset $\Delta$ from the data. This is done  because
 \begin{align*}
 	\tilde{\slp} &= \frac{\td\ln \tilde{I}_t}{\td t} 
 				  = \frac{1}{\tilde{I}_t}\frac{\td \tilde{I}_t}{\td t}, 
-\shortintertext{where, if measured current}
+\shortintertext{where, if the measured current}
 	\tilde{I}_t  	&= I_t + \Delta_t = I_0\exp\bkt{\slp\cdot t} + \Delta_t, 
 \shortintertext{then}
 \tilde{\slp} 	&= \frac{1}{1 + \lambda_t}\bkt{\slp + \frac1{I_t}\frac{\td\Delta_t}{\td t}}, \\
 	\lambda_t	&= {I_0}^{-1}\cdot \Delta_t\cdot\exp\bkt{-\slp\cdot t}.
 \end{align*}
 
-In the favorable case of a constant offset, it still must be removed in order to have a constant slope to estimate. A time-dependent offset violates the exogeneity assumption, and hence biases the slope estimates. At this stage, estimation was done assuming offset was constant within a cycle, and only changed from cycle to cycle.
+In the favorable case of a constant offset, it still must be removed in order to have a constant slope to estimate. A time-dependent offset violates the exogeneity assumption, and hence biases the slope estimate. At this stage, estimation was done assuming offset was constant within a cycle, and only changed from cycle to cycle.
 
 %Since we did not have baseline data for two cycles, their offsets were estimated assuming a linear drift and fitting the cycles' baseline medians (FIG.~\ref{fig:OffsetModel}). 
 %\begin{figure}[h]
@@ -143,25 +157,26 @@ In the favorable case of a constant offset, it still must be removed in order to
 \centering
 \begin{threeparttable}
 	\caption{Characteristics of a typical cycle.\label{tbl:CycleChars}}
-	\begin{tabular}{llr}
+	\begin{tabular}{lllr}
 	\hline\hline
-	Charactetistic	& Test 					& P-value \\
+	Charactetistic	& Test 					& Effect size	& P-value\tnote{a}\\
 	\hline
-	Linearity 		& Harvey-Collier		& 0\% \\
-	-				& Rainbow				& 0\% \\
-	Constant slope	& Chow\tnote{a}		 	& 100\% \\
-	-				& Moving estimates		& 1\% \\
-	Homoskedasticity& Breusch-Pagan 		& 17\% \\
-	Autocorrelation & Durbin-Watson			& 0\% \\
+	Linearity 		& Harvey-Collier		& 0.8			& 0\% \\
+	-				& Rainbow				& 0.06			& 10\% \\
+	Constant slope	& Chow\tnote{b}		 	&				& 100\% \\
+	-				& Moving estimates		&				& 1\% \\
+	Homoskedasticity& Breusch-Pagan 		&				& 17\% \\
+	Autocorrelation & Durbin-Watson			&				& 0\% \\
 	\hline\hline
 	\end{tabular}
 	\begin{tablenotes}
-	\item[a]{The Chow test was performed at every point in the fitting range. The average of F-statistics is used as the test statistic.}
+		\item[a]{The p-value of the effect size.}
+		\item[b]{The Chow test was performed at every point in the fitting range. The average of F-statistics is used as the test statistic.}
 	\end{tablenotes}
 \end{threeparttable}
 \end{table}
 
-Each cycle's data were subtracted its respective offset, and fitted a linear model via ordinary least squares. The models' reduced chi-squares deviate from one in the fourth decimal place; however, one should note that the data do not pass linearity tests, and are likely to have structural slope changes as well (see TABLE~\ref{tbl:CycleChars}). Since the model residuals exhibit serial correlation (FIG.~\ref{fig:Run969}), the slope estimates' standard errors are estimated with robust estimators.
+Each cycle's data were subtracted its respective offset, and fitted a linear model via the ordinary least squares method. The models' reduced chi-squares deviate from one in the fourth decimal place; however, one should note that the data do not pass linearity tests, and are likely to have structural slope changes as well (see TABLE~\ref{tbl:CycleChars}). Since the model residuals exhibit serial correlation (FIG.~\ref{fig:Run969}), the slope estimates' standard errors are estimated with robust estimators.
 
 \begin{figure}
 \centering
@@ -199,6 +214,8 @@ An estimate of a cross section estimate's standard error (SE) is made by adding 
 \end{equation}
 
 This is done so because depending on whether an on-slope is paired with the preceding or succeding off-slope, the covariance term changes sign. Since there's no criterion favoring either of the two mappings, the covariance term was omitted.
+
+\section{Estimation of asymmetry}
 
 \pagebreak
 

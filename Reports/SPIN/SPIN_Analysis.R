@@ -21,8 +21,8 @@ Data12 %>% ggplot(aes(Clock, BCT2, col=Targ)) +
   theme_minimal() + theme(legend.position = "top", legend.title=element_text()) +
   labs(x="Time (local)", y="I (a.u.)")
 
-Data16 %>% ggplot(aes(Clock, BCT2, col=FABS)) + 
-  scale_color_manual(name="Target state", breaks=c("F","T"), labels=c("Off","On"), values=c("black", "red")) + 
+Data16 %>% ggplot(aes(Clock, BCT2, col=B.Spin)) + 
+  scale_color_manual(name="Beam spin", breaks=c("U","D", "N"), labels=c("Up","Down","Null"), values=c("red", "black","blue")) + 
   geom_point() + 
   theme_minimal() + theme(legend.position = "top", legend.title=element_text()) +
   labs(x="Time (local)", y="I (a.u.)")
@@ -49,13 +49,19 @@ autoplot(m, which=1) + theme_minimal() + ggtitle("") + labs(y=expression(ln~I[i]
 autoplot(pacf(m$residuals, lag=600, main="", plot=FALSE)) + theme_minimal() + labs(y="Partial ACF")
 
 
-library(lmtest); library(strucchange)
+library(lmtest); library(strucchange); library(compute.es)
 f = log(BCT1)~uts
 Run969 <- slice(Run969, .sub[1]:.sub[2])
 
-harvtest(f, data=Run969)
-raintest(f, data=Run969)
-sctest(f, data=Run969, type="aveF")
+.es <- function(ht, type){
+  stat = ht$statistic; n1 = ht$parameter; if(length(n1)>1) n2 <- n1[2] else n2 <- n1; n1 <- n1[1]
+  match.fun(type)(stat, n1, n2, verbose=FALSE) -> tht
+  print(c("Cohen's d" = tht$d, "P-value" = tht$pval.d));cat("\n")
+}
+
+harvtest(f, data=Run969) %>% .es("tes")
+raintest(f, data=Run969) %>% .es("fes")
+Fstats(f, data=Run969) %>% .es("fes")
 sctest(f, data=Run969, type="ME")
 bptest(f, data=Run969)
 dwtest(f, data=Run969)

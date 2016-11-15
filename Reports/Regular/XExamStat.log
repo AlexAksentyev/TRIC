@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  7 NOV 2016 18:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  10 NOV 2016 15:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -293,262 +293,7 @@ Package: xparse 2014/09/15 v5423 L3 Experimental document command parser
 \l__xparse_processor_int=\count136
 \l__xparse_v_nesting_int=\count137
 )
-(/usr/share/texlive/texmf-dist/tex/latex/ntheorem/ntheorem.sty
-Style `ntheorem', Version 1.33 <2011/08/15>
-Package: ntheorem 2011/08/15 1.33
-(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-)
-\theorem@style=\toks21
-\theorem@@style=\toks22
-\theorembodyfont=\toks23
-\theoremnumbering=\toks24
-\theorempreskipamount=\skip56
-\theorempostskipamount=\skip57
-\theoremframepreskipamount=\skip58
-\theoremframepostskipamount=\skip59
-\theoreminframepreskipamount=\skip60
-\theoreminframepostskipamount=\skip61
-\theorem@preskip=\toks25
-\theorem@postskip=\toks26
-\theorem@framepreskip=\toks27
-\theorem@framepostskip=\toks28
-\theorem@inframepreskip=\toks29
-\theorem@inframepostskip=\toks30
-\theoremindent=\dimen167
-\theorem@indent=\dimen168
-\theoremrightindent=\dimen169
-\theorem@rightindent=\dimen170
-\theoremheaderfont=\toks31
-\theoremseparator=\toks32
-\theoremprework=\toks33
-\theorempostwork=\toks34
-\theoremsymbol=\toks35
-\qedsymbol=\toks36
-\theoremkeyword=\toks37
-\qedsymbol=\toks38
-\thm@topsep=\skip62
-\thm@topsepadd=\skip63
-Package ntheorem Info: Option `thmmarks' loaded on input line 1175.
-\c@endNonectr=\count138
-\c@currNonectr=\count139
-\mysavskip=\skip64
-Package ntheorem Info: Option `thref' loaded on input line 1175.
-\mysavskip=\skip65
-Package ntheorem Info: option `amsmath' handling for `thref' loaded on input li
-ne 1175.
-Package ntheorem Info: option `amsmath' handling for `thmmarks' loaded on input
- line 1175.
-\thm@amstmpdepth=\dimen171
-\tagwidth=\dimen172
-Package ntheorem Info: Standard config file ntheorem.std used on input line 118
-4.
-
-(/usr/share/texlive/texmf-dist/tex/latex/ntheorem/ntheorem.std
-(/usr/share/texlive/texmf-dist/tex/latex/base/latexsym.sty
-Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
-\symlasy=\mathgroup4
-LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
-(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
-)
-\c@currTheoremctr=\count140
-\c@endTheoremctr=\count141
-\c@Theorem=\count142
-\c@currtheoremctr=\count143
-\c@endtheoremctr=\count144
-\c@theorem=\count145
-\c@currSatzctr=\count146
-\c@endSatzctr=\count147
-\c@Satz=\count148
-\c@currsatzctr=\count149
-\c@endsatzctr=\count150
-\c@satz=\count151
-\c@currPropositionctr=\count152
-\c@endPropositionctr=\count153
-\c@Proposition=\count154
-\c@currpropositionctr=\count155
-\c@endpropositionctr=\count156
-\c@proposition=\count157
-\c@currLemmactr=\count158
-\c@endLemmactr=\count159
-\c@Lemma=\count160
-\c@currlemmactr=\count161
-\c@endlemmactr=\count162
-\c@lemma=\count163
-\c@currKorollarctr=\count164
-\c@endKorollarctr=\count165
-\c@Korollar=\count166
-\c@currkorollarctr=\count167
-\c@endkorollarctr=\count168
-\c@korollar=\count169
-\c@currCorollaryctr=\count170
-\c@endCorollaryctr=\count171
-\c@Corollary=\count172
-\c@currcorollaryctr=\count173
-\c@endcorollaryctr=\count174
-\c@corollary=\count175
-\c@currExamplectr=\count176
-\c@endExamplectr=\count177
-\c@Example=\count178
-\c@currexamplectr=\count179
-\c@endexamplectr=\count180
-\c@example=\count181
-\c@currBeispielctr=\count182
-\c@endBeispielctr=\count183
-\c@Beispiel=\count184
-\c@currbeispielctr=\count185
-\c@endbeispielctr=\count186
-\c@beispiel=\count187
-\c@currBemerkungctr=\count188
-\c@endBemerkungctr=\count189
-\c@Bemerkung=\count190
-\c@currbemerkungctr=\count191
-\c@endbemerkungctr=\count192
-\c@bemerkung=\count193
-\c@currAnmerkungctr=\count194
-\c@endAnmerkungctr=\count195
-\c@Anmerkung=\count196
-\c@curranmerkungctr=\count197
-\c@endanmerkungctr=\count198
-\c@anmerkung=\count199
-\c@currRemarkctr=\count200
-\c@endRemarkctr=\count201
-Normal \count register pool exhausted, switching to extended pool.
-\c@Remark=\count277
-\c@currremarkctr=\count278
-\c@endremarkctr=\count279
-\c@remark=\count280
-\c@currDefinitionctr=\count281
-\c@endDefinitionctr=\count282
-\c@Definition=\count283
-\c@currdefinitionctr=\count284
-\c@enddefinitionctr=\count285
-\c@definition=\count286
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-Package: amssymb 2013/01/14 v3.01 AMS font symbols
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
-Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\symAMSa=\mathgroup5
-\symAMSb=\mathgroup6
-LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
-(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-))
-\c@currProofctr=\count287
-\c@endProofctr=\count288
-\c@Proof=\count289
-\c@currproofctr=\count290
-\c@endproofctr=\count291
-\c@proof=\count292
-\c@currBeweisctr=\count293
-\c@endBeweisctr=\count294
-\c@Beweis=\count295
-\c@currbeweisctr=\count296
-\c@endbeweisctr=\count297
-\c@beweis=\count298
-))
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \CS with sig. 'sO{}' on line 18.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \slp with sig. 'sO{}' on line 19.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \Thick with sig. 'O{}' on line 20.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \SE with sig. 'sm' on line 22.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \bkt with sig. 'sm' on line 24.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \Ayy with sig. 'sO{}' on line 27.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \D with sig. 's' on line 28.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \R with sig. 's' on line 29.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \DP with sig. 's' on line 30.
-.................................................
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \SP with sig. 's' on line 31.
-.................................................
-
-(./XExamStat.aux)
-\openout1 = `XExamStat.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-
-*geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
-*geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
-* paper: <default>
-* layout: <same size as paper>
-* layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: 
-* h-part:(L,W,R)=(28.45274pt, 557.38951pt, 28.45274pt)
-* v-part:(T,H,B)=(28.45274pt, 738.0645pt, 28.45274pt)
-* \paperwidth=614.295pt
-* \paperheight=794.96999pt
-* \textwidth=557.38951pt
-* \textheight=738.0645pt
-* \oddsidemargin=-43.81725pt
-* \evensidemargin=-43.81725pt
-* \topmargin=-80.81725pt
-* \headheight=12.0pt
-* \headsep=25.0pt
-* \topskip=10.0pt
-* \footskip=30.0pt
-* \marginparwidth=65.0pt
-* \marginparsep=11.0pt
-* \columnsep=10.0pt
-* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
-* \hoffset=0.0pt
-* \voffset=0.0pt
-* \mag=1000
-* \@twocolumnfalse
-* \@twosidefalse
-* \@mparswitchfalse
-* \@reversemarginfalse
-* (1in=72.27pt=25.4mm, 1cm=28.453pt)
-
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xfrac/xfrac.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
@@ -572,22 +317,405 @@ Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
-\Gread@gobject=\count299
+\Gread@gobject=\count138
+))
+\Gin@req@height=\dimen167
+\Gin@req@width=\dimen168
+)
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2014/09/15 v5423 LaTeX2e option processing using LaTeX3 keys
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 71.
 
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+)
+LaTeX Info: Redefining \oldstylenums on input line 266.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 281.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 282.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 283.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 284.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 285.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 286.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 287.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 288.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 289.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 290.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 291.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 292.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 293.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 294.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 295.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 296.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 297.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 298.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 299.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 300.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 301.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 302.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 303.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 304.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 305.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 306.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 307.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 308.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 309.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 310.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 311.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 312.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 313.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 314.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 315.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 316.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 317.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 318.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 319.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 320.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 321.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 322.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 323.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 324.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 325.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 326.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 327.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 328.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 329.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 330.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 331.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 332.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 333.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 334.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 335.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 336.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 337.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 338.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 339.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 340.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xtemplate/xtemplate.sty
+Package: xtemplate 2014/09/15 v5423 L3 Experimental prototype document function
+s
+\l__xtemplate_tmp_dim=\dimen169
+\l__xtemplate_tmp_int=\count139
+\l__xtemplate_tmp_muskip=\muskip17
+\l__xtemplate_tmp_skip=\skip56
+Variant \prop_get:NoNTF already defined; not changing it on line 106
+Variant \prop_get:NoNT already defined; not changing it on line 107
+Variant \prop_get:NoNF already defined; not changing it on line 108
+)
+Package: xfrac 2014/05/04 v4728 L3 Experimental split-level fractions
+\l__xfrac_slash_box=\box43
+\l__xfrac_tmp_box=\box44
+\l__xfrac_denominator_bot_sep_dim=\dimen170
+\l__xfrac_numerator_bot_sep_dim=\dimen171
+\l__xfrac_numerator_top_sep_dim=\dimen172
+\l__xfrac_slash_left_sep_dim=\dimen173
+\l__xfrac_slash_right_sep_dim=\dimen174
+\l__xfrac_slash_left_muskip=\muskip18
+\l__xfrac_slash_right_muskip=\muskip19
+.................................................
+. xtemplate info: "declare-object-type"
+. 
+. Declaring object type 'xfrac' taking 3 argument(s) on line 96.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \sfrac with sig. 'omom' on line 436.
+.................................................
+)
+(/usr/share/texlive/texmf-dist/tex/latex/ntheorem/ntheorem.sty
+Style `ntheorem', Version 1.33 <2011/08/15>
+Package: ntheorem 2011/08/15 1.33
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\theorem@style=\toks21
+\theorem@@style=\toks22
+\theorembodyfont=\toks23
+\theoremnumbering=\toks24
+\theorempreskipamount=\skip57
+\theorempostskipamount=\skip58
+\theoremframepreskipamount=\skip59
+\theoremframepostskipamount=\skip60
+\theoreminframepreskipamount=\skip61
+\theoreminframepostskipamount=\skip62
+\theorem@preskip=\toks25
+\theorem@postskip=\toks26
+\theorem@framepreskip=\toks27
+\theorem@framepostskip=\toks28
+\theorem@inframepreskip=\toks29
+\theorem@inframepostskip=\toks30
+\theoremindent=\dimen175
+\theorem@indent=\dimen176
+\theoremrightindent=\dimen177
+\theorem@rightindent=\dimen178
+\theoremheaderfont=\toks31
+\theoremseparator=\toks32
+\theoremprework=\toks33
+\theorempostwork=\toks34
+\theoremsymbol=\toks35
+\qedsymbol=\toks36
+\theoremkeyword=\toks37
+\qedsymbol=\toks38
+\thm@topsep=\skip63
+\thm@topsepadd=\skip64
+Package ntheorem Info: Option `thmmarks' loaded on input line 1175.
+\c@endNonectr=\count140
+\c@currNonectr=\count141
+\mysavskip=\skip65
+Package ntheorem Info: Option `thref' loaded on input line 1175.
+\mysavskip=\skip66
+Package ntheorem Info: option `amsmath' handling for `thref' loaded on input li
+ne 1175.
+Package ntheorem Info: option `amsmath' handling for `thmmarks' loaded on input
+ line 1175.
+\thm@amstmpdepth=\dimen179
+\tagwidth=\dimen180
+Package ntheorem Info: Standard config file ntheorem.std used on input line 118
+4.
+
+(/usr/share/texlive/texmf-dist/tex/latex/ntheorem/ntheorem.std
+(/usr/share/texlive/texmf-dist/tex/latex/base/latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+)
+\c@currTheoremctr=\count142
+\c@endTheoremctr=\count143
+\c@Theorem=\count144
+\c@currtheoremctr=\count145
+\c@endtheoremctr=\count146
+\c@theorem=\count147
+\c@currSatzctr=\count148
+\c@endSatzctr=\count149
+\c@Satz=\count150
+\c@currsatzctr=\count151
+\c@endsatzctr=\count152
+\c@satz=\count153
+\c@currPropositionctr=\count154
+\c@endPropositionctr=\count155
+\c@Proposition=\count156
+\c@currpropositionctr=\count157
+\c@endpropositionctr=\count158
+\c@proposition=\count159
+\c@currLemmactr=\count160
+\c@endLemmactr=\count161
+\c@Lemma=\count162
+\c@currlemmactr=\count163
+\c@endlemmactr=\count164
+\c@lemma=\count165
+\c@currKorollarctr=\count166
+\c@endKorollarctr=\count167
+\c@Korollar=\count168
+\c@currkorollarctr=\count169
+\c@endkorollarctr=\count170
+\c@korollar=\count171
+\c@currCorollaryctr=\count172
+\c@endCorollaryctr=\count173
+\c@Corollary=\count174
+\c@currcorollaryctr=\count175
+\c@endcorollaryctr=\count176
+\c@corollary=\count177
+\c@currExamplectr=\count178
+\c@endExamplectr=\count179
+\c@Example=\count180
+\c@currexamplectr=\count181
+\c@endexamplectr=\count182
+\c@example=\count183
+\c@currBeispielctr=\count184
+\c@endBeispielctr=\count185
+\c@Beispiel=\count186
+\c@currbeispielctr=\count187
+\c@endbeispielctr=\count188
+\c@beispiel=\count189
+\c@currBemerkungctr=\count190
+\c@endBemerkungctr=\count191
+\c@Bemerkung=\count192
+\c@currbemerkungctr=\count193
+\c@endbemerkungctr=\count194
+\c@bemerkung=\count195
+\c@currAnmerkungctr=\count196
+\c@endAnmerkungctr=\count197
+\c@Anmerkung=\count198
+\c@curranmerkungctr=\count199
+\c@endanmerkungctr=\count200
+\c@anmerkung=\count201
+Normal \count register pool exhausted, switching to extended pool.
+\c@currRemarkctr=\count277
+\c@endRemarkctr=\count278
+\c@Remark=\count279
+\c@currremarkctr=\count280
+\c@endremarkctr=\count281
+\c@remark=\count282
+\c@currDefinitionctr=\count283
+\c@endDefinitionctr=\count284
+\c@Definition=\count285
+\c@currdefinitionctr=\count286
+\c@enddefinitionctr=\count287
+\c@definition=\count288
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup5
+\symAMSb=\mathgroup6
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+\c@currProofctr=\count289
+\c@endProofctr=\count290
+\c@Proof=\count291
+\c@currproofctr=\count292
+\c@endproofctr=\count293
+\c@proof=\count294
+\c@currBeweisctr=\count295
+\c@endBeweisctr=\count296
+\c@Beweis=\count297
+\c@currbeweisctr=\count298
+\c@endbeweisctr=\count299
+\c@beweis=\count300
+))
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \CS with sig. 'sO{}' on line 20.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \slp with sig. 'sO{}' on line 21.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \Thick with sig. 'O{}' on line 22.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SE with sig. 'sm' on line 24.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \bkt with sig. 'sm' on line 26.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \Ayy with sig. 'sO{}' on line 29.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \D with sig. 's' on line 30.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \R with sig. 's' on line 31.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DP with sig. 's' on line 32.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SP with sig. 's' on line 33.
+.................................................
+
+(./XExamStat.aux)
+\openout1 = `XExamStat.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 37.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 37.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 37.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(28.45274pt, 557.38951pt, 28.45274pt)
+* v-part:(T,H,B)=(28.45274pt, 723.83812pt, 42.67912pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=557.38951pt
+* \textheight=723.83812pt
+* \oddsidemargin=-43.81725pt
+* \evensidemargin=-43.81725pt
+* \topmargin=-80.81725pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count300
-\scratchdimen=\dimen173
-\scratchbox=\box43
-\nofMPsegments=\count301
-\nofMParguments=\count302
+\scratchcounter=\count301
+\scratchdimen=\dimen181
+\scratchbox=\box45
+\nofMPsegments=\count302
+\nofMParguments=\count303
 \everyMPshowfont=\toks39
-\MPscratchCnt=\count303
-\MPscratchDim=\dimen174
-\MPnumerator=\count304
-\makeMPintoPDFobject=\count305
+\MPscratchCnt=\count304
+\MPscratchDim=\dimen182
+\MPnumerator=\count305
+\makeMPintoPDFobject=\count306
 \everyMPtoPDFconversion=\toks40
-))) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
 
@@ -631,77 +759,103 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\Gin@req@height=\dimen175
-\Gin@req@width=\dimen176
-)
-Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+lasy on input line 37.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 39.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 37.
+LaTeX Font Info:    Try loading font information for U+msa on input line 39.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 37.
+LaTeX Font Info:    Try loading font information for U+msb on input line 39.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+LaTeX Font Info:    Calculating math sizes for size <6.99997> on input line 65.
+
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <3.49998> not available
+(Font)              size <5> substituted on input line 65.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.49998> not available
+(Font)              size <5> substituted on input line 65.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.49998> not available
+(Font)              size <5> substituted on input line 65.
+
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <3.49998> not available
+(Font)              size <5> substituted on input line 65.
+
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \g with sig. 's' on line 76.
+.................................................
 <R_D_QQPlot.png, id=1, 526.21594pt x 581.92406pt>
 File: R_D_QQPlot.png Graphic file (type png)
  <use R_D_QQPlot.png>
-Package pdftex.def Info: R_D_QQPlot.png used on input line 68.
+Package pdftex.def Info: R_D_QQPlot.png used on input line 82.
 (pdftex.def)             Requested size: 263.10733pt x 290.96132pt.
 
 <R_gD_QQPlot.png, id=2, 526.21594pt x 581.92406pt>
 File: R_gD_QQPlot.png Graphic file (type png)
  <use R_gD_QQPlot.png>
-Package pdftex.def Info: R_gD_QQPlot.png used on input line 72.
+Package pdftex.def Info: R_gD_QQPlot.png used on input line 86.
 (pdftex.def)             Requested size: 263.10733pt x 290.96132pt.
 
-Overfull \hbox (4.44441pt too wide) in paragraph at lines 67--75
+Overfull \hbox (4.44441pt too wide) in paragraph at lines 81--89
  []$[]$  $[]$ 
  []
 
-[1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./R_D_QQPlot.png (PNG copy
-)> <./R_gD_QQPlot.png (PNG copy)>]
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 \tf@thm=\write3
 \openout3 = `XExamStat.thm'.
 
- [2] (./XExamStat.aux) ) 
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./R_D_QQPlot.png (PNG 
+copy)> <./R_gD_QQPlot.png (PNG copy)>] (./XExamStat.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 3.25002pt have occurred.
+
+ ) 
 Here is how much of TeX's memory you used:
- 11231 strings out of 494466
- 201342 string characters out of 6172530
- 247328 words of memory out of 5000000
- 14362 multiletter control sequences out of 15000+600000
- 11583 words of font info for 49 fonts, out of 8000000 for 9000
+ 12110 strings out of 494466
+ 220490 string characters out of 6172530
+ 265131 words of memory out of 5000000
+ 15221 multiletter control sequences out of 15000+600000
+ 17041 words of font info for 74 fonts, out of 8000000 for 9000
  452 hyphenation exceptions out of 8191
- 51i,10n,40p,10360b,501s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-msy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.p
-fb>
-Output written on XExamStat.pdf (2 pages, 225568 bytes).
+ 42i,12n,40p,10378b,499s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on XExamStat.pdf (2 pages, 231964 bytes).
 PDF statistics:
- 73 PDF objects out of 1000 (max. 8388607)
- 51 compressed objects within 1 object stream
+ 77 PDF objects out of 1000 (max. 8388607)
+ 54 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -113,13 +113,14 @@ Suppose the slope varies; in that case the law of total variance says that
 \end{align*}
 The first term describes the estimate's statistical precision, the second its accuracy. By decreasing the cycle length we reduce precision, but improve accuracy. The accuracy is improved simply by virtue of better averaging of $\v{\slp}$.
 
-From the last expression, the best variance is achieved at
+The slope variation determines the best achievable precision (see Table~\ref{tbl:SEAyy_varb}). From the last expression, the best variance is achieved at
 \begin{equation}
 	h_{best} = \sqrt[3]{24\cdot \Tint} \bkt{\frac{\v{\err}}{\v{\slp}}}^{1/3}.
 \end{equation}
 
-\begin{table}
+\begin{table}[h]
 \centering
+\caption{For Figure~\ref{fig:SEAyy_varb}\label{tbl:SEAyy_varb}}
 \begin{tabular}{lrr}
 \hline\hline
 $\SE{\err}$			&	$h_{best}$ (min)	& $\SE{\avg{\Ayy*}}$\\
@@ -129,12 +130,54 @@ $1\cdot10^{-3}$		&	48					& $3\cdot10^{-4}$\\
 $5\cdot10^{-4}$		&	30					& $3\cdot10^{-4}$\\
 $1\cdot10^{-4}$		&	10					& $2\cdot10^{-4}$\\
 $5\cdot10^{-5}$		&	7					& $1\cdot10^{-4}$\\
+\hline
 \end{tabular}
 \end{table}
 
-\begin{figure}
+\begin{figure}[h]
 \includegraphics[scale=1]{AyySE_varb_15}
-\caption{The standard error of the mean $\Ayy$ estimate as a function of cycle length when the inherent slope variation $\v{\slp} = 1\cdot10^{-15}$.}
+\caption{The standard error of the mean $\Ayy$ estimate as a function of cycle length when the inherent slope variation $\v{\slp} = 1\cdot10^{-15}$.\label{fig:SEAyy_varb}}
 \end{figure}
+
+\subsection{Inherent slope variation}
+By definition, the slope at time $t$ is
+\[
+ \slp[t] = \frac{\Delta \ln I_t}{\Delta t} \approx \frac{1}{\Delta t}\frac{\Delta I_t}{I_t} \propto \frac{\Delta N_t}{N_t}, ~\Delta N_t \sim B(N_t, p).
+\]
+
+Since this is a sample proportion, 
+\begin{equation*}
+\begin{cases}
+	\Xpct{\slp[t]} 	&= p, \\
+	\SE{\slp[t]}		&= \frac{1}{\Delta t}\frac{\sqrt{p(1-p)}}{\sqrt{N_t}}, \\
+	p 				&= \nu\CS[0]\Thick\Delta t.
+\end{cases}
+\end{equation*}
+
+Again, from the defition
+\[
+	N_t = N_{t-1}\bkt{1 + \slp[t-1]\Delta t}.
+\]
+
+Therefore, 
+\begin{equation}
+\v{\slp[t]} = \frac{\alpha}{N_t} = \v{\slp[t-1]}\bkt{1 + \slp[t-1]\Delta t}^{-1},
+\end{equation}
+where, for the parameters of Table~\ref{tbl:Param}, $\v{\slp[0]} \approx 8\cdot10^{-16}$.
+
+%Suppose the target dissipates randomly, at an average rate $r = 10\sfrac{\%}{day} = 1.16\cdot10^{-6}\sfrac{1}{sec}$, and with a standard deviation equal $r$:
+%\[
+%	\Thick[t] = \Thick[t-1](1-\alpha_t),~ \alpha_t\sim N(r,r).
+%\]
+%
+%Then the slope
+%\[
+%	\slp[t] = \nu\CS[tot]\Thick[t] = \slp[0]\prod_{i=1}^{t-1}(1-\alpha_i),
+%\]	
+%and we can estimate $\bkt{\v{\slp}}(h) = \sfrac 1h \sum_{i=1}^{h}(\slp[i] - \avg{\slp})^2$.
+%
+%\begin{figure}
+%\includegraphics[scale=1]{varb_ThickDissip}
+%\end{figure}
 
 \end{document}

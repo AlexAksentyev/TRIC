@@ -64,16 +64,6 @@ sdd = c(5e-3, 1e-3, 5e-4, 1e-4, 5e-5); vd = sdd^2; names(vd) <- as.character(sdd
 hbest = (24*Tint* vd/vb)^(1/3)
 h = seq(250, 3600, by = 1)
 
-# par(xpd=TRUE, mar=c(5, 5, 1, 3))
-# plot(
-#   c(0, hmax), c(1e-3, 1e0), type="n", xaxt="n", bty="l",
-#   xlab = "state time, seconds",
-#   ylab = "mean QoI estimate sd",
-#   log = "y"
-# )
-# 
-# for(p in 1:length(vd)) lines(h, sqrt(vmAe(vd[p],vb,h)), col=rainbow(length(vd))[p])
-
 ldply(h, function(h) sqrt(vmAe(vd, vb,h))) %>% melt(variable.name="Resolution",value.name="SE") %>%
   cbind(data.frame("h" = rep(h, times=length(vd)))) -> SEAM; head(SEAM)
 
@@ -83,16 +73,33 @@ ggplot(SEAM, aes(h, SE, col=Resolution)) + geom_line() +
   theme_minimal() +
   theme(legend.position="top",panel.grid.minor = element_line(colour = "gray", linetype = "dashed"))
 
-# 
-# legend(
-#   "topright", inset=c(0,0), title=expression("sd"~delta ~~ "&" ~~ h[min]~"sec"),
-#   lty=1, bty="n", col = rainbow(length(vd)), ncol = 2,
-#   legend=c(formatC(sdd,1,format="e"),formatC(hmin,0,format="f"))
-# )
-# legend(
-#   "bottomleft", bty="n", legend = bquote(var~beta ~ "=" ~ .(vb))
-# )
-# 
-# axis(1, at = formatC(c(hmin[2:5],hmax),0,format = "f"))
+daply(SEAM, "Resolution", function(x) min(x$SE)) -> SEBE
 
+data.frame("hbest" = round(hbest/60), "SEbest" = formatC(SEBE,0,format="e"))
+
+## slope variance 
+
+library(MASS)
+h = 3600
+v = array(NA,h)
+for(n in 1:h){
+  thick <- d*c(Rho.on , Rho.on * cumprod(1 - rnorm(n-1, mean = 0*rate, sd = 1*rate)))
+  lam = Sigma0*nu*thick
+  v[n] = var(lam)
+}
+
+v<-v[-1]; n = 2:h
+v.fit = rlm(v~0+n)
+plot(n,v,log="y",
+     type="l", 
+     xlab = "h (sec)", 
+     ylab = expression(sigma[beta]^2~"(h)")
+)
+lines(v.fit$fitted.values,col="red",lwd = 3)
+# abline(h=0, lty=3, col="magenta")
+# legend(
+#   "topleft", bty="n",
+#   legend = c(paste("dissipation rate =", formatC(rate*100,3,format="e"), "*(0 +- 1) %/sec"),
+#              paste("v(h) =", formatC(v.fit$coefficients[[1]],2,format="e"), "*h"))
+# )
 

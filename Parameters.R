@@ -11,7 +11,7 @@ days = 30; H = days*24*3600
 Duty = .7
 
 ## WATCH OUT FOR TESTING FACTOR
-Sigma0 = 70e-27 *Factor$CS;
+Sigma0 = 70e-27#70e-27 *Factor$CS;
 Tint = 1 *Factor$Tint;
 MeanSlope = Sigma0*Rho.on*d*nu *Factor$Slope 
 p1Dt = MeanSlope*Tint *Factor$LoseProb;

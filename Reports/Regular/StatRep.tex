@@ -6,7 +6,7 @@
 \newcommand{\Dim}[1]{\mathrm{#1}}
 
 
-
+\DeclareDocumentCommand{\A}{s}{\IfBooleanT{#1}{\hat}A}
 
 \begin{document}
 
@@ -14,14 +14,19 @@
 \maketitle
 
 \section*{Introduction}
-\dots
-Since the estimate $\Ayy*$ is obtained as a difference statistic of the slopes in the up- and down-polarized trials, its variance $\SE{\Ayy*} = C\sqrt{2}\cdot\SE{\slp*}$, with the proportionality coefficient (see Table~\ref{tbl:Param}) $C = (\nu\CS[0]\Thick P^t\DP)^{-1} \approx 1.3\cdot 10^{5}$. 
+When determining a double-polarized observable using the transmission-experiment method, one estimates the rate of decay of the beam current. This can be done by fitting a linear model to the log-transformed beam current data using the Ordinary Least Squares method.
 
-For the mean, 
-\begin{equation}\label{eq:AvgAyySE}
-	\SE{\avg{\Ayy*}} = \frac{\SE{\Ayy*}}{\sqrt N} = \sqrt{2}\sqrt{\frac hH}\cdot\SE{\Ayy*},
+The observable ($\A$) can then be estimated as a difference statistic of the slopes in the two appropriate polarization cases, and its variance will be proportional to the sum of the variances of the constituent slope estimates: $\SE{\A*} = C\sqrt{2}\cdot\SE{\slp*}$.
+
+For the mean statistic, its precision depends on the precision of the slope estimate $\SE{\slp*}$ as in
+\begin{equation}\label{eq:AvgASE}
+	\SE{\avg{\A*}} = \frac{\SE{\A*}}{\sqrt N} = \sqrt{2}\sqrt{\frac hH}\cdot\SE{\A*} = 2C\sqrt{\frac hH}\cdot\SE{\slp*},
 \end{equation}
-where $H$ is the beam time, $h$ the cycle length, and so the number of estimate pairs $N = \sfrac{H}{2h}$.
+where $H$ is the beam time, $h$ the cycle length, and so the maximum number of estimate pairs $N = \sfrac{H}{2h}$.
+
+The conditions for the OLS estimators of the model parameters belonging to the class of the minimum-variance unbiased estimators are given by the Gauss-Markov theorem. 
+
+Here we will try to estimate the beam and cycle times appropriate for achieving the required precision $\SE{\Ayy*}$ of the cross section asymmetry estimate $\Ayy*$. At first, we will estimate the required beam time under the Gauss-Markov conditions. Then, for the estimation of the appropriate measurement cycle length, we will relax the strict exogeneity condition, by assuming that the slope varies stochastically about some mean value. We do so to account for the fact that at each turn a slightly different number of particles is scattered due to the stochastic nature of scattering alone. (However the approach taken is independent of the reasons for the slope variation.)
 
 \begin{table}
 \centering
@@ -52,13 +57,13 @@ $\CS[0]$\tnote{a}			& 70					& mb\\
 
 Under the Gauss-Markov conditions, the slope estimate's standard error is
 \begin{equation}\label{eq:SlpVarGM}
-	\SE{\slp*} = \frac{\SE{\err}}{\sqrt{\sum_k (t_k - \avg{t})^2}},
+	\SE{\slp*} = \frac{\SE{\err}}{\sqrt{\sum_{k=1}^K (t_k - \avg{t})^2}},
 \end{equation}
-where $\SE{\err}$ is the measurement resolution.
+where $\SE{\err}$ is the measurement resolution, $K$ is the sample size, and $t_k$ is the measurement time.
 
-Since the measurements are taken uniformly in time with the step $\Tint$, rewriting eq.~\eqref{eq:SlpVarGM} in physical terms gets:
+Since the measurements are taken uniformly in time with step $\Tint$, rewriting eq.~\eqref{eq:SlpVarGM} in physical terms gets:
 \begin{align*}
-	\sum_{k=1}^K (t_k - \avg{t})^2 &= \sum_k (k\Tint - \frac{1}{K}\sum_{k=1}^K k\Tint)^2; \\
+	\sum_{k=1}^K (t_k - \avg{t})^2 &= \sum_k \bkt{k\Tint - \frac{1}{K}\sum_{k=1}^K k\Tint}^2; \\
 	\frac{1}{K}\sum_{k=1}^K k\Tint  &= \frac{\Tint}{2}(K+1)\equiv \Tint\mu, \\
 	\sum_k (k\Tint - \mu\Tint)^2 	&= \Tint^2\sum_k\bkt{
 											k^2 - 2k\mu + \mu^2
@@ -87,7 +92,7 @@ Finally, for the slope variance,
 	\SE{\slp*} = 2\sqrt{3}\sqrt{\frac{\Delta t}{h}}\frac{\SE{\err}}{h}.
 \end{equation}
 
-By plugging it in eq.~\eqref{eq:AvgAyySE} we get
+By plugging it in eq.~\eqref{eq:AvgASE} ($\A* \equiv \Ayy*$) we get
 \begin{equation}\label{eq:AvgAyySEPhys}
 \SE{\avg{\Ayy*}} = 4\sqrt{3}C\cdot \frac{\sqrt{\Tint}}{h\sqrt{H}}\cdot\SE{\err}.
 \end{equation}
@@ -95,7 +100,7 @@ The estimated beam time for different values of measurement resolution and preci
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=1]{BeamTime_15minCycle}
+\includegraphics[scale=1]{BeamTime_15minCycles}
 \caption{Beam time (in full days) as a function of the standard error of the mean $\Ayy$ estimate, required in the case of 15-minute cycles.\label{fig:BeamTime}}
 \end{figure}
 
@@ -120,7 +125,7 @@ The slope variation determines the best achievable precision (see Table~\ref{tbl
 
 \begin{table}[h]
 \centering
-\caption{For Figure~\ref{fig:SEAyy_varb}\label{tbl:SEAyy_varb}}
+\caption{For Figure~\ref{fig:SEAyy_varB_15min}\label{tbl:SEAyy_varb}}
 \begin{tabular}{lrr}
 \hline\hline
 $\SE{\err}$			&	$h_{best}$ (min)	& $\SE{\avg{\Ayy*}}$\\
@@ -135,7 +140,7 @@ $5\cdot10^{-5}$		&	7					& $1\cdot10^{-4}$\\
 \end{table}
 
 \begin{figure}[h]
-\includegraphics[scale=1]{AyySE_varb_15}
+\includegraphics[scale=1]{SEAyy_varB_15min}
 \caption{The standard error of the mean $\Ayy$ estimate as a function of cycle length when the inherent slope variation $\v{\slp} = 1\cdot10^{-15}$.\label{fig:SEAyy_varb}}
 \end{figure}
 
@@ -154,7 +159,7 @@ Since this is a sample proportion,
 \end{cases}
 \end{equation*}
 
-Again, from the defition
+Again, from the definition
 \[
 	N_t = N_{t-1}\bkt{1 + \slp[t-1]\Delta t}.
 \]
@@ -165,19 +170,21 @@ Therefore,
 \end{equation}
 where, for the parameters of Table~\ref{tbl:Param}, $\v{\slp[0]} \approx 8\cdot10^{-16}$.
 
-%Suppose the target dissipates randomly, at an average rate $r = 10\sfrac{\%}{day} = 1.16\cdot10^{-6}\sfrac{1}{sec}$, and with a standard deviation equal $r$:
-%\[
-%	\Thick[t] = \Thick[t-1](1-\alpha_t),~ \alpha_t\sim N(r,r).
-%\]
-%
-%Then the slope
-%\[
-%	\slp[t] = \nu\CS[tot]\Thick[t] = \slp[0]\prod_{i=1}^{t-1}(1-\alpha_i),
-%\]	
-%and we can estimate $\bkt{\v{\slp}}(h) = \sfrac 1h \sum_{i=1}^{h}(\slp[i] - \avg{\slp})^2$.
-%
-%\begin{figure}
-%\includegraphics[scale=1]{varb_ThickDissip}
-%\end{figure}
+\subsection{The strange case of the lost power}
+Suppose the target dissipates randomly, at an average rate $r = 10\sfrac{\%}{day} = 1.16\cdot10^{-6}\sfrac{1}{sec}$, and with a standard deviation equal $r$:
+\[
+	\Thick[t] = \Thick[t-1](1-\alpha_t),~ \alpha_t\sim N(r,r).
+\]
+
+Then the slope
+\[
+	\slp[t] = \nu\CS[tot]\Thick[t] = \slp[0]\prod_{i=1}^{t-1}(1-\alpha_i),
+\]	
+and we can estimate $\bkt{\v{\slp}}(h) = \sfrac 1h \sum_{i=1}^{h}(\slp[i] - \avg{\slp})^2$. As one can see from Figure~\ref{fig:varB_TD}, the variance doesn't exceed $1\cdot10^{-16}$, validating our estimates.
+
+\begin{figure}
+\includegraphics[scale=1]{varB_DissipThick}
+\caption{The growth of the slope dispersion due to stochastic target dissipation.\label{fig:varB_TD}}
+\end{figure}
 
 \end{document}

@@ -128,13 +128,10 @@ In the 2012 experiment, the beam and the target both consisted of unpolarized pr
 \caption{Average beam current as a function of time.}
 \end{figure} 
 
-%The measurements were taken with a Beam Current Transformer (BCT). Based on inter-cycle data (baseline), it was concluded that the BCT offset systematically drifted toward zero by approximately 3.5 \ADCcode[s] per cycle during the cycles of interest.
-
-
 
 \section{Estimation of slope}
 
-To make correct slope estimates, we subtract the offset $\Delta$ from the data. This is done  because
+In order to correctly estimate a cycle's slope, we subtract the BCT offset $\Delta$ from the data. This is done  because
 \begin{align*}
 	\tilde{\slp} &= \frac{\td\ln \tilde{I}_t}{\td t} 
 				  = \frac{1}{\tilde{I}_t}\frac{\td \tilde{I}_t}{\td t}, 
@@ -145,38 +142,31 @@ To make correct slope estimates, we subtract the offset $\Delta$ from the data. 
 	\lambda_t	&= {I_0}^{-1}\cdot \Delta_t\cdot\exp\bkt{-\slp\cdot t}.
 \end{align*}
 
-In the favorable case of a constant offset, it still must be removed in order to have a constant slope to estimate. A time-dependent offset violates the exogeneity assumption, and hence biases the slope estimate. At this stage, estimation was done assuming offset was constant within a cycle, and only changed from cycle to cycle.
-
-%Since we did not have baseline data for two cycles, their offsets were estimated assuming a linear drift and fitting the cycles' baseline medians (FIG.~\ref{fig:OffsetModel}). 
-%\begin{figure}[h]
-%\includegraphics[scale=\scl]{img/Offset_model_Common_GAM.eps}
-%\caption{The median current before a cycle as a function of cycle number, used as estimates of the data offset. The offsets for cycles 969 and 971 (red) were estimated via a linear fit (dotted line).\label{fig:OffsetModel}}
-%\end{figure}
+Even a constant offset must be removed in order to have a constant slope to estimate. The presence of an offset (let alone a time-dependent one) violates the exogeneity assumption, and hence biases the estimate. At this stage, estimation was done assuming offset was constant within a cycle, and its value was estimated as the median of the post-cycle current.
 
 \begin{table}
 \centering
 \begin{threeparttable}
 	\caption{Characteristics of a typical cycle.\label{tbl:CycleChars}}
-	\begin{tabular}{lllr}
+	\begin{tabular}{llr}
 	\hline\hline
-	Charactetistic	& Test 					& Effect size	& P-value\tnote{a}\\
+	Charactetistic	& Test 					& P-value\\
 	\hline
-	Linearity 		& Harvey-Collier		& 0.8			& 0\% \\
-	-				& Rainbow				& 0.06			& 10\% \\
-	Constant slope	& Chow\tnote{b}		 	&				& 100\% \\
-	-				& Moving estimates		&				& 1\% \\
-	Homoskedasticity& Breusch-Pagan 		&				& 17\% \\
-	Autocorrelation & Durbin-Watson			&				& 0\% \\
+	Linearity 		& Harvey-Collier		& 0\% \\
+	-				& Rainbow				& 0\% \\
+	Constant slope	& Chow\tnote{a}		 	& 100\% \\
+	-				& Moving estimates		& 1\% \\
+	Homoskedasticity& Breusch-Pagan 		& 0\% \\
+	Autocorrelation & Durbin-Watson			& 0\% \\
 	\hline\hline
 	\end{tabular}
 	\begin{tablenotes}
-		\item[a]{The p-value of the effect size.}
-		\item[b]{The Chow test was performed at every point in the fitting range. The average of F-statistics is used as the test statistic.}
+		\item[a]{The Chow test was performed at every point in the fitting range. The average of F-statistics is used as the test statistic.}
 	\end{tablenotes}
 \end{threeparttable}
 \end{table}
 
-Each cycle's data were subtracted its respective offset, and fitted a linear model via the ordinary least squares method. The models' reduced chi-squares deviate from one in the fourth decimal place; however, one should note that the data do not pass linearity tests, and are likely to have structural slope changes as well (see TABLE~\ref{tbl:CycleChars}). Since the model residuals exhibit serial correlation (FIG.~\ref{fig:Run969}), the slope estimates' standard errors are estimated with robust estimators.
+After subtracting the offset, the linear model $\ln I_t = \ln I_0 + \slp t +\epsilon_t$ is fitted via the ordinary least squares method. The reduced chi-squares camputed from model residuals deviate from one starting from the fourth decimal place; however, one should note that the data do not pass linearity tests, and are likely to have structural slope changes as well (see TABLE~\ref{tbl:CycleChars}). Since the model residuals exhibit serial correlation (FIG.~\ref{fig:Run969}), the slope estimates' standard errors are estimated with robust estimators.
 
 \begin{figure}
 \centering
@@ -197,7 +187,7 @@ Each cycle's data were subtracted its respective offset, and fitted a linear mod
 
 \section{Estimation of cross section}
 
-In estimating cross section, only the estimates from adjacent cycles are used. This is done to minimize the effect of drifts of environmental variables such as target thickness, which is estimated to increase by $0.5~ \sfrac{\%}{\mathrm{hour}}$. (The thickness by which the slope differences are divided, assumed constant, was provided by a Schottky measurement.)
+In estimating cross section, we used only the estimates from adjacent cycles. This was done to minimize the effect of drifts of environmental variables such as target thickness, which is estimated to increase by $0.5~ \sfrac{\%}{\mathrm{hour}}$. (The thickness by which the slope differences are divided, assumed constant, was provided by a Schottky measurement.)
 
 This reduces the number of estimates from 20 to seven. As can be observed in FIG.~\ref{fig:SlpOnI02012}, the biggest predictor of slope is beam current. It follows then that when obtainig a cross section estimate, the difference in the involved estimates' beam intensities has to be taken into account. We do that by first fitting the cycle slopes on the initial beam currents, and 
 
@@ -205,8 +195,6 @@ This reduces the number of estimates from 20 to seven. As can be observed in FIG
 \includegraphics[scale=\scl]{img/Slope_VS_IniCurrent.eps}
 \caption{Slope estimates plotted against initial beam current.\label{fig:SlpOnI02012}}
 \end{figure}
-
-%, of which three are deemed unsound according to Tukey's range test (with the range parameter corresponding to ten standard deviations). 
 
 An estimate of a cross section estimate's standard error (SE) is made by adding the squared standard errors of the paired slopes, not taking account of the covariance term:
 \begin{equation}
@@ -261,7 +249,7 @@ On			& 4			& $-1.20\cdot 10^{-4}$				& $1\cdot 10^{-6}$ \\
 \end{tabular}
 \end{table}
 
-Our best estimate for cross section is $507 \pm 7$ a.u. 
+Our best estimate for the $pp$ cross section is $507 \pm 7$ a.u. 
 
 \begin{figure}
 \begin{subfigure}{.5\textwidth}

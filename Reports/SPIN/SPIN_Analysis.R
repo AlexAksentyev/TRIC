@@ -53,17 +53,11 @@ library(lmtest); library(strucchange); library(compute.es)
 f = log(BCT1)~uts
 Run969 <- slice(Run969, .sub[1]:.sub[2])
 
-.es <- function(ht, type){
-  stat = ht$statistic; n1 = ht$parameter; if(length(n1)>1) n2 <- n1[2] else n2 <- n1; n1 <- n1[1]
-  match.fun(type)(stat, n1, n2, verbose=FALSE) -> tht
-  print(c("Cohen's d" = tht$d, "P-value" = tht$pval.d));cat("\n")
-}
-
-harvtest(f, data=Run969) %>% .es("tes")
-raintest(f, data=Run969) %>% .es("fes")
-Fstats(f, data=Run969) %>% .es("fes")
+harvtest(f, data=Run969) 
+raintest(f, data=Run969) 
+sctest(f, data=Run969, type="aveF")
 sctest(f, data=Run969, type="ME")
-bptest(f, data=Run969)
+bptest(f, data=Run969) 
 dwtest(f, data=Run969)
 
 #### cross section ####

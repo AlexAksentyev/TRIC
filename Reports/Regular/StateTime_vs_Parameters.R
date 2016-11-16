@@ -43,14 +43,14 @@ acK = 1 #HAC correction
 
 library(plyr)
 ldply(Precision, function(p) BeamTimeWrap(rsd, p)) %>% melt(variable.name="ResSD", value.name="H") %>% 
-  cbind(data.frame("Prec" = rep(Precision, times=length(rsd)))) -> Hplot; head(hplot)
+  cbind(data.frame("Prec" = rep(Precision, times=length(rsd)))) -> Hplot
 
 ggplot(Hplot, aes(Prec, H/86400, col=ResSD)) + geom_line() +
   scale_x_log10(name=expression(sigma[EA[yy]]~"(a.u.)"), minor_breaks=Precision, labels=fancy_scientific) + 
   scale_y_log10(name="H (days)", minor_breaks=(c(1:10) %o% 10^(-4:4))) + 
   guides(col=guide_legend(title="Resolution")) + 
-  theme_minimal() +
-  theme(panel.grid.minor = element_line(colour = "gray", linetype = "dashed"), legend.position="top")
+  theme_bw() +
+  theme(panel.grid.minor = element_line(), legend.position="top")
 
 ## variable slp
 vmAe <- function(var.meas,var.slope,h){
@@ -65,13 +65,13 @@ hbest = (24*Tint* vd/vb)^(1/3)
 h = seq(250, 3600, by = 1)
 
 ldply(h, function(h) sqrt(vmAe(vd, vb,h))) %>% melt(variable.name="Resolution",value.name="SE") %>%
-  cbind(data.frame("h" = rep(h, times=length(vd)))) -> SEAM; head(SEAM)
+  cbind(data.frame("h" = rep(h, times=length(vd)))) -> SEAM
 
 ggplot(SEAM, aes(h, SE, col=Resolution)) + geom_line() +
   scale_y_log10(name=expression(sigma[EA[yy]]~"(a.u.)")) +
   scale_x_continuous(name="h (sec)", minor_breaks = seq(200,3600, by=100)) +
-  theme_minimal() +
-  theme(legend.position="top",panel.grid.minor = element_line(colour = "gray", linetype = "dashed"))
+  theme_bw() +
+  theme(legend.position="top",panel.grid.minor = element_line())
 
 daply(SEAM, "Resolution", function(x) min(x$SE)) -> SEBE
 
@@ -83,23 +83,23 @@ library(MASS)
 h = 3600
 v = array(NA,h)
 for(n in 1:h){
-  thick <- d*c(Rho.on , Rho.on * cumprod(1 - rnorm(n-1, mean = 0*rate, sd = 1*rate)))
+  thick <- d*c(Rho.on , Rho.on * cumprod(1 - rnorm(n-1, mean = 1*rate, sd = 1*rate)))
   lam = Sigma0*nu*thick
   v[n] = var(lam)
 }
 
 v<-v[-1]; n = 2:h
-v.fit = rlm(v~0+n)
+# v.fit = rlm(v~0+n)
 plot(n,v,log="y",
      type="l", 
      xlab = "h (sec)", 
      ylab = expression(sigma[beta]^2~"(h)")
 )
-lines(v.fit$fitted.values,col="red",lwd = 3)
+# lines(v.fit$fitted.values,col="red",lwd = 3)
 # abline(h=0, lty=3, col="magenta")
 # legend(
 #   "topleft", bty="n",
-#   legend = c(paste("dissipation rate =", formatC(rate*100,3,format="e"), "*(0 +- 1) %/sec"),
+#   legend = c(paste("dissipation rate =", formatC(rate*100,3,format="e"), "*(1 +- 1) %/sec"),
 #              paste("v(h) =", formatC(v.fit$coefficients[[1]],2,format="e"), "*h"))
 # )
 

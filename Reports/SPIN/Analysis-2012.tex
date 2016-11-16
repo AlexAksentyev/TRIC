@@ -166,7 +166,7 @@ Even a constant offset must be removed in order to have a constant slope to esti
 \end{threeparttable}
 \end{table}
 
-After subtracting the offset, the linear model $\ln I_t = \ln I_0 + \slp t +\epsilon_t$ is fitted via the ordinary least squares method. The reduced chi-squares camputed from model residuals deviate from one starting from the fourth decimal place; however, one should note that the data do not pass linearity tests, and are likely to have structural slope changes as well (see TABLE~\ref{tbl:CycleChars}). Since the model residuals exhibit serial correlation (FIG.~\ref{fig:Run969}), the slope estimates' standard errors are estimated with robust estimators.
+After subtracting the offset, the linear model $\ln I_t = \ln I_0 + \slp t +\epsilon_t$ is fitted via the ordinary least squares method. The reduced chi-squares camputed from model residuals deviate from one starting from the fourth decimal place; however, one should note that the data do not pass linearity tests, and are likely to have structural slope changes as well (see TABLE~\ref{tbl:CycleChars}). Because the model residuals exhibit serial correlation (FIG.~\ref{fig:Run969}), the slope estimates' standard errors are estimated with robust estimators.
 
 \begin{figure}
 \centering
@@ -187,13 +187,20 @@ After subtracting the offset, the linear model $\ln I_t = \ln I_0 + \slp t +\eps
 
 \section{Estimation of cross section}
 
-In estimating cross section, we used only the estimates from adjacent cycles. This was done to minimize the effect of drifts of environmental variables such as target thickness, which is estimated to increase by $0.5~ \sfrac{\%}{\mathrm{hour}}$. (The thickness by which the slope differences are divided, assumed constant, was provided by a Schottky measurement.)
+In estimating the cross section, we used only the estimates from adjacent cycles. This was done to minimize the effect of drifts of environmental variables such as target thickness, which is estimated to increase by $0.5~ \sfrac{\%}{\mathrm{hour}}$. (The thickness by which the slope differences are divided, assumed constant, was provided by a Schottky measurement.)
 
-This reduces the number of estimates from 20 to seven. As can be observed in FIG.~\ref{fig:SlpOnI02012}, the biggest predictor of slope is beam current. It follows then that when obtainig a cross section estimate, the difference in the involved estimates' beam intensities has to be taken into account. We do that by first fitting the cycle slopes on the initial beam currents, and 
+This reduces the number of estimates from 20 to seven. By looking at FIG.~\ref{fig:SlpOnI02016}, one might hypothesize that beam current plays a significant role in predicting the slope.
 
 \begin{figure}
+\begin{subfigure}{.5\textwidth}
 \includegraphics[scale=\scl]{img/Slope_VS_IniCurrent.eps}
-\caption{Slope estimates plotted against initial beam current.\label{fig:SlpOnI02012}}
+\caption{Year 2012.}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+\includegraphics[scale=\scl]{img/Slope_VS_IniCurrent_2016.eps}
+\caption{Year 2016.\label{fig:SlpOnI02016}}
+\end{subfigure}
+\caption{Slope estimates plotted against initial beam current.}
 \end{figure}
 
 An estimate of a cross section estimate's standard error (SE) is made by adding the squared standard errors of the paired slopes, not taking account of the covariance term:

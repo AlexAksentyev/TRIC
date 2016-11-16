@@ -147,9 +147,11 @@ slopes12 %>% group_by(Targ) %>%
   )
 
 ggplot(slopes16, aes(I0, Estimate, col=B.Spin, shape=FABS)) + geom_point() + 
+  scale_color_manual(name="Beam spin", breaks=c("U","D", "N"), labels=c("Up","Down","Null"), values=c("red", "black","blue")) + 
   facet_grid(B.Spin~.) + theme_minimal()
 
-ggplot(slopes12, aes(I0, Estimate, col=Targ)) + geom_point() + geom_text(aes(label=Run, vjust=1.35, hjust=-.25))+
+ggplot(slopes12, aes(I0, Estimate, col=Targ)) + geom_pointrange(aes(ymin=Estimate-SE,ymax=Estimate+SE)) + 
+  geom_text(aes(label=Run, vjust=1.35, hjust=0))+
   scale_y_continuous(labels=fancy_scientific)+
   facet_grid(Targ~., scale="free_y", space="free_y", label=as_labeller(c("Chopper"="Off", "On"="On"))) + 
   theme_minimal() + theme(legend.position="top") +

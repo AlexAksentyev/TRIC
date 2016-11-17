@@ -146,9 +146,18 @@ slopes12 %>% group_by(Targ) %>%
     SE = SD/sqrt(NUM)
   )
 
-ggplot(slopes16, aes(I0, Estimate, col=B.Spin, shape=FABS)) + geom_point() + 
+ggplot(slopes16, aes(Clock, Estimate_adj, col=B.Spin, shape=FABS)) + geom_point() + 
   scale_color_manual(name="Beam spin", breaks=c("U","D", "N"), labels=c("Up","Down","Null"), values=c("red", "black","blue")) + 
+  scale_shape_discrete(name="Target state", breaks=c("F","T"), labels=c("Off","On")) +
   facet_grid(B.Spin~.) + theme_minimal()
+
+I0_common = median(slopes16$I0)
+slopes16 %>% ddply("B.Spin", function(s){
+  lm(Estimate ~ I0, data=s)->mI0
+  coef(mI0) -> .g; vcov(mI0)[2,2] -> .vg
+  
+  mutate(s, DI0 = I0_common - I0, Estimate_adj = Estimate + .g*DI0, SE_adj = sqrt(SE^2 + DI0^2*.vg))
+}) -> slopes16
 
 ggplot(slopes12, aes(I0, Estimate, col=Targ)) + geom_pointrange(aes(ymin=Estimate-SE,ymax=Estimate+SE)) + 
   geom_text(aes(label=Run, vjust=1.35, hjust=0))+

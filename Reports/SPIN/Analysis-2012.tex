@@ -116,6 +116,8 @@ We have analyzed two data sets: one was measured in 2012, the other in 2016.
 
 In the 2012 experiment, the beam and the target both consisted of unpolarized protons; the beam was cooled using electron cooling and bunched by the barrier bucket; the cycles lasted for one hour each. In the 2016 experiment the proton beam was scattered on the deuteron target, both polarized; the beam had undergone RF-bunching and electron-cooling; the cycles lasted for 12 minutes, the first half of which the target was turned on, in the second off; the beam spin state alternated from spin up to spin down through no spin, while the target spin state remained constant (spin up). 
 
+In FIG.~\ref{fig:SlpOnI0} we plotted the dependence of the slope estimate on the initial beam current, which was estimated by exponentiating the intercept of the fitted model. (If the initial current is also estimated as the median value of current within the second cycle minute, the two estimators are essentially perfectly correlated.) The figure for the 2016 estimates suggests there might be a dependence of the estimated slope on the initial beam current, although the p-values of the slopes of the fitted lines (obtained by robust least squares) are not statistically significant, with only the slope for the null spin state and the target turned off being significant at the 10\% confidence level (the p-value being 6\%). However, one might notice that the effect of the initial current is stronger for the target-off slopes (the difference is especially noticeable in the unpolarized case), affirming the hypothesis that the beam current played a significant role in the experimental performance.
+
 \begin{figure}[h]
 \begin{subfigure}{.5\textwidth}
 \includegraphics[scale=\scl]{img/Cycles2012.eps}
@@ -189,17 +191,6 @@ After subtracting the offset, the linear model $\ln I_t = \ln I_0 + \slp t +\eps
 
 In estimating the cross section, we used only the estimates from adjacent cycles. This was done to minimize the effect of drifts of environmental variables such as target thickness, which is estimated to increase by $0.5~ \sfrac{\%}{\mathrm{hour}}$. (The thickness by which the slope differences are divided, assumed constant, was provided by a Schottky measurement.) This reduces the number of estimates from 20 to seven. 
 
-In FIG.~\ref{fig:SlpOnI02016} we plotted the dependence of the slope estimate on the initial beam current, which was estimated by exponentiating the intercept of the fitted model. (If the initial current is also estimated as the median value of current within the second cycle minute, the two estimators are essentially perfectly correlated.) The figure suggests there might be dependence of the estimated slope on the initial beam current; and indeed, when the estimates are fitted with time and initial current used as predictors, the t-test for equality to zero for the beam slope yields p-values less that 1\% for the up and null states, and 5\% for the down state, whereas the time slope's p-value is over 10\% in all cases. The dependency in current is twice as pronounced in the null state, as in the up and down states.
-
-This suggests that to estimate the cross section, one must first adjust the slopes to the same initial current. We do the adjustment as follows:
-\[
-	\slp*' = \slp* + \gamma(\tilde I_0 - I_0),
-\]
-where $I_0$ is the initial beam current of the relevant cycle, $\tilde I_0$ is some arbitratily chosen current common for all cycles (we take the median initial current), and $\gamma$ is the slope from the model
-\[
-	\slp* = \slp*[0] + \gamma I_0.
-\]
-
 \begin{figure}
 \begin{subfigure}{.5\textwidth}
 \includegraphics[scale=\scl]{img/Slope_VS_IniCurrent.eps}
@@ -209,7 +200,7 @@ where $I_0$ is the initial beam current of the relevant cycle, $\tilde I_0$ is s
 \includegraphics[scale=\scl]{img/Slope_VS_IniCurrent_2016.eps}
 \caption{Year 2016.\label{fig:SlpOnI02016}}
 \end{subfigure}
-\caption{Slope estimates plotted against initial beam current estimated as the exponentiated intercept of the fitted model.}
+\caption{Slope estimates plotted against initial beam current estimated as the exponentiated intercept of the fitted model.\label{fig:SlpOnI0}}
 \end{figure}
 
 An estimate of a cross section estimate's standard error (SE) is made by adding the squared standard errors of the paired slopes, not taking account of the covariance term:

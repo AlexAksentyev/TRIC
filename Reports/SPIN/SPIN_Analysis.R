@@ -148,22 +148,11 @@ slopes12 %>% group_by(Targ) %>%
 
 slopes <- slopes16
 
-ggplot(slopes, aes(Clock, Estimate, col=B.Spin, shape=FABS)) + geom_point() + 
+ggplot(slopes, aes(Clock, Estimate_oft, col=B.Spin, shape=FABS)) + geom_point() + 
   scale_color_manual(name="Beam spin", breaks=c("U","D", "N"), labels=c("Up","Down","Null"), values=c("red", "blue","black")) + 
   scale_shape_discrete(name="Target state", breaks=c("F","T"), labels=c("Off","On")) +
-  geom_smooth(method="rlm", se=FALSE) +
+  geom_smooth(method="lm", se=FALSE, aes(linetype=FABS)) +
   facet_grid(B.Spin~.) + theme_minimal()
-
-I0_common = median(slopes16$I0)
-slopes %>% ddply(.(B.Spin), function(s){
-  lm(Estimate ~ I0, data=s)->mI0
-  coef(mI0) -> .g; vcov(mI0)[2,2] -> .vg
-  mutate(s, DI0 = I0_common - I0, Estimate_old = Estimate, Estimate = Estimate + .g*DI0, SE_old = SE, SE = sqrt(SE^2 + DI0^2*.vg))
-}) -> slopes
-
-ggplot(slopes, aes(Estimate_old, Estimate, col=B.Spin)) + geom_point() + 
-  facet_grid(FABS~B.Spin, scale="free_y",space="free_x") + theme_minimal() + 
-  geom_smooth(method="lm")
 
 slopes %>% ddply("Unit", function(s){
   with(s, data.frame(
@@ -174,6 +163,9 @@ slopes %>% ddply("Unit", function(s){
 
 ggplot(x, aes(OnE, OffE, col=B.Spin)) + geom_point() + facet_grid(B.Spin~.) + theme_minimal() +
   geom_smooth(method="gam")
+
+filter(slopes, B.Spin == "N") %>% daply("FABS", function(s) (lm(Estimate~1, data=s)%>% coef)[1]) -> nullscat
+slopes%>%ddply("FABS", function(s) mutate(s, Estimate_oft = Estimate - nullscat[s$FABS[1]])) -> slopes
 
 ggplot(slopes12, aes(I0, Estimate, col=Targ)) + geom_pointrange(aes(ymin=Estimate-SE,ymax=Estimate+SE)) + 
   geom_text(aes(label=Run, vjust=1.35, hjust=0))+

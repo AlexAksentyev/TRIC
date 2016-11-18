@@ -13,6 +13,10 @@
 \usepackage{xparse}
 \usepackage{xfrac}
 
+\usepackage{threeparttable}
+\usepackage{url}
+\usepackage{hyperref}
+
 % SYNTACTIC DEFINITIONS
 \newcommand{\err}{\epsilon}
 
@@ -26,8 +30,13 @@
 \DeclareDocumentCommand{\bkt}{sm}{\IfBooleanTF{#1}{\left[ #2 \right]}{\left(#2\right)}}
 \newcommand{\td}{\mathrm{d}}
 
-\DeclareDocumentCommand{\Ayy}{sO{}}{\IfBooleanTF{#1}{\hat{A}_{y,y}}{A_{y,y}}^{#2}}
+\DeclareDocumentCommand{\A}{sO{}}{\IfBooleanT{#1}{\hat}A_{#2}}
+\DeclareDocumentCommand{\Ayy}{sO{}}{\IfBooleanT{#1}{\hat}A_{y,y}}
+\DeclareDocumentCommand{\Ayxz}{s}{\IfBooleanT{#1}{\hat}A_{y,xz}}
+
 \DeclareDocumentCommand{\D}{s}{\IfBooleanTF{#1}{\hat{D}}{D}}
 \DeclareDocumentCommand{\R}{s}{\IfBooleanTF{#1}{\hat{R}}{R}}
 \DeclareDocumentCommand{\DP}{s}{\IfBooleanTF{#1}{(P^+ - P^-)}{\Delta P}}
 \DeclareDocumentCommand{\SP}{s}{\IfBooleanTF{#1}{(P^+ + P^-)}{\Sigma P}}
+
+\newcommand{\Dim}[1]{\mathrm{#1}}

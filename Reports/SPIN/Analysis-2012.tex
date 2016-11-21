@@ -32,7 +32,7 @@
 
 \begin{document}
 \begin{abstractname}
-We summarize a procedure of estimating unpolarized $pp$ cross section from beam current data in a transmission experiment. The methodology presented is grounded in the use of the optical theorem.
+We summarize a procedure for estimating unpolarized $pp$ cross section from beam current data in a transmission experiment. The methodology presented is grounded in the use of the optical theorem.
 \end{abstractname}
 
 \section{TRIC program}
@@ -81,9 +81,9 @@ The expression for the polarized beam loss is
 	\slp = -\nu\bkt{\CS[0](1 + \Ayy P_y^t P_y)\Thick[on] + \CS[x]\Thick[x]},
 \]
 from which an asymmetry estimate can be computed as the difference between the slopes with spin states \emph{up} and \emph{down}:
-\[
+\begin{equation}\label{eq:AyyEst}
 	\Ayy* = \frac{\slp*[on]^- - \slp*[on]^+}{\nu P_y^t\Delta P_y\cdot \CS[0]\Thick[on]}.
-\]
+\end{equation}
 
 \subsection{Statistics}
 
@@ -168,14 +168,14 @@ Even a constant offset must be removed in order to have a constant slope to esti
 \end{threeparttable}
 \end{table}
 
-After subtracting the offset, the linear model $\ln I_t = \ln I_0 + \slp t +\epsilon_t$ is fitted via the ordinary least squares method. The reduced chi-squares camputed from model residuals deviate from one starting from the fourth decimal place; however, one should note that the data do not pass linearity tests, and are likely to have structural slope changes as well (see TABLE~\ref{tbl:CycleChars}). Because the model residuals exhibit serial correlation (FIG.~\ref{fig:Run969}), the slope estimates' standard errors are estimated with robust estimators.
+After subtracting the offset, the linear model $\ln I_t = \ln I_0 + \slp t +\epsilon_t$ is fitted via the ordinary least squares method. The reduced chi-squares computed from model residuals deviate from one starting from the fourth decimal place; however, one should note that the data do not pass linearity tests, and are likely to have structural slope changes as well (see TABLE~\ref{tbl:CycleChars}). Because the model residuals exhibit serial correlation (FIG.~\ref{fig:Run969}), the slope estimates' standard errors are estimated with robust estimators. This is done for both data sets.
 
 \begin{figure}
 \centering
-\begin{subfigure}{.5\textwidth}
-\includegraphics[scale=\scl]{img/Run969_Data_AND_Fit.eps}
-\caption{Logarithm of measurement data as a function of time. The fitted line is colored red, the gray dashed lines mark the fit region.}
-\end{subfigure}
+%\begin{subfigure}{.5\textwidth}
+%\includegraphics[scale=\scl]{img/Run969_Data_AND_Fit.eps}
+%\caption{Logarithm of measurement data as a function of time. The fitted line is colored red, the gray dashed lines mark the fit region.}
+%\end{subfigure}
 \begin{subfigure}{.5\textwidth}
 \includegraphics[scale=\scl]{img/Run969_Res_VS_Fit.eps}
 \caption{Residuals vs fitted values.}
@@ -188,8 +188,7 @@ After subtracting the offset, the linear model $\ln I_t = \ln I_0 + \slp t +\eps
 \end{figure}
 
 \section{Estimation of cross section}
-
-In estimating the cross section, we used only the estimates from adjacent cycles. This was done to minimize the effect of drifts of environmental variables such as target thickness, which is estimated to increase by $0.5~ \sfrac{\%}{\mathrm{hour}}$. (The thickness by which the slope differences are divided, assumed constant, was provided by a Schottky measurement.) This reduces the number of estimates from 20 to seven. 
+In estimating the cross section, we used only the estimates from adjacent cycles. This was done to minimize the effect of drifts of environmental variables such as target thickness, which is estimated to increase by $0.5~ \sfrac{\%}{\mathrm{hour}}$. (The thickness by which the slope differences are divided, assumed constant, was provided by a Schottky measurement.) Those estimates whose computation involved at least one slope which does not pass Tukey's range test are labeled unsound.
 
 \begin{figure}
 \begin{subfigure}{.5\textwidth}
@@ -208,11 +207,11 @@ An estimate of a cross section estimate's standard error (SE) is made by adding 
 	\SE*{\CS*[0]} = \sqrt{\SE*{\slp*[off]}^2 + \SE*{\slp*[on]}^2}.
 \end{equation}
 
-This is done so because depending on whether an on-slope is paired with the preceding or succeding off-slope, the covariance term changes sign. Since there's no criterion favoring either of the two mappings, the covariance term was omitted.
+This is done so because depending on whether an on-slope is paired with the preceding or succeeding off-slope, the covariance term changes sign. Since there's no criterion favoring either of the two mappings, the covariance term was omitted.
 
 \section{Estimation of asymmetry}
 
-\pagebreak
+The asymmetry was estimated as in equation~\eqref{eq:AyyEst}. In that expression, we used the target thickness as estimated using the Schottky measurements method~\cite{Stein} ($1.1\cdot 10^{14}$ cm$^{-2}$), and our own best estimate for the unpolarized cross section (411 mb, see TABLE~\ref{tbl:CS-all}).\\
 
 \section{Results}
 \begin{table}
@@ -237,42 +236,76 @@ Year						& Soundness		& Closeness		& \#		& Mean\tnote{a} (a.u.)	& SE (a.u.) \\
 \hline\hline
 \end{tabular}
 \begin{tablenotes}
-\item[a] The value in parenteses is the weighted mean with measurements' variance estimates used as weights.
+\item[a] The value in parentheses is the weighted mean with measurements' variance estimates used as weights.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
 The summary statistics of cross section estimates, grouped by soundness and closeness of the slope estimates they are based on, are presented in TABLE~\ref{tbl:CS-all} and FIG.~\ref{fig:CS-all}; the slopes themselves are shown in FIG.~\ref{fig:Slopes} and summarized in TABLE~\ref{tbl:Slp-big}. Group density estimates with the rectangular kernel are shown in FIG.~\ref{fig:CS-dens}.
 
+\newcommand{\vp}[2]{#1\cdot10^{#2}}
 \begin{table}
 \centering
 \caption{Slope summary statistics. \label{tbl:Slp-big}}
-\begin{tabular}{llrr}
-\hline\hline
-Target		& \#		& Mean (a.u.)						& SE (a.u.) \\
-\hline
-Off			& 5			& $-9.04\cdot 10^{-5}$				& $6\cdot 10^{-7}$  \\
-On			& 4			& $-1.20\cdot 10^{-4}$				& $1\cdot 10^{-6}$ \\
+\begin{tabular}{c|lllllrr}
+	\hline\hline
+	        Year          & Target               & Spin & \# & Mean (a.u.)      & SE (a.u.)    \\ \hline
+	\multirow{2}{*}{2012} & Off                  & Null & 5  & $\vp{-9.04}{-5}$ & $\vp{6}{-7}$ \\
+	                      & On                   & Null & 4  & $\vp{-1.20}{-4}$ & $\vp{1}{-6}$ \\ \hline
+	\multirow{6}{*}{2016} & \multirow{3}{*}{Off} & Up   & 12 & $\vp{-2.26}{-4}$ & $\vp{7}{-6}$ \\
+	                      &                      & Down & 12 & $\vp{-2.16}{-4}$ & $\vp{8}{-6}$ \\
+	                      &                      & Null & 12 & $\vp{-2.12}{-4}$ & $\vp{9}{-6}$ \\
+	                      & \multirow{3}{*}{On}  & Up   & 12 & $\vp{-2.51}{-4}$ & $\vp{4}{-6}$ \\
+	                      &                      & Down & 12 & $\vp{-2.53}{-4}$ & $\vp{5}{-6}$ \\
+	                      &                      & Null & 12 & $\vp{-2.54}{-4}$ & $\vp{6}{-6}$ 
 \end{tabular}
 \end{table}
 
-Our best estimate for the $pp$ cross section is $507 \pm 7$ a.u. 
+Our best estimate for the $pp$ cross section is $507 \pm 7$ a.u., that for the $pd$ reaction is $411 \pm 48$. The asymmetry $\Ayy = \vp{(5 \pm 3)}{-2}$. %FIG.~\ref{fig:AyyDensity} shows its Gaussian kernel density estimate.
+
+%\begin{figure}
+%\centering
+%	\includegraphics[scale=\scl]{img/Ayy_dens.eps}
+%\caption{Gaussian kernel density estimate of the double-polarized cross section asymmetry in proton-deuteron scattering.\label{fig:AyyDensity}}
+%\end{figure}
 
 \begin{figure}
-\begin{subfigure}{.5\textwidth}
-\includegraphics[scale=\scl]{img/Cross-Section2012_all.eps}
-\caption{Cross section estimates plotted against their off-cycle number.\label{fig:CS-all}}
-\end{subfigure}
-\begin{subfigure}{.5\textwidth}
-\includegraphics[scale=\scl]{img/Slopes-2012_big.eps}
-\caption{Slope estimates as a function of time.\label{fig:Slopes}}
-\end{subfigure}
-\begin{subfigure}{.5\textwidth}
-\includegraphics[scale=\scl]{img/Cross-Section2012_dens.eps}
-\caption{Cross section density estimates for each category of results.\label{fig:CS-dens}}
-\end{subfigure}
-\caption{Results.}
+\centering
+	\begin{subfigure}{.5\textwidth}
+		\includegraphics[scale=\scl]{img/Cross-Section2012_all.eps}
+		\caption{2012.}
+	\end{subfigure}
+		\begin{subfigure}{.5\textwidth}
+			\includegraphics[scale=\scl]{img/CS0mb2016_all.eps}
+			\caption{2016.}
+		\end{subfigure}
+\caption{Cross section estimates plotted against their off-cycle number.}
 \end{figure}
+\begin{figure}
+	\centering
+\begin{subfigure}{.5\textwidth}
+	\includegraphics[scale=\scl]{img/Slopes-2012_big.eps}
+	\caption{2012.}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+	\includegraphics[scale=\scl]{img/Slopes2016_VS_Clock.eps}
+	\caption{2016.}
+\end{subfigure}
+\caption{Slope estimates as a function of time.\label{fig:SlopesVsTime}}
+\end{figure}
+\begin{figure}
+\centering
+	\begin{subfigure}[b]{.5\textwidth}
+		\includegraphics[scale=\scl]{img/Cross-Section2012_dens.eps}
+		\caption{2012.}
+	\end{subfigure}
+	\begin{subfigure}[b]{.5\textwidth}
+		\includegraphics[scale=\scl]{img/CS0mb2016_dens.eps}
+		\caption{2016.}
+	\end{subfigure}
+	\caption{Cross section density estimates for each category of results.\label{fig:CS-dens}}
+\end{figure}
+
 
 
 \begin{thebibliography}{9}
@@ -285,6 +318,9 @@ P.D. Eversheim, et al. ``Test of Time-Reversal Invariance in Proton-Deuteron Sca
 
 \bibitem{GaussMarkov}
 D.S.G. Pollock. ``Topics in Econometrics.'' %\url{http://www.le.ac.uk/users/dsgp1/COURSES/TOPICS/gausmkov.pdf}
+
+\bibitem{Stein}
+H. J. Stein, M. Hartmann, I. Keshelashvili, et al. ``Determination of target thickness and luminosity from beam energy losses.''
 
 \end{thebibliography}
 

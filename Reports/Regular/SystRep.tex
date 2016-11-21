@@ -1,0 +1,61 @@
+\documentclass{article}
+
+\usepackage{../repsty}
+
+\usepackage{paralist}
+\usepackage{soul}
+\usepackage{color}
+
+\begin{document}
+\title{Systematic Errors}
+\maketitle
+
+\section{Introduction}
+
+The Test of Time-Reversal Invariance experiment (TRIC) is a transmission experiment aimed at achieving an accuracy in the order of $10^{-6}$ in the estimate of a cross section asymmetry. For that purpose, a polarized charged particle beam is scattered on a polarized target, and the rate of decay of the beam current is measured, which is proportional to the total scattering cross section. The difference in the cross sections for two opposite polarized states is proportional to the sought-after asymmetry. If the asymmetry is zero, Time-Reversal Invariance holds.
+
+Here we will describe some possible problems with the experimental design that have to be overcome if one is to measure the asymmetry with a required accuracy.
+
+\section{The Design}
+In the following we describe the general idea of the experimental design of TRIC.
+
+A particle beam circulates in the accelerator ring. At every turn it is being scattered by the internal target at the rate $\CS[T]\Thick$, but there is also background loss happening at the rate $\CS[X]\Thick[X]$. (Notation: $\CS$ is the scattering cross section, $\Thick = \int_L n(z)\td z$ is the thickness of the scatterer, $L$ is the accelerator circumference.) At every turn the beam excites an active current transformer, the excitation signal is integrated, and the value of the average beam current is being recorded. 
+
+All of this boils down to the following formula for the measured signal:
+\[
+	I_t  = I_0 \cdot e^{-\nu\bkt{\CS[T]\Thick + \CS[X]\Thick[X]}\cdot t} \equiv I_0\cdot e^{\slp\cdot t},
+\]
+where $\nu$ is the circulation frequency.
+
+In TRIC, we use the deuterium target, and hence it has two polarization components: vector and tensor. The vector component $P^t_y$ aligns with the guiding magnetic field, as does the beam polarization (purely vector) $P_y$, and the tensor component $P^t_{xz}$ with the specially generated holding field.  The target cross section has the form
+\begin{equation}\label{eq:CrossSection}
+	\CS[T]^\pm = \CS[0]\cdot\bkt{1 + \Ayy P^t_y P^\pm + \Ayxz P^t_{xz} P^\pm}.
+\end{equation}
+
+The data are log-transformed, and the linear model $\ln I_t = \ln I_0 + \slp^\pm\cdot t + \err_t$ is fitted to it; the difference $\slp^- - \slp^+ = \nu\Thick\CS[0]\cdot\DP*\cdot\bkt{\Ayy P^t_y + \Ayxz P^t_{xz}}$. Ideally, the vector polarization component is $P^t_y = 0$, and we estimate the asymmetry as 
+\begin{equation}\label{eq:AyxzEstimator}
+\begin{cases}
+	\Ayxz* 		&= \bkt{\nu\Thick\CS[0]\DP P^t_{xz}}^{-1}\cdot\bkt{\slp*^- - \slp*^+}, \\
+	\SE{\Ayxz*} &= \bkt{\nu\Thick\CS[0]\DP P^t_{xz}}^{-1}\cdot\sqrt2\cdot\SE{\slp*}.
+\end{cases}
+\end{equation}
+ 
+\section{Design flaws}
+\subsection{Vector polarization}
+For the ideal TRIC experiment one must have at least one of the two conditions to hold:
+\begin{inparaenum}[1)]
+	\item either the injected ABS beam consists only of particles with spin states \hl{such-and-such}, or
+	\item the target chamber magnetic field does not have a vertical component.
+\end{inparaenum}
+
+Neither of the conditions are practically realizable, meaning that the vertical component of the target vector polarization is present. That means the estimator in~\eqref{eq:AyxzEstimator} must be corrected by subtracting a scaled estimate of $\Ayy$: 
+\[
+	\Ayxz* = C\Delta\slp* - \sfrac{P^t_y}{P^t_{xz}}\cdot\Ayy*.
+\]
+
+It also means the value of $\Ayy$ has to be estimated first, making TRIC a two-stage experiment.
+
+
+
+
+\end{document}

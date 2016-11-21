@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  18 NOV 2016 11:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  21 NOV 2016 10:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**StatRep.tex
-(./StatRep.tex
+**SystRep.tex
+(./SystRep.tex
 LaTeX2e <2014/05/01>
 Babel <3.9l> and hyphenation patterns for 11 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -587,58 +587,89 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \Ayy with sig. 'sO{}' on line 33.
+. Defining command \A with sig. 'sO{}' on line 33.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \D with sig. 's' on line 34.
+. Defining command \Ayy with sig. 'sO{}' on line 34.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \R with sig. 's' on line 35.
+. Defining command \Ayxz with sig. 's' on line 35.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \DP with sig. 's' on line 36.
+. Defining command \D with sig. 's' on line 37.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \SP with sig. 's' on line 37.
+. Defining command \R with sig. 's' on line 38.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DP with sig. 's' on line 39.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SP with sig. 's' on line 40.
 .................................................
 )
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \A with sig. 's' on line 6.
-.................................................
+(/usr/share/texlive/texmf-dist/tex/latex/paralist/paralist.sty
+Package: paralist 2013/06/09 v2.4 Extended list environments
+\pltopsep=\skip58
+\plpartopsep=\skip59
+\plitemsep=\skip60
+\plparsep=\skip61
+\pl@lab=\toks21
+)
+(/usr/share/texlive/texmf-dist/tex/latex/soul/soul.sty
+Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
+\SOUL@word=\toks22
+\SOUL@lasttoken=\toks23
+\SOUL@cmds=\toks24
+\SOUL@buffer=\toks25
+\SOUL@token=\toks26
+\SOUL@spaceskip=\skip62
+\SOUL@ttwidth=\dimen179
+\SOUL@uldp=\dimen180
+\SOUL@ulht=\dimen181
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2014/04/23 v1.1a Standard LaTeX Color (DPC)
 
-(./StatRep.aux)
-\openout1 = `StatRep.aux'.
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 137.
+) (./SystRep.aux)
+\openout1 = `SystRep.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 8.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 8.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 9.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 9.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -681,16 +712,16 @@ Package caption Info: End \AtBeginDocument code.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count150
-\scratchdimen=\dimen179
+\scratchdimen=\dimen182
 \scratchbox=\box46
 \nofMPsegments=\count151
 \nofMParguments=\count152
-\everyMPshowfont=\toks21
+\everyMPshowfont=\toks27
 \MPscratchCnt=\count153
-\MPscratchDim=\dimen180
+\MPscratchDim=\dimen183
 \MPnumerator=\count154
 \makeMPintoPDFobject=\count155
-\everyMPtoPDFconversion=\toks22
+\everyMPtoPDFconversion=\toks28
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -707,7 +738,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box47
-Package hyperref Info: Link coloring OFF on input line 8.
+Package hyperref Info: Link coloring OFF on input line 9.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -717,140 +748,72 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count156
 )
-LaTeX Info: Redefining \ref on input line 8.
-LaTeX Info: Redefining \pageref on input line 8.
-LaTeX Info: Redefining \nameref on input line 8.
+LaTeX Info: Redefining \ref on input line 9.
+LaTeX Info: Redefining \pageref on input line 9.
+LaTeX Info: Redefining \nameref on input line 9.
 
-(./StatRep.out) (./StatRep.out)
+(./SystRep.out) (./SystRep.out)
 \@outlinefile=\write3
-\openout3 = `StatRep.out'.
+\openout3 = `SystRep.out'.
 
 
 
 LaTeX Warning: No \author given.
 
-LaTeX Font Info:    Calculating math sizes for size <6.99997> on input line 22.
+LaTeX Font Info:    Calculating math sizes for size <6.99997> on input line 53.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <3.49998> not available
-(Font)              size <5> substituted on input line 22.
+(Font)              size <5> substituted on input line 53.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.49998> not available
-(Font)              size <5> substituted on input line 22.
+(Font)              size <5> substituted on input line 53.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.49998> not available
-(Font)              size <5> substituted on input line 22.
+(Font)              size <5> substituted on input line 53.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 44--45
-[]\OT1/cmr/m/n/10 From Par-ti-cle Data Gr-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 44--45
-\OT1/cmr/m/n/10 poup []$\OT1/cmtt/m/n/10 http : / / pdg . lbl . gov /
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 44--45
-\OT1/cmtt/m/n/10 2016 / hadronic-[]xsections /
- []
-
-.................................................
-. LaTeX info: "xparse/redefine-command"
-. 
-. Redefining command \v with sig. 'O{}mo' on line 53.
-.................................................
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 61.
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<BeamTime_15minCycles.png, id=47, 526.21594pt x 581.92406pt>
-File: BeamTime_15minCycles.png Graphic file (type png)
-
-<use BeamTime_15minCycles.png>
-Package pdftex.def Info: BeamTime_15minCycles.png used on input line 100.
-(pdftex.def)             Requested size: 526.21466pt x 581.92264pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \Xpct with sig. 'O{}mo' on line 105.
-.................................................
-[2]
-
-LaTeX Warning: Reference `fig:SEAyy_varB_15min' on page 3 undefined on input li
-ne 125.
-
-
-LaTeX Warning: Reference `fig:SEAyy_varB_15min' on page 3 undefined on input li
-ne 125.
-
-<SEAyy_varB_15min.png, id=60, 526.21594pt x 581.92406pt>
-File: SEAyy_varB_15min.png Graphic file (type png)
-
-<use SEAyy_varB_15min.png>
-Package pdftex.def Info: SEAyy_varB_15min.png used on input line 140.
-(pdftex.def)             Requested size: 526.21466pt x 581.92264pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<varB_DissipThick.png, id=63, 526.21594pt x 581.92406pt>
-File: varB_DissipThick.png Graphic file (type png)
-
-<use varB_DissipThick.png>
-Package pdftex.def Info: varB_DissipThick.png used on input line 183.
-(pdftex.def)             Requested size: 526.21466pt x 581.92264pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 187.
- [3] [4 <./BeamTime_15minCycles.png (PNG copy)>]
-[5 <./SEAyy_varB_15min.png (PNG copy)>] [6 <./varB_DissipThick.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 187.
-
-(./StatRep.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 187.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 187.
-Package rerunfilecheck Info: File `StatRep.out' has not changed.
-(rerunfilecheck)             Checksum: 0D5EDAB0D95EA92A6ED694EF227C6EF7;268.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 61.
+ (./SystRep.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 61.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 61.
+Package rerunfilecheck Info: File `SystRep.out' has not changed.
+(rerunfilecheck)             Checksum: A7187136F6423D70F67FEEBBB997833E;207.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 3.25002pt have occurred.
 
-
-LaTeX Warning: There were undefined references.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 187.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 61.
  ) 
 Here is how much of TeX's memory you used:
- 14321 strings out of 494466
- 255883 string characters out of 6172530
- 330042 words of memory out of 5000000
- 17411 multiletter control sequences out of 15000+600000
- 11007 words of font info for 42 fonts, out of 8000000 for 9000
+ 14595 strings out of 494466
+ 259473 string characters out of 6172530
+ 331811 words of memory out of 5000000
+ 17693 multiletter control sequences out of 15000+600000
+ 10844 words of font info for 41 fonts, out of 8000000 for 9000
  452 hyphenation exceptions out of 8191
- 49i,14n,42p,10377b,436s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on StatRep.pdf (6 pages, 270660 bytes).
+ 49i,11n,42p,10377b,322s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y7.pfb>
+Output written on SystRep.pdf (2 pages, 116162 bytes).
 PDF statistics:
- 142 PDF objects out of 1000 (max. 8388607)
- 113 compressed objects within 2 object streams
- 26 named destinations out of 1000 (max. 500000)
- 48 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 85 PDF objects out of 1000 (max. 8388607)
+ 69 compressed objects within 1 object stream
+ 11 named destinations out of 1000 (max. 500000)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
 

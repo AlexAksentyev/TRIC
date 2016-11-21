@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  21 NOV 2016 17:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  21 NOV 2016 17:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -736,10 +736,10 @@ LaTeX Info: Redefining \nameref on input line 7.
 LaTeX Warning: No \author given.
 
 Package epstopdf Info: Source file: <Cycles2016.eps>
-(epstopdf)                    date: 2016-11-21 13:59:12
+(epstopdf)                    date: 2016-11-21 17:05:24
 (epstopdf)                    size: 813027 bytes
 (epstopdf)             Output file: <Cycles2016-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-11-21 13:59:25
+(epstopdf)                    date: 2016-11-21 17:05:24
 (epstopdf)                    size: 1789283 bytes
 (epstopdf)             Command: <repstopdf --outfile=Cycles2016-eps-converted-t
 o.pdf Cycles2016.eps>
@@ -753,10 +753,10 @@ Package pdftex.def Info: Cycles2016-eps-converted-to.pdf used on input line 21.
 
 (pdftex.def)             Requested size: 525.9637pt x 582.17358pt.
 Package epstopdf Info: Source file: <Slopes2016_VS_Clock.eps>
-(epstopdf)                    date: 2016-11-21 14:26:05
+(epstopdf)                    date: 2016-11-21 17:05:24
 (epstopdf)                    size: 15881 bytes
 (epstopdf)             Output file: <Slopes2016_VS_Clock-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-11-21 14:27:23
+(epstopdf)                    date: 2016-11-21 17:05:24
 (epstopdf)                    size: 16520 bytes
 (epstopdf)             Command: <repstopdf --outfile=Slopes2016_VS_Clock-eps-co
 nverted-to.pdf Slopes2016_VS_Clock.eps>
@@ -771,10 +771,10 @@ Package pdftex.def Info: Slopes2016_VS_Clock-eps-converted-to.pdf used on input
  line 26.
 (pdftex.def)             Requested size: 525.9637pt x 582.17358pt.
 Package epstopdf Info: Source file: <ACF1_dens.eps>
-(epstopdf)                    date: 2016-11-21 15:49:37
+(epstopdf)                    date: 2016-11-21 17:05:24
 (epstopdf)                    size: 79387 bytes
 (epstopdf)             Output file: <ACF1_dens-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-11-21 15:54:34
+(epstopdf)                    date: 2016-11-21 17:05:24
 (epstopdf)                    size: 25992 bytes
 (epstopdf)             Command: <repstopdf --outfile=ACF1_dens-eps-converted-to
 .pdf ACF1_dens.eps>
@@ -788,15 +788,20 @@ File: ACF1_dens-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: ACF1_dens-eps-converted-to.pdf used on input line 60.
 (pdftex.def)             Requested size: 525.9637pt x 582.17358pt.
 Package epstopdf Info: Source file: <FStats_BP_dens.eps>
-(epstopdf)                    date: 2016-11-21 16:56:21
-(epstopdf)                    size: 79852 bytes
+(epstopdf)                    date: 2016-11-21 17:11:17
+(epstopdf)                    size: 79896 bytes
 (epstopdf)             Output file: <FStats_BP_dens-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-11-21 16:59:47
+(epstopdf)                    date: 2016-11-21 17:05:24
 (epstopdf)                    size: 26962 bytes
 (epstopdf)             Command: <repstopdf --outfile=FStats_BP_dens-eps-convert
 ed-to.pdf FStats_BP_dens.eps>
 (epstopdf)             \includegraphics on input line 68.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=FStats_BP_dens-eps-converted-to.pdf FStats_BP_den
+s.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <FStats_BP_dens-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-21 17:11:20
+(epstopdf)                    size: 27671 bytes.
 
 <FStats_BP_dens-eps-converted-to.pdf, id=27, 525.965pt x 582.175pt>
 File: FStats_BP_dens-eps-converted-to.pdf Graphic file (type pdf)
@@ -806,11 +811,11 @@ Package pdftex.def Info: FStats_BP_dens-eps-converted-to.pdf used on input line
  68.
 (pdftex.def)             Requested size: 525.9637pt x 582.17358pt.
 Package epstopdf Info: Source file: <Slope_VS_IniCurrent_2016.eps>
-(epstopdf)                    date: 2016-11-21 16:44:52
+(epstopdf)                    date: 2016-11-21 17:05:24
 (epstopdf)                    size: 21102 bytes
 (epstopdf)             Output file: <Slope_VS_IniCurrent_2016-eps-converted-to.
 pdf>
-(epstopdf)                    date: 2016-11-21 16:59:47
+(epstopdf)                    date: 2016-11-21 17:05:24
 (epstopdf)                    size: 18929 bytes
 (epstopdf)             Command: <repstopdf --outfile=Slope_VS_IniCurrent_2016-e
 ps-converted-to.pdf Slope_VS_IniCurrent_2016.eps>
@@ -859,7 +864,7 @@ pe1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmtt10.pfb>
-Output written on DAnaRep.pdf (7 pages, 1974639 bytes).
+Output written on DAnaRep.pdf (7 pages, 1975290 bytes).
 PDF statistics:
  172 PDF objects out of 1000 (max. 8388607)
  134 compressed objects within 2 object streams

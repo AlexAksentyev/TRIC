@@ -45,7 +45,7 @@ The cycles are shown in Figure~\ref{fig:Cycles}; the slopes estimated from those
 
 
 \section{Properties of the data}
-The Gauss-Markov theorem puts certain conditions on the data in order that the least squares slope estimator be minimum variance mean-unbiased. Those conditions are:~\cite{GaussMarkov}
+The Gauss-Markov theorem puts certain conditions on the data in order that the least squares slope estimator be minimum-variance mean-unbiased. Those conditions are:~\cite{GaussMarkov}
 \begin{enumerate}
 	\item Linearity and additivity of the relationship;
 	\item Independence of the predictor and error variables (strict exogeneity);
@@ -53,7 +53,7 @@ The Gauss-Markov theorem puts certain conditions on the data in order that the l
 	\item Constant variance of the error (homoskedasticity).
 \end{enumerate}
 
-The Breusch-Pagan test against heteroskedasticity suggests that our data are homoskedastic; however, the Durbin-Watson test for autocorrelation of the residuals (whose statistic is the value of the auto-correlation function at lag 1) yields the statistic around 60\% for all cycles (see Figure~\ref{fig:DW2}). Autocorrelation does not affect the slope estimate itself, but in its presence the OLS estimate of its standard error is biased. To correct for that, we use a robust standard error estimator provided by the \emph{sandwich} package of R.~\cite{RSandwich} The robust estimator takes care of both the (possible) heteroskedasticity, and the autocorrelation. 
+The Breusch-Pagan test against heteroskedasticity suggests that our data are homoskedastic; however, the Durbin-Watson test for autocorrelation of the residuals (whose statistic is the value of the auto-correlation function at lag 1) yields the lag-1 autocorrelation around 60\% for all cycles (see Figure~\ref{fig:DW2}). Autocorrelation does not affect the slope estimate itself, but in its presence the OLS estimate of its standard error is biased. To correct for that, we use a robust standard error estimator provided by the \emph{sandwich} package of R.~\cite{RSandwich} The robust estimator takes care of both the (possible) heteroskedasticity, and the autocorrelation. 
 
 \begin{figure}
 	\centering

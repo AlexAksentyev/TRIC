@@ -103,6 +103,11 @@ cs0mb12 %>% group_by(Soundness, Closeness) %>%
     SE = SD/sqrt(NUM)
   ) 
 
+ggplot(cs0mb16, aes(Run.Off, Estimate, shape = Soundness, col = Closeness)) + 
+  geom_pointrange(aes(ymin=Estimate-SE, ymax=Estimate+SE)) + 
+  theme_minimal() + theme(legend.position="top") + 
+  scale_color_manual(values=c("black","red"))+
+  labs(x="Off-cycle", y=expression(hat(sigma)[0]~"(a.u.)"))
 
 ggplot(cs0mb16, aes(Estimate, col=Closeness)) +
   facet_grid(Soundness~., scale="free_y", space="free_y") +
@@ -148,11 +153,11 @@ slopes12 %>% group_by(Targ) %>%
 
 slopes <- slopes16
 
-ggplot(slopes, aes(Clock, Estimate_oft, col=B.Spin, shape=FABS)) + geom_point() + 
+ggplot(slopes, aes(Clock, Estimate, col=B.Spin, shape=FABS)) + geom_point() + 
   scale_color_manual(name="Beam spin", breaks=c("U","D", "N"), labels=c("Up","Down","Null"), values=c("red", "blue","black")) + 
   scale_shape_discrete(name="Target state", breaks=c("F","T"), labels=c("Off","On")) +
-  geom_smooth(method="lm", se=FALSE, aes(linetype=FABS)) +
-  facet_grid(B.Spin~.) + theme_minimal()
+  # geom_smooth(method="lm", se=FALSE, aes(linetype=FABS)) +
+  facet_grid(B.Spin~FABS) + theme_minimal()
 
 slopes %>% ddply("Unit", function(s){
   with(s, data.frame(
@@ -181,4 +186,4 @@ slopes16 %>% filter(FABS=="T", B.Spin != "N") %>% dlply("B.Spin") %>% dbeta. %>%
   mutate(Estimate = Estimate/(dP*nu*Pt*thick*cs0est), SE = -SE/(dP*nu*Pt*thick*cs0est)) -> Ayy
 
 ggplot(Ayy, aes(Estimate)) + geom_density(kernel="gaus") +
-  theme_minimal() + labs(x=expression(hat(A)[y,y]~"(a.u.)"), y="Kernel density")
+  theme_minimal() + labs(x=expression(hat(A)[yy]~"(a.u.)"), y="Kernel density")

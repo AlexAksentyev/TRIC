@@ -2,6 +2,10 @@
 
 \usepackage{../repsty}
 
+\usepackage{paralist}
+\usepackage{soul}
+\usepackage{color}
+
 \begin{document}
 \title{Systematic Errors}
 \maketitle
@@ -37,10 +41,20 @@ The data are log-transformed, and the linear model $\ln I_t = \ln I_0 + \slp^\pm
 \end{equation}
  
 \section{Design flaws}
-\paragraph{Vector polarization.}
-Due to the impossibility of reducing the population of vector-polarized particles in the target, $P^t_y \neq 0$. The extra term in~\eqref{eq:CrossSection} introduced by it cannot be removed by flipping the  That means the estimator in~\eqref{eq:AyxzEstimator} must be corrected by subtracting a scaled estimate of $\Ayy$: $\Ayxz* = C\Delta\slp* - \sfrac{P^t_y}{P^t_{xz}}\cdot\Ayy*$. It also means the value of $\Ayy$ has to be estimated first, making TRIC a two-stage experiment.
+\subsection{Vector polarization}
+For the ideal TRIC experiment one must have at least one of the two conditions to hold:
+\begin{inparaenum}[1)]
+	\item either the injected ABS beam consists only of particles with spin states \hl{such-and-such}, or
+	\item the target chamber magnetic field does not have a vertical component.
+\end{inparaenum}
 
-\paragraph{Holding field.}
+Neither of the conditions are practically realizable, meaning that the vertical component of the target vector polarization is present. That means the estimator in~\eqref{eq:AyxzEstimator} must be corrected by subtracting a scaled estimate of $\Ayy$: 
+\[
+	\Ayxz* = C\Delta\slp* - \sfrac{P^t_y}{P^t_{xz}}\cdot\Ayy*.
+\]
+
+It also means the value of $\Ayy$ has to be estimated first, making TRIC a two-stage experiment.
+
 
 
 

@@ -18,13 +18,13 @@ slopes16 <- Data16$Slopes; Data16 <- Data16$Data
 Data12 %>% ggplot(aes(Clock, BCT2, col=Targ)) + 
   scale_color_manual(name="Target state", breaks=c("Chopper","On"), labels=c("Off","On"), values=c("black", "red")) + 
   geom_point() + 
-  theme_minimal() + theme(legend.position = "top", legend.title=element_text()) +
+  theme_bw() + theme(legend.position = "top", legend.title=element_text()) +
   labs(x="Time (local)", y="I (a.u.)")
 
 Data16 %>% ggplot(aes(Clock, BCT2, col=B.Spin)) + 
   scale_color_manual(name="Beam spin", breaks=c("U","D", "N"), labels=c("Up","Down","Null"), values=c("red", "blue","black")) + 
   geom_point() + 
-  theme_minimal() + theme(legend.position = "top", legend.title=element_text()) +
+  theme_bw() + theme(legend.position = "top", legend.title=element_text()) +
   labs(x="Time (local)", y="I (a.u.)")
 
 ##################################
@@ -45,8 +45,8 @@ slice(Run969, 20:nrow(Run969))%>%ggplot(aes(uts, log(BCT2))) + geom_line() + geo
   theme_minimal() + labs(y="ln I", x="Time (seconds)") + 
   geom_vline(xintercept=Run969$uts[.sub], col="gray",linetype=2)
 
-autoplot(m, which=1) + theme_minimal() + ggtitle("") + labs(y=expression(ln~I[i]~-~(hat(alpha)~+~hat(beta)~t)), x=expression(hat(alpha)~+~hat(beta)~t))
-autoplot(pacf(m$residuals, lag=600, main="", plot=FALSE)) + theme_minimal() + labs(y="Partial ACF")
+autoplot(m, which=1) + theme_bw() + ggtitle("") + labs(y=expression(ln~I[i]~-~(hat(alpha)~+~hat(beta)~t)), x=expression(hat(alpha)~+~hat(beta)~t))
+autoplot(pacf(m$residuals, lag=600, main="", plot=FALSE)) + theme_bw() + labs(y="Partial ACF")
 
 
 library(lmtest); library(strucchange); library(compute.es)
@@ -153,16 +153,11 @@ slopes12 %>% group_by(Targ) %>%
 
 slopes <- slopes16
 
-ggplot(slopes, aes(Clock, Estimate_oft, col=B.Spin, shape=FABS)) + geom_point() + 
+ggplot(slopes, aes(I0, Estimate, col=B.Spin, shape=FABS)) + geom_point() + 
   scale_color_manual(name="Beam spin", breaks=c("U","D", "N"), labels=c("Up","Down","Null"), values=c("red", "blue","black")) + 
   scale_shape_discrete(name="Target state", breaks=c("F","T"), labels=c("Off","On")) +
-<<<<<<< HEAD
   geom_smooth(method="lm", se=FALSE, aes(linetype=FABS)) +
-  facet_grid(B.Spin~.) + theme_minimal()
-=======
-  # geom_smooth(method="lm", se=FALSE, aes(linetype=FABS)) +
-  facet_grid(B.Spin~FABS) + theme_minimal()
->>>>>>> testing
+  facet_grid(B.Spin~.) + theme_bw() + theme(legend.position="top") + labs(y=expression(hat(beta)))
 
 slopes %>% ddply("Unit", function(s){
   with(s, data.frame(
@@ -181,7 +176,7 @@ ggplot(slopes12, aes(I0, Estimate, col=Targ)) + geom_pointrange(aes(ymin=Estimat
   geom_text(aes(label=Run, vjust=1.35, hjust=0))+
   scale_y_continuous(labels=fancy_scientific)+
   facet_grid(Targ~., scale="free_y", space="free_y", label=as_labeller(c("Chopper"="Off", "On"="On"))) + 
-  theme_minimal() + theme(legend.position="top") +
+  theme_bw() + theme(legend.position="top") +
   scale_color_manual(name="Target state", breaks=c("Chopper","On"), labels=c("Off","On"), values=c("black", "red")) +
   labs(x=expression(I[0]~"(a.u.)"), y=expression(hat(beta)))
   

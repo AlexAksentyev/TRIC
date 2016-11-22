@@ -156,8 +156,8 @@ slopes <- slopes16
 ggplot(slopes, aes(I0, Estimate, col=B.Spin, shape=FABS)) + geom_point() + 
   scale_color_manual(name="Beam spin", breaks=c("U","D", "N"), labels=c("Up","Down","Null"), values=c("red", "blue","black")) + 
   scale_shape_discrete(name="Target state", breaks=c("F","T"), labels=c("Off","On")) +
-  geom_smooth(method="lm", se=FALSE, aes(linetype=FABS)) +
-  facet_grid(B.Spin~.) + theme_bw() + theme(legend.position="top") + labs(y=expression(hat(beta)))
+  geom_smooth(method="lm", se=FALSE, aes(linetype=FABS), show.legend=FALSE) +
+  facet_grid(B.Spin~.) + theme_bw() + theme(legend.position="top") + labs(y=expression(hat(beta)), x="I0 (a.u.)")
 
 slopes %>% ddply("Unit", function(s){
   with(s, data.frame(

@@ -9,15 +9,31 @@ lbeta = list("D" = b1D, "U" = b1U)
 D = dbeta.(lbeta); d = D$Estimate
 R = rbeta.(lbeta); r = R$Estimate; rr = 2*r/Pt/(DP - SP*r); R$Rp <- rr
 
-## comparing the statistics' distributions
-df = data.frame(Stat = "D", Estimate = d) %>% rbind(data.frame(Stat = "R", Estimate = rr))
-lm(rr[order(rr)]~d[order(d)]) -> m
-qqplot(d, rr, xlab = "D-stat", ylab = "R-stat"); abline(m, col="red"); abline(v=0,h=0, lty=4, col="gray")
-qqplot(d*m$coefficients[2] + m$coefficients[1], rr, xlab="g(D)-stat", ylab="R-stat"); abline(0,1, col="red"); abline(v=0,h=0, lty=4, col="gray")
+##
+filter(Data16, Unit==17) -> TRun
+ggplot(TRun, aes(Clock, BCT2)) + geom_line() + theme_bw()
+TRun %>% filter(eCool=="Acc",FABS=="T") %>% mutate(uts = UTS-UTS[1]) -> TRun
+f = log(BCT2) ~ uts
+library(lmtest)
+lm(f, data = TRun) -> m
+lmtest::bptest(m)
+lmtest::dwtest(m)[c("statistic", "p.value")]
+library(strucchange)
+Fstats(f, data=TRun) %>% plot
 
-#### Ayy(R) -> CS0 ####
-lam = (nu*1.1e14*Pt*DP)
-mutate(R, Estimate = rr) -> Rp
+Data16 %>% ddply(.(B.Spin, FABS, Unit), function(s) Fstats(f, data=s)$breakpoint) -> x; names(x)[4] <- "BP"
+ggplot(x, aes(BP, col=B.Spin)) + geom_density() + facet_grid(FABS~.) + 
+  theme_bw() + theme(legend.position="top") + labs(x = "Breakpoint (seconds from start)")
 
-WMN(Rp) -> AyyR
-WMN(D)/lam/AyyR * 1e24; cat(AyyR)
+library(forecast)
+Data16 %>% filter(eCool=="Acc", !is.na(FABS)) %>% 
+  dlply(.(B.Spin, FABS, Unit), function(s) auto.arima(log(s$BCT2))%>%coef %>%t %>% as.data.frame() %>%
+          cbind(B.Spin = s$B.Spin[1], FABS = s$FABS[1], Unit = s$Unit[1])) %>% 
+  rbind.fill() -> AAMC
+
+Data16 %>% ddply(.(B.Spin, FABS, Unit), function(s) dwtest(lm(log(BCT2)~I(UTS-UTS[1]), data=s))$statistic/2) -> x
+ggplot(x, aes(DW, col=B.Spin)) + geom_density() + facet_grid(FABS~.) + theme_bw() + labs(x="Correlation at lag 1")
+
+library(dynlm)
+dynlm(Y ~ trend(Y), data=mutate(TRun, Y = log(BCT2)))%>%summary
+lm(Y ~ uts, data = mutate(TRun, Y = log(BCT2), uts = UTS-UTS[1])) %>% summary

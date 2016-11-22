@@ -10,9 +10,9 @@
 	
 \section{Overview}
 
-In the 2016 experiment a polarized proton beam was scattered on a polarized deuterium target. The beam was cooled using electron cooling, and bunched using the COSY RF bunching system. The intensity of the cooling electron beam was 120 mA at injection, and 45 mA during acceleration. Before a cycle, the beam was stacked for 100 seconds (EXP2 $\times$ 5).
+In the 2016 experiment the polarized proton beam was scattered on the polarized deuterium target. The beam was cooled using electron cooling, and bunched using the COSY RF bunching system. The intensity of the cooling electron beam was 120 mA at injection, and 45 mA during acceleration. Before a cycle, the beam was stacked for 100 seconds (EXP2 $\times$ 5).
 
-The cycles lasted thirteen minutes (792 seconds). In the first half of the cycle the target was turned of, in the second off. The target's spin state remained constant throughout, the beam's alternated through the spin up, down, and null states. In total, there were twelve cycles for each beam spin state. 
+The cycles lasted thirteen minutes (792 seconds). In the first half of the cycle the target was turned on, in the second off. The target's spin state remained constant throughout, the beam's alternated through the spin up, down, and null states. In total, there were twelve cycles for each beam spin state. 
 
 The cycles are shown in Figure~\ref{fig:Cycles}; the slopes estimated from those cycles are plotted against time in Figure~\ref{fig:Slopes}; the slopes' summary statistics (only for the target spin state \#1) are aggregated in Table~\ref{tbl:SlpSumStat}.
 
@@ -68,6 +68,8 @@ The moving Chow test, as well as other structural tests from the package~\cite{R
 	\includegraphics{FStats_BP_dens.eps}
 	\caption{Point of change in the slope as found by the moving Chow test. The target-less cycles' distribution is in the upper panel.\label{FStat_BP_dens}}
 \end{figure}
+
+Figure~\ref{fig:Slp_VS_I0} shows that there is a dependency between the beam's life time and its intensity. The initial beam intensity $I_0$ was estimated as the exponentiated intercept of the linear model $\ln I_t = \ln I_0 + \slp\cdot t + \err_t$, and the life time estimate is $\hat{\tau} = -\sfrac{1}{\slp*}$. 
 
 \begin{figure}
 	\centering

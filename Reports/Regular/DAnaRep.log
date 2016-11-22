@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  22 NOV 2016 14:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  22 NOV 2016 18:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6,19 +6,20 @@ entering extended mode
 (./DAnaRep.tex
 LaTeX2e <2014/05/01>
 Babel <3.9l> and hyphenation patterns for 11 languages loaded.
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
-\c@section=\count80
-\c@subsection=\count81
-\c@subsubsection=\count82
-\c@paragraph=\count83
-\c@subparagraph=\count84
-\c@figure=\count85
-\c@table=\count86
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
@@ -46,9 +47,9 @@ Package ifvtex Info: VTeX not detected.
 (/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count87
-\Gm@cntv=\count88
-\c@Gm@tempcnt=\count89
+\Gm@cnth=\count88
+\Gm@cntv=\count89
+\c@Gm@tempcnt=\count90
 \Gm@bindingoffset=\dimen103
 \Gm@wd@mp=\dimen104
 \Gm@odd@mp=\dimen105
@@ -67,15 +68,15 @@ Package: mathtools 2014/07/16 v1.15 mathematical typesetting tools
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count90
-\calc@Bcount=\count91
+\calc@Acount=\count91
+\calc@Bcount=\count92
 \calc@Adimen=\dimen111
 \calc@Bdimen=\dimen112
 \calc@Askip=\skip43
 \calc@Bskip=\skip44
 LaTeX Info: Redefining \setlength on input line 75.
 LaTeX Info: Redefining \addtolength on input line 76.
-\calc@Ccount=\count92
+\calc@Ccount=\count93
 \calc@Cskip=\skip45
 )
 (/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty
@@ -101,13 +102,13 @@ Package: amsbsy 1999/11/29 v1.2d
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
-\inf@bad=\count93
+\inf@bad=\count94
 LaTeX Info: Redefining \frac on input line 210.
-\uproot@=\count94
-\leftroot@=\count95
+\uproot@=\count95
+\leftroot@=\count96
 LaTeX Info: Redefining \overline on input line 306.
-\classnum@=\count96
-\DOTSCASE@=\count97
+\classnum@=\count97
+\DOTSCASE@=\count98
 LaTeX Info: Redefining \ldots on input line 378.
 LaTeX Info: Redefining \dots on input line 381.
 LaTeX Info: Redefining \cdots on input line 466.
@@ -116,15 +117,15 @@ LaTeX Info: Redefining \cdots on input line 466.
 \big@size=\dimen115
 LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
-\macc@depth=\count98
-\c@MaxMatrixCols=\count99
+\macc@depth=\count99
+\c@MaxMatrixCols=\count100
 \dotsspace@=\muskip10
-\c@parentequation=\count100
-\dspbrk@lvl=\count101
+\c@parentequation=\count101
+\dspbrk@lvl=\count102
 \tag@help=\toks17
-\row@=\count102
-\column@=\count103
-\maxfields@=\count104
+\row@=\count103
+\column@=\count104
+\maxfields@=\count105
 \andhelp@=\toks18
 \eqnshift@=\dimen116
 \alignsep@=\dimen117
@@ -141,7 +142,7 @@ LaTeX Info: Redefining \] on input line 2666.
 )
 LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
-\g_MT_multlinerow_int=\count105
+\g_MT_multlinerow_int=\count106
 \l_MT_multwidth_dim=\dimen122
 \origjot=\skip49
 \l_MT_shortvdotswithinadjustabove_dim=\dimen123
@@ -168,10 +169,10 @@ Package caption3 Info: TeX engine: e-TeX on input line 57.
 \caption@parindent=\dimen134
 \caption@hangindent=\dimen135
 )
-\c@ContinuedFloat=\count106
+\c@ContinuedFloat=\count107
 )
-\c@subfigure=\count107
-\c@subtable=\count108
+\c@subfigure=\count108
+\c@subtable=\count109
 )
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
@@ -183,7 +184,7 @@ L3 Module: l3bootstrap 2014/08/23 v5354 L3 Bootstrap code
 
 (/usr/share/texlive/texmf-dist/tex/latex/etex-pkg/etex.sty
 Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
-\et@xins=\count109
+\et@xins=\count110
 )
 L3 Module: l3names 2014/08/22 v5343 L3 Namespace for primitives
 L3 Module: l3basics 2014/08/24 v5364 L3 Basic definitions
@@ -192,24 +193,24 @@ L3 Module: l3tl 2014/08/24 v5359 L3 Token lists
 L3 Module: l3str 2014/08/24 v5368 L3 Strings
 L3 Module: l3seq 2014/08/23 v5354 L3 Sequences and stacks
 L3 Module: l3int 2014/09/14 v5421 L3 Integers
-\c_max_int=\count110
-\l_tmpa_int=\count111
-\l_tmpb_int=\count112
-\g_tmpa_int=\count113
-\g_tmpb_int=\count114
+\c_max_int=\count111
+\l_tmpa_int=\count112
+\l_tmpb_int=\count113
+\g_tmpa_int=\count114
+\g_tmpb_int=\count115
 L3 Module: l3quark 2014/08/23 v5354 L3 Quarks
 L3 Module: l3prg 2014/08/23 v5354 L3 Control structures
-\g__prg_map_int=\count115
+\g__prg_map_int=\count116
 L3 Module: l3clist 2014/08/23 v5354 L3 Comma separated lists
 L3 Module: l3token 2014/09/15 v5422 L3 Experimental token manipulation
 L3 Module: l3prop 2014/08/23 v5354 L3 Property lists
 L3 Module: l3msg 2014/08/24 v5358 L3 Messages
 L3 Module: l3file 2014/08/24 v5369 L3 File and I/O operations
-\l_iow_line_count_int=\count116
-\l__iow_target_count_int=\count117
-\l__iow_current_line_int=\count118
-\l__iow_current_word_int=\count119
-\l__iow_current_indentation_int=\count120
+\l_iow_line_count_int=\count117
+\l__iow_target_count_int=\count118
+\l__iow_current_line_int=\count119
+\l__iow_current_word_int=\count120
+\l__iow_current_indentation_int=\count121
 L3 Module: l3skip 2014/08/23 v5354 L3 Dimensions and skips
 \c_zero_dim=\dimen136
 \c_max_dim=\dimen137
@@ -230,18 +231,18 @@ L3 Module: l3skip 2014/08/23 v5354 L3 Dimensions and skips
 \g_tmpa_muskip=\muskip15
 \g_tmpb_muskip=\muskip16
 L3 Module: l3keys 2014/08/23 v5354 L3 Key-value interfaces
-\g__keyval_level_int=\count121
-\l_keys_choice_int=\count122
+\g__keyval_level_int=\count122
+\l_keys_choice_int=\count123
 L3 Module: l3fp 2014/08/22 v5336 L3 Floating points
-\c__fp_leading_shift_int=\count123
-\c__fp_middle_shift_int=\count124
-\c__fp_trailing_shift_int=\count125
-\c__fp_big_leading_shift_int=\count126
-\c__fp_big_middle_shift_int=\count127
-\c__fp_big_trailing_shift_int=\count128
-\c__fp_Bigg_leading_shift_int=\count129
-\c__fp_Bigg_middle_shift_int=\count130
-\c__fp_Bigg_trailing_shift_int=\count131
+\c__fp_leading_shift_int=\count124
+\c__fp_middle_shift_int=\count125
+\c__fp_trailing_shift_int=\count126
+\c__fp_big_leading_shift_int=\count127
+\c__fp_big_middle_shift_int=\count128
+\c__fp_big_trailing_shift_int=\count129
+\c__fp_Bigg_leading_shift_int=\count130
+\c__fp_Bigg_middle_shift_int=\count131
+\c__fp_Bigg_trailing_shift_int=\count132
 L3 Module: l3box 2014/08/23 v5354 L3 Experimental boxes
 \c_empty_box=\box28
 \l_tmpa_box=\box29
@@ -292,14 +293,14 @@ File: l3unicode-data.def 2014/08/12 v5276 L3 Unicode data
 )
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3pdfmode.def
 File: l3pdfmode.def 2014/08/24 v5366 L3 Experimental driver: PDF mode
-\l__driver_color_stack_int=\count132
+\l__driver_color_stack_int=\count133
 ))
 Package: xparse 2014/09/15 v5423 L3 Experimental document command parser
-\l__xparse_current_arg_int=\count133
-\l__xparse_m_args_int=\count134
-\l__xparse_mandatory_args_int=\count135
-\l__xparse_processor_int=\count136
-\l__xparse_v_nesting_int=\count137
+\l__xparse_current_arg_int=\count134
+\l__xparse_m_args_int=\count135
+\l__xparse_mandatory_args_int=\count136
+\l__xparse_processor_int=\count137
+\l__xparse_v_nesting_int=\count138
 )
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xfrac/xfrac.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
@@ -325,7 +326,7 @@ Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
-\Gread@gobject=\count138
+\Gread@gobject=\count139
 ))
 \Gin@req@height=\dimen167
 \Gin@req@width=\dimen168
@@ -418,7 +419,7 @@ Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 340.
 Package: xtemplate 2014/09/15 v5423 L3 Experimental prototype document function
 s
 \l__xtemplate_tmp_dim=\dimen169
-\l__xtemplate_tmp_int=\count139
+\l__xtemplate_tmp_int=\count140
 \l__xtemplate_tmp_muskip=\muskip17
 \l__xtemplate_tmp_skip=\skip56
 Variant \prop_get:NoNTF already defined; not changing it on line 106
@@ -507,13 +508,13 @@ Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
 \@linkdim=\dimen175
-\Hy@linkcounter=\count140
-\Hy@pagecounter=\count141
+\Hy@linkcounter=\count141
+\Hy@pagecounter=\count142
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count142
+\Hy@SavedSpaceFactor=\count143
 
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -525,10 +526,10 @@ Package hyperref Info: Plain pages OFF on input line 4458.
 Package hyperref Info: Backreferencing OFF on input line 4463.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
-\c@Hy@tempcnt=\count143
+\c@Hy@tempcnt=\count144
 LaTeX Info: Redefining \url on input line 5041.
 \XeTeXLinkMargin=\dimen176
-\Fld@menulength=\count144
+\Fld@menulength=\count145
 \Field@Width=\dimen177
 \Fld@charsize=\dimen178
 Package hyperref Info: Hyper figures OFF on input line 6295.
@@ -540,17 +541,17 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6320.
 Package hyperref Info: PDF/A mode OFF on input line 6325.
 LaTeX Info: Redefining \ref on input line 6365.
 LaTeX Info: Redefining \pageref on input line 6369.
-\Hy@abspage=\count145
-\c@Item=\count146
-\c@Hfootnote=\count147
+\Hy@abspage=\count146
+\c@Item=\count147
+\c@Hfootnote=\count148
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
-\Fld@listcount=\count148
-\c@bookmark@seq@number=\count149
+\Fld@listcount=\count149
+\c@bookmark@seq@number=\count150
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
@@ -686,16 +687,16 @@ Package caption Info: threeparttable package is loaded.
 Package caption Info: End \AtBeginDocument code.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count150
+\scratchcounter=\count151
 \scratchdimen=\dimen180
 \scratchbox=\box46
-\nofMPsegments=\count151
-\nofMParguments=\count152
+\nofMPsegments=\count152
+\nofMParguments=\count153
 \everyMPshowfont=\toks21
-\MPscratchCnt=\count153
+\MPscratchCnt=\count154
 \MPscratchDim=\dimen181
-\MPnumerator=\count154
-\makeMPintoPDFobject=\count155
+\MPnumerator=\count155
+\makeMPintoPDFobject=\count156
 \everyMPtoPDFconversion=\toks22
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -721,7 +722,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count156
+\c@section@level=\count157
 )
 LaTeX Info: Redefining \ref on input line 7.
 LaTeX Info: Redefining \pageref on input line 7.
@@ -735,17 +736,21 @@ LaTeX Info: Redefining \nameref on input line 7.
 
 LaTeX Warning: No \author given.
 
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 Package epstopdf Info: Source file: <Cycles2016.eps>
-(epstopdf)                    date: 2016-11-22 14:26:57
-(epstopdf)                    size: 813027 bytes
+(epstopdf)                    date: 2016-11-22 15:10:50
+(epstopdf)                    size: 816950 bytes
 (epstopdf)             Output file: <Cycles2016-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-11-22 14:26:57
-(epstopdf)                    size: 1789283 bytes
+(epstopdf)                    date: 2016-11-22 15:10:58
+(epstopdf)                    size: 1815244 bytes
 (epstopdf)             Command: <repstopdf --outfile=Cycles2016-eps-converted-t
 o.pdf Cycles2016.eps>
 (epstopdf)             \includegraphics on input line 21.
 Package epstopdf Info: Output file is already uptodate.
-<Cycles2016-eps-converted-to.pdf, id=19, 525.965pt x 582.175pt>
+
+<Cycles2016-eps-converted-to.pdf, id=34, 525.965pt x 582.175pt>
 File: Cycles2016-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Cycles2016-eps-converted-to.pdf>
@@ -753,17 +758,17 @@ Package pdftex.def Info: Cycles2016-eps-converted-to.pdf used on input line 21.
 
 (pdftex.def)             Requested size: 525.9637pt x 582.17358pt.
 Package epstopdf Info: Source file: <Slopes2016_VS_Clock.eps>
-(epstopdf)                    date: 2016-11-22 14:26:57
-(epstopdf)                    size: 15881 bytes
+(epstopdf)                    date: 2016-11-22 15:19:39
+(epstopdf)                    size: 25499 bytes
 (epstopdf)             Output file: <Slopes2016_VS_Clock-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-11-22 14:26:57
-(epstopdf)                    size: 16520 bytes
+(epstopdf)                    date: 2016-11-22 15:21:43
+(epstopdf)                    size: 19445 bytes
 (epstopdf)             Command: <repstopdf --outfile=Slopes2016_VS_Clock-eps-co
 nverted-to.pdf Slopes2016_VS_Clock.eps>
 (epstopdf)             \includegraphics on input line 26.
 Package epstopdf Info: Output file is already uptodate.
 
-<Slopes2016_VS_Clock-eps-converted-to.pdf, id=20, 525.965pt x 582.175pt>
+<Slopes2016_VS_Clock-eps-converted-to.pdf, id=35, 525.965pt x 582.175pt>
 File: Slopes2016_VS_Clock-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Slopes2016_VS_Clock-eps-converted-to.pdf>
@@ -771,124 +776,163 @@ Package pdftex.def Info: Slopes2016_VS_Clock-eps-converted-to.pdf used on input
  line 26.
 (pdftex.def)             Requested size: 525.9637pt x 582.17358pt.
 Package epstopdf Info: Source file: <ACF1_dens.eps>
-(epstopdf)                    date: 2016-11-22 14:26:57
+(epstopdf)                    date: 2016-11-22 14:36:30
 (epstopdf)                    size: 79387 bytes
 (epstopdf)             Output file: <ACF1_dens-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-11-22 14:26:57
+(epstopdf)                    date: 2016-11-22 14:36:30
 (epstopdf)                    size: 25992 bytes
 (epstopdf)             Command: <repstopdf --outfile=ACF1_dens-eps-converted-to
 .pdf ACF1_dens.eps>
 (epstopdf)             \includegraphics on input line 60.
 Package epstopdf Info: Output file is already uptodate.
 
-<ACF1_dens-eps-converted-to.pdf, id=24, 525.965pt x 582.175pt>
+<ACF1_dens-eps-converted-to.pdf, id=39, 525.965pt x 582.175pt>
 File: ACF1_dens-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ACF1_dens-eps-converted-to.pdf>
 Package pdftex.def Info: ACF1_dens-eps-converted-to.pdf used on input line 60.
 (pdftex.def)             Requested size: 525.9637pt x 582.17358pt.
 Package epstopdf Info: Source file: <FStats_BP_dens.eps>
-(epstopdf)                    date: 2016-11-22 14:26:57
+(epstopdf)                    date: 2016-11-22 14:36:30
 (epstopdf)                    size: 79896 bytes
 (epstopdf)             Output file: <FStats_BP_dens-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-11-22 14:26:57
+(epstopdf)                    date: 2016-11-22 14:36:30
 (epstopdf)                    size: 27671 bytes
 (epstopdf)             Command: <repstopdf --outfile=FStats_BP_dens-eps-convert
 ed-to.pdf FStats_BP_dens.eps>
 (epstopdf)             \includegraphics on input line 68.
 Package epstopdf Info: Output file is already uptodate.
 
-<FStats_BP_dens-eps-converted-to.pdf, id=27, 525.965pt x 582.175pt>
+<FStats_BP_dens-eps-converted-to.pdf, id=43, 525.965pt x 582.175pt>
 File: FStats_BP_dens-eps-converted-to.pdf Graphic file (type pdf)
 
 <use FStats_BP_dens-eps-converted-to.pdf>
 Package pdftex.def Info: FStats_BP_dens-eps-converted-to.pdf used on input line
  68.
 (pdftex.def)             Requested size: 525.9637pt x 582.17358pt.
-LaTeX Font Info:    Calculating math sizes for size <6.99997> on input line 72.
+Package epstopdf Info: Source file: <Res_VS_Fit_2016-17.eps>
+(epstopdf)                    date: 2016-11-22 15:44:19
+(epstopdf)                    size: 19531 bytes
+(epstopdf)             Output file: <Res_VS_Fit_2016-17-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-22 15:44:22
+(epstopdf)                    size: 35580 bytes
+(epstopdf)             Command: <repstopdf --outfile=Res_VS_Fit_2016-17-eps-con
+verted-to.pdf Res_VS_Fit_2016-17.eps>
+(epstopdf)             \includegraphics on input line 74.
+Package epstopdf Info: Output file is already uptodate.
+
+<Res_VS_Fit_2016-17-eps-converted-to.pdf, id=44, 525.965pt x 582.175pt>
+File: Res_VS_Fit_2016-17-eps-converted-to.pdf Graphic file (type pdf)
+
+<use Res_VS_Fit_2016-17-eps-converted-to.pdf>
+Package pdftex.def Info: Res_VS_Fit_2016-17-eps-converted-to.pdf used on input 
+line 74.
+(pdftex.def)             Requested size: 525.9637pt x 582.17358pt.
+LaTeX Font Info:    Calculating math sizes for size <6.99997> on input line 78.
 
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <3.49998> not available
-(Font)              size <5> substituted on input line 72.
+(Font)              size <5> substituted on input line 78.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.49998> not available
-(Font)              size <5> substituted on input line 72.
+(Font)              size <5> substituted on input line 78.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.49998> not available
-(Font)              size <5> substituted on input line 72.
+(Font)              size <5> substituted on input line 78.
 
 Package epstopdf Info: Source file: <Slope_VS_IniCurrent_2016.eps>
-(epstopdf)                    date: 2016-11-22 14:28:15
-(epstopdf)                    size: 22493 bytes
+(epstopdf)                    date: 2016-11-22 15:21:41
+(epstopdf)                    size: 22345 bytes
 (epstopdf)             Output file: <Slope_VS_IniCurrent_2016-eps-converted-to.
 pdf>
-(epstopdf)                    date: 2016-11-22 14:26:57
-(epstopdf)                    size: 18929 bytes
+(epstopdf)                    date: 2016-11-22 15:21:44
+(epstopdf)                    size: 18864 bytes
 (epstopdf)             Command: <repstopdf --outfile=Slope_VS_IniCurrent_2016-e
 ps-converted-to.pdf Slope_VS_IniCurrent_2016.eps>
-(epstopdf)             \includegraphics on input line 76.
-runsystem(repstopdf --outfile=Slope_VS_IniCurrent_2016-eps-converted-to.pdf Slo
-pe_VS_IniCurrent_2016.eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <Slope_VS_IniCurrent_2016-eps-converted-to.
-pdf>
-(epstopdf)                    date: 2016-11-22 14:28:18
-(epstopdf)                    size: 19191 bytes.
-<Slope_VS_IniCurrent_2016-eps-converted-to.pdf, id=29, 525.965pt x 582.175pt>
+(epstopdf)             \includegraphics on input line 82.
+Package epstopdf Info: Output file is already uptodate.
+<Slope_VS_IniCurrent_2016-eps-converted-to.pdf, id=46, 525.965pt x 582.175pt>
 File: Slope_VS_IniCurrent_2016-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Slope_VS_IniCurrent_2016-eps-converted-to.pdf>
 Package pdftex.def Info: Slope_VS_IniCurrent_2016-eps-converted-to.pdf used on 
-input line 76.
+input line 82.
 (pdftex.def)             Requested size: 525.9637pt x 582.17358pt.
- [1
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.97 \]
+        [1] [2 <./Cycles2016-eps-converted-to.pdf>] [3 <./Slopes2016_VS_Clock-e
+ps-converted-to.pdf>] [4 <./ACF1_dens-eps-converted-to.pdf>] [5 <./FStats_BP_de
+ns-eps-converted-to.pdf>] [6 <./Res_VS_Fit_2016-17-eps-converted-to.pdf>]
+[7 <./Slope_VS_IniCurrent_2016-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <CS0_au_dens.eps>
+(epstopdf)                    date: 2016-11-22 16:54:24
+(epstopdf)                    size: 28947 bytes
+(epstopdf)             Output file: <CS0_au_dens-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-22 17:06:26
+(epstopdf)                    size: 15307 bytes
+(epstopdf)             Command: <repstopdf --outfile=CS0_au_dens-eps-converted-
+to.pdf CS0_au_dens.eps>
+(epstopdf)             \includegraphics on input line 109.
+Package epstopdf Info: Output file is already uptodate.
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./Cycles2016-eps-conve
-rted-to.pdf>] [3 <./Slopes2016_VS_Clock-eps-converted-to.pdf>] [4 <./ACF1_dens-
-eps-converted-to.pdf>]
-[5 <./FStats_BP_dens-eps-converted-to.pdf>] [6 <./Slope_VS_IniCurrent_2016-eps-
-converted-to.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 93.
- [7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 93.
+<CS0_au_dens-eps-converted-to.pdf, id=161, 525.965pt x 582.175pt>
+File: CS0_au_dens-eps-converted-to.pdf Graphic file (type pdf)
+
+<use CS0_au_dens-eps-converted-to.pdf>
+Package pdftex.def Info: CS0_au_dens-eps-converted-to.pdf used on input line 10
+9.
+(pdftex.def)             Requested size: 525.9637pt x 582.17358pt.
+ [8] [9 <./CS0_au_dens-eps-converted-to.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 165.
+ [10
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 165.
  (./DAnaRep.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 93.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 93.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 165.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 165.
 Package rerunfilecheck Info: File `DAnaRep.out' has not changed.
-(rerunfilecheck)             Checksum: 23A333124C88CE40C67D99B26E02229B;155.
+(rerunfilecheck)             Checksum: BF0DFDF326524448BBEB99D8566128B6;289.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 3.25002pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 93.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 165.
  ) 
 Here is how much of TeX's memory you used:
- 14330 strings out of 494466
- 256489 string characters out of 6172530
- 328285 words of memory out of 5000000
- 17415 multiletter control sequences out of 15000+600000
- 10738 words of font info for 41 fonts, out of 8000000 for 9000
+ 14381 strings out of 494466
+ 257398 string characters out of 6172530
+ 331253 words of memory out of 5000000
+ 17452 multiletter control sequences out of 15000+600000
+ 11651 words of font info for 44 fonts, out of 8000000 for 9000
  452 hyphenation exceptions out of 8191
- 49i,12n,42p,10398b,435s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 49i,13n,42p,10398b,347s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
-t10.pfb>
-Output written on DAnaRep.pdf (7 pages, 1985617 bytes).
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on DAnaRep.pdf (11 pages, 2111484 bytes).
 PDF statistics:
- 177 PDF objects out of 1000 (max. 8388607)
- 138 compressed objects within 2 object streams
- 25 named destinations out of 1000 (max. 500000)
- 50 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 264 PDF objects out of 1000 (max. 8388607)
+ 207 compressed objects within 3 object streams
+ 37 named destinations out of 1000 (max. 500000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
 

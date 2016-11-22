@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass{report}
 
 \usepackage{../repsty}
 \usepackage{multirow}
@@ -61,12 +61,18 @@ The Breusch-Pagan test against heteroskedasticity suggests that our data are hom
 	\caption{The distribution of the auto-correlation of the residuals at lag 1.\label{fig:DW2}}
 \end{figure}
 
-The moving Chow test, as well as other structural tests from the package~\cite{RStrucchange} suggest changes in the slope, i.e. the appropriateness of a piece-wise linear regression. The distribution of the breakpoints, as found by the Chow test, are plotted in Figure~\ref{FStat_BP_dens}.
+The moving Chow test, as well as other structural tests from the package~\cite{RStrucchange} suggest changes in the slope, i.e. the appropriateness of a piece-wise linear regression. The distribution of the breakpoints, as found by the Chow test, are plotted in Figure~\ref{FStat_BP_dens}. One can also observe from the plot of model residuals against the fitted values (Figure~\ref{fig:RvF-u17}) that the simple linear model is not appropriate for the data.
 
 \begin{figure}
 	\centering
 	\includegraphics{FStats_BP_dens.eps}
 	\caption{Point of change in the slope as found by the moving Chow test. The target-less cycles' distribution is in the upper panel.\label{FStat_BP_dens}}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics{Res_VS_Fit_2016-17.eps}
+	\caption{Plot of the linear model residuals vs. the fitted values. The shape of the plot (flipped-over U) indicates that the model systematically overestimates the beam current at higher values, then underestimates in the mid range, and overestimates again at lower values.\label{fig:RvF-u17}}
 \end{figure}
 
 Figure~\ref{fig:Slp_VS_I0} shows that there is a dependency between the beam's life time and its intensity. The initial beam intensity $I_0$ was estimated as the exponentiated intercept of the linear model $\ln I_t = \ln I_0 + \slp\cdot t + \err_t$, and the life time estimate is $\hat{\tau} = -\sfrac{1}{\slp*}$. 
@@ -77,9 +83,73 @@ Figure~\ref{fig:Slp_VS_I0} shows that there is a dependency between the beam's l
 	\caption{Slope estimates against the initial beam current. The beam current is estimated from the regression model.\label{fig:Slp_VS_I0}}
 \end{figure}
 
-
-
 \section{Obtainable estimates}
+
+The slopes we estimate are presumed to have the following, most general, form:
+\begin{equation}
+	\slp = -\nu\bkt*{\CS[0]\bkt{1 + \Ayy P^t_y P_y}\Thick + \CS[X]\Thick[X]},
+\end{equation}
+where $nu$ is the beam revolution frequency, $\CS[0]$ is the unpolarized cross section, $\Ayy$ is the asymmetry, $P^t_y$ and $P_y$ are the vertical components of respectively the target and beam polarization vectors, $\Thick = \rho d$ [cm$^{-2}$] is the target thickness, and $\CS[X]\Thick[X]$ refers to the extra-target loss.
+
+In principle, we can estimate both the unpolarized cross section and the asymmetry from the data we have. If we take the difference between two null beam spin state slopes ($P_y = 0$),~\footnote{This is done in order to remove the dependency on the unknown value of $\Ayy$.} one from a target-off cycle, the other target-on, 
+\[
+	\slp[off]^0 - \slp[on]^0 = \nu\CS[0]\bkt{\Thick[on]-\Thick[off]},
+\]
+from which we can estimate $\CS[0]$, once we know the target thicknesses.
+
+The asymmetry is estimated by taking the difference between two target-on slopes with opposite beam polarizations as in
+\[
+	\slp[on]^- - \slp[on]^+ = \nu\CS[0]\Thick[on] P^t\DP*\Ayy.
+\]
+\subsection{Cross section}
+We used the thicknesses estimated from the shift of the Schottky spectrum~\cite{Stein} ($\Thick[on] = \vp{1.1}{14}$ [cm$^{-2}$], and $\Thick[off] = 0$ [cm$^{-2}$]). The cross section estimates we got are presented in Figure~\ref{fig:CS0au_dens} and Table~\ref{tbl:CS0SumStat}. Those estimates that are based on slopes that are considered outliers according to Tukey's range test are labeled unsound, and those whose slopes are separated by more that 40 minutes are considered far removed. The latter classification was introduced in connection with the concern that the environmental conditions systematically changed over time.
+
+\begin{figure}
+	\centering
+	\includegraphics{CS0_au_dens.eps}
+	\caption{Rectangular kernel density estimate of cross section\label{fig:CS0au_dens}}
+\end{figure}
+
+\begin{threeparttable}
+	\centering
+	\caption{Cross section summary statistics\label{tbl:CS0SumStat}}
+	\begin{tabular}{llrrrrr}
+		\hline\hline
+		Sound                & Close &  \# & Mean\tnote{a} (a.u.) & SE\tnote{b} (a.u.) & $\chi^2_{red}$ & SE\tnote{c} (a.u.) \\ \hline
+		\multirow{3}{*}{Yes} & Yes   &  21 &                  366 &                 73 &            6.5 &                178 \\
+		                     & No    & 111 &                  397 &                 30 &            7.0 &                 80 \\
+		                     & All   & 132 &                  393 &                 28 &            6.9 &                 73 \\ \hline
+		\multirow{3}{*}{No}  & Yes   &   2 &                 1469 &                 22 &            0.1 &                  5 \\
+		                     & No    &  10 &                 1440 &                 83 &            4.2 &                169 \\
+		                     & All   &  12 &                 1444 &                 69 &            3.4 &                127 \\ \hline
+	\end{tabular}
+	\begin{tablenotes}
+		\item[a]{Weighted mean.}
+		\item[b]{The distribution's standard deviation divided by the square root of the sample size.}
+		\item[c]{According to the formula, correcting for dispersion via the $\chi^2_{red}$.}
+	\end{tablenotes}
+\end{threeparttable}
+
+\subsection{Asymmetry}
+
+The summary statistics for the asymmetry are presented in Table~\ref{tbl:AyySumStat}.
+
+\begin{threeparttable}
+	\centering
+	\caption{Asymmetry summary statistics\label{tbl:AyySumStat}}
+	\begin{tabular}{llrrrrl}
+		\hline\hline
+		Sound                & Close &  \# & Mean\tnote{a} (a.u.) & SE\tnote{b} (a.u.) & $\chi^2_{red}$ & SE\tnote{c} (a.u.) \\ \hline
+		\multirow{3}{*}{Yes} & Yes   &  23 &       $\vp{2.0}{-2}$ &       $\vp{9.1}{-2}$ &            5.8 & 0.23               \\
+		                     & No    & 121 &       $\vp{2.4}{-2}$ &       $\vp{5.0}{-2}$ &            8.2 & 0.14               \\
+		                     & All   & 144 &       $\vp{2.3}{-2}$ &     $\vp{4.5}{-2}$ &            7.8 & 0.13               \\ \hline
+	\end{tabular}
+	\begin{tablenotes}
+		\item[a]{Weighted mean.}
+		\item[b]{The distribution's standard deviation divided by the square root of the sample size.}
+		\item[c]{According to the formula, correcting for dispersion via the $\chi^2_{red}$.}
+	\end{tablenotes}
+\end{threeparttable}
 
 \begin{thebibliography}{9}
 	\bibitem{GaussMarkov}
@@ -88,6 +158,8 @@ Figure~\ref{fig:Slp_VS_I0} shows that there is a dependency between the beam's l
 	\url{https://cran.r-project.org/web/packages/sandwich/sandwich.pdf}
 	\bibitem{RStrucchange}
 	\url{https://cran.r-project.org/web/packages/strucchange/strucchange.pdf}
+	\bibitem{Stein}
+	H. J. Stein, M. Hartmann, I. Keshelashvili, et al. ``Determination of target thickness and luminosity from beam energy losses.''
 \end{thebibliography}
 
 \end{document}

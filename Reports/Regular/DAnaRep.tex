@@ -2,7 +2,7 @@
 
 \usepackage{../repsty}
 \usepackage{multirow}
-
+\usepackage{subcaption}
 
 \begin{document}
 	\title{Analysis of the 2016 data}
@@ -45,6 +45,7 @@ The cycles are shown in Figure~\ref{fig:Cycles}; the slopes estimated from those
 
 
 \section{Properties of the data}
+The slopes summarized in Table~\ref{tbl:SlpSumStat} were obtained using Ordinary Least Squares regression. 
 The Gauss-Markov theorem puts certain conditions on the data in order that the least squares slope estimator be minimum-variance mean-unbiased. Those conditions are:~\cite{GaussMarkov}
 \begin{enumerate}
 	\item Linearity and additivity of the relationship;
@@ -53,7 +54,7 @@ The Gauss-Markov theorem puts certain conditions on the data in order that the l
 	\item Constant variance of the error (homoskedasticity).
 \end{enumerate}
 
-The Breusch-Pagan test against heteroskedasticity suggests that our data are homoskedastic; however, the Durbin-Watson test for autocorrelation of the residuals (whose statistic is the value of the auto-correlation function at lag 1) yields the lag-1 autocorrelation around 60\% for all cycles (see Figure~\ref{fig:DW2}). Autocorrelation does not affect the slope estimate itself, but in its presence the OLS estimate of its standard error is biased. To correct for that, we use a robust standard error estimator provided by the \emph{sandwich} package of R.~\cite{RSandwich} The robust estimator takes care of both the (possible) heteroskedasticity, and the autocorrelation. 
+The Breusch-Pagan test against heteroskedasticity suggests that our data are homoskedastic; however, the Durbin-Watson test for autocorrelation of the residuals (whose statistic is the value of the auto-correlation function at lag 1) yields the lag-1 autocorrelation around 60\% for all cycles (see Figure~\ref{fig:DW2}).~\footnote{The use of the generalized least squares model with the AR1-correlated error term did not improve the fit according to both the Akaike's and Bayesian information criteria.} Autocorrelation does not affect the slope estimate itself, but in its presence the OLS estimate of its standard error is biased. To correct for that, we use a robust standard error estimator provided by the \emph{sandwich} package of R.~\cite{RSandwich} The robust estimator takes care of both the (possible) heteroskedasticity, and the autocorrelation. 
 
 \begin{figure}[H]
 	\centering
@@ -69,11 +70,19 @@ The moving Chow test, as well as other structural tests from the package~\cite{R
 	\caption{Point of change in the slope as found by the moving Chow test. The target-less cycles' distribution is in the upper panel.\label{FStat_BP_dens}}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics{Res_VS_Fit_2016-17.eps}
-	\caption{Plot of the linear model residuals vs. the fitted values. The shape of the plot (flipped-over U) indicates that the model systematically overestimates the beam current at higher values, then underestimates in the mid range, and overestimates again at lower values.\label{fig:RvF-u17}}
-\end{figure}
+%\begin{figure}[H]
+%	\centering
+%	\begin{subfigure}{\textwidth}
+%		\includegraphics[height=.5\textheight]{TestCycle_2016-17.eps}
+%		\caption{Example cycle.\label{fig:fig:TestCycle}}
+%	\end{subfigure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics{Res_VS_Fit_2016-17.eps}
+		\caption{Plot of the linear model residuals vs. the fitted values. The shape of the plot (flipped-over U) indicates that the model systematically overestimates the beam current at higher values, then underestimates in the mid range, and overestimates again at lower values.\label{fig:RvF-u17}}
+	\end{figure}
+%\end{figure}
+
 
 Figure~\ref{fig:Slp_VS_I0} shows that there is a dependency between the beam's life time and its intensity. The initial beam intensity $I_0$ was estimated as the exponentiated intercept of the linear model $\ln I_t = \ln I_0 + \slp\cdot t + \err_t$, and the life time estimate is $\hat{\tau} = -\sfrac{1}{\slp*}$. 
 
@@ -124,10 +133,10 @@ We used the thicknesses estimated from the shift of the Schottky spectrum~\cite{
 		                     & All   &  12 &                 1444 &                 69 &            3.4 &                127 & 1435 \\ \hline
 	\end{tabular}
 	\begin{tablenotes}
-		\item[a]{Weighted mean.}
+		\item[a]{Variance weighted mean.}
 		\item[b]{The distribution's standard deviation divided by the square root of the sample size.}
 		\item[c]{According to the formula, correcting for dispersion via the $\chi^2_{red}$.}
-		\item[d]{Most frequently occurring value.}
+		\item[d]{Most frequent value.}
 	\end{tablenotes}
 \end{threeparttable}
 
@@ -146,10 +155,10 @@ The summary statistics for the asymmetry are presented in Table~\ref{tbl:AyySumS
 		                     & All   & 144 &               -- &       $\vp{2.2}{-2}$ &     $\vp{4.2}{-2}$ &            7.8 & 0.12               &      $\vp{-3.1}{-2}$ \\ \hline
 	\end{tabular}
 	\begin{tablenotes}
-		\item[a]{Weighted mean.}
+		\item[a]{Variance weighted mean.}
 		\item[b]{The distribution's standard deviation divided by the square root of the sample size.}
 		\item[c]{According to the formula, correcting for dispersion via the $\chi^2_{red}$.}
-		\item[d]{Most frequently occurring value.}
+		\item[d]{Most frequent value.}
 	\end{tablenotes}
 \end{threeparttable}
 

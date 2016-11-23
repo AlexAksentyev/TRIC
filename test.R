@@ -17,12 +17,12 @@ names(slopes16)[2] <- "Beam Spin"; names(slopes16)[4] <- "Target State"
 ggplot(slopes16, aes(Clock, Estimate, shape=`Target State`, col=`Beam Spin`)) + geom_point() + 
   facet_grid(`Beam Spin`~`Target State`) + 
   theme_bw() + theme(legend.position="top") + labs(y=expression(hat(beta))) +
-  geom_smooth(method="lm", se=FALSE, show.legend=FALSE)
+  geom_smooth(method="lm", se=FALSE, show.legend=FALSE, size=.4, linetype=3)
 
 ggplot(slopes16, aes(I0, Estimate, col=`Beam Spin`, shape=`Target State`)) + geom_point() +
   facet_grid(`Beam Spin`~.) +
   theme_bw() + theme(legend.position="top") + labs(x=expression(I[0]~"(a.u.)"), y=expression(hat(beta))) +
-  geom_smooth(method="lm",se=FALSE,show.legend=FALSE, aes(linetype=`Target State`))
+  geom_smooth(method="lm",se=FALSE,show.legend=FALSE, aes(linetype=`Target State`), size=.4)
 
 source("Parameters.R")
 DP = -diff(Pb); SP = sum(Pb)
@@ -44,7 +44,7 @@ lmtest::dwtest(m)[c("statistic", "p.value")]
 library(strucchange)
 Fstats(f, data=TRun) %>% plot
 
-Data16 %>% ddply(.(B.Spin, FABS, Unit), function(s) Fstats(f, data=s)$breakpoint) -> x; names(x)[4] <- "BP"
+Data16 %>% ddply(.(B.Spin, FABS, Unit), function(s) data.frame("BP" = Fstats(f, data=s)$breakpoint)) -> x
 ggplot(x, aes(BP, col=B.Spin)) + geom_density() + facet_grid(FABS~.) + 
   theme_bw() + theme(legend.position="top") + labs(x = "Breakpoint (seconds from start)")
 
@@ -63,6 +63,21 @@ lm(Y ~ uts, data = mutate(TRun, Y = log(BCT2), uts = UTS-UTS[1])) %>% summary
 
 
 ## estimates ####
+.sumstat <- function(x){
+  group_by(x, Sound, Close) %>% 
+    dplyr::summarise(NUM=n(), WMN = weighted.mean(Estimate, SE^-2), SE_d = sd(Estimate)/sqrt(NUM),
+                     Chi2 = sum((Estimate - WMN)^2/SE^2)/(NUM-1),
+                     SE_t = sqrt(1/sum(SE^-2))*Chi2,
+                     MODE = mlv(Estimate, method="mfv")[["M"]]
+    ) %>% print
+  group_by(x, Sound) %>% 
+    dplyr::summarise(NUM=n(), WMN = weighted.mean(Estimate, SE^-2), SE_d = sd(Estimate)/sqrt(NUM),
+                     Chi2 = sum((Estimate - WMN)^2/SE^2)/(NUM-1),
+                     SE_t = sqrt(1/sum(SE^-2))*Chi2,
+                     MODE = mlv(Estimate, method="mfv")[["M"]]
+    ) %>% print
+}
+
 ##cross section
 thick=1.1e14
 filter(slopes16, B.Spin=="Null") %>% dlply("FABS") %>% dbeta.(c("FOut", "Clock")) %>% 
@@ -70,37 +85,20 @@ filter(slopes16, B.Spin=="Null") %>% dlply("FABS") %>% dbeta.(c("FOut", "Clock")
          Sound = derivedFactor("No" = FOut.On=="T"|FOut.Off=="T", .default="Yes"),
          Close = derivedFactor("Yes" = abs(as.numeric(Clock.Off)- as.numeric(Clock.On))/60 <= 40, .default="No")
         ) -> cs0mb
-ggplot(cs0mb%>%filter(Sound=="Yes"), aes(Estimate,fill=Close, alpha=.2)) + geom_density(kernel="rect") + theme_bw() + 
-  labs(x=expression(hat(sigma)[0]~"(a.u.)"), y="Rectangular kernel density estimate") + guides(alpha=FALSE)
 
-group_by(cs0mb, Sound, Close) %>% 
-  dplyr::summarise(NUM=n(), WMN = weighted.mean(Estimate, SE^-2), SE_d = sd(Estimate)/sqrt(NUM),
-                   Chi2 = sum((Estimate - WMN)^2/SE^2)/(NUM-1),
-                   SE_t = sqrt(1/sum(SE^-2))*Chi2
-  )
-group_by(cs0mb, Sound) %>% 
-  dplyr::summarise(NUM=n(), WMN = weighted.mean(Estimate, SE^-2), SE_d = sd(Estimate)/sqrt(NUM),
-                   Chi2 = sum((Estimate - WMN)^2/SE^2)/(NUM-1),
-                   SE_t = sqrt(1/sum(SE^-2))*Chi2
-  )
-cs0est = (filter(cs0mb, Sound=="Yes",Close=="Yes") %>% WMN)*1e-27
+ggplot(cs0mb%>%filter(Sound=="Yes"), aes(Estimate,col=Close, alpha=.2)) + geom_density(kernel="rect") + theme_bw() + 
+  labs(x=expression(hat(sigma)[0]~"(a.u.)"), y="Rectangular kernel density estimate") + guides(alpha=FALSE)
+.sumstat(cs0mb)
+
+filter(cs0mb, Sound=="Yes") %>% daply("Close", function(s) WMN(s)*1e-27) -> cs0est
+
 ## asymmetry
 a = -nu*cs0est*thick*Pt*diff(Pb[1:2])
 (filter(slopes16, B.Spin != "Null", FABS=="On") %>% dlply("B.Spin"))[c("Down","Up")] %>% dbeta.(c("FOut","Clock")) %>%
-  mutate(Estimate = Estimate/a, SE = SE/a,
-         Sound = derivedFactor("No" = FOut.Down=="T"|FOut.Up=="T", .default="Yes"),
+  mutate(Sound = derivedFactor("No" = FOut.Down=="T"|FOut.Up=="T", .default="Yes"),
          Close = derivedFactor("Yes" = abs(as.numeric(Clock.Down)- as.numeric(Clock.Up))/60 <= 40, .default="No")
-      ) -> Ayy
-ggplot(Ayy%>%filter(Sound=="Yes"), aes(Estimate,fill=Close, alpha=.2)) + geom_density(kernel="rect") + theme_bw() + 
-  labs(x=expression(hat(sigma)[0]~"(a.u.)"), y="Rectangular kernel density estimate") + guides(alpha=FALSE)
+      ) %>% ddply("Close", function(s) mutate(s, Estimate = Estimate/a[Close[1]], SE = SE/a[Close[1]])) -> Ayy
 
-group_by(Ayy, Sound, Close) %>% 
-  dplyr::summarise(NUM=n(), WMN = weighted.mean(Estimate, SE^-2), SE_d = sd(Estimate)/sqrt(NUM),
-                   Chi2 = sum((Estimate - WMN)^2/SE^2)/(NUM-1),
-                   SE_t = sqrt(1/sum(SE^-2))*Chi2
-  )
-group_by(Ayy, Sound) %>% 
-  dplyr::summarise(NUM=n(), WMN = weighted.mean(Estimate, SE^-2), SE_d = sd(Estimate)/sqrt(NUM),
-                   Chi2 = sum((Estimate - WMN)^2/SE^2)/(NUM-1),
-                   SE_t = sqrt(1/sum(SE^-2))*Chi2
-  )
+ggplot(Ayy%>%filter(Sound=="Yes"), aes(Estimate,col=Close, alpha=.2)) + geom_density(kernel="rect") + theme_bw() + 
+  labs(x=expression(hat(A)[yy]~"(a.u.)"), y="Rectangular kernel density estimate") + guides(alpha=FALSE)
+.sumstat(Ayy)

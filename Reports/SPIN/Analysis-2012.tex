@@ -28,7 +28,9 @@
 \newcommand{\scl}{.4}
 
 \DeclareDocumentCommand{\Ayy}{s}{\IfBooleanT{#1}{\hat}A_{y,y}}
+\DeclareDocumentCommand{\Ayxz}{s}{\IfBooleanT{#1}{\hat}A_{y,xz}}
 
+\newcommand{\vp}[2]{#1\cdot10^{#2}}
 
 \begin{document}
 \title{Estimation of total cross section and cross section asymmetry in a transmission experiment}
@@ -58,9 +60,11 @@ The total cross section in a double-polarized scattering involves a number of po
 \end{equation}
 where $P^t_j$ and $P_i$ are respectively the $j$-projection of target and the $i$-projection of beam polarizations, $P^t_{mn}$ is the $mn$-tensor component of target polarization, $\CS[0]$ is the unpolarized cross section component, and $A_{i,j}$ is the appropriate asymmetry.
 
-The asymmetry that serves as the null-observable of T-symmetry is $A_{y,xz}$, all others being faking observables. TRIC's experimental design limits the influence of all faking observables to below the experimental accuracy; except for that of $A_{y,y}$, caused by the misalignment of the target and beam polarizations~\cite[p. 11]{Proposal}. Thus arises the problem of knowing the extent to which vector target polarization must be controlled, for which the knowledge of the value of $A_{y,y}$ is required. 
+The asymmetry that serves as the null-observable of T-symmetry is $A_{y,xz}$, all others being faking observables~\cite{Conzett}. TRIC's experimental design limits the influence of all faking observables to below the experimental accuracy ~\cite{Proposal}, except for that of $A_{y,y}$, caused by the misalignment of the target and beam polarizations. Thus arises the problem of knowing the extent to which vector target polarization must be controlled, for which the knowledge of the value of $A_{y,y}$ is required. 
 
 Unpolarized cross section is a parameter in both estimators' distributions, and hence it must be known as well. 
+
+In this proceeding we summarize the results of two experiments preliminary to TRIC, in order to assess the viability of the transmission-experiment-based method of accessing the $\Ayxz$ observable.
 
 \section{Theoretical background}
 \subsection{Physics}
@@ -78,12 +82,12 @@ For the average beam current, integration of the above yields
 \end{equation}
 with $\slp = \sum_i \slp[i] = - \nu\cdot\sum_i \sfrac1\tau_i$, $\nu$ --- the beam revolution frequency. 
 
-In the case of unpolarized scattering, an unpolarized proton beam interacts with an unpolarized deuterium target with cross section $\CS[0]$; to that add all extra-target losses ($\CS[x]\Thick[x]$), to produce the following expression for beam loss:
+In the case of unpolarized scattering, an unpolarized beam interacts with an unpolarized gas target with cross section $\CS[0]$; to that add all the losses in the accelerator ring ($\CS[x]\Thick[x]$), to produce the following expression for beam loss:
 \begin{equation}\label{eq:SlopeModel}
 	\slp = -\nu\bkt{\CS[0]\Thick + \CS[x]\Thick[x]}.
 \end{equation}
 
-Since $\CS[x]\Thick[x]$ is independent from the target state, an estimate of the cross section is obtained from  
+Since $\CS[x]\Thick[x]$ is independent from the presence of the target, an estimate of the cross section is obtained from  
 \begin{equation}
 	\CS*[0] = \frac{\slp*[off] - \slp*[on]}{\nu\Thick[on]},
 \end{equation}
@@ -129,9 +133,9 @@ We have analyzed two data sets: one was measured in 2012, the other in 2016.
 
 In the 2012 experiment, the proton beam was scattered on the hydrogen target, both unpolarized; the beam was cooled using electron cooling and bunched by the barrier bucket; the cycles lasted for one hour each. 
 
-In the 2016 experiment the beam was scattered on the deuteron target, both polarized; the beam had undergone RF-bunching and electron-cooling; the cycles lasted for 12 minutes, the first half of which the target was turned on, in the second off; the beam spin state alternated from spin up to spin down through no spin, while the target spin state remained constant (spin up). 
+In the 2016 experiment the proton beam was scattered on the deuteron target, both polarized; the beam had undergone RF-bunching and electron-cooling; the cycles lasted for 12 minutes, the first half of which the target was turned on, in the second off; the beam spin state alternated from spin up to spin down through no spin, while the target spin state remained constant (spin up). 
 
-The cycles for both experiments are presented in FIG.~\ref{fig:Cycles}.
+In both experiments the target was produced by an Atomic Beam Source (ABS) capable of producing jets of polarized hydrogen and deuterium, and was concentrated within a storage cell located inside the PAX target chamber, described in more detail in~\cite{Weidemann}. The cycles for both experiments are presented in FIG.~\ref{fig:Cycles}.
 
 
 \begin{figure}[h]
@@ -187,7 +191,31 @@ Even a constant offset must be removed in order to have a constant slope to esti
 After subtracting the offset, the linear model $\ln I_t = \ln I_0 + \slp t +\epsilon_t$ is fitted via the ordinary least squares method. The reduced chi-squares computed from model residuals deviate from one starting from the fourth decimal place; however, one should note that the data are likely to have structural slope changes, and do not pass linearity tests as well (see TABLE~\ref{tbl:CycleChars}). Because the model residuals exhibit serial correlation (FIG.~\ref{fig:Run969}), the slope estimates' standard errors are estimated with robust estimators. This is done for both data sets.
 
 
-In FIG.~\ref{fig:SlpOnI0} we plotted the dependence of the slope estimate on the initial beam current, which was estimated by exponentiating the intercept of the fitted model. (If the initial current is also estimated as the median value of current within the second cycle minute, the two estimators are essentially perfectly correlated.) The figure for the 2016 estimates suggests there might be a dependence of the estimated slope on the initial beam current, although the p-values of the slopes of the fitted lines (obtained by robust least squares) are not statistically significant, with only the slope for the null spin state and the target turned off being significant at the 10\% confidence level (the p-value being 6\%). However, one might notice that the effect of the initial current is stronger for the target-off slopes (the difference is especially noticeable in the unpolarized case), affirming the hypothesis that the beam current played a significant role in the experimental performance.
+In FIG.~\ref{fig:SlpOnI0} we plotted the dependence of the slope estimate on the initial beam current, which was estimated by exponentiating the intercept of the fitted model. 
+%(If the initial current is also estimated as the median value of current within the second cycle minute, the two estimators are essentially perfectly correlated.) 
+The figure for the 2016 estimates suggests there might be a dependence of the estimated slope on the initial beam current, although the p-values of the slopes of the fitted lines (obtained by robust least squares) are not statistically significant, with only the slope for the null spin state and the target turned off being significant at the 10\% confidence level (the p-value being 6\%). %However, one might notice that the effect of the initial current is stronger for the target-off slopes (the difference is especially noticeable in the unpolarized case), affirming the hypothesis that the beam current played a significant role in the experimental performance.
+
+The fit results are summarized in TABLE~\ref{tbl:Slp-big}.
+
+\begin{threeparttable}[h]
+	\centering
+	\caption{Slope summary statistics. \label{tbl:Slp-big}}
+	\begin{tabular}{c|lllllrr}
+		\hline\hline
+		        Year          & Target               & Spin & \#\tnote{a} & Mean (a.u.)      & SE (a.u.)    &  \\ \hline
+		\multirow{2}{*}{2012} & Off                  & Null & 5           & $\vp{-9.04}{-5}$ & $\vp{6}{-7}$ &  \\
+		                      & On                   & Null & 4           & $\vp{-1.20}{-4}$ & $\vp{1}{-6}$ &  \\ \hline
+		\multirow{6}{*}{2016} & \multirow{3}{*}{Off} & Up   & 12          & $\vp{-2.26}{-4}$ & $\vp{7}{-6}$ &  \\
+		                      &                      & Down & 12          & $\vp{-2.16}{-4}$ & $\vp{8}{-6}$ &  \\
+		                      &                      & Null & 12          & $\vp{-2.12}{-4}$ & $\vp{9}{-6}$ &  \\
+		                      & \multirow{3}{*}{On}  & Up   & 12          & $\vp{-2.51}{-4}$ & $\vp{4}{-6}$ &  \\
+		                      &                      & Down & 12          & $\vp{-2.53}{-4}$ & $\vp{5}{-6}$ &  \\
+		                      &                      & Null & 12          & $\vp{-2.54}{-4}$ & $\vp{6}{-6}$ &  \\ \hline\hline
+	\end{tabular}
+	\begin{tablenotes}
+		\item[a]{Sample size.}
+	\end{tablenotes}
+\end{threeparttable}
 
 \begin{figure}
 \centering
@@ -207,7 +235,7 @@ In FIG.~\ref{fig:SlpOnI0} we plotted the dependence of the slope estimate on the
 \end{figure}
 
 \section{Cross section}
-In estimating the cross section, we used only the estimates from adjacent cycles. This was done to minimize the effect of drifts of environmental variables such as target thickness, which is estimated to increase by $0.5~ \sfrac{\%}{\mathrm{hour}}$. (The thickness by which the slope differences are divided, assumed constant, was provided by a Schottky measurement.) Those estimates whose computation involved at least one slope which does not pass Tukey's range test are labeled unsound.
+After the slopes are estimated from the raw measurement data, one can estimate the cross section. In this analysis, we used only the estimates from adjacent cycles, so as to minimize the effect of drifts of environmental variables such as target thickness (which is estimated to increase by $0.5~ \sfrac{\%}{\mathrm{hour}}$). The thickness by which the slope differences are divided, assumed constant, was provided by a Schottky measurement. Those estimates whose computation involved at least one slope which is deemed an outlier according to Tukey's range test are labeled unsound in TABLE~\ref{tbl:CS-all}. There are two outlier slopes in the 2012 experiment, and one in the 2016 experiment; all three are from target-off cycles.
 
 \begin{figure}
 \begin{subfigure}{.5\textwidth}
@@ -221,16 +249,11 @@ In estimating the cross section, we used only the estimates from adjacent cycles
 \caption{Slope estimates plotted against initial beam current estimated as the exponentiated intercept of the fitted model.\label{fig:SlpOnI0}}
 \end{figure}
 
-The cross section estimate's standard error (SE) is estimated by adding the squared standard errors of the paired slopes, not taking account of the covariance term:
-\begin{equation}
-	\SE*{\CS*[0]} = \sqrt{\SE*{\slp*[off]}^2 + \SE*{\slp*[on]}^2}.
-\end{equation}
-
-This is done so because depending on whether an on-slope is paired with the preceding or succeeding off-slope, the covariance term changes sign. Since there does not seem to be a reasonable criterion favoring either of the two mappings, the covariance term was omitted.
+The cross section estimate's standard error (SE) is estimated by adding the squared standard errors of the paired slopes, not taking account of the covariance term. This is done so because depending on whether an on-slope is paired with the preceding or succeeding off-slope, the covariance term changes sign. Since there does not seem to be a reasonable criterion favoring either of the two mappings, the covariance term was omitted.
 
 \section{Asymmetry}
 
-The asymmetry was estimated as in equation~\eqref{eq:AyyEst}. In that expression, we used the target thickness as estimated using the Schottky measurements method~\cite{Stein} ($1.1\cdot 10^{14}$ cm$^{-2}$), and our own best estimate for the unpolarized cross section (411 mb, see TABLE~\ref{tbl:CS-all}).\\
+The asymmetry was estimated as in equation~\eqref{eq:AyyEst}. In that expression, we used the target thickness as estimated using the Schottky measurements method~\cite{Stein} ($1.1\cdot 10^{14}$ cm$^{-2}$, measured once), and our own best estimate for the unpolarized cross section (411 mb, see TABLE~\ref{tbl:CS-all}).\\
 
 \section{Results}
 \begin{table}
@@ -239,7 +262,7 @@ The asymmetry was estimated as in equation~\eqref{eq:AyyEst}. In that expression
 \caption{Cross section summary statistics. \label{tbl:CS-all}}
 \begin{tabular}{c|llrcr}
 \hline\hline
-Year						& Soundness		& Closeness		& \#		& Mean\tnote{a} (a.u.)	& SE (a.u.) \\
+Year						& Soundness		& Closeness		& \#		& Mean\tnote{a} [a.u.]	& SE [a.u.] \\
 \hline
 \multirow{4}{*}{2012}		& Sound			& Close			& 4			& 507(507)				& 7  \\
 							& Sound			& Far			& 8			& 553(563)				& 14 \\
@@ -261,24 +284,6 @@ Year						& Soundness		& Closeness		& \#		& Mean\tnote{a} (a.u.)	& SE (a.u.) \\
 \end{table}
 
 The summary statistics of cross section estimates, grouped by soundness and closeness of the slope estimates they are based on, are presented in TABLE~\ref{tbl:CS-all} and FIG.~\ref{fig:CS-all}; the slopes themselves are shown in FIG.~\ref{fig:SlopesVsTime} and summarized in TABLE~\ref{tbl:Slp-big}. Group density estimates with the rectangular kernel are shown in FIG.~\ref{fig:CS-dens}.
-
-\newcommand{\vp}[2]{#1\cdot10^{#2}}
-\begin{table}[h]
-\centering
-\caption{Slope summary statistics. \label{tbl:Slp-big}}
-\begin{tabular}{c|lllllrr}
-	\hline\hline
-	        Year          & Target               & Spin & \# & Mean (a.u.)      & SE (a.u.)    \\ \hline
-	\multirow{2}{*}{2012} & Off                  & Null & 5  & $\vp{-9.04}{-5}$ & $\vp{6}{-7}$ \\
-	                      & On                   & Null & 4  & $\vp{-1.20}{-4}$ & $\vp{1}{-6}$ \\ \hline
-	\multirow{6}{*}{2016} & \multirow{3}{*}{Off} & Up   & 12 & $\vp{-2.26}{-4}$ & $\vp{7}{-6}$ \\
-	                      &                      & Down & 12 & $\vp{-2.16}{-4}$ & $\vp{8}{-6}$ \\
-	                      &                      & Null & 12 & $\vp{-2.12}{-4}$ & $\vp{9}{-6}$ \\
-	                      & \multirow{3}{*}{On}  & Up   & 12 & $\vp{-2.51}{-4}$ & $\vp{4}{-6}$ \\
-	                      &                      & Down & 12 & $\vp{-2.53}{-4}$ & $\vp{5}{-6}$ \\
-	                      &                      & Null & 12 & $\vp{-2.54}{-4}$ & $\vp{6}{-6}$ 
-\end{tabular}
-\end{table}
 
 Our best estimate for the $pp$ cross section is $\CS[0]^{pp} = 507 \pm 7$ a.u., that for the $pd$ reaction is $\CS[0]^{pd} = 411 \pm 48$. The asymmetry $\Ayy = \vp{(5 \pm 3)}{-2}$. %FIG.~\ref{fig:AyyDensity} shows its Gaussian kernel density estimate.
 
@@ -334,6 +339,9 @@ Homer E. Conzett. ``On Null Tests of Time-Reversal Invariance,'' 6. Paris, Franc
 \bibitem{Proposal}
 P.D. Eversheim, et al. ``Test of Time-Reversal Invariance in Proton-Deuteron Scattering.''
 %\url{https://apps.fz-juelich.de/pax/paxwiki/images/8/8c/215-TRI_Prop_sum.pdf}
+
+\bibitem{Weidemann}
+Weidemann, C., F. Rathmann, H. J. Stein, B. Lorentz, Z. Bagdasarian, L. Barion, S. Barsov, et al. ``Toward Polarized Antiprotons: Machine Development for Spin-Filtering Experiments.'' Physical Review Special Topics - Accelerators and Beams 18, no. 2 (February 23, 2015). doi:10.1103/PhysRevSTAB.18.020101.
 
 \bibitem{GaussMarkov}
 D.S.G. Pollock. ``Topics in Econometrics.'' %\url{http://www.le.ac.uk/users/dsgp1/COURSES/TOPICS/gausmkov.pdf}

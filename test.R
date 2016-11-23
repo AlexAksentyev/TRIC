@@ -31,16 +31,16 @@ lbeta = list("D" = b1D, "U" = b1U)
 D = dbeta.(lbeta); d = D$Estimate
 R = rbeta.(lbeta); r = R$Estimate; rr = 2*r/Pt/(DP - SP*r); R$Rp <- rr
 
-##
+## linear model fit ####
 filter(Data16, Unit==17) -> TRun
 ggplot(TRun, aes(Clock, BCT2)) + geom_line() + theme_bw() + labs(y="I (a.u.)")
-TRun %>% filter(eCool=="Acc",FABS=="T") %>% mutate(uts = UTS-UTS[1]) -> TRun
+TRun %>% filter(eCool=="Acc",FABS=="F") %>% mutate(uts = UTS-UTS[1]) -> TRun
 f = log(BCT2) ~ uts
 library(lmtest)
 lm(f, data = TRun) -> m
 autoplot(m,1) + ggtitle("") + theme_bw() + labs(x = expression(hat(y)~"="~ hat(alpha) + hat(beta)*t), y=expression(y - hat(y)))
 lmtest::bptest(m)
-lmtest::dwtest(m)[c("statistic", "p.value")]
+lmtest::dwtest(m)
 library(strucchange)
 Fstats(f, data=TRun) %>% plot
 
@@ -102,3 +102,8 @@ a = -nu*cs0est*thick*Pt*diff(Pb[1:2])
 ggplot(Ayy%>%filter(Sound=="Yes"), aes(Estimate,col=Close, alpha=.2)) + geom_density(kernel="rect") + theme_bw() + 
   labs(x=expression(hat(A)[yy]~"(a.u.)"), y="Rectangular kernel density estimate") + guides(alpha=FALSE)
 .sumstat(Ayy)
+
+
+## testing if current-dependent error fit fits better ####
+library(nlme)
+gls(f, data=TRun, correlation = corAR1(.6, ~uts)) ->mgls

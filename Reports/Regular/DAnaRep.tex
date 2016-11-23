@@ -16,12 +16,12 @@ The cycles lasted thirteen minutes (792 seconds). In the first half of the cycle
 
 The cycles are shown in Figure~\ref{fig:Cycles}; the slopes estimated from those cycles are plotted against time in Figure~\ref{fig:Slopes}; the slopes' summary statistics (only for the target spin state \#1) are aggregated in Table~\ref{tbl:SlpSumStat}.
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics{Cycles2016.eps}
 	\caption{Cycles in 2016 colored according to the beam spin state. Before 22:30 the target spin state is 3, after it is 1.\label{fig:Cycles}}
 \end{figure}
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics{Slopes2016_VS_Clock.eps}
 	\caption{Slope estimates against time.\label{fig:Slopes}}
@@ -55,7 +55,7 @@ The Gauss-Markov theorem puts certain conditions on the data in order that the l
 
 The Breusch-Pagan test against heteroskedasticity suggests that our data are homoskedastic; however, the Durbin-Watson test for autocorrelation of the residuals (whose statistic is the value of the auto-correlation function at lag 1) yields the lag-1 autocorrelation around 60\% for all cycles (see Figure~\ref{fig:DW2}). Autocorrelation does not affect the slope estimate itself, but in its presence the OLS estimate of its standard error is biased. To correct for that, we use a robust standard error estimator provided by the \emph{sandwich} package of R.~\cite{RSandwich} The robust estimator takes care of both the (possible) heteroskedasticity, and the autocorrelation. 
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics{ACF1_dens.eps}
 	\caption{The distribution of the auto-correlation of the residuals at lag 1.\label{fig:DW2}}
@@ -63,13 +63,13 @@ The Breusch-Pagan test against heteroskedasticity suggests that our data are hom
 
 The moving Chow test, as well as other structural tests from the package~\cite{RStrucchange} suggest changes in the slope, i.e. the appropriateness of a piece-wise linear regression. The distribution of the breakpoints, as found by the Chow test, are plotted in Figure~\ref{FStat_BP_dens}. One can also observe from the plot of model residuals against the fitted values (Figure~\ref{fig:RvF-u17}) that the simple linear model is not appropriate for the data.
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics{FStats_BP_dens.eps}
 	\caption{Point of change in the slope as found by the moving Chow test. The target-less cycles' distribution is in the upper panel.\label{FStat_BP_dens}}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics{Res_VS_Fit_2016-17.eps}
 	\caption{Plot of the linear model residuals vs. the fitted values. The shape of the plot (flipped-over U) indicates that the model systematically overestimates the beam current at higher values, then underestimates in the mid range, and overestimates again at lower values.\label{fig:RvF-u17}}
@@ -77,7 +77,7 @@ The moving Chow test, as well as other structural tests from the package~\cite{R
 
 Figure~\ref{fig:Slp_VS_I0} shows that there is a dependency between the beam's life time and its intensity. The initial beam intensity $I_0$ was estimated as the exponentiated intercept of the linear model $\ln I_t = \ln I_0 + \slp\cdot t + \err_t$, and the life time estimate is $\hat{\tau} = -\sfrac{1}{\slp*}$. 
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics{Slope_VS_IniCurrent_2016.eps}
 	\caption{Slope estimates against the initial beam current. The beam current is estimated from the regression model.\label{fig:Slp_VS_I0}}
@@ -104,52 +104,60 @@ The asymmetry is estimated by taking the difference between two target-on slopes
 \subsection{Cross section}
 We used the thicknesses estimated from the shift of the Schottky spectrum~\cite{Stein} ($\Thick[on] = \vp{1.1}{14}$ [cm$^{-2}$], and $\Thick[off] = 0$ [cm$^{-2}$]). The cross section estimates we got are presented in Figure~\ref{fig:CS0au_dens} and Table~\ref{tbl:CS0SumStat}. Those estimates that are based on slopes that are considered outliers according to Tukey's range test are labeled unsound, and those whose slopes are separated by more that 40 minutes are considered far removed. The latter classification was introduced in connection with the concern that the environmental conditions systematically changed over time.
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics{CS0_au_dens.eps}
-	\caption{Rectangular kernel density estimate of cross section\label{fig:CS0au_dens}}
+	\caption{Rectangular kernel density estimate of cross section.\label{fig:CS0au_dens}}
 \end{figure}
 
-\begin{threeparttable}
+\begin{threeparttable}[H]
 	\centering
 	\caption{Cross section summary statistics\label{tbl:CS0SumStat}}
-	\begin{tabular}{llrrrrr}
+	\begin{tabular}{llrrrrrr}
 		\hline\hline
-		Sound                & Close &  \# & Mean\tnote{a} (a.u.) & SE\tnote{b} (a.u.) & $\chi^2_{red}$ & SE\tnote{c} (a.u.) \\ \hline
-		\multirow{3}{*}{Yes} & Yes   &  21 &                  366 &                 73 &            6.5 &                178 \\
-		                     & No    & 111 &                  397 &                 30 &            7.0 &                 80 \\
-		                     & All   & 132 &                  393 &                 28 &            6.9 &                 73 \\ \hline
-		\multirow{3}{*}{No}  & Yes   &   2 &                 1469 &                 22 &            0.1 &                  5 \\
-		                     & No    &  10 &                 1440 &                 83 &            4.2 &                169 \\
-		                     & All   &  12 &                 1444 &                 69 &            3.4 &                127 \\ \hline
+		Sound                & Close &  \# & Mean\tnote{a} (a.u.) & SE\tnote{b} (a.u.) & $\chi^2_{red}$ & SE\tnote{c} (a.u.) &  Mode\tnote{d} (a.u.)\\ \hline
+		\multirow{3}{*}{Yes} & Yes   &  21 &                  366 &                 73 &            6.5 &                178 &  386 \\
+		                     & No    & 111 &                  397 &                 30 &            7.0 &                 80 &  403 \\
+		                     & All   & 132 &                  393 &                 28 &            6.9 &                 73 &  400 \\ \hline
+		\multirow{3}{*}{No}  & Yes   &   2 &                 1469 &                 22 &            0.1 &                  5 & 1467 \\
+		                     & No    &  10 &                 1440 &                 83 &            4.2 &                169 & 1429 \\
+		                     & All   &  12 &                 1444 &                 69 &            3.4 &                127 & 1435 \\ \hline
 	\end{tabular}
 	\begin{tablenotes}
 		\item[a]{Weighted mean.}
 		\item[b]{The distribution's standard deviation divided by the square root of the sample size.}
 		\item[c]{According to the formula, correcting for dispersion via the $\chi^2_{red}$.}
+		\item[d]{Most frequently occurring value.}
 	\end{tablenotes}
 \end{threeparttable}
 
 \subsection{Asymmetry}
 
-The summary statistics for the asymmetry are presented in Table~\ref{tbl:AyySumStat}.
+The summary statistics for the asymmetry are presented in Table~\ref{tbl:AyySumStat}; its density estimate in Figure~
 
-\begin{threeparttable}
+\begin{threeparttable}[H]
 	\centering
 	\caption{Asymmetry summary statistics\label{tbl:AyySumStat}}
-	\begin{tabular}{llrrrrl}
+	\begin{tabular}{llrrrrrlr}
 		\hline\hline
-		Sound                & Close &  \# & Mean\tnote{a} (a.u.) & SE\tnote{b} (a.u.) & $\chi^2_{red}$ & SE\tnote{c} (a.u.) \\ \hline
-		\multirow{3}{*}{Yes} & Yes   &  23 &       $\vp{2.0}{-2}$ &       $\vp{9.1}{-2}$ &            5.8 & 0.23               \\
-		                     & No    & 121 &       $\vp{2.4}{-2}$ &       $\vp{5.0}{-2}$ &            8.2 & 0.14               \\
-		                     & All   & 144 &       $\vp{2.3}{-2}$ &     $\vp{4.5}{-2}$ &            7.8 & 0.13               \\ \hline
+		Sound                & Close &  \# & $\CS*[0]$ (a.u.) & Mean\tnote{a} (a.u.) & SE\tnote{b} (a.u.) & $\chi^2_{red}$ & SE\tnote{c} (a.u.) & Mode\tnote{d} (a.u.) \\ \hline
+		\multirow{3}{*}{Yes} & Yes   &  23 &              366 &       $\vp{2.0}{-2}$ &     $\vp{9.1}{-2}$ &            5.8 & 0.23               &      $\vp{-4.2}{-2}$ \\
+		                     & No    & 121 &              397 &       $\vp{2.2}{-2}$ &     $\vp{4.6}{-2}$ &            8.2 & 0.13               &      $\vp{-3.0}{-2}$ \\
+		                     & All   & 144 &               -- &       $\vp{2.2}{-2}$ &     $\vp{4.2}{-2}$ &            7.8 & 0.12               &      $\vp{-3.1}{-2}$ \\ \hline
 	\end{tabular}
 	\begin{tablenotes}
 		\item[a]{Weighted mean.}
 		\item[b]{The distribution's standard deviation divided by the square root of the sample size.}
 		\item[c]{According to the formula, correcting for dispersion via the $\chi^2_{red}$.}
+		\item[d]{Most frequently occurring value.}
 	\end{tablenotes}
 \end{threeparttable}
+
+\begin{figure}
+	\centering
+	\includegraphics{Ayy_dens.eps}
+	\caption{Kernel density estimate of $\Ayy$.}
+\end{figure}
 
 \begin{thebibliography}{9}
 	\bibitem{GaussMarkov}

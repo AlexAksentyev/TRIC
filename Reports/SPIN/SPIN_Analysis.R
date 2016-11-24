@@ -128,6 +128,7 @@ filter(slopes16, B.Spin == "N", T.Spin==1) %>% mutate(Run = 1) %>% dlply("FABS")
 .sumstat(cs0mb16)
 
 #### slopes ####
+slopes16 <- filter(slopes16, T.Spin == 1)
 slopes12 %>% group_by(Targ) %>% 
   dplyr::summarise(
     NUM = n(),
@@ -137,12 +138,14 @@ slopes12 %>% group_by(Targ) %>%
     SE = SD/sqrt(NUM)
   )
 
+slopes12<-mutate(slopes12, B.Spin=factor(1, labels = "Null"))
 ggplot(slopes12, aes(I0, Estimate)) + geom_pointrange(aes(ymin=Estimate-SE,ymax=Estimate+SE)) + 
   scale_y_continuous(labels=fancy_scientific)+
-  facet_grid(.~Targ, scale="free_y", space="free_y", label=as_labeller(c("Chopper"="Off", "On"="On"))) + 
+  facet_grid(B.Spin~Targ, scale="free_x", label=as_labeller(c("Chopper"="Off", "On"="On", "Null" = "Null"))) + 
   theme_bw() + theme(legend.position="none") +
   labs(x=expression(I[0]~"(a.u.)"), y=expression(hat(beta))) -> p12
 ggplot(slopes16, aes(I0, Estimate, col=B.Spin)) + geom_point() + 
+  scale_y_continuous(labels=fancy_scientific) +
   scale_color_manual(name="Beam spin", breaks=c("U","D", "N"), labels=c("Up","Down","Null"), values=c("red", "blue","black")) + 
   geom_smooth(method="lm", se=FALSE, show.legend=FALSE, size=.4) +
   facet_grid(B.Spin~FABS, scale="free_x",
@@ -151,25 +154,8 @@ ggplot(slopes16, aes(I0, Estimate, col=B.Spin)) + geom_point() +
   labs(y=expression(hat(beta)), x=expression(I[0]~"(a.u.)")) -> p16
 plot_grid(p12,p16,ncol=1, labels=c("2012","2016"))
 
-slopes %>% ddply("Unit", function(s){
-  with(s, data.frame(
-    OffE = Estimate[FABS == "F"], OnE = Estimate[FABS == "T"],
-    B.Spin = B.Spin
-  ))
-}) -> x
-
-ggplot(x, aes(OnE, OffE, col=B.Spin)) + geom_point() + facet_grid(B.Spin~.) + theme_minimal() +
-  geom_smooth(method="gam")
-
-filter(slopes, B.Spin == "N") %>% daply("FABS", function(s) (lm(Estimate~1, data=s)%>% coef)[1]) -> nullscat
-slopes%>%ddply("FABS", function(s) mutate(s, Estimate_oft = Estimate - nullscat[s$FABS[1]])) -> slopes
-
-
-  
 #### Ayy estimation ####
 thick = 1.1e14; dP = diff(Pb); cs0est = (cs0mb16 %>% filter(Soundness=="Sound", Closeness=="Close") %>% WMN)*1e-27
 slopes16 %>% filter(FABS=="T", B.Spin != "N") %>% dlply("B.Spin") %>% dbeta. %>% 
   mutate(Estimate = Estimate/(dP*nu*Pt*thick*cs0est), SE = -SE/(dP*nu*Pt*thick*cs0est)) -> Ayy
 
-ggplot(Ayy, aes(Estimate)) + geom_density(kernel="gaus") +
-  theme_minimal() + labs(x=expression(hat(A)[yy]~"(a.u.)"), y="Kernel density")

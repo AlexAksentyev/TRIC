@@ -52,7 +52,7 @@ We summarize a procedure for estimating unpolarized $pp$ and double-polarized $p
 
 \section{TRIC Experiment}
 
-TRIC (test of Time-Reversal Invariance at COSY) is a transmission experiment planned at the Cooler SYnchrotron COSY-J\"ulich for the purpose of testing Time-Reversal Invariance. Its physical foundation is the use of a genuine null-observale for T-symmetry, --- the total cross section asymmetry in double-polarized proton-deuteron scattering, --- whoose existence is guaranteed by the optical theorem~\cite{Conzett}. TRIC is aimed at achieving the accuracy of $10^{-6}$ in the cross section asymmetry estimate.
+TRIC (test of Time-Reversal Invariance at COSY) is a transmission experiment planned at the Cooler SYnchrotron COSY-J\"ulich for the purpose of testing Time-Reversal Invariance. Its physical foundation is the use of a genuine null-observale for T-symmetry, --- the total cross section asymmetry in double-polarized proton-deuteron scattering, --- whoose existence is guaranteed by the optical theorem~\cite{Conzett}. TRIC is aimed at achieving the accuracy of $10^{-6}$ in the cross section asymmetry estimate $\Ayxz*$.
 
 The total cross section in a double-polarized scattering involves a number of polarization-dependent terms:
 \begin{equation}\label{eq:PolCS}
@@ -135,19 +135,12 @@ In the 2012 experiment, the proton beam was scattered on the hydrogen target, bo
 
 In the 2016 experiment the proton beam was scattered on the deuteron target, both polarized; the beam had undergone RF-bunching and electron-cooling; the cycles lasted for 12 minutes, the first half of which the target was turned on, in the second off; the beam spin state alternated from spin up to spin down through no spin, while the target spin state remained constant (spin up). 
 
-In both experiments the target was produced by an Atomic Beam Source (ABS) capable of producing jets of polarized hydrogen and deuterium, and was concentrated within a storage cell located inside the PAX target chamber, described in more detail in~\cite{Weidemann}. The cycles for both experiments are presented in FIG.~\ref{fig:Cycles}.
-
+In both experiments the target was produced by an Atomic Beam Source (ABS) capable of producing jets of polarized hydrogen and deuterium, and was concentrated within a storage cell located inside the PAX target chamber, described in more detail in~\cite{Weidemann}. The cycles for both experiments are presented in FIG.~\ref{fig:Cycles}. The measurements were made with a Bergoz Beam Current Transformer. In the 2012 experiment, the BCT offset was around 2300 a.u., in 2016, the offset it was about 4300 a.u. The zeroing of current before each cycle, that can be observed in the 2012 panel, is due to the overflow of the measurement system.
 
 \begin{figure}[h]
-\begin{subfigure}{.5\textwidth}
-\includegraphics[scale=\scl]{img/Cycles2012.eps}
-\caption{Experiment in 2012. The cycles with the target are drawn in red, those without in black.}
-\end{subfigure}
-\begin{subfigure}{.5\textwidth}
-\includegraphics[scale=\scl]{img/Cycles2016.eps}
-\caption{Experiment in 2016. The cycles are colored according to the beam spin state.}
-\end{subfigure} 
-\caption{Average beam current as a function of time.\label{fig:Cycles}}
+	\centering
+	\includegraphics[scale=\scl]{img/Cycles_12--16.eps}
+	\caption{Average beam current as a function of time. Upper panel: experiment in 2012; the cycles with the target present are drawn in red, those without in black. Lower panel: experiment in 2016. The cycles are colored according to the beam spin state.\label{fig:Cycles}}
 \end{figure} 
 
 
@@ -202,7 +195,7 @@ The fit results are summarized in TABLE~\ref{tbl:Slp-big}.
 	\caption{Slope summary statistics. \label{tbl:Slp-big}}
 	\begin{tabular}{c|lllllrr}
 		\hline\hline
-		        Year          & Target               & Spin & \#\tnote{a} & Mean (a.u.)      & SE (a.u.)    &  \\ \hline
+		        Year          & Target               & Spin & \#\tnote{a} & Mean [a.u.]      & SE [a.u.]    &  \\ \hline
 		\multirow{2}{*}{2012} & Off                  & Null & 5           & $\vp{-9.04}{-5}$ & $\vp{6}{-7}$ &  \\
 		                      & On                   & Null & 4           & $\vp{-1.20}{-4}$ & $\vp{1}{-6}$ &  \\ \hline
 		\multirow{6}{*}{2016} & \multirow{3}{*}{Off} & Up   & 12          & $\vp{-2.26}{-4}$ & $\vp{7}{-6}$ &  \\
@@ -219,34 +212,17 @@ The fit results are summarized in TABLE~\ref{tbl:Slp-big}.
 
 \begin{figure}
 \centering
-%\begin{subfigure}{.5\textwidth}
-%\includegraphics[scale=\scl]{img/Run969_Data_AND_Fit.eps}
-%\caption{Logarithm of measurement data as a function of time. The fitted line is colored red, the gray dashed lines mark the fit region.}
-%\end{subfigure}
-\begin{subfigure}{.5\textwidth}
-\includegraphics[scale=\scl]{img/Run969_Res_VS_Fit.eps}
-\caption{Residuals vs fitted values.}
-\end{subfigure}
-\begin{subfigure}{.5\textwidth}
-\includegraphics[scale=\scl]{img/Run969_residual_PACF.eps}
-\caption{The partial Auto-Correlation Function of the residuals.}
-\end{subfigure}
-\caption{Some diagnostic plots for a typical cycle.\label{fig:Run969}}
+\includegraphics[scale=\scl]{img/DiagPlot_969.eps}
+\caption{Some diagnostic plots for a typical cycle. a) The plot of the model residuals against the fitted values. The red line obtained using LOESS regression indicates that the linear model systematically underestimates beam current at the cycle start and end, and overestimates it in mid-cycle. b) The plot of the partial correlation coefficients between the model residuals and lags of themselves. The dashed blue lines indicate the 95\% confidence interval that the correlation is statistically insignificant.\label{fig:Run969}}
 \end{figure}
 
 \section{Cross section}
 After the slopes are estimated from the raw measurement data, one can estimate the cross section. In this analysis, we used only the estimates from adjacent cycles, so as to minimize the effect of drifts of environmental variables such as target thickness (which is estimated to increase by $0.5~ \sfrac{\%}{\mathrm{hour}}$). The thickness by which the slope differences are divided, assumed constant, was provided by a Schottky measurement. Those estimates whose computation involved at least one slope which is deemed an outlier according to Tukey's range test are labeled unsound in TABLE~\ref{tbl:CS-all}. There are two outlier slopes in the 2012 experiment, and one in the 2016 experiment; all three are from target-off cycles.
 
 \begin{figure}
-\begin{subfigure}{.5\textwidth}
-\includegraphics[scale=\scl]{img/Slope_VS_IniCurrent.eps}
-\caption{2012.}
-\end{subfigure}
-\begin{subfigure}{.5\textwidth}
-\includegraphics[scale=\scl]{img/Slope_VS_IniCurrent_2016.eps}
-\caption{2016.\label{fig:SlpOnI02016}}
-\end{subfigure}
-\caption{Slope estimates plotted against initial beam current estimated as the exponentiated intercept of the fitted model.\label{fig:SlpOnI0}}
+\centering
+\includegraphics[scale=\scl]{img/Slope_VS_Current.eps}
+\caption{Slope estimates plotted against the cycle's initial beam current estimated as the exponentiated intercept of the fitted model. Off/On refer to the presence of the target, Up/Down/Null to the beam spin state. In the 2012 \label{fig:SlpOnI0}}
 \end{figure}
 
 The cross section estimate's standard error (SE) is estimated by adding the squared standard errors of the paired slopes, not taking account of the covariance term. This is done so because depending on whether an on-slope is paired with the preceding or succeeding off-slope, the covariance term changes sign. Since there does not seem to be a reasonable criterion favoring either of the two mappings, the covariance term was omitted.
@@ -278,14 +254,17 @@ Year						& Soundness		& Closeness		& \#		& Mean\tnote{a} [a.u.]	& SE [a.u.] \\
 \hline\hline
 \end{tabular}
 \begin{tablenotes}
-\item[a] The value in parentheses is the weighted mean with measurements' variance estimates used as weights.
+\item[a] The value in parentheses is the variance-weighted mean.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
 
-The summary statistics of cross section estimates, grouped by soundness and closeness of the slope estimates they are based on, are presented in TABLE~\ref{tbl:CS-all} and FIG.~\ref{fig:CS-all}; the slopes themselves are shown in FIG.~\ref{fig:SlopesVsTime} and summarized in TABLE~\ref{tbl:Slp-big}. Group density estimates with the rectangular kernel are shown in FIG.~\ref{fig:CS-dens}.
-
 Our best estimate for the $pp$ cross section is $\CS[0]^{pp} = 507 \pm 7$ a.u., that for the $pd$ reaction is $\CS[0]^{pd} = 411 \pm 48$. The asymmetry $\Ayy = \vp{(5 \pm 3)}{-2}$. %FIG.~\ref{fig:AyyDensity} shows its Gaussian kernel density estimate.
+
+The summary statistics of cross section estimates, grouped by soundness and closeness of the slope estimates they are based on, are presented in TABLE~\ref{tbl:CS-all}.
+% and FIG.~\ref{fig:CS-all}; the slopes themselves are shown in FIG.~\ref{fig:SlopesVsTime} and summarized in TABLE~\ref{tbl:Slp-big}. Group density estimates with the rectangular kernel are shown in FIG.~\ref{fig:CS-dens}.
+
+
 
 %\begin{figure}
 %\centering
@@ -293,42 +272,42 @@ Our best estimate for the $pp$ cross section is $\CS[0]^{pp} = 507 \pm 7$ a.u., 
 %\caption{Gaussian kernel density estimate of the double-polarized cross section asymmetry in proton-deuteron scattering.\label{fig:AyyDensity}}
 %\end{figure}
 
-\begin{figure}[t]
-\centering
-	\begin{subfigure}{.5\textwidth}
-		\includegraphics[scale=\scl]{img/Cross-Section2012_all.eps}
-		\caption{2012.}
-	\end{subfigure}
-		\begin{subfigure}{.5\textwidth}
-			\includegraphics[scale=\scl]{img/CS0mb2016_all.eps}
-			\caption{2016.}
-		\end{subfigure}
-\caption{Cross section estimates plotted against their off-cycle number\label{fig:CS-all}.}
-\end{figure}
-\begin{figure}
-	\centering
-\begin{subfigure}{.5\textwidth}
-	\includegraphics[scale=\scl]{img/Slopes-2012_big.eps}
-	\caption{2012.}
-\end{subfigure}
-\begin{subfigure}{.5\textwidth}
-	\includegraphics[scale=\scl]{img/Slopes2016_VS_Clock.eps}
-	\caption{2016.}
-\end{subfigure}
-\caption{Slope estimates as a function of time.\label{fig:SlopesVsTime}}
-\end{figure}
-\begin{figure}
-\centering
-	\begin{subfigure}[b]{.5\textwidth}
-		\includegraphics[scale=\scl]{img/Cross-Section2012_dens.eps}
-		\caption{2012.}
-	\end{subfigure}
-	\begin{subfigure}[b]{.5\textwidth}
-		\includegraphics[scale=\scl]{img/CS0mb2016_dens.eps}
-		\caption{2016.}
-	\end{subfigure}
-	\caption{Cross section density estimates for each category of results.\label{fig:CS-dens}}
-\end{figure}
+%\begin{figure}[t]
+%\centering
+%	\begin{subfigure}{.5\textwidth}
+%		\includegraphics[scale=\scl]{img/Cross-Section2012_all.eps}
+%		\caption{2012.}
+%	\end{subfigure}
+%		\begin{subfigure}{.5\textwidth}
+%			\includegraphics[scale=\scl]{img/CS0mb2016_all.eps}
+%			\caption{2016.}
+%		\end{subfigure}
+%\caption{Cross section estimates plotted against their off-cycle number\label{fig:CS-all}.}
+%\end{figure}
+%\begin{figure}
+%	\centering
+%\begin{subfigure}{.5\textwidth}
+%	\includegraphics[scale=\scl]{img/Slopes-2012_big.eps}
+%	\caption{2012.}
+%\end{subfigure}
+%\begin{subfigure}{.5\textwidth}
+%	\includegraphics[scale=\scl]{img/Slopes2016_VS_Clock.eps}
+%	\caption{2016.}
+%\end{subfigure}
+%\caption{Slope estimates as a function of time.\label{fig:SlopesVsTime}}
+%\end{figure}
+%\begin{figure}
+%\centering
+%	\begin{subfigure}[b]{.5\textwidth}
+%		\includegraphics[scale=\scl]{img/Cross-Section2012_dens.eps}
+%		\caption{2012.}
+%	\end{subfigure}
+%	\begin{subfigure}[b]{.5\textwidth}
+%		\includegraphics[scale=\scl]{img/CS0mb2016_dens.eps}
+%		\caption{2016.}
+%	\end{subfigure}
+%	\caption{Cross section density estimates for each category of results.\label{fig:CS-dens}}
+%\end{figure}
 
 
 

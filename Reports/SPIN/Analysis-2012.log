@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  23 NOV 2016 18:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  24 NOV 2016 13:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -673,335 +673,86 @@ LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.49998> not available
 (Font)              size <5> substituted on input line 83.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Package epstopdf Info: Source file: <img/Cycles2012.eps>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 794231 bytes
-(epstopdf)             Output file: <img/Cycles2012-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 1761978 bytes
-(epstopdf)             Command: <repstopdf --outfile=img/Cycles2012-eps-convert
-ed-to.pdf img/Cycles2012.eps>
-(epstopdf)             \includegraphics on input line 143.
+Package epstopdf Info: Source file: <img/Cycles_12--16.eps>
+(epstopdf)                    date: 2016-11-24 11:23:42
+(epstopdf)                    size: 1491123 bytes
+(epstopdf)             Output file: <img/Cycles_12--16-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-24 11:33:40
+(epstopdf)                    size: 3271601 bytes
+(epstopdf)             Command: <repstopdf --outfile=img/Cycles_12--16-eps-conv
+erted-to.pdf img/Cycles_12--16.eps>
+(epstopdf)             \includegraphics on input line 142.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/Cycles2012-eps-converted-to.pdf, id=18, 525.965pt x 582.175pt>
-File: img/Cycles2012-eps-converted-to.pdf Graphic file (type pdf)
+<img/Cycles_12--16-eps-converted-to.pdf, id=18, 525.965pt x 582.175pt>
+File: img/Cycles_12--16-eps-converted-to.pdf Graphic file (type pdf)
 
-<use img/Cycles2012-eps-converted-to.pdf>
-Package pdftex.def Info: img/Cycles2012-eps-converted-to.pdf used on input line
- 143.
+<use img/Cycles_12--16-eps-converted-to.pdf>
+Package pdftex.def Info: img/Cycles_12--16-eps-converted-to.pdf used on input l
+ine 142.
 (pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
-Package epstopdf Info: Source file: <img/Cycles2016.eps>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 813284 bytes
-(epstopdf)             Output file: <img/Cycles2016-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 1812288 bytes
-(epstopdf)             Command: <repstopdf --outfile=img/Cycles2016-eps-convert
-ed-to.pdf img/Cycles2016.eps>
-(epstopdf)             \includegraphics on input line 147.
+ [2 <./img/Cycles_12--16-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <img/DiagPlot_969.eps>
+(epstopdf)                    date: 2016-11-24 12:31:36
+(epstopdf)                    size: 97807 bytes
+(epstopdf)             Output file: <img/DiagPlot_969-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-11-24 12:31:40
+(epstopdf)                    size: 229224 bytes
+(epstopdf)             Command: <repstopdf --outfile=img/DiagPlot_969-eps-conve
+rted-to.pdf img/DiagPlot_969.eps>
+(epstopdf)             \includegraphics on input line 215.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/Cycles2016-eps-converted-to.pdf, id=19, 525.965pt x 582.175pt>
-File: img/Cycles2016-eps-converted-to.pdf Graphic file (type pdf)
+<img/DiagPlot_969-eps-converted-to.pdf, id=33, 525.965pt x 582.175pt>
+File: img/DiagPlot_969-eps-converted-to.pdf Graphic file (type pdf)
 
-<use img/Cycles2016-eps-converted-to.pdf>
-Package pdftex.def Info: img/Cycles2016-eps-converted-to.pdf used on input line
- 147.
+<use img/DiagPlot_969-eps-converted-to.pdf>
+Package pdftex.def Info: img/DiagPlot_969-eps-converted-to.pdf used on input li
+ne 215.
 (pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
+ [3 <./img/DiagPlot_969-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <img/Slope_VS_Current.eps>
+(epstopdf)                    date: 2016-11-24 13:13:05
+(epstopdf)                    size: 30187 bytes
+(epstopdf)             Output file: <img/Slope_VS_Current-eps-converted-to.pdf>
 
-Overfull \hbox (9.0pt too wide) in paragraph at lines 142--150
- []$[]$ 
- []
-
-
-Overfull \hbox (9.0pt too wide) in paragraph at lines 142--150
- []$ 
- []
-
-[2 <./img/Cycles2012-eps-converted-to.pdf> <./img/Cycles2016-eps-converted-to.p
-df>]
-Package epstopdf Info: Source file: <img/Run969_Res_VS_Fit.eps>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 136012 bytes
-(epstopdf)             Output file: <img/Run969_Res_VS_Fit-eps-converted-to.pdf
->
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 245261 bytes
-(epstopdf)             Command: <repstopdf --outfile=img/Run969_Res_VS_Fit-eps-
-converted-to.pdf img/Run969_Res_VS_Fit.eps>
-(epstopdf)             \includegraphics on input line 227.
+(epstopdf)                    date: 2016-11-24 13:13:49
+(epstopdf)                    size: 24394 bytes
+(epstopdf)             Command: <repstopdf --outfile=img/Slope_VS_Current-eps-c
+onverted-to.pdf img/Slope_VS_Current.eps>
+(epstopdf)             \includegraphics on input line 224.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/Run969_Res_VS_Fit-eps-converted-to.pdf, id=39, 525.965pt x 582.175pt>
-File: img/Run969_Res_VS_Fit-eps-converted-to.pdf Graphic file (type pdf)
+<img/Slope_VS_Current-eps-converted-to.pdf, id=53, 525.965pt x 582.175pt>
+File: img/Slope_VS_Current-eps-converted-to.pdf Graphic file (type pdf)
 
-<use img/Run969_Res_VS_Fit-eps-converted-to.pdf>
-Package pdftex.def Info: img/Run969_Res_VS_Fit-eps-converted-to.pdf used on inp
-ut line 227.
-(pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
-Package epstopdf Info: Source file: <img/Run969_residual_PACF.eps>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 34914 bytes
-(epstopdf)             Output file: <img/Run969_residual_PACF-eps-converted-to.
-pdf>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 14451 bytes
-(epstopdf)             Command: <repstopdf --outfile=img/Run969_residual_PACF-e
-ps-converted-to.pdf img/Run969_residual_PACF.eps>
-(epstopdf)             \includegraphics on input line 231.
-Package epstopdf Info: Output file is already uptodate.
-
-<img/Run969_residual_PACF-eps-converted-to.pdf, id=40, 525.965pt x 582.175pt>
-File: img/Run969_residual_PACF-eps-converted-to.pdf Graphic file (type pdf)
-
-<use img/Run969_residual_PACF-eps-converted-to.pdf>
-Package pdftex.def Info: img/Run969_residual_PACF-eps-converted-to.pdf used on 
-input line 231.
+<use img/Slope_VS_Current-eps-converted-to.pdf>
+Package pdftex.def Info: img/Slope_VS_Current-eps-converted-to.pdf used on inpu
+t line 224.
 (pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
 
-Overfull \hbox (9.0pt too wide) in paragraph at lines 226--234
- []$[]$ 
- []
-
-
-Overfull \hbox (9.0pt too wide) in paragraph at lines 226--234
- []$ 
- []
-
-Package epstopdf Info: Source file: <img/Slope_VS_IniCurrent.eps>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 13133 bytes
-(epstopdf)             Output file: <img/Slope_VS_IniCurrent-eps-converted-to.p
-df>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 13547 bytes
-(epstopdf)             Command: <repstopdf --outfile=img/Slope_VS_IniCurrent-ep
-s-converted-to.pdf img/Slope_VS_IniCurrent.eps>
-(epstopdf)             \includegraphics on input line 242.
-Package epstopdf Info: Output file is already uptodate.
-<img/Slope_VS_IniCurrent-eps-converted-to.pdf, id=41, 525.965pt x 582.175pt>
-File: img/Slope_VS_IniCurrent-eps-converted-to.pdf Graphic file (type pdf)
-
-<use img/Slope_VS_IniCurrent-eps-converted-to.pdf>
-Package pdftex.def Info: img/Slope_VS_IniCurrent-eps-converted-to.pdf used on i
-nput line 242.
-(pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
-Package epstopdf Info: Source file: <img/Slope_VS_IniCurrent_2016.eps>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 22620 bytes
-(epstopdf)             Output file: <img/Slope_VS_IniCurrent_2016-eps-converted
--to.pdf>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 19323 bytes
-(epstopdf)             Command: <repstopdf --outfile=img/Slope_VS_IniCurrent_20
-16-eps-converted-to.pdf img/Slope_VS_IniCurrent_2016.eps>
-(epstopdf)             \includegraphics on input line 246.
-Package epstopdf Info: Output file is already uptodate.
-
-<img/Slope_VS_IniCurrent_2016-eps-converted-to.pdf, id=42, 525.965pt x 582.175p
-t>
-File: img/Slope_VS_IniCurrent_2016-eps-converted-to.pdf Graphic file (type pdf)
-
- <use img/Slope_VS_IniCurrent_2016-eps-converted-to.pdf>
-Package pdftex.def Info: img/Slope_VS_IniCurrent_2016-eps-converted-to.pdf used
- on input line 246.
-(pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
-
-Overfull \hbox (9.0pt too wide) in paragraph at lines 241--249
- []$[]$ 
- []
-
-
-Overfull \hbox (9.0pt too wide) in paragraph at lines 241--249
- []$ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 256--257
+Underfull \hbox (badness 10000) in paragraph at lines 232--233
 
  []
-
-[3]
-
-LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix]
- on input line 285.
-
-Package epstopdf Info: Source file: <img/Cross-Section2012_all.eps>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 10483 bytes
-(epstopdf)             Output file: <img/Cross-Section2012_all-eps-converted-to
-.pdf>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 13005 bytes
-(epstopdf)             Command: <repstopdf --outfile=img/Cross-Section2012_all-
-eps-converted-to.pdf img/Cross-Section2012_all.eps>
-(epstopdf)             \includegraphics on input line 299.
-Package epstopdf Info: Output file is already uptodate.
-
-<img/Cross-Section2012_all-eps-converted-to.pdf, id=46, 525.965pt x 582.175pt>
-File: img/Cross-Section2012_all-eps-converted-to.pdf Graphic file (type pdf)
-
-<use img/Cross-Section2012_all-eps-converted-to.pdf>
-Package pdftex.def Info: img/Cross-Section2012_all-eps-converted-to.pdf used on
- input line 299.
-(pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
-Package epstopdf Info: Source file: <img/CS0mb2016_all.eps>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 17764 bytes
-(epstopdf)             Output file: <img/CS0mb2016_all-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 20633 bytes
-(epstopdf)             Command: <repstopdf --outfile=img/CS0mb2016_all-eps-conv
-erted-to.pdf img/CS0mb2016_all.eps>
-(epstopdf)             \includegraphics on input line 303.
-Package epstopdf Info: Output file is already uptodate.
-
-<img/CS0mb2016_all-eps-converted-to.pdf, id=47, 525.965pt x 582.175pt>
-File: img/CS0mb2016_all-eps-converted-to.pdf Graphic file (type pdf)
-
-<use img/CS0mb2016_all-eps-converted-to.pdf>
-Package pdftex.def Info: img/CS0mb2016_all-eps-converted-to.pdf used on input l
-ine 303.
-(pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
-
-Overfull \hbox (9.0pt too wide) in paragraph at lines 298--306
- []$[]$ 
- []
-
-
-Overfull \hbox (9.0pt too wide) in paragraph at lines 298--306
- []$ 
- []
-
-Package epstopdf Info: Source file: <img/Slopes-2012_big.eps>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 12307 bytes
-(epstopdf)             Output file: <img/Slopes-2012_big-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 13030 bytes
-(epstopdf)             Command: <repstopdf --outfile=img/Slopes-2012_big-eps-co
-nverted-to.pdf img/Slopes-2012_big.eps>
-(epstopdf)             \includegraphics on input line 311.
-Package epstopdf Info: Output file is already uptodate.
-<img/Slopes-2012_big-eps-converted-to.pdf, id=48, 525.965pt x 582.175pt>
-File: img/Slopes-2012_big-eps-converted-to.pdf Graphic file (type pdf)
-
-<use img/Slopes-2012_big-eps-converted-to.pdf>
-Package pdftex.def Info: img/Slopes-2012_big-eps-converted-to.pdf used on input
- line 311.
-(pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
-Package epstopdf Info: Source file: <img/Slopes2016_VS_Clock.eps>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 22084 bytes
-(epstopdf)             Output file: <img/Slopes2016_VS_Clock-eps-converted-to.p
-df>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 19413 bytes
-(epstopdf)             Command: <repstopdf --outfile=img/Slopes2016_VS_Clock-ep
-s-converted-to.pdf img/Slopes2016_VS_Clock.eps>
-(epstopdf)             \includegraphics on input line 315.
-Package epstopdf Info: Output file is already uptodate.
-
-<img/Slopes2016_VS_Clock-eps-converted-to.pdf, id=49, 525.965pt x 582.175pt>
-File: img/Slopes2016_VS_Clock-eps-converted-to.pdf Graphic file (type pdf)
-
-<use img/Slopes2016_VS_Clock-eps-converted-to.pdf>
-Package pdftex.def Info: img/Slopes2016_VS_Clock-eps-converted-to.pdf used on i
-nput line 315.
-(pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
-
-Overfull \hbox (9.0pt too wide) in paragraph at lines 310--318
- []$[]$ 
- []
-
-
-Overfull \hbox (9.0pt too wide) in paragraph at lines 310--318
- []$ 
- []
-
-Package epstopdf Info: Source file: <img/Cross-Section2012_dens.eps>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 49517 bytes
-(epstopdf)             Output file: <img/Cross-Section2012_dens-eps-converted-t
-o.pdf>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 13178 bytes
-(epstopdf)             Command: <repstopdf --outfile=img/Cross-Section2012_dens
--eps-converted-to.pdf img/Cross-Section2012_dens.eps>
-(epstopdf)             \includegraphics on input line 323.
-Package epstopdf Info: Output file is already uptodate.
-
-<img/Cross-Section2012_dens-eps-converted-to.pdf, id=50, 525.965pt x 582.175pt>
-File: img/Cross-Section2012_dens-eps-converted-to.pdf Graphic file (type pdf)
-<use img/Cross-Section2012_dens-eps-converted-to.pdf>
-Package pdftex.def Info: img/Cross-Section2012_dens-eps-converted-to.pdf used o
-n input line 323.
-(pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
-Package epstopdf Info: Source file: <img/CS0mb2016_dens.eps>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 51606 bytes
-(epstopdf)             Output file: <img/CS0mb2016_dens-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-11-23 17:19:53
-(epstopdf)                    size: 16294 bytes
-(epstopdf)             Command: <repstopdf --outfile=img/CS0mb2016_dens-eps-con
-verted-to.pdf img/CS0mb2016_dens.eps>
-(epstopdf)             \includegraphics on input line 327.
-Package epstopdf Info: Output file is already uptodate.
-
-<img/CS0mb2016_dens-eps-converted-to.pdf, id=51, 525.965pt x 582.175pt>
-File: img/CS0mb2016_dens-eps-converted-to.pdf Graphic file (type pdf)
-
-<use img/CS0mb2016_dens-eps-converted-to.pdf>
-Package pdftex.def Info: img/CS0mb2016_dens-eps-converted-to.pdf used on input 
-line 327.
-(pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
-
-Overfull \hbox (9.0pt too wide) in paragraph at lines 322--330
- [][] 
- []
-
-
-Overfull \hbox (9.0pt too wide) in paragraph at lines 322--330
- [] 
- []
-
-
-Overfull \vbox (5.72198pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (5.72198pt too high) has occurred while \output is active []
-
-
-[4 <./img/Run969_Res_VS_Fit-eps-converted-to.pdf> <./img/Run969_residual_PACF-e
-ps-converted-to.pdf> <./img/Slope_VS_IniCurrent-eps-converted-to.pdf> <./img/Sl
-ope_VS_IniCurrent_2016-eps-converted-to.pdf>]
-
-LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix]
- on input line 343.
 
 Missing character: There is no â in font cmr9!
 Missing character: There is no € in font cmr9!
 Missing character: There is no ‰ in font cmr9!
 No file Analysis-2012.bbl.
-[5] [6 <./img/Cross-Section2012_all-eps-converted-to.pdf> <./img/CS0mb2016_all-
-eps-converted-to.pdf>] [7 <./img/Slopes-2012_big-eps-converted-to.pdf> <./img/S
-lopes2016_VS_Clock-eps-converted-to.pdf>] [8 <./img/Cross-Section2012_dens-eps-
-converted-to.pdf> <./img/CS0mb2016_dens-eps-converted-to.pdf>]
-(./Analysis-2012.aux)
+[4 <./img/Slope_VS_Current-eps-converted-to.pdf>] (./Analysis-2012.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 3.25002pt have occured.
 
  ) 
 Here is how much of TeX's memory you used:
- 12525 strings out of 494466
- 225997 string characters out of 6172530
- 297042 words of memory out of 5000000
- 15640 multiletter control sequences out of 15000+600000
+ 12466 strings out of 494466
+ 223841 string characters out of 6172530
+ 293971 words of memory out of 5000000
+ 15590 multiletter control sequences out of 15000+600000
  10124 words of font info for 38 fonts, out of 8000000 for 9000
  452 hyphenation exceptions out of 8191
- 42i,13n,40p,10382b,526s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,13n,40p,10382b,430s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/alexa/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/te
@@ -1015,10 +766,10 @@ r9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on Analysis-2012.pdf (8 pages, 4103890 bytes).
+Output written on Analysis-2012.pdf (4 pages, 3694575 bytes).
 PDF statistics:
- 229 PDF objects out of 1000 (max. 8388607)
- 158 compressed objects within 2 object streams
+ 117 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

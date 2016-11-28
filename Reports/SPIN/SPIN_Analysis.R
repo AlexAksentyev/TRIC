@@ -181,9 +181,9 @@ ggplot(slopes12, aes(I0, Estimate, col=Targ)) + geom_pointrange(aes(ymin=Estimat
   labs(x=expression(I[0]~"(a.u.)"), y=expression(hat(beta)))
   
 #### Ayy estimation ####
-thick = 1.1e14; dP = diff(Pb); cs0est = (cs0mb16 %>% filter(Soundness=="Sound", Closeness=="Close") %>% WMN)*1e-27
-slopes16 %>% filter(FABS=="T", B.Spin != "N") %>% dlply("B.Spin") %>% dbeta. %>% 
-  mutate(Estimate = Estimate/(dP*nu*Pt*thick*cs0est), SE = -SE/(dP*nu*Pt*thick*cs0est)) -> Ayy
+thick = 1.1e14; dP = -diff(Pb); cs0est = (cs0mb16 %>% filter(Soundness=="Sound", Closeness=="Close") %>% WMN)*1e-27
+(slopes16 %>% filter(FABS=="T", B.Spin != "N") %>% dlply("B.Spin"))[c("Down","Up")] %>% dbeta. %>% 
+  mutate(Estimate = Estimate/(dP*nu*Pt*thick*cs0est), SE = SE/(dP*nu*Pt*thick*cs0est)) -> Ayy
 
 ggplot(Ayy, aes(Estimate)) + geom_density(kernel="gaus") +
   theme_minimal() + labs(x=expression(hat(A)[yy]~"(a.u.)"), y="Kernel density")

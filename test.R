@@ -26,7 +26,7 @@ ggplot(slopes16, aes(I0, Estimate, col=`Beam Spin`, shape=`Target State`)) + geo
 
 source("Parameters.R")
 DP = -diff(Pb); SP = sum(Pb)
-b1U = filter(slopes16, FABS=="T", B.Spin=="U"); b1D = filter(slopes16, FABS=="T", B.Spin=="D")
+b1U = filter(slopes16, `Target State`=="T", `Beam Spin`=="U"); b1D = filter(slopes16, `Target State`=="T", `Beam Spin`=="D")
 lbeta = list("D" = b1D, "U" = b1U)
 D = dbeta.(lbeta); d = D$Estimate
 R = rbeta.(lbeta); r = R$Estimate; rr = 2*r/Pt/(DP - SP*r); R$Rp <- rr
@@ -44,7 +44,7 @@ lmtest::dwtest(m)
 library(strucchange)
 Fstats(f, data=TRun) %>% plot
 
-Data16 %>% ddply(.(B.Spin, FABS, Unit), function(s) data.frame("BP" = Fstats(f, data=s)$breakpoint)) -> x
+Data16 %>% ddply(.(B.Spin, FABS, Unit), function(s) data.frame("BP" = Fstats(f, data=mutate(s,uts=UTS-UTS[1]))$breakpoint)) -> x
 ggplot(x, aes(BP, col=B.Spin)) + geom_density() + facet_grid(FABS~.) + 
   theme_bw() + theme(legend.position="top") + labs(x = "Breakpoint (seconds from start)")
 
@@ -64,6 +64,7 @@ lm(Y ~ uts, data = mutate(TRun, Y = log(BCT2), uts = UTS-UTS[1])) %>% summary
 
 ## estimates ####
 .sumstat <- function(x){
+  require(modeest)
   group_by(x, Sound, Close) %>% 
     dplyr::summarise(NUM=n(), WMN = weighted.mean(Estimate, SE^-2), SE_d = sd(Estimate)/sqrt(NUM),
                      Chi2 = sum((Estimate - WMN)^2/SE^2)/(NUM-1),
@@ -79,6 +80,7 @@ lm(Y ~ uts, data = mutate(TRun, Y = log(BCT2), uts = UTS-UTS[1])) %>% summary
 }
 
 ##cross section
+names(slopes16)[2] <- "B.Spin"; names(slopes16)[4] <- "FABS";
 thick=1.1e14
 filter(slopes16, B.Spin=="Null") %>% dlply("FABS") %>% dbeta.(c("FOut", "Clock")) %>% 
   mutate(Estimate = Estimate/nu/thick*1e27, SE = SE/nu/thick*1e27, 

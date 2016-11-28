@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  24 NOV 2016 13:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  28 NOV 2016 17:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -479,9 +479,6 @@ Package: paralist 2013/06/09 v2.4 Extended list environments
 \plparsep=\skip63
 \pl@lab=\toks22
 )
-(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
-Package: subcaption 2013/02/03 v1.1-62 Sub-captions (AR)
-
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
 
@@ -510,9 +507,6 @@ lushing \let \footnote \@footnotemark@gobble \@make@capt@title {#1}{#2}\par \en
 dgroup }{\global \@minipagefalse \hb@xt@ \hsize {\hfil \unhbox \@tempboxa \hfil
  }}\endgroup \vskip \belowcaptionskip .
 \c@ContinuedFloat=\count142
-)
-\c@subfigure=\count143
-\c@subtable=\count144
 ) (/usr/share/texlive/texmf-dist/tex/latex/threeparttable/threeparttable.sty
 Package: threeparttable 2003/06/13  v 3.0
 \@tempboxb=\box60
@@ -523,84 +517,84 @@ Package: threeparttable 2003/06/13  v 3.0
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \CS with sig. 'sO{}' on line 17.
+. Defining command \CS with sig. 'sO{}' on line 18.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \slp with sig. 'sO{}' on line 18.
+. Defining command \slp with sig. 'sO{}' on line 19.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \Thick with sig. 'O{}' on line 19.
+. Defining command \Thick with sig. 'O{}' on line 20.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \SE with sig. 'sm' on line 21.
+. Defining command \SE with sig. 'sm' on line 22.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \bkt with sig. 'sm' on line 23.
+. Defining command \bkt with sig. 'sm' on line 24.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \ADCcode with sig. 'O{ }' on line 26.
+. Defining command \ADCcode with sig. 'O{ }' on line 27.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \Ayy with sig. 's' on line 30.
+. Defining command \Ayy with sig. 's' on line 31.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \Ayxz with sig. 's' on line 31.
+. Defining command \Ayxz with sig. 's' on line 32.
 .................................................
-Class revtex4-1 Info: Patching LaTeX tabular. on input line 35.
-Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 35.
+Class revtex4-1 Info: Patching LaTeX tabular. on input line 36.
+Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 36.
 
-Class revtex4-1 Info: cite was not loaded (OK!) on input line 35.
-Class revtex4-1 Info: mcite was not loaded (OK!) on input line 35.
-Class revtex4-1 Info: multicol was not loaded (OK!) on input line 35.
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 36.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 36.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 36.
 
 (./Analysis-2012.aux)
 \openout1 = `Analysis-2012.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 35.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 35.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 36.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    ... okay on input line 36.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count145
+\scratchcounter=\count143
 \scratchdimen=\dimen167
 \scratchbox=\box61
-\nofMPsegments=\count146
-\nofMParguments=\count147
+\nofMPsegments=\count144
+\nofMParguments=\count145
 \everyMPshowfont=\toks23
-\MPscratchCnt=\count148
+\MPscratchCnt=\count146
 \MPscratchDim=\dimen168
-\MPnumerator=\count149
-\makeMPintoPDFobject=\count150
+\MPnumerator=\count147
+\makeMPintoPDFobject=\count148
 \everyMPtoPDFconversion=\toks24
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -657,31 +651,31 @@ Package caption Info: End \AtBeginDocument code.
 
 Missing character: There is no Ã in font cmti9!
 Missing character: There is no Ÿ in font cmti9!
-LaTeX Font Info:    Calculating math sizes for size <6.99997> on input line 83.
+LaTeX Font Info:    Calculating math sizes for size <6.99997> on input line 87.
 
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <3.49998> not available
-(Font)              size <5> substituted on input line 83.
+(Font)              size <5> substituted on input line 87.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.49998> not available
-(Font)              size <5> substituted on input line 83.
+(Font)              size <5> substituted on input line 87.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.49998> not available
-(Font)              size <5> substituted on input line 83.
+(Font)              size <5> substituted on input line 87.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 Package epstopdf Info: Source file: <img/Cycles_12--16.eps>
-(epstopdf)                    date: 2016-11-24 11:23:42
+(epstopdf)                    date: 2016-11-28 16:11:13
 (epstopdf)                    size: 1491123 bytes
 (epstopdf)             Output file: <img/Cycles_12--16-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-11-24 13:27:29
+(epstopdf)                    date: 2016-11-28 16:11:13
 (epstopdf)                    size: 3271601 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/Cycles_12--16-eps-conv
 erted-to.pdf img/Cycles_12--16.eps>
-(epstopdf)             \includegraphics on input line 142.
+(epstopdf)             \includegraphics on input line 146.
 Package epstopdf Info: Output file is already uptodate.
 
 <img/Cycles_12--16-eps-converted-to.pdf, id=18, 525.965pt x 582.175pt>
@@ -689,87 +683,78 @@ File: img/Cycles_12--16-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/Cycles_12--16-eps-converted-to.pdf>
 Package pdftex.def Info: img/Cycles_12--16-eps-converted-to.pdf used on input l
-ine 142.
+ine 146.
 (pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
  [2 <./img/Cycles_12--16-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <img/DiagPlot_969.eps>
-(epstopdf)                    date: 2016-11-24 12:31:36
+(epstopdf)                    date: 2016-11-28 16:11:13
 (epstopdf)                    size: 97807 bytes
 (epstopdf)             Output file: <img/DiagPlot_969-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-11-24 13:27:30
+(epstopdf)                    date: 2016-11-28 16:11:13
 (epstopdf)                    size: 229224 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/DiagPlot_969-eps-conve
 rted-to.pdf img/DiagPlot_969.eps>
-(epstopdf)             \includegraphics on input line 215.
+(epstopdf)             \includegraphics on input line 219.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/DiagPlot_969-eps-converted-to.pdf, id=33, 525.965pt x 582.175pt>
+<img/DiagPlot_969-eps-converted-to.pdf, id=34, 525.965pt x 582.175pt>
 File: img/DiagPlot_969-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/DiagPlot_969-eps-converted-to.pdf>
 Package pdftex.def Info: img/DiagPlot_969-eps-converted-to.pdf used on input li
-ne 215.
-(pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
- [3 <./img/DiagPlot_969-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <img/Slope_VS_Current.eps>
-(epstopdf)                    date: 2016-11-24 13:47:09
-(epstopdf)                    size: 31717 bytes
-(epstopdf)             Output file: <img/Slope_VS_Current-eps-converted-to.pdf>
-
-(epstopdf)                    date: 2016-11-24 13:47:11
-(epstopdf)                    size: 23730 bytes
-(epstopdf)             Command: <repstopdf --outfile=img/Slope_VS_Current-eps-c
-onverted-to.pdf img/Slope_VS_Current.eps>
-(epstopdf)             \includegraphics on input line 224.
-Package epstopdf Info: Output file is already uptodate.
-
-<img/Slope_VS_Current-eps-converted-to.pdf, id=53, 525.965pt x 582.175pt>
-File: img/Slope_VS_Current-eps-converted-to.pdf Graphic file (type pdf)
-
-<use img/Slope_VS_Current-eps-converted-to.pdf>
-Package pdftex.def Info: img/Slope_VS_Current-eps-converted-to.pdf used on inpu
-t line 224.
+ne 219.
 (pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 232--233
+Underfull \hbox (badness 10000) in paragraph at lines 236--237
 
+ []
+
+[3 <./img/DiagPlot_969-eps-converted-to.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 323--324
+ []\OT1/cmr/m/n/9 P.D. Ev-er-sheim, B. Lorentz, and Yu. Val-dau,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 323--324
+ \OT1/cmr/m/n/9 Forschungszen-trum J^^?ulich, COSY, pro-posal #215,
  []
 
 Missing character: There is no â in font cmr9!
 Missing character: There is no € in font cmr9!
 Missing character: There is no ‰ in font cmr9!
 No file Analysis-2012.bbl.
-[4 <./img/Slope_VS_Current-eps-converted-to.pdf>] (./Analysis-2012.aux)
+[4] (./Analysis-2012.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 3.25002pt have occured.
 
  ) 
 Here is how much of TeX's memory you used:
- 12466 strings out of 494466
- 223841 string characters out of 6172530
- 293971 words of memory out of 5000000
- 15590 multiletter control sequences out of 15000+600000
- 10124 words of font info for 38 fonts, out of 8000000 for 9000
+ 12411 strings out of 494466
+ 222834 string characters out of 6172530
+ 285985 words of memory out of 5000000
+ 15538 multiletter control sequences out of 15000+600000
+ 10432 words of font info for 39 fonts, out of 8000000 for 9000
  452 hyphenation exceptions out of 8191
- 42i,13n,40p,10382b,430s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,13n,38p,10382b,430s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/alexa/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on Analysis-2012.pdf (4 pages, 3693644 bytes).
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
+Output written on Analysis-2012.pdf (4 pages, 3683110 bytes).
 PDF statistics:
- 117 PDF objects out of 1000 (max. 8388607)
- 82 compressed objects within 1 object stream
+ 105 PDF objects out of 1000 (max. 8388607)
+ 74 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

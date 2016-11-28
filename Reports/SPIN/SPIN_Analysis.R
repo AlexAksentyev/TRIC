@@ -4,7 +4,7 @@ source("Parameters.R")
 
 library(dplyr); library(plyr)
 library(parallel); library(doParallel)
-library(ggfortify)
+library(ggfortify); library(cowplot)
 
 registerDoParallel(detectCores())
 
@@ -159,3 +159,4 @@ thick = 1.1e14; dP = diff(Pb); cs0est = (cs0mb16 %>% filter(Soundness=="Sound", 
 slopes16 %>% filter(FABS=="T", B.Spin != "N") %>% dlply("B.Spin") %>% dbeta. %>% 
   mutate(Estimate = Estimate/(dP*nu*Pt*thick*cs0est), SE = -SE/(dP*nu*Pt*thick*cs0est)) -> Ayy
 
+Ayy%>%WMN

@@ -7,7 +7,8 @@
 
 \usepackage{paralist}
 
-\usepackage{subcaption}
+%\usepackage{subcaption}
+\usepackage{caption}
 \usepackage{threeparttable}
 \usepackage{multirow}
 
@@ -33,7 +34,7 @@
 \newcommand{\vp}[2]{#1\cdot10^{#2}}
 
 \begin{document}
-\title{Estimation of total cross section and cross section asymmetry in a transmission experiment}
+\title{Estimation of the total cross section and cross section asymmetry in a transmission experiment}
 \author{Aleksandr Aksentev}
 \affiliation{National Research Nuclear University ``MEPhI,'' Kashirskoe shosse, 31, Moscow, Russia, 115409}
 \author{Dieter Eversheim}
@@ -44,6 +45,9 @@
 \affiliation{Helmholtz-Institut f\"ur Strahlen- und Kernphysik der Universit\"at Bonn, Nussallee 14-16, 53115 Bonn, Germany}
 
 \maketitle
+
+\captionsetup[figure]{labelfont=bf,textfont=normalfont,singlelinecheck=off,justification=raggedright}
+
 	
 	
 \begin{abstractname}
@@ -58,11 +62,11 @@ The total cross section in a double-polarized scattering involves a number of po
 \begin{equation}\label{eq:PolCS}
 	\CS[tot] = \CS[0]\cdot\bkt{1 + \sum_{i,j} A_{i,j} P_iP^t_j + \sum_{k, mn} A_{k,mn}P_k P^t_{mn}},
 \end{equation}
-where $P^t_j$ and $P_i$ are respectively the $j$-projection of target and the $i$-projection of beam polarizations, $P^t_{mn}$ is the $mn$-tensor component of target polarization, $\CS[0]$ is the unpolarized cross section component, and $A_{i,j}$ is the appropriate asymmetry.
+where $P^t_j$ and $P_i$ are respectively the $j$-projection of target and the $i$-projection of beam polarizations, $P^t_{mn}$ is the $mn$-tensor component of target polarization, $\CS[0]$ is the unpolarized cross section component, and $A_{i,j}$/$A_{k,mn}$ is the appropriate asymmetry.
 
 The asymmetry that serves as the null-observable of T-symmetry is $A_{y,xz}$, all others being faking observables~\cite{Conzett}. TRIC's experimental design limits the influence of all faking observables to below the experimental accuracy ~\cite{Proposal}, except for that of $A_{y,y}$, caused by the misalignment of the target and beam polarizations. Thus arises the problem of knowing the extent to which vector target polarization must be controlled, for which the knowledge of the value of $A_{y,y}$ is required. 
 
-Unpolarized cross section is a parameter in both estimators' distributions, and hence it must be known as well. 
+Unpolarized cross section $\CS[0]$ is a parameter in both estimators' distributions, and hence it must be known as well. 
 
 In this proceeding we summarize the results of two experiments preliminary to TRIC, in order to assess the viability of the transmission-experiment-based method of accessing the $\Ayxz$ observable.
 
@@ -104,7 +108,7 @@ from which an asymmetry estimate can be computed as the difference between the s
 
 \subsection{Statistics}
 
-We estimate $\slp$ by fitting a linear model to logarithmized beam current data, $\ln I_t = \ln I_0 + \slp\cdot t + \epsilon_t$, using the least squares method. In order that the estimate be minimum-variance mean-unbiased, the data must satisfy the Gauss-Markov conditions:~\cite{GaussMarkov}
+We estimate $\slp$ by fitting a linear model to logarithmized beam current data, $\ln I_t = \ln I_0 + \slp\cdot t + \epsilon_t$, using the least squares method. In order that the estimate be minimum-variance mean-unbiased, the data must satisfy the Gauss-Markov conditions: %~\cite{GaussMarkov}
 \begin{enumerate}
 	\item Linearity and additivity of the relationship;
 	\item Independence of the time and error variables (strict exogeneity);
@@ -135,18 +139,18 @@ In the 2012 experiment, the proton beam was scattered on the hydrogen target, bo
 
 In the 2016 experiment the proton beam was scattered on the deuteron target, both polarized; the beam had undergone RF-bunching and electron-cooling; the cycles lasted for 12 minutes, the first half of which the target was turned on, in the second off; the beam spin state alternated from spin up to spin down through no spin, while the target spin state remained constant (spin up). 
 
-In both experiments the target was produced by an Atomic Beam Source (ABS) capable of producing jets of polarized hydrogen and deuterium, and was concentrated within a storage cell located inside the PAX target chamber, described in more detail in~\cite{Weidemann}. The cycles for both experiments are presented in FIG.~\ref{fig:Cycles}. The measurements were made with a Bergoz Beam Current Transformer. In the 2012 experiment, the BCT offset was around 2300 a.u., in 2016, the offset it was about 4300 a.u. The zeroing of current before each cycle, that can be observed in the 2012 panel, is due to the overflow of the measurement system.
+In both experiments the target was produced by an Atomic Beam Source (ABS) capable of producing jets of polarized hydrogen and deuterium, and was concentrated within a storage cell located inside the PAX target chamber, described in more detail in~\cite{Weidemann}. The cycles for both experiments are presented in FIG.~\ref{fig:Cycles}. The measurements were made with a Bergoz Beam Current Transformer, and read out by a standard Siemens APC. In the 2012 experiment, the BCT offset was around 2300 a.u., in 2016, the offset it was about 4300 a.u. The zeroing of current before each cycle, that can be observed in the 2012 panel, is due to the overflow of the measurement system, since the beam current at injection lead to a voltage that is out of range for this ADC.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=\scl]{img/Cycles_12--16.eps}
-	\caption{Average beam current as a function of time. Upper panel: experiment in 2012; the cycles with the target present are drawn in red, those without in black. Lower panel: experiment in 2016. The cycles are colored according to the beam spin state.\label{fig:Cycles}}
+	\caption{Average beam current as a function of time. Upper panel: experiment in 2012; the cycles with the target present are drawn in red, those without in black. Lower panel: experiment in 2016. The cycles are colored according to the beam spin state (red for spin up, blue for down, and black for cycles with unpolarized beam). The first half of a cycle is collected with the target turned on, the second half off.~\label{fig:Cycles}}
 \end{figure} 
 
 
 \section{Slope}
 
-In order to correctly estimate a cycle's slope, we subtract the BCT offset $\Delta$ from the data. This is done  because
+In order to correctly estimate a cycle's slope, we subtract the BCT offset $\Delta$ from the data. This is done  because slope
 \begin{align*}
 	\tilde{\slp} &= \frac{\td\ln \tilde{I}_t}{\td t} 
 				  = \frac{1}{\tilde{I}_t}\frac{\td \tilde{I}_t}{\td t}, 
@@ -181,14 +185,14 @@ Even a constant offset must be removed in order to have a constant slope to esti
 \end{threeparttable}
 \end{table}
 
-After subtracting the offset, the linear model $\ln I_t = \ln I_0 + \slp t +\epsilon_t$ is fitted via the ordinary least squares method. The reduced chi-squares computed from model residuals deviate from one starting from the fourth decimal place; however, one should note that the data are likely to have structural slope changes, and do not pass linearity tests as well (see TABLE~\ref{tbl:CycleChars}). Because the model residuals exhibit serial correlation (FIG.~\ref{fig:Run969}), the slope estimates' standard errors are estimated with robust estimators. This is done for both data sets.
+After subtracting the offset, the linear model $\ln I_t = \ln I_0 + \slp t +\epsilon_t$ is fitted via the ordinary least squares method. The reduced chi-squares computed from model residuals deviate from one starting from the fourth decimal place; however, one should note that the data are likely to have structural slope changes, and do not pass linearity tests as well (see TABLE~\ref{tbl:CycleChars}). Because the model residuals exhibit serial correlation (FIG.~\ref{fig:Run969}), the slope estimates' standard errors are estimated with robust estimators. This procedure is applied to both data sets.
 
 
-In FIG.~\ref{fig:SlpOnI0} we plotted the dependence of the slope estimate on the initial beam current, which was estimated by exponentiating the intercept of the fitted model. 
+%In FIG.~\ref{fig:SlpOnI0} we plotted the dependence of the slope estimate on the initial beam current, which was estimated by exponentiating the intercept of the fitted model. 
 %(If the initial current is also estimated as the median value of current within the second cycle minute, the two estimators are essentially perfectly correlated.) 
-The figure for the 2016 estimates suggests there might be a dependence of the estimated slope on the initial beam current, although the p-values of the slopes of the fitted lines (obtained by robust least squares) are not statistically significant, with only the slope for the null spin state and the target turned off being significant at the 10\% confidence level (the p-value being 6\%). %However, one might notice that the effect of the initial current is stronger for the target-off slopes (the difference is especially noticeable in the unpolarized case), affirming the hypothesis that the beam current played a significant role in the experimental performance.
+%The figure for the 2016 estimates suggests there might be a dependence of the estimated slope on the initial beam current, although the p-values of the slopes of the fitted lines (obtained by robust least squares) are not statistically significant, with only the slope for the null spin state and the target turned off being significant at the 10\% confidence level (the p-value being 6\%). %However, one might notice that the effect of the initial current is stronger for the target-off slopes (the difference is especially noticeable in the unpolarized case), affirming the hypothesis that the beam current played a significant role in the experimental performance.
 
-The fit results are summarized in TABLE~\ref{tbl:Slp-big}.
+The fit results for all the slopes are summarized in TABLE~\ref{tbl:Slp-big}. 
 
 \begin{threeparttable}[h]
 	\centering
@@ -213,17 +217,17 @@ The fit results are summarized in TABLE~\ref{tbl:Slp-big}.
 \begin{figure}
 \centering
 \includegraphics[scale=\scl]{img/DiagPlot_969.eps}
-\caption{Some diagnostic plots for a typical cycle. a) The plot of the model residuals against the fitted values. The red line indicates that the linear model systematically underestimates the beam current at the cycle start and end, and overestimates it in mid-cycle. b) The plot of the partial correlation coefficients between the model residuals and lags of themselves. The dashed blue lines mark the 95\% confidence interval that the correlation is statistically insignificant.\label{fig:Run969}}
+\caption{Some diagnostic plots for a typical 2016 cycle. a) The plot of the model residuals against the fitted values. The red line indicates that the linear model systematically underestimates the beam current at the cycle start and end, and overestimates it in mid-cycle. b) The plot of the partial correlation coefficients between the model residuals and lags of themselves. The dashed horizontal lines mark the 95\% confidence interval that the correlation is statistically insignificant.\label{fig:Run969}}
 \end{figure}
 
 \section{Cross section}
 After the slopes are estimated from the raw measurement data, one can estimate the cross section. In this analysis, we used only the estimates from adjacent cycles, so as to minimize the effect of drifts of environmental variables such as target thickness (which is estimated to increase by $0.5~ \sfrac{\%}{\mathrm{hour}}$). The thickness by which the slope differences are divided, assumed constant, was provided by a Schottky measurement. Those estimates whose computation involved at least one slope which is deemed an outlier according to Tukey's range test are labeled unsound in TABLE~\ref{tbl:CS-all}. There are two outlier slopes in the 2012 experiment, and one in the 2016 experiment; all three are from target-off cycles.
 
-\begin{figure}
-\centering
-\includegraphics[scale=\scl]{img/Slope_VS_Current.eps}
-\caption{Slope estimates plotted against the cycle's initial beam current estimated as the exponentiated intercept of the fitted model. Off/On refer to the presence of the target, Up/Down/Null to the beam spin state. In the 2012 \label{fig:SlpOnI0}}
-\end{figure}
+%\begin{figure}
+%\centering
+%\includegraphics[scale=\scl]{img/Slope_VS_Current.eps}
+%\caption{Slope estimates plotted against the cycle's initial beam current estimated as the exponentiated intercept of the fitted model. Off/On refer to the presence of the target, Up/Down/Null to the beam spin state. In the 2012 \label{fig:SlpOnI0}}
+%\end{figure}
 
 The cross section estimate's standard error (SE) is estimated by adding the squared standard errors of the paired slopes, not taking account of the covariance term. This is done so because depending on whether an on-slope is paired with the preceding or succeeding off-slope, the covariance term changes sign. Since there does not seem to be a reasonable criterion favoring either of the two mappings, the covariance term was omitted.
 
@@ -313,20 +317,19 @@ Our best estimate for the $pp$ cross section is $\CS[0]^{pp} = 507 \pm 7$ a.u., 
 
 \begin{thebibliography}{9}
 \bibitem{Conzett}
-Homer E. Conzett. ``On Null Tests of Time-Reversal Invariance,'' 6. Paris, France, 1990. %\url{https://publications.lbl.gov/islandora/object/ir%3A93728/datastream/PDF/download/citation.pdf}
+Homer E. Conzett, in Proceedings of the 7th International Conference on Polarization Phenomena in Nuclear Physics, Paris, France (1990).
 
 \bibitem{Proposal}
-P.D. Eversheim, et al. ``Test of Time-Reversal Invariance in Proton-Deuteron Scattering.''
-%\url{https://apps.fz-juelich.de/pax/paxwiki/images/8/8c/215-TRI_Prop_sum.pdf}
+P.D. Eversheim, B. Lorentz, and Yu. Valdau, Forschungszentrum J\"ulich, COSY, proposal \#215, 2012.
 
 \bibitem{Weidemann}
-Weidemann, C., F. Rathmann, H. J. Stein, B. Lorentz, Z. Bagdasarian, L. Barion, S. Barsov, et al. ``Toward Polarized Antiprotons: Machine Development for Spin-Filtering Experiments.'' Physical Review Special Topics - Accelerators and Beams 18, no. 2 (February 23, 2015). doi:10.1103/PhysRevSTAB.18.020101.
+Weidemann, C., F. Rathmann, H. J. Stein, B. Lorentz, Z. Bagdasarian, L. Barion, S. Barsov, et al. Phys. Rev. ST Accel. Beams \textbf{18}, 2 (2015).
 
-\bibitem{GaussMarkov}
-D.S.G. Pollock. ``Topics in Econometrics.'' %\url{http://www.le.ac.uk/users/dsgp1/COURSES/TOPICS/gausmkov.pdf}
+%\bibitem{GaussMarkov}
+%D.S.G. Pollock. 
 
 \bibitem{Stein}
-H. J. Stein, M. Hartmann, I. Keshelashvili, et al. ``Determination of target thickness and luminosity from beam energy losses.''
+H. J. Stein, M. Hartmann, I. Keshelashvili, et al., Phys. Rev. ST Accel. Beams \textbf{11}, 052801 (2008).
 
 \end{thebibliography}
 

@@ -4,7 +4,7 @@ source("Parameters.R")
 
 library(dplyr); library(plyr)
 library(parallel); library(doParallel)
-library(ggfortify)
+library(ggfortify); library(cowplot)
 
 registerDoParallel(detectCores())
 
@@ -12,20 +12,27 @@ registerDoParallel(detectCores())
 get2012Data() -> Data12
 slopes12 <- Data12$Slopes; Data12 <- Data12$Data
 get2016Data() -> Data16
-slopes16 <- Data16$Slopes; Data16 <- Data16$Data
+slopes16 <- Data16$Slopes; Data16 <- Data16$Data %>% filter(T.Spin==1)
 
 #### plotting the cycles ####
-Data12 %>% ggplot(aes(Clock, BCT2, col=Targ)) + 
-  scale_color_manual(name="Target state", breaks=c("Chopper","On"), labels=c("Off","On"), values=c("black", "red")) + 
-  geom_point() + 
-  theme_minimal() + theme(legend.position = "top", legend.title=element_text()) +
-  labs(x="Time (local)", y="I (a.u.)")
+Data12 %>% transmute(
+  Year = 2012, Clock, Unit = Run, 
+  Target = derivedFactor("Off" = Targ=="Chopper",.default="On"),
+  `Beam Spin` = "Null", BCT2
+) %>% rbind(
+  transmute(
+    Data16, Year = 2016, Clock, Unit,
+    Target = derivedFactor("Off" = FABS=="F", "On" = FABS=="T", .default = NA),
+    `Beam Spin` = derivedFactor("Up" = B.Spin=="U", "Down" = B.Spin=="D", "Null" = B.Spin=="N", .default = NA),
+    BCT2
+  )
+) -> Data
 
-Data16 %>% ggplot(aes(Clock, BCT2, col=B.Spin)) + 
-  scale_color_manual(name="Beam spin", breaks=c("U","D", "N"), labels=c("Up","Down","Null"), values=c("red", "blue","black")) + 
-  geom_point() + 
-  theme_minimal() + theme(legend.position = "top", legend.title=element_text()) +
-  labs(x="Time (local)", y="I (a.u.)")
+ggplot(filter(Data, Year==2012), aes(Clock, BCT2, col=Target)) + geom_point() + labs(y="I (a.u.)") +
+  theme_bw() + theme(legend.position="top") + scale_color_manual(values=c("black","red")) -> p12
+ggplot(filter(Data, Year==2016), aes(Clock, BCT2, col=`Beam Spin`)) + geom_point() + labs(y="I (a.u.)") +
+  theme_bw() + theme(legend.position="top") + scale_color_manual(values=c("blue","black","red")) -> p16
+plot_grid(p12, p16, ncol=1, labels=c("2012","2016"))
 
 ##################################
 ## shows that BCT2 = 0 is just stack overflow ##
@@ -45,9 +52,19 @@ slice(Run969, 20:nrow(Run969))%>%ggplot(aes(uts, log(BCT2))) + geom_line() + geo
   theme_minimal() + labs(y="ln I", x="Time (seconds)") + 
   geom_vline(xintercept=Run969$uts[.sub], col="gray",linetype=2)
 
-autoplot(m, which=1) + theme_minimal() + ggtitle("") + labs(y=expression(ln~I[i]~-~(hat(alpha)~+~hat(beta)~t)), x=expression(hat(alpha)~+~hat(beta)~t))
-autoplot(pacf(m$residuals, lag=600, main="", plot=FALSE)) + theme_minimal() + labs(y="Partial ACF")
+df = data.frame(Res = residuals(m), Fit = fitted(m))
+pacf(df$Res, lag=60, plot = FALSE) -> x
+xdf = data.frame(Lag = x$lag, pACF = x$acf)
 
+ggplot(df, aes(Fit, Res)) + geom_point() + 
+  geom_smooth(method="loess", span=.8, se=FALSE, col="red") + 
+  geom_hline(yintercept=0, linetype=2, col="gray") + 
+  theme_bw() + 
+  labs(x=expression(hat(alpha) + hat(beta)*t), y=expression(ln~I[t] - group("(",list(hat(alpha) +hat(beta)*t),")") )) -> prf
+ggplot(xdf, aes(Lag, pACF)) + geom_bar(stat="identity", width=.3) + 
+  geom_hline(yintercept=c(-1,+1)*1.96/sqrt(x$n.used), col="blue", linetype=2) +
+  theme_bw() + labs(y="Partial Auto-Correlation Function") -> ppacf
+plot_grid(prf, ppacf, ncol=1, labels=c("a)","b)"))
 
 library(lmtest); library(strucchange); library(compute.es)
 f = log(BCT1)~uts
@@ -81,67 +98,37 @@ cs0mb. <- function(.slp, thick){
 dlply(slopes12, "Targ")[c("Chopper","On")] %>% cs0mb.(6.92e13) -> cs0mb12
 filter(slopes16, B.Spin == "N", T.Spin==1) %>% mutate(Run = 1) %>% dlply("FABS") %>% cs0mb.(1.1e14) -> cs0mb16
 
-ggplot(cs0mb12, aes(Run.Chopper, Estimate, shape = Soundness, col = Closeness)) + 
-  geom_pointrange(aes(ymin=Estimate-SE, ymax=Estimate+SE)) + 
-  theme_minimal() + theme(legend.position="top") + 
-  scale_color_manual(values=c("black","red"))+
-  labs(x="Off-cycle", y=expression(hat(sigma)[0]~"(a.u.)"))
+.sumstat <- function(x){
+  x %>% group_by(Soundness, Closeness) %>% 
+    dplyr::summarise(
+      NUM = n(),
+      MEAN = mean(Estimate),
+      W.MEAN = weighted.mean(Estimate, SE^(-2)),
+      SD = sd(Estimate),
+      SE = SD/sqrt(NUM)
+    ) %>% print
+  x %>% group_by(Soundness) %>% 
+    dplyr::summarise(
+      NUM = n(),
+      MEAN = mean(Estimate),
+      W.MEAN = weighted.mean(Estimate, SE^(-2)),
+      SD = sd(Estimate),
+      SE = SD/sqrt(NUM)
+    ) %>% print
+  x %>% dplyr::summarise(
+      NUM = n(),
+      MEAN = mean(Estimate),
+      W.MEAN = weighted.mean(Estimate, SE^(-2)),
+      SD = sd(Estimate),
+      SE = SD/sqrt(NUM)
+    ) %>% print
+}
 
-ggplot(cs0mb12, aes(Estimate, col=Closeness)) +
-  facet_grid(Soundness~., scale="free_y", space="free_y") +
-  scale_color_manual(breaks=c("Close","Far"), values=c("black","red")) + 
-  geom_density(trim=TRUE, kernel="rect") + 
-  # geom_segment(aes(x=Estimate, xend=Estimate, y=0, yend=.00005, col=Closeness)) +
-  theme_minimal() + labs(x=expression(hat(sigma)[0]~"(a.u.)"), y="Kernel density") + theme(legend.position="top")
-
-cs0mb12 %>% group_by(Soundness, Closeness) %>% 
-  dplyr::summarise(
-    NUM = n(),
-    MEAN = mean(Estimate),
-    W.MEAN = weighted.mean(Estimate, SE^(-2)),
-    SD = sd(Estimate),
-    SE = SD/sqrt(NUM)
-  ) 
-
-ggplot(cs0mb16, aes(Run.Off, Estimate, shape = Soundness, col = Closeness)) + 
-  geom_pointrange(aes(ymin=Estimate-SE, ymax=Estimate+SE)) + 
-  theme_minimal() + theme(legend.position="top") + 
-  scale_color_manual(values=c("black","red"))+
-  labs(x="Off-cycle", y=expression(hat(sigma)[0]~"(a.u.)"))
-
-ggplot(cs0mb16, aes(Estimate, col=Closeness)) +
-  facet_grid(Soundness~., scale="free_y", space="free_y") +
-  scale_color_manual(breaks=c("Close","Far"), values=c("black","red")) + 
-  geom_density(trim=TRUE, kernel="rect") + 
-  # geom_segment(aes(x=Estimate, xend=Estimate, y=0, yend=.00005, col=Closeness)) +
-  theme_minimal() + labs(x=expression(hat(sigma)[0]~"(a.u.)"), y="Kernel density") + theme(legend.position="top")
-
-cs0mb16 %>% group_by(Soundness, Closeness) %>% 
-  dplyr::summarise(
-    NUM = n(),
-    MEAN = mean(Estimate),
-    W.MEAN = weighted.mean(Estimate, SE^(-2)),
-    SD = sd(Estimate),
-    SE = SD/sqrt(NUM)
-  ) 
-
-rbind(mutate(cs0mb12, Year="2012"), mutate(cs0mb16, Year="2016")) -> cs0mb; rm(cs0mb12,cs0mb16)
+.sumstat(cs0mb12)
+.sumstat(cs0mb16)
 
 #### slopes ####
-slopes12 %>% mutate(
-  Group = derivedFactor("Used" = format(Clock, format="%H:%M") < "06:00", .default="Unused")#,
-  # Estimate = -1/Estimate, SE = SE*Estimate^2
-) %>% 
-  ggplot(aes(Clock, Estimate, col=Group)) + 
-  scale_y_continuous(labels=fancy_scientific)+
-  scale_color_manual(values=c("black","red")) +
-  geom_pointrange(aes(ymin=Estimate-SE,ymax=Estimate+SE),size=.3) + 
-  # geom_smooth(lty=3, col="grey", method="lm", se=FALSE) +
-  theme_minimal() +
-  theme(legend.position="top", legend.title=element_blank()) + 
-  facet_grid(Targ~., space="free_y", scale="free_y", labeller = as_labeller(c("Chopper" = "Off", "On" = "On")),switch="y") + 
-  labs(y=expression(hat(beta)))
-
+slopes16 <- filter(slopes16, T.Spin == 1)
 slopes12 %>% group_by(Targ) %>% 
   dplyr::summarise(
     NUM = n(),
@@ -151,39 +138,25 @@ slopes12 %>% group_by(Targ) %>%
     SE = SD/sqrt(NUM)
   )
 
-slopes <- slopes16
-
-ggplot(slopes, aes(I0, Estimate, col=B.Spin, shape=FABS)) + geom_point() + 
-  scale_color_manual(name="Beam spin", breaks=c("U","D", "N"), labels=c("Up","Down","Null"), values=c("red", "blue","black")) + 
-  scale_shape_discrete(name="Target state", breaks=c("F","T"), labels=c("Off","On")) +
-  geom_smooth(method="lm", se=FALSE, aes(linetype=FABS)) +
-  facet_grid(B.Spin~.) + theme_minimal() + labs(x="I0 (a.u.)")
-
-slopes %>% ddply("Unit", function(s){
-  with(s, data.frame(
-    OffE = Estimate[FABS == "F"], OnE = Estimate[FABS == "T"],
-    B.Spin = B.Spin
-  ))
-}) -> x
-
-ggplot(x, aes(OnE, OffE, col=B.Spin)) + geom_point() + facet_grid(B.Spin~.) + theme_minimal() +
-  geom_smooth(method="gam")
-
-filter(slopes, B.Spin == "N") %>% daply("FABS", function(s) (lm(Estimate~1, data=s)%>% coef)[1]) -> nullscat
-slopes%>%ddply("FABS", function(s) mutate(s, Estimate_oft = Estimate - nullscat[s$FABS[1]])) -> slopes
-
-ggplot(slopes12, aes(I0, Estimate, col=Targ)) + geom_pointrange(aes(ymin=Estimate-SE,ymax=Estimate+SE)) + 
-  geom_text(aes(label=Run, vjust=1.35, hjust=0))+
+slopes12<-mutate(slopes12, B.Spin=factor(1, labels = "Null"))
+ggplot(slopes12, aes(I0, Estimate)) + geom_pointrange(aes(ymin=Estimate-SE,ymax=Estimate+SE)) + 
   scale_y_continuous(labels=fancy_scientific)+
-  facet_grid(Targ~., scale="free_y", space="free_y", label=as_labeller(c("Chopper"="Off", "On"="On"))) + 
-  theme_minimal() + theme(legend.position="top") +
-  scale_color_manual(name="Target state", breaks=c("Chopper","On"), labels=c("Off","On"), values=c("black", "red")) +
-  labs(x=expression(I[0]~"(a.u.)"), y=expression(hat(beta)))
-  
+  facet_grid(B.Spin~Targ, scale="free_x", label=as_labeller(c("Chopper"="Off", "On"="On", "Null" = "Null"))) + 
+  theme_bw() + theme(legend.position="none") +
+  labs(x=expression(I[0]~"(a.u.)"), y=expression(hat(beta))) -> p12
+ggplot(slopes16, aes(I0, Estimate, col=B.Spin)) + geom_point() + 
+  scale_y_continuous(labels=fancy_scientific) +
+  scale_color_manual(name="Beam spin", breaks=c("U","D", "N"), labels=c("Up","Down","Null"), values=c("red", "blue","black")) + 
+  geom_smooth(method="lm", se=FALSE, show.legend=FALSE, size=.4) +
+  facet_grid(B.Spin~FABS, scale="free_x",
+             label=as_labeller(c("F" = "Off", "T" = "On", "U" = "Up","D"="Down","N"="Null"))) + 
+  theme_bw() + theme(legend.position="none") + 
+  labs(y=expression(hat(beta)), x=expression(I[0]~"(a.u.)")) -> p16
+plot_grid(p12,p16,ncol=1, labels=c("2012","2016"))
+
 #### Ayy estimation ####
 thick = 1.1e14; dP = -diff(Pb); cs0est = (cs0mb16 %>% filter(Soundness=="Sound", Closeness=="Close") %>% WMN)*1e-27
-(slopes16 %>% filter(FABS=="T", B.Spin != "N") %>% dlply("B.Spin"))[c("Down","Up")] %>% dbeta. %>% 
+(slopes16 %>% filter(FABS=="T", B.Spin != "N") %>% dlply("B.Spin"))[c("D","U")] %>% dbeta. %>% 
   mutate(Estimate = Estimate/(dP*nu*Pt*thick*cs0est), SE = SE/(dP*nu*Pt*thick*cs0est)) -> Ayy
 
-ggplot(Ayy, aes(Estimate)) + geom_density(kernel="gaus") +
-  theme_minimal() + labs(x=expression(hat(A)[yy]~"(a.u.)"), y="Kernel density")
+Ayy%>%WMN

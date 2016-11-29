@@ -32,34 +32,34 @@ D = dbeta.(lbeta); d = D$Estimate
 R = rbeta.(lbeta); r = R$Estimate; rr = 2*r/Pt/(DP - SP*r); R$Rp <- rr
 
 ## linear model fit ####
-filter(Data16, Unit==17) -> TRun
-ggplot(TRun, aes(Clock, BCT2)) + geom_line() + theme_bw() + labs(y="I (a.u.)")
-TRun %>% filter(eCool=="Acc",FABS=="F") %>% mutate(uts = UTS-UTS[1]) -> TRun
-f = log(BCT2) ~ uts
-library(lmtest)
-lm(f, data = TRun) -> m
-autoplot(m,1) + ggtitle("") + theme_bw() + labs(x = expression(hat(y)~"="~ hat(alpha) + hat(beta)*t), y=expression(y - hat(y)))
-lmtest::bptest(m)
-lmtest::dwtest(m)
-library(strucchange)
-Fstats(f, data=TRun) %>% plot
-
-Data16 %>% ddply(.(B.Spin, FABS, Unit), function(s) data.frame("BP" = Fstats(f, data=mutate(s,uts=UTS-UTS[1]))$breakpoint)) -> x
-ggplot(x, aes(BP, col=B.Spin)) + geom_density() + facet_grid(FABS~.) + 
-  theme_bw() + theme(legend.position="top") + labs(x = "Breakpoint (seconds from start)")
-
-library(forecast)
-Data16 %>% filter(eCool=="Acc", !is.na(FABS)) %>% 
-  dlply(.(B.Spin, FABS, Unit), function(s) auto.arima(log(s$BCT2))%>%coef %>%t %>% as.data.frame() %>%
-          cbind(B.Spin = s$B.Spin[1], FABS = s$FABS[1], Unit = s$Unit[1])) %>% 
-  rbind.fill() -> AAMC
-
-Data16 %>% ddply(.(B.Spin, FABS, Unit), function(s) dwtest(lm(log(BCT2)~I(UTS-UTS[1]), data=s))$statistic/2) -> x
-ggplot(x, aes(DW, col=B.Spin)) + geom_density() + facet_grid(FABS~.) + theme_bw() + labs(x="Autocorrelation with previous error")
-
-library(dynlm)
-dynlm(Y ~ trend(Y), data=mutate(TRun, Y = log(BCT2)))%>%summary
-lm(Y ~ uts, data = mutate(TRun, Y = log(BCT2), uts = UTS-UTS[1])) %>% summary
+# filter(Data16, Unit==17) -> TRun
+# ggplot(TRun, aes(Clock, BCT2)) + geom_line() + theme_bw() + labs(y="I (a.u.)")
+# TRun %>% filter(eCool=="Acc",FABS=="F") %>% mutate(uts = UTS-UTS[1]) -> TRun
+# f = log(BCT2) ~ uts
+# library(lmtest)
+# lm(f, data = TRun) -> m
+# autoplot(m,1) + ggtitle("") + theme_bw() + labs(x = expression(hat(y)~"="~ hat(alpha) + hat(beta)*t), y=expression(y - hat(y)))
+# lmtest::bptest(m)
+# lmtest::dwtest(m)
+# library(strucchange)
+# Fstats(f, data=TRun) %>% plot
+# 
+# Data16 %>% ddply(.(B.Spin, FABS, Unit), function(s) data.frame("BP" = Fstats(f, data=mutate(s,uts=UTS-UTS[1]))$breakpoint)) -> x
+# ggplot(x, aes(BP, col=B.Spin)) + geom_density() + facet_grid(FABS~.) + 
+#   theme_bw() + theme(legend.position="top") + labs(x = "Breakpoint (seconds from start)")
+# 
+# library(forecast)
+# Data16 %>% filter(eCool=="Acc", !is.na(FABS)) %>% 
+#   dlply(.(B.Spin, FABS, Unit), function(s) auto.arima(log(s$BCT2))%>%coef %>%t %>% as.data.frame() %>%
+#           cbind(B.Spin = s$B.Spin[1], FABS = s$FABS[1], Unit = s$Unit[1])) %>% 
+#   rbind.fill() -> AAMC
+# 
+# Data16 %>% ddply(.(B.Spin, FABS, Unit), function(s) dwtest(lm(log(BCT2)~I(UTS-UTS[1]), data=s))$statistic/2) -> x
+# ggplot(x, aes(DW, col=B.Spin)) + geom_density() + facet_grid(FABS~.) + theme_bw() + labs(x="Autocorrelation with previous error")
+# 
+# library(dynlm)
+# dynlm(Y ~ trend(Y), data=mutate(TRun, Y = log(BCT2)))%>%summary
+# lm(Y ~ uts, data = mutate(TRun, Y = log(BCT2), uts = UTS-UTS[1])) %>% summary
 
 
 ## estimates ####
@@ -107,5 +107,5 @@ ggplot(Ayy%>%filter(Sound=="Yes"), aes(Estimate,col=Close, alpha=.2)) + geom_den
 
 
 ## testing if current-dependent error fit fits better ####
-library(nlme)
-gls(f, data=TRun, correlation = corAR1(.6, ~uts)) ->mgls
+# library(nlme)
+# gls(f, data=TRun, correlation = corAR1(.6, ~uts)) ->mgls

@@ -79,7 +79,7 @@ R = rbeta.(lbeta); r = R$Estimate; rr = 2*r/Pt/(DP - SP*r); R$Rp <- rr
     ) %>% print
 }
 
-##cross section
+## cross section
 names(slopes16)[2] <- "B.Spin"; names(slopes16)[4] <- "FABS";
 thick=1.1e14
 filter(slopes16, B.Spin=="Null") %>% dlply("FABS") %>% dbeta.(c("FOut", "Clock")) %>% 

@@ -1,5 +1,6 @@
-\documentclass{article}
+\documentclass{report}
 \usepackage{../repsty}
+\usepackage{wrapfig}
 
 \begin{document}
 
@@ -25,24 +26,20 @@ Here we will try to estimate the beam and cycle times appropriate for achieving 
 \centering
 \caption{Parameter values (June 2016)\label{tbl:Param}}
 \begin{threeparttable}[h]
-\begin{tabular}{llr}
-\hline\hline
-Parameter					& Value 				& Dimension \\
-\hline
-$\nu$						& 0.79 					& MHz \\
-$\Thick$					& $1.1\cdot 10^{14}$	& $\Dim{at\cdot cm^{-2}}$ \\
-$P^t$						& 0.88					& -- \\
-$\DP$						& 1.48					& -- \\
-$\CS[0]$\tnote{a}			& 70					& mb\\
-\hline
+\begin{tabular}{p{4.5cm}llr}
+	\hline\hline
+	Parameter                                 & Symbol            & Value              &               Dimension \\ \hline
+	Beam revolution frequency                 & $\nu$             & 0.79               &                     MHz \\
+	Target thickness                          & $\Thick$          & $1.1\cdot 10^{14}$ & $\Dim{at\cdot cm^{-2}}$ \\
+	Target polarization                       & $P^t$             & 0.88               &                      -- \\
+	Beam spin up-down polarization difference & $\DP$             & 1.48               &                      -- \\
+	$pd$ scattering cross section             & $\CS[0]$\tnote{a} & 70                 &                      mb \\ \hline
 \end{tabular}
 \begin{tablenotes}
-	\item[a]{From Particle Data Grpoup \url{http://pdg.lbl.gov/2016/hadronic-xsections/rpp2014-pd_pn_plots.pdf}}
+	\item[a]{From Particle Data Group \url{http://pdg.lbl.gov/2016/hadronic-xsections/rpp2014-pd_pn_plots.pdf}}
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
-
-
 
 \section{Required beam time}
 \newcommand{\Tint}{\Delta t}
@@ -93,7 +90,7 @@ The estimated beam time for different values of measurement resolution and preci
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=1]{BeamTime_15minCycles}
+\includegraphics[scale=.5]{BeamTime_15minCycles}
 \caption{Beam time (in full days) as a function of the standard error of the mean $\Ayy$ estimate, required in the case of 15-minute cycles.\label{fig:BeamTime}}
 \end{figure}
 
@@ -118,7 +115,7 @@ The slope variation determines the best achievable precision (see Table~\ref{tbl
 
 \begin{table}[h]
 \centering
-\caption{For Figure~\ref{fig:SEAyy_varB_15min}\label{tbl:SEAyy_varb}}
+\caption{Best achievable precision of $\Ayy*$,\\ and the corresponding cycle time.\label{tbl:SEAyy_varb}}
 \begin{tabular}{lrr}
 \hline\hline
 $\SE{\err}$			&	$h_{best}$ (min)	& $\SE{\avg{\Ayy*}}$\\
@@ -133,15 +130,17 @@ $5\cdot10^{-5}$		&	7					& $1\cdot10^{-4}$\\
 \end{table}
 
 \begin{figure}[h]
-\includegraphics[scale=1]{SEAyy_varB_15min}
+\centering
+\includegraphics[scale=.5]{SEAyy_varB_15min}
 \caption{The standard error of the mean $\Ayy$ estimate as a function of cycle length when the inherent slope variation $\v{\slp} = 1\cdot10^{-15}$.\label{fig:SEAyy_varb}}
 \end{figure}
 
 \subsection{Inherent slope variation}
 By definition, the slope at time $t$ is
 \[
- \slp[t] = \frac{\Delta \ln I_t}{\Delta t} \approx \frac{1}{\Delta t}\frac{\Delta I_t}{I_t} \propto \frac{\Delta N_t}{N_t}, ~\Delta N_t \sim B(N_t, p).
+ \slp[t] = \frac{\Delta \ln I_t}{\Delta t} \approx \frac{1}{\Delta t}\frac{\Delta I_t}{I_t} \propto \frac{\Delta N_t}{N_t}, ~\Delta N_t \sim B(N_t, p),
 \]
+where $N_t$ is the number of beam particles at time $t$, $p$ is the probability to scatter a particle, and $B$ refers to the binomial distribution.
 
 Since this is a sample proportion, 
 \begin{equation*}
@@ -163,7 +162,7 @@ Therefore,
 \end{equation}
 where, for the parameters of Table~\ref{tbl:Param}, $\v{\slp[0]} \approx 8\cdot10^{-16}$.
 
-\subsection{The strange case of the lost power}
+\subsection{Effect of target dissipation}
 Suppose the target dissipates randomly, at an average rate $r = 10\sfrac{\%}{day} = 1.16\cdot10^{-6}\sfrac{1}{sec}$, and with a standard deviation equal $r$:
 \[
 	\Thick[t] = \Thick[t-1](1-\alpha_t),~ \alpha_t\sim N(r,r).
@@ -173,11 +172,12 @@ Then the slope
 \[
 	\slp[t] = \nu\CS[tot]\Thick[t] = \slp[0]\prod_{i=1}^{t-1}(1-\alpha_i),
 \]	
-and we can estimate $\bkt{\v{\slp}}(h) = \sfrac 1h \sum_{i=1}^{h}(\slp[i] - \avg{\slp})^2$. As one can see from Figure~\ref{fig:varB_TD}, the variance doesn't exceed $1\cdot10^{-16}$, validating our estimates.
+and we can estimate $\bkt{\v{\slp}}(h) = \sfrac 1h \sum_{i=1}^{h}(\slp[i] - \avg{\slp})^2$. As one can see from Figure~\ref{fig:varB_TD}, the variance doesn't exceed $1\cdot10^{-16}$, thus validating our estimates.
 
-\begin{figure}
+\begin{figure}[h]
+\centering
 \includegraphics[scale=1]{varB_DissipThick}
-\caption{The growth of the slope dispersion due to stochastic target dissipation.\label{fig:varB_TD}}
+\caption{The growth of the slope dispersion due to a stochastic target dissipation.\label{fig:varB_TD}}
 \end{figure}
 
 \end{document}

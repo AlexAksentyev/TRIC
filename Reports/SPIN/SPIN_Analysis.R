@@ -12,7 +12,7 @@ registerDoParallel(detectCores())
 get2012Data() -> Data12
 slopes12 <- Data12$Slopes; Data12 <- Data12$Data
 get2016Data() -> Data16
-slopes16 <- Data16$Slopes; Data16 <- Data16$Data %>% filter(T.Spin==1)
+slopes16 <- Data16$Slopes %>% filter(T.Spin==1); Data16 <- Data16$Data %>% filter(T.Spin==1)
 
 #### plotting the cycles ####
 Data12 %>% transmute(
@@ -96,7 +96,7 @@ cs0mb. <- function(.slp, thick){
     )
 }
 dlply(slopes12, "Targ")[c("Chopper","On")] %>% cs0mb.(6.92e13) -> cs0mb12
-filter(slopes16, B.Spin == "N", T.Spin==1) %>% mutate(Run = 1) %>% dlply("FABS") %>% cs0mb.(1.1e14) -> cs0mb16
+filter(slopes16, B.Spin == "N") %>% mutate(Run = 1) %>% dlply("FABS") %>% cs0mb.(1.1e14) -> cs0mb16
 
 .sumstat <- function(x){
   x %>% group_by(Soundness, Closeness) %>% 

@@ -154,9 +154,18 @@ ggplot(slopes16, aes(I0, Estimate, col=B.Spin)) + geom_point() +
   labs(y=expression(hat(beta)), x=expression(I[0]~"(a.u.)")) -> p16
 plot_grid(p12,p16,ncol=1, labels=c("2012","2016"))
 
+
+pull <- function(x,y){
+  (mean(x$Estimate)-mean(y$Estimate))/sqrt(.se(x)^2+.se(y)^2) %>% abs -> .stat
+  pt(.stat, 12, lower.tail = FALSE)
+}
+
+pull(filter(slopes16, B.Spin.o == "U"), filter(slopes16, B.Spin.o == "D")) -> sUD
+
 #### Ayy estimation ####
 thick = 1.1e14; dP = -diff(Pb); cs0est = (cs0mb16 %>% filter(Soundness=="Sound", Closeness=="Close") %>% WMN)*1e-27
 (slopes16 %>% filter(FABS=="T", B.Spin != "N") %>% dlply("B.Spin"))[c("D","U")] %>% dbeta. %>% 
   mutate(Estimate = Estimate/(dP*nu*Pt*thick*cs0est), SE = SE/(dP*nu*Pt*thick*cs0est)) -> Ayy
 
 Ayy%>%WMN
+ggplot(Ayy, aes(Estimate)) + geom_density() + theme_bw() + labs(x=expression(hat(A)[yy]))

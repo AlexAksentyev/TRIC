@@ -7,7 +7,7 @@
 
 \usepackage{paralist}
 
-%\usepackage{subcaption}
+%\usepackage{wrapfig}
 \usepackage{caption}
 \usepackage{threeparttable}
 \usepackage{multirow}
@@ -148,7 +148,7 @@ In both experiments the target was produced by an Atomic Beam Source (ABS) capab
 \end{figure} 
 
 
-\section{Slope}
+\section{Slope}\label{sec:Slope}
 
 In order to correctly estimate a cycle's slope, we subtract the BCT offset $\Delta$ from the data. This is done  because slope
 \begin{align*}
@@ -191,8 +191,10 @@ After subtracting the offset, the linear model $\ln I_t = \ln I_0 + \slp t +\eps
 %In FIG.~\ref{fig:SlpOnI0} we plotted the dependence of the slope estimate on the initial beam current, which was estimated by exponentiating the intercept of the fitted model. 
 %(If the initial current is also estimated as the median value of current within the second cycle minute, the two estimators are essentially perfectly correlated.) 
 %The figure for the 2016 estimates suggests there might be a dependence of the estimated slope on the initial beam current, although the p-values of the slopes of the fitted lines (obtained by robust least squares) are not statistically significant, with only the slope for the null spin state and the target turned off being significant at the 10\% confidence level (the p-value being 6\%). %However, one might notice that the effect of the initial current is stronger for the target-off slopes (the difference is especially noticeable in the unpolarized case), affirming the hypothesis that the beam current played a significant role in the experimental performance.
+\newcommand{\avg}[1]{\langle #1 \rangle}
+The fit results for all the slopes are summarized in TABLE~\ref{tbl:Slp-big}. The results contradict our expectations, because, for target-on slopes, the cross section is expected to increase when the beam spin is up, and decrease when it's down, i.e. $\slp^+ < \slp^0 < \slp^-$; the estimates, however, satisfy $\slp*^0 < \slp*^- < \slp*^+$. This might have suggested that the labeling of the spin states was done incorrectly. 
 
-The fit results for all the slopes are summarized in TABLE~\ref{tbl:Slp-big}. 
+Using the pull distribution $p(a,b) = \frac{\avg{a}-\avg{b}}{\sqrt{\SE{a}^2+\SE{b}^2}}$, we conducted a hypothesis test for the equality of the sample means, and concluded that the spin states aren't statistically different with respect to the slope means (the T-test P-values are: 72\% (Up-Down), 73\% (Up-Null), 47\% (Null-Down)). For this reason, we assume that the spin states are labeled correctly.
 
 \begin{threeparttable}[h]
 	\centering
@@ -262,58 +264,15 @@ Year						& Soundness		& Closeness		& \#		& Mean\tnote{a} [a.u.]	& SE [a.u.] \\
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=.35]{img/Ayy_dens.eps}
+	\caption{Gaussian kernel density estimate of the double-polarized cross section asymmetry in proton-deuteron scattering.\label{fig:AyyDensity}}
+\end{figure}
 
-Our best estimate for the $pp$ cross section is $\CS[0]^{pp} = 507 \pm 7$ a.u., that for the $pd$ reaction is $\CS[0]^{pd} = 411 \pm 48$. The asymmetry $\Ayy = \vp{(5 \pm 3)}{-2}$. %FIG.~\ref{fig:AyyDensity} shows its Gaussian kernel density estimate.
+Our best estimate for the $pp$ cross section is $\CS[0]^{pp} = 507 \pm 7$ a.u., that for the $pd$ reaction is $\CS[0]^{pd} = 411 \pm 48$. The asymmetry $\Ayy = \vp{(2 \pm 4)}{-2}$. The Quantile-Quantile plot shows that the estimate is distributed normally (see FIG.~\ref{fig:AyyDensity}); however the distribution's reduced chi-square $\chi^2_{red} = 7.8$. The upper limit of $\Ayy$ at the 95\% confidence level is 10\%.
 
-%The summary statistics of cross section estimates, grouped by soundness and closeness of the slope estimates they are based on, are presented in TABLE~\ref{tbl:CS-all}.
-% and FIG.~\ref{fig:CS-all}; the slopes themselves are shown in FIG.~\ref{fig:SlopesVsTime} and summarized in TABLE~\ref{tbl:Slp-big}. Group density estimates with the rectangular kernel are shown in FIG.~\ref{fig:CS-dens}.
-
-
-
-%\begin{figure}
-%\centering
-%	\includegraphics[scale=\scl]{img/Ayy_dens.eps}
-%\caption{Gaussian kernel density estimate of the double-polarized cross section asymmetry in proton-deuteron scattering.\label{fig:AyyDensity}}
-%\end{figure}
-
-%\begin{figure}[t]
-%\centering
-%	\begin{subfigure}{.5\textwidth}
-%		\includegraphics[scale=\scl]{img/Cross-Section2012_all.eps}
-%		\caption{2012.}
-%	\end{subfigure}
-%		\begin{subfigure}{.5\textwidth}
-%			\includegraphics[scale=\scl]{img/CS0mb2016_all.eps}
-%			\caption{2016.}
-%		\end{subfigure}
-%\caption{Cross section estimates plotted against their off-cycle number\label{fig:CS-all}.}
-%\end{figure}
-%\begin{figure}
-%	\centering
-%\begin{subfigure}{.5\textwidth}
-%	\includegraphics[scale=\scl]{img/Slopes-2012_big.eps}
-%	\caption{2012.}
-%\end{subfigure}
-%\begin{subfigure}{.5\textwidth}
-%	\includegraphics[scale=\scl]{img/Slopes2016_VS_Clock.eps}
-%	\caption{2016.}
-%\end{subfigure}
-%\caption{Slope estimates as a function of time.\label{fig:SlopesVsTime}}
-%\end{figure}
-%\begin{figure}
-%\centering
-%	\begin{subfigure}[b]{.5\textwidth}
-%		\includegraphics[scale=\scl]{img/Cross-Section2012_dens.eps}
-%		\caption{2012.}
-%	\end{subfigure}
-%	\begin{subfigure}[b]{.5\textwidth}
-%		\includegraphics[scale=\scl]{img/CS0mb2016_dens.eps}
-%		\caption{2016.}
-%	\end{subfigure}
-%	\caption{Cross section density estimates for each category of results.\label{fig:CS-dens}}
-%\end{figure}
-
-
+There is a 31\% chance that our estimator of the asymmetry is zero in expectation. Considering that, as was stated in section~\ref{sec:Slope}, the slope means' dependence on the beam spin state is not statistically significant, we find it likely that this is the case. 
 
 \begin{thebibliography}{9}
 \bibitem{Conzett}

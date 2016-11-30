@@ -160,7 +160,7 @@ pull <- function(x,y){
   pt(.stat, 12, lower.tail = FALSE)
 }
 
-pull(filter(slopes16, B.Spin.o == "U"), filter(slopes16, B.Spin.o == "D")) -> sUD
+pull(filter(slopes16, B.Spin == "D"), filter(slopes16, B.Spin == "N"))
 
 #### Ayy estimation ####
 thick = 1.1e14; dP = -diff(Pb); cs0est = (cs0mb16 %>% filter(Soundness=="Sound", Closeness=="Close") %>% WMN)*1e-27

@@ -40,21 +40,56 @@ The data are log-transformed, and the linear model $\ln I_t = \ln I_0 + \slp^\pm
 \end{cases}
 \end{equation}
  
-\section{Design flaws}
-\subsection{Vector polarization}
-For the ideal TRIC experiment one must have at least one of the two conditions to hold:
+\section{Systematic errors}
+
+We will distinguish between two sources of systematic error when estimating a quantity: statistical methodology, and physical interpretation.
+
+The methodology source is the more easily accessible one; the errors of this kind are due to the contradiction between the assumptions made versus the properties of the data, and the latter can be easily checked. In essence, these errors arise from a lack of vigilance on the analysts' part.
+
+By an interpretation error, on the other hand, we mean a fundamental experimental design flaw, one that prohibits distinguishing between multiple channels the outcome could've come about.~\footnote{More on the subject of the schematic description of experiments in~\cite{Saunders}.}
+
+An example of a methodological systematic error would be using an ordinary least squares approach to fitting a time series with the autocorrelated disturbance term (generalized least squares are more appropriate here); or disregarding the fact that measurement error deterministically depends on time. 
+
+For an example of an interpretation error, consider the following: the ideal TRIC experiment requires that at least one of the two conditions hold: either
 \begin{inparaenum}[1)]
-	\item either the injected ABS beam consists only of particles with spin states \hl{such-and-such}, or
+	\item the injected ABS beam consists only of particles with the appropriate spin states, or
 	\item the target chamber magnetic field does not have a vertical component.
 \end{inparaenum}
 
-Neither of the conditions are practically realizable, meaning that the vertical component of the target vector polarization is present. That means the estimator in~\eqref{eq:AyxzEstimator} must be corrected by subtracting a scaled estimate of $\Ayy$: 
-\[
-	\Ayxz* = C\Delta\slp* - \sfrac{P^t_y}{P^t_{xz}}\cdot\Ayy*.
-\]
-
+Neither of the conditions are practically realizable, meaning that the vertical component of the target vector polarization is not zero. This means a beam particle can be scattered via either of \emph{two} channels which we have no way of distinguishing in our transmission experiment design. That means the estimator in~\eqref{eq:AyxzEstimator} must be corrected by subtracting a scaled estimate of $\Ayy$: 
+\begin{equation}\label{eq:AyxzBiasCorrect}
+\Ayxz* = C\Delta\slp* - \sfrac{P^t_y}{P^t_{xz}}\cdot\Ayy*.
+\end{equation}
 It also means the value of $\Ayy$ has to be estimated first, making TRIC a two-stage experiment.
 
+For an analysis of the statistical properties of the TRIC data obtained at COSY in 2016, please refer to~\cite{DAnaRep}. Below, we will concern ourselves with the interpretation problem mentioned above.
+
+\subsection{The faking observable}
+
+The examination of the possible sources of systematic error~\cite{Proposal} shows that the vector-polarized total cross section scattering asymmetry $\Ayy$ is the primary source of systematic error in the reaction zone. The interfering scattering channel appears for two reasons: the inevitable presence of vector-polarized quantum states in the target's population, and the presence of the vertical component in the target chamber's magnetic field. 
+
+There's another aspect in which the magnetic field's structure influences eq.~\eqref{eq:AyxzBiasCorrect}. In order to have the maximum tensor polarization in the $xz$-direction, we need the horizontal component of the field be turned at 45 degrees to the side of the beam's orbit. It can be shown~\cite{Diploma} that the rate at which the beam scattering occurs is influenced by the field's inhomogeneity as in
+\newcommand{\Lcell}{\ell}
+\[
+	\slp = \slp'\cdot \frac{\int_{\Lcell}\rho(s)\cos2\Delta\Theta~\td s}{\int_{\Lcell}\rho(s)\td s},
+\]
+where $\Lcell$ is the cell length, $\rho(s)$ is the spatial distribution of the target density, and $\Delta\Theta$ is the angle deviation of the field's direction from 45 degrees. 
+
+
+
+\begin{thebibliography}{9}
+	\bibitem{Saunders}
+	Simon Saunders. ``Derivation of the Born Rule from Operational Assumptions.'' arXiv:quant-Ph/0211138, November 21, 2002. \url{http://arxiv.org/abs/quant-ph/0211138.}
+	
+	\bibitem{DAnaRep}
+	Alexander Aksentyev. ``Analysis of the 2016 data.''
+	
+	\bibitem{Proposal}
+	P.D. Eversheim, B. Lorentz, and Yu. Valdau, Forschungszentrum J\"ulich, COSY, proposal \#215, 2012.
+	
+	\bibitem{Diploma}
+	Alexander Aksentyev. Diploma thesis (2015).
+\end{thebibliography}
 
 
 

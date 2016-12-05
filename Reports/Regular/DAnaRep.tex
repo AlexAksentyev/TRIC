@@ -1,4 +1,4 @@
-\documentclass{report}
+\documentclass{article}
 
 \usepackage{../repsty}
 \usepackage{multirow}
@@ -76,27 +76,22 @@ The Breusch-Pagan test against heteroskedasticity suggests that our data are hom
 
 The moving Chow test, as well as other structural tests from the package~\cite{RStrucchange} suggest changes in the slope, i.e. the appropriateness of a piece-wise linear regression. The distribution of the breakpoints, as found by the Chow test, are plotted in Figure~\ref{FStat_BP_dens}. One can also observe from the plot of model residuals against the fitted values (Figure~\ref{fig:RvF-u17}) that the simple linear model is not appropriate for the data.
 
-%\begin{figure}[H]
-%	\centering
-%	\begin{subfigure}{\textwidth}
-%		\includegraphics[height=.5\textheight]{TestCycle_2016-17.eps}
-%		\caption{Example cycle.\label{fig:fig:TestCycle}}
-%	\end{subfigure}
-	\begin{figure}[H]
+\begin{figure}[h]
+	\centering
+	\begin{minipage}[t]{.5\textwidth}
 		\centering
-		\includegraphics[scale=1]{Res_VS_Fit_2016-17.eps}
-		\caption{Plot of the linear model residuals vs. the fitted values for the target-on part of a cycle. The shape of the plot (flipped-over U) indicates that the model systematically overestimates the beam current at higher values, then underestimates in the mid range, and overestimates again at lower values.\label{fig:RvF-u17}}
-	\end{figure}
-%\end{figure}
+			\includegraphics[scale=.5]{Res_VS_Fit_2016-17.eps}
+			\caption{Plot of the linear model residuals vs. the fitted values for the target-on part of a cycle. The shape of the plot (flipped-over U) indicates that the model systematically overestimates the beam current at higher values, then underestimates in the mid range, and overestimates again at lower values.\label{fig:RvF-u17}}
+	\end{minipage}~~~~%
+	\begin{minipage}[t]{.5\textwidth}
+		\centering
+			\includegraphics[scale=.5]{Slope_VS_IniCurrent_2016.eps}
+			\caption{Slope estimates against the initial beam current. The beam current is estimated from the regression model.\label{fig:Slp_VS_I0}}
+	\end{minipage}
 
+\end{figure}
 
 Figure~\ref{fig:Slp_VS_I0} shows that there is a dependency between the beam's life time and its intensity. The initial beam intensity $I_0$ was estimated as the exponentiated intercept of the linear model $\ln I_t = \ln I_0 + \slp\cdot t + \err_t$, and the life time estimate is $\hat{\tau} = -\sfrac{1}{\slp*}$. 
-
-\begin{figure}[H]
-	\centering
-	\includegraphics{Slope_VS_IniCurrent_2016.eps}
-	\caption{Slope estimates against the initial beam current. The beam current is estimated from the regression model.\label{fig:Slp_VS_I0}}
-\end{figure}
 
 \section{Obtainable estimates}
 
@@ -119,10 +114,19 @@ The asymmetry is estimated by taking the difference between two target-on slopes
 \subsection{Cross section}
 We used the thicknesses estimated from the shift of the Schottky spectrum~\cite{Stein} ($\Thick[on] = \vp{1.1}{14}$ [cm$^{-2}$], and $\Thick[off] = 0$ [cm$^{-2}$]). The cross section estimates we got are presented in Figure~\ref{fig:CS0au_dens} and Table~\ref{tbl:CS0SumStat}. Those estimates that are based on slopes that are considered outliers according to Tukey's range test are labeled unsound, and those whose slopes are separated by more that 40 minutes are considered far removed. The latter classification was introduced in connection with the concern that the environmental conditions systematically changed over time.
 
-\begin{figure}[H]
+\begin{figure}[h]
 	\centering
-	\includegraphics{CS0_au_dens.eps}
-	\caption{Rectangular kernel density estimate of cross section.\label{fig:CS0au_dens}}
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[scale=.5]{CS0_au_dens.eps}
+		\caption{Rectangular kernel density estimate of cross section.\label{fig:CS0au_dens}}
+	\end{minipage}~~~~ %
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[scale=.5]{Ayy_dens.eps}
+		\caption{Kernel density estimate of $\Ayy$.\label{fig:Ayy_dens}}
+	\end{minipage}
+	
 \end{figure}
 
 \begin{threeparttable}[H]
@@ -167,12 +171,6 @@ The summary statistics for the asymmetry are presented in Table~\ref{tbl:AyySumS
 		\item[d]{Most frequent value.}
 	\end{tablenotes}
 \end{threeparttable}
-
-\begin{figure}
-	\centering
-	\includegraphics{Ayy_dens.eps}
-	\caption{Kernel density estimate of $\Ayy$.\label{fig:Ayy_dens}}
-\end{figure}
 
 \begin{thebibliography}{9}
 	\bibitem{GaussMarkov}

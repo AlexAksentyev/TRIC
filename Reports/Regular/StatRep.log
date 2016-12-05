@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  30 NOV 2016 14:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  5 DEC 2016 10:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -578,47 +578,52 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \SE with sig. 'sm' on line 27.
+. Defining command \Xpct with sig. 'm' on line 27.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \bkt with sig. 'sm' on line 30.
+. Defining command \SE with sig. 'sm' on line 28.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \A with sig. 'sO{}' on line 33.
+. Defining command \bkt with sig. 'sm' on line 31.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \Ayy with sig. 'sO{}' on line 34.
+. Defining command \A with sig. 'sO{}' on line 34.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \Ayxz with sig. 's' on line 35.
+. Defining command \Ayy with sig. 'sO{}' on line 35.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \D with sig. 's' on line 37.
+. Defining command \Ayxz with sig. 's' on line 36.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \R with sig. 's' on line 38.
+. Defining command \D with sig. 's' on line 38.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \DP with sig. 's' on line 39.
+. Defining command \R with sig. 's' on line 39.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \SP with sig. 's' on line 40.
+. Defining command \DP with sig. 's' on line 40.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SP with sig. 's' on line 41.
 .................................................
 )
 (/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
@@ -782,45 +787,41 @@ l.70 \end{align*}
 File: BeamTime_15minCycles.png Graphic file (type png)
 
 <use BeamTime_15minCycles.png>
-Package pdftex.def Info: BeamTime_15minCycles.png used on input line 93.
+Package pdftex.def Info: BeamTime_15minCycles.png used on input line 95.
 (pdftex.def)             Requested size: 263.10733pt x 290.96132pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-.................................................
-. LaTeX info: "xparse/define-command"
-. 
-. Defining command \Xpct with sig. 'O{}mo' on line 98.
-.................................................
-[2] <SEAyy_varB_15min.png, id=62, 526.21594pt x 581.92406pt>
+<SEAyy_varB_15min.png, id=50, 526.21594pt x 581.92406pt>
 File: SEAyy_varB_15min.png Graphic file (type png)
 
 <use SEAyy_varB_15min.png>
-Package pdftex.def Info: SEAyy_varB_15min.png used on input line 134.
+Package pdftex.def Info: SEAyy_varB_15min.png used on input line 100.
 (pdftex.def)             Requested size: 263.10733pt x 290.96132pt.
+
+Overfull \hbox (11.11105pt too wide) in paragraph at lines 93--103
+ []$[]$     $[]$ 
+ []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[3 <./BeamTime_15minCycles.png (PNG copy)>]
-<varB_DissipThick.png, id=72, 526.21594pt x 581.92406pt>
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \Xpct with sig. 'O{}mo' on line 107.
+.................................................
+[2] [3 <./BeamTime_15minCycles.png (PNG copy)> <./SEAyy_varB_15min.png (PNG cop
+y)>] <varB_DissipThick.png, id=72, 526.21594pt x 581.92406pt>
 File: varB_DissipThick.png Graphic file (type png)
 
 <use varB_DissipThick.png>
-Package pdftex.def Info: varB_DissipThick.png used on input line 179.
-(pdftex.def)             Requested size: 526.21466pt x 581.92264pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 183.
-[4 <./SEAyy_varB_15min.png (PNG copy)>] [5 <./varB_DissipThick.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 183.
-
-(./StatRep.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 183.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 183.
+Package pdftex.def Info: varB_DissipThick.png used on input line 182.
+(pdftex.def)             Requested size: 263.10733pt x 290.96132pt.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 186.
+ [4 <./varB_DissipThick.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 186.
+ (./StatRep.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 186.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 186.
 Package rerunfilecheck Info: File `StatRep.out' has not changed.
 (rerunfilecheck)             Checksum: 3161BAE2852B950621001554961F9D25;274.
 
@@ -828,12 +829,12 @@ Package rerunfilecheck Info: File `StatRep.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 3.25002pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 183.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 186.
  ) 
 Here is how much of TeX's memory you used:
- 14389 strings out of 494466
- 256756 string characters out of 6172530
- 331848 words of memory out of 5000000
+ 14387 strings out of 494466
+ 256734 string characters out of 6172530
+ 331869 words of memory out of 5000000
  17477 multiletter control sequences out of 15000+600000
  10699 words of font info for 41 fonts, out of 8000000 for 9000
  452 hyphenation exceptions out of 8191
@@ -850,10 +851,10 @@ msfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
 0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on StatRep.pdf (6 pages, 262767 bytes).
+Output written on StatRep.pdf (5 pages, 262146 bytes).
 PDF statistics:
- 136 PDF objects out of 1000 (max. 8388607)
- 108 compressed objects within 2 object streams
- 25 named destinations out of 1000 (max. 500000)
+ 130 PDF objects out of 1000 (max. 8388607)
+ 103 compressed objects within 2 object streams
+ 23 named destinations out of 1000 (max. 500000)
  48 words of extra memory for PDF output out of 10000 (max. 10000000)
 

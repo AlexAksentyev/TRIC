@@ -8,6 +8,7 @@
 \usetikzlibrary{backgrounds}
 
 \usepackage{amsfonts}
+\usepackage{amsmath}
 \usepackage{paralist}
 \usepackage{soul}
 \usepackage{color}
@@ -132,8 +133,15 @@ The examination of the possible sources of systematic error~\cite{Proposal} show
 	\end{subfigure}
 \end{figure}
 
-In Figure~\ref{fig:HoldingFld} we drew a schematic representation of the structure of the holding field. We cannot remove the field lines' curvature toward the cell edges, but we don't to either, so long as it is symmetric relative the horizontal plane. 
-%Assuming radial symmetry, the vertical component of the induction vector will increase with the radius: $B_y(y) = \alpha\cdot y$. 
+In Figure~\ref{fig:HoldingFld} we drew a schematic representation of the structure of the holding field. According to it, the magnetic induction vector in the first half of the cell is related to that of the second half as in
+\begin{align}
+	\vec B(-z) &= (-B_x, -B_y, B_z)~\text{and}~\vec B(+z) = (B_x, B_y, B_z), \notag
+\shortintertext{or}
+	\vec B(-z) &= R(\hat{z}, \pi) \vec B(+z).
+\end{align}
+Since the spin vector aligns itself with the magnetic field, $P_y(-z) = -P_y(+z)$ too, so the minimization of the faking signal reduces to symmetrizing the holding field radially and along the $z$-direction. 
+
+%One important aspect to consider is the fact that the field's vertical component tends to increase toward the cell edges; these are the areas where 
 
 \subsection{The diminution of the true signal}
 There's another aspect in which the magnetic field's structure influences eq.~\eqref{eq:AyxzBiasCorrect}. In order to have the maximum tensor polarization in the $xz$-direction, we need the horizontal component of the field be turned at 45 degrees to the side of the beam's orbit. It can be shown~\cite{Diploma} that the rate at which the beam scattering occurs is influenced by the field's inhomogeneity as in
@@ -144,7 +152,7 @@ There's another aspect in which the magnetic field's structure influences eq.~\e
 where $\Lcell$ is the cell length, $\rho(s)$ is the spatial distribution of the target density, and $\Delta\Theta$ is the angle deviation of the field's direction from 45 degrees. 
 
 \section{Spin flipping}
-There are two possible ways to perform the time-reversed $\vec{p}\vec{d}$ scattering: we can flip the beam's polarization, or we can flip the target's. If we do the latter, this is accomplished by inverting the magnetic field's direction. However, in this case we would have to ensure that the inverted field's deviation from the desired direction is not systematically different from the original. If it is (and it's unlikely it is not), the scattering efficiencies of the two cases would be different, and a bias would be introduced.
+There are two possible ways to perform the time-reversed $\vec{p}\vec{d}$ scattering: we can flip the beam's polarization, or we can flip the target's. If we do the latter, this is accomplished by inverting the direction of the magnetic field. However, in this case we would have to ensure that the inverted field's deviation from the desired direction is not systematically different from the original. If it is (and it's likely to be), the scattering efficiencies of the two cases would be different, and a bias would be introduced.
 
 \newcommand{\bias}[1]{\mathfrak{B}_{#1}}
 \newcommand{\rand}[1]{\delta_{#1}}
@@ -152,7 +160,7 @@ Let us denote the angle deviation at a point $z$ $\Delta\theta(z) = \bias{\theta
 \begin{equation}
 	\bias{\Ayxz*} = \frac{1}{2}\bkt*{F\bkt{\Xpct{A(\chi^c)}\cos2\bias{\theta}^+} + F\bkt{\Xpct{A(\chi^c)}\cos2\bias{\theta}^-}} - 1,
 \end{equation}
-where $F(f) = \frac{1}{\Thick[T]}\int_{\Lcell}\rho(z) f(z)~ \td z$, $\chi^c$ a measure of the magnetic field strength, $A(\chi^c)$ is the proportionality coefficient between the magnetic field strength and the target polarization.
+where $F(f) = \sfrac{1}{\Thick[T]}\cdot\int_{\Lcell}\rho(z) f(z)~ \td z$, $\chi^c$ a measure of the magnetic field strength, $A(\chi^c)$ is the proportionality coefficient between the magnetic field strength and the target polarization.
 
 \begin{thebibliography}{9}
 	\bibitem{Saunders}

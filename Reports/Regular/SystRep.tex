@@ -103,11 +103,11 @@ It also means the value of $\Ayy$ has to be estimated first, making TRIC a two-s
 
 %For an analysis of the statistical properties of the TRIC data obtained at COSY in 2016, please refer to~\cite{DAnaRep}. Below, we will concern ourselves with the interpretation problem outlined above.
 
-\section{The holding field}
+\subsection{The holding field}
 
 TRIC is a double-polarized experiment. The target polarization is held oriented in the $xz$ direction of the horizontal plane by the holding magnetic field. The field's structure influences two aspects of the experiment's success: in the first place, the presence of a vertical component increases the magnitude of the bias term in eq.~\eqref{eq:AyxzBiasCorrect}; in the second, the deviation of the field's direction from 45 degrees in the horizontal plane decreases the magnitude of the useful signal.
 
-\subsection{The increase of the faking signal}
+\subsubsection{The increase of the faking signal}
 The examination of the possible sources of systematic error~\cite{Proposal} shows that the vector-polarized total cross section scattering asymmetry $\Ayy$ is the primary source of systematic error in the reaction zone. The interfering scattering channel appears for two reasons: the inevitable presence of vector-polarized quantum states in the target's population, and the presence of the vertical component in the target chamber's magnetic field. 
 
 \begin{figure}[h]
@@ -163,6 +163,7 @@ The examination of the possible sources of systematic error~\cite{Proposal} show
 		\end{tikzpicture}
 		\caption{Target gas velocity and density diagrams in the cell. The blue arrows represent the paericles' velocities, the dashed line is the density distribution.\label{fig:VelDiag}}
 	\end{subfigure}
+	\caption{Distributions in the cell. (a) Holding field, (b) Gas number density.}
 \end{figure}
 
 In Figure~\ref{fig:HoldingFld} we drew a schematic representation of the structure of the holding field. According to it, the magnetic induction vector in the first half of the cell is related to that of the second half as in
@@ -175,15 +176,15 @@ Since the spin vector aligns itself with the magnetic field, $P_y(-z) = -P_y(+z)
 
 %One important aspect to consider is the fact that the field's vertical component tends to increase toward the cell edges; these are the areas where 
 
-\subsection{The diminution of the true signal}
+\subsubsection{The diminution of the true signal}
 There's another aspect in which the magnetic field's structure influences eq.~\eqref{eq:AyxzBiasCorrect}. In order to have the maximum tensor polarization in the $xz$-direction, we need the horizontal component of the field be turned at 45 degrees to the side of the beam's orbit. It can be shown~\cite{Diploma} that the rate at which the beam scattering occurs is influenced by the field's inhomogeneity as in
 \newcommand{\Lcell}{\ell}
-\[
-	\slp = \slp'\cdot \frac{\int_{\Lcell}\rho(s)\cos2\Delta\Theta~\td s}{\int_{\Lcell}\rho(s)\td s},
-\]
+\begin{equation}
+		\slp = \slp'\cdot \frac{\int_{\Lcell}\rho(s)\cos2\Delta\Theta~\td s}{\int_{\Lcell}\rho(s)\td s},
+\end{equation}
 where $\Lcell$ is the cell length, $\rho(s)$ is the spatial distribution of the target density, and $\Delta\Theta$ is the angle deviation of the field's direction from 45 degrees. 
 
-\section{Spin flipping}
+\subsection{Spin flipping}
 There are two possible ways to perform the time-reversed $\vec{p}\vec{d}$ scattering: we can flip the beam's polarization, or we can flip the target's. If we do the latter, this is accomplished by inverting the direction of the magnetic field. However, in this case we would have to ensure that the inverted field's deviation from the desired direction is not systematically different from the original. If it is (and it's likely to be), the scattering efficiencies of the two cases would be different, and a bias would be introduced.
 
 Let us denote the angle deviation at a point $z$ $\Delta\theta(z) = \bias{\theta} + \rand{\theta}$. Then the bias one can expect in the estimate $\Ayxz*$ is~\cite{Diploma}
@@ -204,22 +205,37 @@ Estimates with an assumed parabolic distribution $\Delta\theta(z)$ show the bias
 %	\end{tabular}
 %\end{table}
 
+\section*{Conclusion}
+In this report we've summarized the goal and design of TRIC. The general form of the total cross section asymmetry estimator in the presence of systematic errors has been given (eq.~\eqref{eq:AyxzAllBias}), and the upper bound on the multiplicative biases was estimated ($10^{-3}\cdot\Ayxz$). The additive bias, the major source of systematic error in this experiment, was considered separately. 
+
+It is difficult to estimate this bias without knowledge of the distributions of the gas density and the holding field in the cell (their symmetry ultimately determines the magnitude of the vertical component of the target vector polarization), but from eq.~\eqref{eq:AyxzBiasCorrect} we know that whatever those are, one requires both the prior estimate $\Ayy*$ and the ratio $r = \sfrac{P^t_y}{P^t_{xz}}$ to be known sufficiently well to satisfy
+\begin{equation}
+	\sqrt{r^2 \cdot\SE{\Ayy*}^2 + \Ayy^2\SE{r}^2 + \SE{\Ayy*}^2\cdot\SE{r}^2} \leq 1\cdot10^{-6}.
+\end{equation}
+
+This is no small feat in itself. In the June 2016 experiment we had a $\Ayy*$ distribution with a $\chi^2_{red} \approx 8$. As a reminder, 
+\begin{equation}
+	\chi^2_{red} = \frac{1}{N}\sum_i \frac{(\slp*_i - \avg{\slp*})^2}{\sigma_i^2},
+\end{equation}
+which in case $\sigma_i = \SE{\slp*}$ becomes the ratio of the variance in the estimates caused by systematic error, to that caused by statistical variation. In other words, in the June 2016 experiment $\SE{\slp*|~syst} \approx 3\cdot \SE{\slp*|~stat}$, and as far as we can tell, it was not caused by neither the density distribution, nor the holding field. There's evidence to believe that the change in operation of the vacuum system in the target chamber might be responsible (cf. the breakpoint distribution in~\cite{DAnaRep}). This effect has never been analyzed, but it could be a major practical source of systematic error.
+
+
 \begin{thebibliography}{9}
 	\bibitem{DSPIN}
 	Yury Valdau, Alexander Aksentyev, Dieter Eversheim, and Bernd Lorentz. ``The Physics Program of PAX at COSY.'' IOP Publishing, Conference Series, 678 (2016).
 	
 	
-	\bibitem{Saunders}
-	Simon Saunders. ``Derivation of the Born Rule from Operational Assumptions.'' arXiv:quant-Ph/0211138, November 21, 2002. \url{http://arxiv.org/abs/quant-ph/0211138.}
-	
-	\bibitem{DAnaRep}
-	Alexander Aksentyev. ``Analysis of the 2016 data.''
-	
+%	\bibitem{Saunders}
+%	Simon Saunders. ``Derivation of the Born Rule from Operational Assumptions.'' arXiv:quant-Ph/0211138, November 21, 2002. \url{http://arxiv.org/abs/quant-ph/0211138.}
+		
 	\bibitem{Proposal}
 	P.D. Eversheim, B. Lorentz, and Yu. Valdau, Forschungszentrum J\"ulich, COSY, proposal \#215, 2012.
 	
 	\bibitem{Diploma}
 	Alexander Aksentyev. Diploma thesis (2015).
+	
+	\bibitem{DAnaRep}
+	Alexander Aksentyev. ``Analysis of the 2016 data.''
 \end{thebibliography}
 
 

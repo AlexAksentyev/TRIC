@@ -215,7 +215,7 @@ It is difficult to estimate this bias without knowledge of the distributions of 
 
 This is no small feat in itself. In the June 2016 experiment we had a $\Ayy*$ distribution with a $\chi^2_{red} \approx 8$. As a reminder, 
 \begin{equation}
-	\chi^2_{red} = \frac{1}{N}\sum_i \frac{(\slp*_i - \avg{\slp*})^2}{\sigma_i^2},
+	\chi^2_{red} = \frac{1}{N}\sum_i \frac{(\slp*[i] - \avg{\slp*})^2}{\sigma_i^2},
 \end{equation}
 which in case $\sigma_i = \SE{\slp*}$ becomes the ratio of the variance in the estimates caused by systematic error, to that caused by statistical variation. In other words, in the June 2016 experiment $\SE{\slp*|~syst} \approx 3\cdot \SE{\slp*|~stat}$, and as far as we can tell, it was not caused by neither the density distribution, nor the holding field. There's evidence to believe that the change in operation of the vacuum system in the target chamber might be responsible (cf. the breakpoint distribution in~\cite{DAnaRep}). This effect has never been analyzed, but it could be a major practical source of systematic error.
 

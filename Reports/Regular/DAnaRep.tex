@@ -7,6 +7,7 @@
 
 \begin{document}
 	\title{Analysis of the 2016 data}
+	\author{Alexander Aksentyev}
 	\maketitle
 	
 \section{Overview}
@@ -74,7 +75,7 @@ The Breusch-Pagan test against heteroskedasticity suggests that our data are hom
 	\end{minipage}
 \end{figure}
 
-The moving Chow test, as well as other structural tests from the package~\cite{RStrucchange} suggest changes in the slope, i.e. the appropriateness of a piece-wise linear regression. The distribution of the breakpoints, as found by the Chow test, are plotted in Figure~\ref{FStat_BP_dens}. One can also observe from the plot of model residuals against the fitted values (Figure~\ref{fig:RvF-u17}) that the simple linear model is not appropriate for the data. One possible explanation for this behavior is the change in the efficiency of the vacuum system in the target chamber at low pressure. This effect has never been analyzed, but it could be a major practical source of systematic error.
+The moving Chow test, as well as other structural tests from the package~\cite{RStrucchange} suggest changes in the slope, i.e. the appropriateness of a piece-wise linear regression. The distribution of the breakpoints, as found by the Chow test, are plotted in Figure~\ref{FStat_BP_dens}. One can also observe from the plot of model residuals against the fitted values (Figure~\ref{fig:RvF-u17}) that the simple linear model is not appropriate for the data. One possible explanation for this behavior is the change in the pumping speed at low pressure. This effect has never been analyzed, but it could be a major practical source of systematic error.
 
 \begin{figure}[h]
 	\centering
@@ -99,7 +100,7 @@ The slopes we estimate are presumed to have the following, most general, form:
 \begin{equation}
 	\slp = -\nu\bkt*{\CS[0]\bkt{1 + \Ayy P^t_y P_y}\Thick + \CS[X]\Thick[X]},
 \end{equation}
-where $nu$ is the beam revolution frequency, $\CS[0]$ is the unpolarized cross section, $\Ayy$ is the asymmetry, $P^t_y$ and $P_y$ are the vertical components of respectively the target and beam polarization vectors, $\Thick = \rho d$ [cm$^{-2}$] is the target thickness, and $\CS[X]\Thick[X]$ refers to the extra-target loss.
+where $\nu$ is the beam revolution frequency, $\CS[0]$ is the unpolarized cross section, $\Ayy$ is the asymmetry, $P^t_y$ and $P_y$ are the vertical components of respectively the target and beam polarization vectors, $\Thick = \rho d$ [cm$^{-2}$] is the target thickness, and $\CS[X]\Thick[X]$ refers to the extra-target loss.
 
 In principle, we can estimate both the unpolarized cross section and the asymmetry from the data we have. If we take the difference between two null beam spin state slopes ($P_y = 0$),~\footnote{This is done in order to remove the dependency on the unknown value of $\Ayy$.} one from a target-off cycle, the other target-on, 
 \[
@@ -171,6 +172,16 @@ The summary statistics for the asymmetry are presented in Table~\ref{tbl:AyySumS
 		\item[d]{Most frequent value.}
 	\end{tablenotes}
 \end{threeparttable}
+
+
+\section{Conclusion}
+Data analysis revealed possible systematic effects that were never accounted for before; specifically, the possibility that the change in the pumping speed could have a significant enough effect to render the linear model inapplicable. 
+
+Other than that, the serial correlation of the error at around 60\% is certainly a concern; one possible explanation for this is the feedback loop between the beam current and the current transformer, especially considering that there's a statistically significant correlation between the beam current and the slope estimate (Figure~\ref{fig:Slp_VS_I0}). 
+
+The most likely explanation for the behavior observed in Figure~\ref{fig:Slopes}, in this author's opinion, is depolarization of the beam. This is because the target-off slopes exhibit a greater tendency to drift with time, and also because of the character of the drift. The spin-up slopes become less negative, while the spin-down slopes become more negative, and the null slopes remain more or less the same (although more dispersed). If it was simply due to the growth of the accelerator ring thickness, both type slopes would've gone more negative, which they don't. And the null slopes would be affected as well. However, the depolarization hypothesis explains why only the polarized slopes are  affected, and why they tend to the less pronounced state. 
+
+This drift is the major reason why the $\Ayy*$ distribution has a standard deviation that's three times as big as it should be statistically, and would also explain why the distribution has a zero mean.
 
 \begin{thebibliography}{9}
 	\bibitem{GaussMarkov}

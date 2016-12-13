@@ -168,4 +168,4 @@ thick = 1.1e14; dP = -diff(Pb); cs0est = (cs0mb16 %>% filter(Soundness=="Sound",
   mutate(Estimate = Estimate/(dP*nu*Pt*thick*cs0est), SE = SE/(dP*nu*Pt*thick*cs0est)) -> Ayy
 
 Ayy%>%WMN
-ggplot(Ayy, aes(Estimate)) + geom_density() + theme_bw() + labs(x=expression(hat(A)[yy]))
+ggplot(Ayy, aes(Estimate)) + geom_histogram(binwidth=.15, fill='white', col='black') + theme_bw() + labs(x=expression(hat(A)[yy]))

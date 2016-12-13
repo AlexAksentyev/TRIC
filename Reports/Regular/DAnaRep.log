@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  12 DEC 2016 16:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  13 DEC 2016 19:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -746,10 +746,6 @@ LaTeX Info: Redefining \nameref on input line 8.
 \@outlinefile=\write3
 \openout3 = `DAnaRep.out'.
 
-
-
-LaTeX Warning: No \author given.
-
 Package epstopdf Info: Source file: <Cycles2016.eps>
 (epstopdf)                    date: 2016-11-30 14:20:51
 (epstopdf)                    size: 816950 bytes
@@ -758,13 +754,14 @@ Package epstopdf Info: Source file: <Cycles2016.eps>
 (epstopdf)                    size: 1815244 bytes
 (epstopdf)             Command: <repstopdf --outfile=Cycles2016-eps-converted-t
 o.pdf Cycles2016.eps>
-(epstopdf)             \includegraphics on input line 24.
+(epstopdf)             \includegraphics on input line 25.
 Package epstopdf Info: Output file is already uptodate.
-<Cycles2016-eps-converted-to.pdf, id=27, 525.965pt x 582.175pt>
+
+<Cycles2016-eps-converted-to.pdf, id=31, 525.965pt x 582.175pt>
 File: Cycles2016-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Cycles2016-eps-converted-to.pdf>
-Package pdftex.def Info: Cycles2016-eps-converted-to.pdf used on input line 24.
+Package pdftex.def Info: Cycles2016-eps-converted-to.pdf used on input line 25.
 
 (pdftex.def)             Requested size: 262.98184pt x 291.08679pt.
 Package epstopdf Info: Source file: <Slopes2016_VS_Clock.eps>
@@ -775,18 +772,18 @@ Package epstopdf Info: Source file: <Slopes2016_VS_Clock.eps>
 (epstopdf)                    size: 19464 bytes
 (epstopdf)             Command: <repstopdf --outfile=Slopes2016_VS_Clock-eps-co
 nverted-to.pdf Slopes2016_VS_Clock.eps>
-(epstopdf)             \includegraphics on input line 29.
+(epstopdf)             \includegraphics on input line 30.
 Package epstopdf Info: Output file is already uptodate.
 
-<Slopes2016_VS_Clock-eps-converted-to.pdf, id=28, 525.965pt x 582.175pt>
+<Slopes2016_VS_Clock-eps-converted-to.pdf, id=32, 525.965pt x 582.175pt>
 File: Slopes2016_VS_Clock-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Slopes2016_VS_Clock-eps-converted-to.pdf>
 Package pdftex.def Info: Slopes2016_VS_Clock-eps-converted-to.pdf used on input
- line 29.
+ line 30.
 (pdftex.def)             Requested size: 262.98184pt x 291.08679pt.
 
-Overfull \hbox (6.66663pt too wide) in paragraph at lines 22--32
+Overfull \hbox (6.66663pt too wide) in paragraph at lines 23--33
  []$[]$   $[]$ 
  []
 
@@ -805,14 +802,14 @@ Package epstopdf Info: Source file: <ACF1_dens.eps>
 (epstopdf)                    size: 26828 bytes
 (epstopdf)             Command: <repstopdf --outfile=ACF1_dens-eps-converted-to
 .pdf ACF1_dens.eps>
-(epstopdf)             \includegraphics on input line 67.
+(epstopdf)             \includegraphics on input line 68.
 Package epstopdf Info: Output file is already uptodate.
 
-<ACF1_dens-eps-converted-to.pdf, id=66, 525.965pt x 582.175pt>
+<ACF1_dens-eps-converted-to.pdf, id=70, 525.965pt x 582.175pt>
 File: ACF1_dens-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ACF1_dens-eps-converted-to.pdf>
-Package pdftex.def Info: ACF1_dens-eps-converted-to.pdf used on input line 67.
+Package pdftex.def Info: ACF1_dens-eps-converted-to.pdf used on input line 68.
 (pdftex.def)             Requested size: 262.98184pt x 291.08679pt.
 Package epstopdf Info: Source file: <FStats_BP_dens.eps>
 (epstopdf)                    date: 2016-11-30 14:20:51
@@ -822,18 +819,18 @@ Package epstopdf Info: Source file: <FStats_BP_dens.eps>
 (epstopdf)                    size: 27907 bytes
 (epstopdf)             Command: <repstopdf --outfile=FStats_BP_dens-eps-convert
 ed-to.pdf FStats_BP_dens.eps>
-(epstopdf)             \includegraphics on input line 72.
+(epstopdf)             \includegraphics on input line 73.
 Package epstopdf Info: Output file is already uptodate.
 
-<FStats_BP_dens-eps-converted-to.pdf, id=67, 525.965pt x 582.175pt>
+<FStats_BP_dens-eps-converted-to.pdf, id=71, 525.965pt x 582.175pt>
 File: FStats_BP_dens-eps-converted-to.pdf Graphic file (type pdf)
 
 <use FStats_BP_dens-eps-converted-to.pdf>
 Package pdftex.def Info: FStats_BP_dens-eps-converted-to.pdf used on input line
- 72.
+ 73.
 (pdftex.def)             Requested size: 262.98184pt x 291.08679pt.
 
-Overfull \hbox (6.66663pt too wide) in paragraph at lines 65--75
+Overfull \hbox (6.66663pt too wide) in paragraph at lines 66--76
  []$[]$   $[]$ 
  []
 
@@ -845,14 +842,14 @@ Package epstopdf Info: Source file: <Res_VS_Fit_2016-17.eps>
 (epstopdf)                    size: 35580 bytes
 (epstopdf)             Command: <repstopdf --outfile=Res_VS_Fit_2016-17-eps-con
 verted-to.pdf Res_VS_Fit_2016-17.eps>
-(epstopdf)             \includegraphics on input line 83.
+(epstopdf)             \includegraphics on input line 84.
 Package epstopdf Info: Output file is already uptodate.
-<Res_VS_Fit_2016-17-eps-converted-to.pdf, id=71, 525.965pt x 582.175pt>
+<Res_VS_Fit_2016-17-eps-converted-to.pdf, id=75, 525.965pt x 582.175pt>
 File: Res_VS_Fit_2016-17-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Res_VS_Fit_2016-17-eps-converted-to.pdf>
 Package pdftex.def Info: Res_VS_Fit_2016-17-eps-converted-to.pdf used on input 
-line 83.
+line 84.
 (pdftex.def)             Requested size: 262.98184pt x 291.08679pt.
 Package epstopdf Info: Source file: <Slope_VS_IniCurrent_2016.eps>
 (epstopdf)                    date: 2016-11-30 14:20:51
@@ -863,37 +860,37 @@ pdf>
 (epstopdf)                    size: 18863 bytes
 (epstopdf)             Command: <repstopdf --outfile=Slope_VS_IniCurrent_2016-e
 ps-converted-to.pdf Slope_VS_IniCurrent_2016.eps>
-(epstopdf)             \includegraphics on input line 88.
+(epstopdf)             \includegraphics on input line 89.
 Package epstopdf Info: Output file is already uptodate.
 
-<Slope_VS_IniCurrent_2016-eps-converted-to.pdf, id=72, 525.965pt x 582.175pt>
+<Slope_VS_IniCurrent_2016-eps-converted-to.pdf, id=76, 525.965pt x 582.175pt>
 File: Slope_VS_IniCurrent_2016-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Slope_VS_IniCurrent_2016-eps-converted-to.pdf>
 Package pdftex.def Info: Slope_VS_IniCurrent_2016-eps-converted-to.pdf used on 
-input line 88.
+input line 89.
 (pdftex.def)             Requested size: 262.98184pt x 291.08679pt.
 
-Overfull \hbox (8.88884pt too wide) in paragraph at lines 81--91
+Overfull \hbox (8.88884pt too wide) in paragraph at lines 82--92
  [][]    [] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Font Info:    Calculating math sizes for size <6.99997> on input line 94.
+LaTeX Font Info:    Calculating math sizes for size <6.99997> on input line 95.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <3.49998> not available
-(Font)              size <5> substituted on input line 94.
+(Font)              size <5> substituted on input line 95.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.49998> not available
-(Font)              size <5> substituted on input line 94.
+(Font)              size <5> substituted on input line 95.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.49998> not available
-(Font)              size <5> substituted on input line 94.
+(Font)              size <5> substituted on input line 95.
 
 [2 <./ACF1_dens-eps-converted-to.pdf> <./FStats_BP_dens-eps-converted-to.pdf>]
 [3 <./Res_VS_Fit_2016-17-eps-converted-to.pdf> <./Slope_VS_IniCurrent_2016-eps-
@@ -906,15 +903,15 @@ Package epstopdf Info: Source file: <CS0_au_dens.eps>
 (epstopdf)                    size: 15316 bytes
 (epstopdf)             Command: <repstopdf --outfile=CS0_au_dens-eps-converted-
 to.pdf CS0_au_dens.eps>
-(epstopdf)             \includegraphics on input line 121.
+(epstopdf)             \includegraphics on input line 122.
 Package epstopdf Info: Output file is already uptodate.
 
-<CS0_au_dens-eps-converted-to.pdf, id=148, 525.965pt x 582.175pt>
+<CS0_au_dens-eps-converted-to.pdf, id=152, 525.965pt x 582.175pt>
 File: CS0_au_dens-eps-converted-to.pdf Graphic file (type pdf)
 
 <use CS0_au_dens-eps-converted-to.pdf>
 Package pdftex.def Info: CS0_au_dens-eps-converted-to.pdf used on input line 12
-1.
+2.
 (pdftex.def)             Requested size: 262.98184pt x 291.08679pt.
 Package epstopdf Info: Source file: <Ayy_dens.eps>
 (epstopdf)                    date: 2016-11-30 14:20:51
@@ -924,17 +921,17 @@ Package epstopdf Info: Source file: <Ayy_dens.eps>
 (epstopdf)                    size: 15334 bytes
 (epstopdf)             Command: <repstopdf --outfile=Ayy_dens-eps-converted-to.
 pdf Ayy_dens.eps>
-(epstopdf)             \includegraphics on input line 126.
+(epstopdf)             \includegraphics on input line 127.
 Package epstopdf Info: Output file is already uptodate.
 
-<Ayy_dens-eps-converted-to.pdf, id=149, 525.965pt x 582.175pt>
+<Ayy_dens-eps-converted-to.pdf, id=153, 525.965pt x 582.175pt>
 File: Ayy_dens-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Ayy_dens-eps-converted-to.pdf>
-Package pdftex.def Info: Ayy_dens-eps-converted-to.pdf used on input line 126.
+Package pdftex.def Info: Ayy_dens-eps-converted-to.pdf used on input line 127.
 (pdftex.def)             Requested size: 262.98184pt x 291.08679pt.
 
-Overfull \hbox (11.11105pt too wide) in paragraph at lines 119--129
+Overfull \hbox (11.11105pt too wide) in paragraph at lines 120--130
  []$[]$     $[]$ 
  []
 
@@ -943,26 +940,26 @@ Overfull \hbox (11.11105pt too wide) in paragraph at lines 119--129
 Package caption Warning: Unused \captionsetup[sub] on input line 6.
 See the caption package documentation for explanation.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 186.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 197.
 [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 186.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 197.
  (./DAnaRep.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 186.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 186.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 197.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 197.
 Package rerunfilecheck Info: File `DAnaRep.out' has not changed.
-(rerunfilecheck)             Checksum: B8AB05A857F2D01E5F36BDE2173405E0;275.
+(rerunfilecheck)             Checksum: 2F6A9C9CBC96F8A8D299F4AD8A14E04A;320.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 3.25002pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 186.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 197.
  ) 
 Here is how much of TeX's memory you used:
- 14423 strings out of 494466
- 258054 string characters out of 6172530
+ 14425 strings out of 494466
+ 258074 string characters out of 6172530
  329230 words of memory out of 5000000
- 17496 multiletter control sequences out of 15000+600000
+ 17497 multiletter control sequences out of 15000+600000
  11045 words of font info for 42 fonts, out of 8000000 for 9000
  452 hyphenation exceptions out of 8191
  49i,13n,42p,10398b,394s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -981,10 +978,10 @@ sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on DAnaRep.pdf (5 pages, 2126878 bytes).
+Output written on DAnaRep.pdf (5 pages, 2130202 bytes).
 PDF statistics:
- 247 PDF objects out of 1000 (max. 8388607)
- 193 compressed objects within 2 object streams
- 30 named destinations out of 1000 (max. 500000)
- 81 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 254 PDF objects out of 1000 (max. 8388607)
+ 200 compressed objects within 2 object streams
+ 31 named destinations out of 1000 (max. 500000)
+ 89 words of extra memory for PDF output out of 10000 (max. 10000000)
 

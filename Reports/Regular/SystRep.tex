@@ -13,11 +13,14 @@
 \usepackage{soul}
 \usepackage{color}
 
+\usepackage{wrapfig}
+
 \newcommand{\bias}[1]{\mathfrak{B}_{#1}}
 \newcommand{\rand}[1]{\delta_{#1}}
 
 \begin{document}
 \title{Systematic Errors}
+\author{Alexander Aksentyev}
 \maketitle
 
 \section*{Introduction}
@@ -29,7 +32,7 @@ Here we will describe some possible problems with the experimental design that h
 \section{The Design}
 In the following we describe the general idea of the experimental design of TRIC.
 
-A particle beam circulates in the accelerator ring. At every turn it is scattered by the internal target at the rate $\CS[T]\Thick$, but there is also background loss happening in the ring at the rate $\CS[X]\Thick[X]$. (Notation: $\CS$ is the scattering cross section, $\Thick = \int_L n(z)\td z$ is the thickness of the scatterer, $L$ is the accelerator circumference.) At every turn the beam excites a passive current transformer (CT), and the average value of beam current is being recorded. 
+A particle beam circulates in the accelerator ring. At every turn it is scattered by the internal target at the rate $\CS[T]\Thick$, but there is also background loss happening in the ring at the rate $\CS[X]\Thick[X]$. (Notation: $\CS$ is the scattering cross section, $\Thick = \int_L n(z)\td z$ is the thickness of the scatterer, $L$ is the accelerator circumference.) At every turn the beam excites the current transformer (CT), and the average value of beam current is being recorded. 
 
 All of this boils down to the following formula for the measured signal:
 \[
@@ -37,7 +40,7 @@ All of this boils down to the following formula for the measured signal:
 \]
 where $\nu$ is the circulation frequency.
 
-In TRIC, we use the deuterium target, and therefore it's polarization can be of either of two types: vector and tensor. The vector polarization $P^t_y$ aligns with the guiding magnetic field, as does the beam polarization (purely vector) $P_y$, and the tensor polarization $P^t_{xz}$ with the specially generated holding field.  The target cross section has the form
+In TRIC, we use the deuterium target, and therefore it's polarization can be of either of two types: vector and tensor. The vector polarization $P^t_y$ aligns with the guiding magnetic field, as does the beam polarization (purely vector) $P_y$, and the tensor polarization $P^t_{xz}$ with the specially generated holding field in the target area.  The target cross section has the form
 \begin{equation}\label{eq:CrossSection}
 	\CS[T]^\pm = \CS[0]\cdot\bkt{1 + \Ayy P^t_y P^\pm + \Ayxz P^t_{xz} P^\pm}.
 \end{equation}
@@ -61,7 +64,7 @@ in which $\bias{\alpha}$ is the systematic difference in parameter $\alpha$ betw
 \end{equation}
 
 \subsection{The AC/DC beam}
-The use of a bunched beam is preferable to that of the coasting beam because in the latter case the measurements have to be taken with an active current transformer. At the experimental energy, the beam makes $10^6$ revolutions per second, which implies three orders of magnitude more statistics with which to compute the average current, i.e. the measurement error is reduced by a factor of $30$.
+%The use of a bunched beam is preferable to that of the coasting beam because in the latter case the measurements have to be taken with an active current transformer. At the experimental energy, the beam makes $10^6$ revolutions per second, which implies three orders of magnitude more statistics with which to compute the average current, i.e. the measurement error is reduced by a factor of $30$.
 
 A concern was raised, however, as to how the change from a DC beam to an AC one would affect the experimental methodology; if it would still be viable.
 
@@ -72,7 +75,7 @@ There are three elements to the measurement of the statistic: \begin{inparaenum}
 	\item the measuring of the current by the CT, and
 	\item the fitting of the data.
 \end{inparaenum} 
-So long as the beam's temporal structure does not affect the dynamics of the beam-target interaction, the latter two steps do not experience any structural change with the transition from a DC to an AC beam; the CT produces a discrete series of measurements in either case, it just does so faster in the AC one. The functional form of the CT signal is determined by the beam-target interaction dynamics, but as we assume it doesn't change, we have no ground on which to consider the statistical methodology viable for the DC beam doesn't remain such for the AC.
+So long as the beam's temporal structure does not affect the dynamics of the beam-target interaction, the latter two steps do not experience any structural change with the transition from a DC to an AC beam; the CT produces a discrete series of measurements in either case. The functional form of the CT signal is determined by the beam-target interaction dynamics, but as we assume it doesn't change, we have no ground on which to consider the statistical methodology viable for the DC beam doesn't remain such for the AC.
  
 \section{Systematic errors}
 
@@ -105,10 +108,10 @@ It also means the value of $\Ayy$ has to be estimated first, making TRIC a two-s
 
 \subsection{The holding field}
 
-TRIC is a double-polarized experiment. The target polarization is held oriented in the $xz$ direction of the horizontal plane by the holding magnetic field. The field's structure influences two aspects of the experiment's success: in the first place, the presence of a vertical component increases the magnitude of the bias term in eq.~\eqref{eq:AyxzBiasCorrect}; in the second, the deviation of the field's direction from 45 degrees in the horizontal plane decreases the magnitude of the useful signal.
+The target polarization is held oriented in the $xz$ direction of the horizontal plane by the holding magnetic field. The field's structure influences two aspects of the experiment's success: in the first place, the presence of a vertical component increases the magnitude of the bias term in eq.~\eqref{eq:AyxzBiasCorrect}; in the second, the deviation of the field's direction from 45 degrees in the horizontal plane decreases the magnitude of the useful signal.
 
 \subsubsection{The increase of the faking signal}
-The examination of the possible sources of systematic error~\cite{Proposal} shows that the vector-polarized total cross section scattering asymmetry $\Ayy$ is the primary source of systematic error in the reaction zone. The interfering scattering channel appears for two reasons: the inevitable presence of vector-polarized quantum states in the target's population, and the presence of the vertical component in the target chamber's magnetic field. 
+The examination of the possible sources of systematic error~\cite{Proposal} shows that the vector-polarized total cross section scattering asymmetry $\Ayy$ is the primary source of systematic error in the reaction zone. The interfering scattering channel appears for two reasons: the inevitable presence of vector-polarized quantum states in the target's population, and the presence of the vertical component in the target chamber magnetic field. 
 
 \begin{figure}[h]
 	\centering
@@ -184,6 +187,8 @@ There's another aspect in which the magnetic field's structure influences eq.~\e
 \end{equation}
 where $\Lcell$ is the cell length, $\rho(s)$ is the spatial distribution of the target density, and $\Delta\Theta$ is the angle deviation of the field's direction from 45 degrees. 
 
+Simulation with parameters defined in Table~\ref{tbl:SpinFlip} indicate that the reaction efficiency can fall by as much as 70\%: $\slp = 0.31\cdot \slp'$.
+
 \subsection{Spin flipping}
 There are two possible ways to perform the time-reversed $\vec{p}\vec{d}$ scattering: we can flip the beam's polarization, or we can flip the target's. If we do the latter, this is accomplished by inverting the direction of the magnetic field. However, in this case we would have to ensure that the inverted field's deviation from the desired direction is not systematically different from the original. If it is (and it's likely to be), the scattering efficiencies of the two cases would be different, and a bias would be introduced.
 
@@ -195,16 +200,23 @@ where $F(f) = \sfrac{1}{\Thick[T]}\cdot\int_{\Lcell}\rho(z) f(z)~ \td z$, $\chi^
 
 Estimates with an assumed parabolic distribution $\Delta\theta(z)$ show the bias in~\eqref{eq:FlipEfficiBias} to be in the order of $5\cdot 10^{-4}\cdot\Ayxz$ for the parameters shown in Table~\ref{tbl:SpinFlip}.~\cite{Diploma} 
 
-\begin{table}
-	\centering
-	\caption{Spin flip model.\label{tbl:SpinFlip}}
-	\begin{tabular}{crr}
-		\hline\hline
-		    Parameter     &              Cell center &                Cell edge \\ \hline
-		$\Delta\theta(z)$ &               $45^\circ$ &                $5^\circ$ \\
-		    $\rho(z)$     & $3\cdot10^{12}~ at/cm^3$ & $1\cdot 10^{12}~at/cm^3$ \\ \hline
-	\end{tabular}
-\end{table}
+\begin{center}
+	\begin{threeparttable}
+		\centering
+		\caption{The model assumed for modeling the effects of the holding field inhomogeneity. \label{tbl:SpinFlip}}
+		\begin{tabular}{crr}
+			\hline\hline
+			Parameter     &              Cell center &                Cell edge \\ \hline
+			$\Delta\theta(z)$ &               $45^\circ$ &                $5^\circ$ \\
+			$\rho(z)$     & $3\cdot10^{12}~ at/cm^3$ & $1\cdot 10^{12}~at/cm^3$ \\ \hline
+		\end{tabular}
+		\begin{tablenotes}
+			\item $\rho(z)$ is the target density (plotted in Figure~\ref{fig:VelDiag}), and $\Delta\theta$ is the angular deviation of the holding field from 45 $^\circ$ in the $xz$-plane.
+		\end{tablenotes}
+	\end{threeparttable}
+\end{center}
+
+
 
 \section*{Conclusion}
 In this report we've summarized the goal and design of TRIC. The general form of the total cross section asymmetry estimator in the presence of systematic errors has been given (eq.~\eqref{eq:AyxzAllBias}), and the upper bound on the multiplicative biases was estimated ($10^{-3}\cdot\Ayxz$). The additive bias, the major source of systematic error in this experiment, was considered separately. 
@@ -214,9 +226,9 @@ It is difficult to estimate this bias without knowledge of the distributions of 
 	\sqrt{r^2 \cdot\SE{\Ayy*}^2 + \Ayy^2\SE{r}^2 + \SE{\Ayy*}^2\cdot\SE{r}^2} \leq 1\cdot10^{-6}.
 \end{equation}
 
-The holding field influences the success of the experiment in another way: the efficiency of the tensor-polarized scattering of the beam on the target is encapsulated in eq.~\eqref{eq:InhomogEffici}. As the holding field deviates from its nominal direction of 45$^\circ$ in thehorizontal plane, the $xz$-component of the target tensor polarization diminishes, and the measurements become dominated by the faking signal.
+The holding field influences the success of the experiment in another way: the efficiency of the tensor-polarized scattering of the beam on the target is encapsulated in eq.~\eqref{eq:InhomogEffici}. As the holding field deviates from its nominal direction of 45$^\circ$ in the horizontal plane, the $xz$-component of the target tensor polarization diminishes, and the measurements become more susceptible to the faking signal.
 
-Time-reversal can be performed by inverting the direction of the magnetic field in the target chamber. In that case, if the field inhomogeneity differs for the opposite field configurations, an efficiency bias is introduced, described by eq.~\eqref{eq:FlipEfficiBias}. Estimates obtained by modeling with parameters summarized in Table~\ref{tbl:SpinFlip} indicate that this bias should be four orders of magnitude below the value of the $\Ayxz$ itself.
+Time-reversal can be performed by inverting the direction of the target chamber magnetic field. In that case, if the field inhomogeneity differs for the opposite field configurations, an efficiency bias is introduced, described by eq.~\eqref{eq:FlipEfficiBias}. Estimates obtained by modeling with parameters summarized in Table~\ref{tbl:SpinFlip} indicate that this bias should be four orders of magnitude below the value of the $\Ayxz$ itself.
 
 \begin{thebibliography}{9}
 	\bibitem{DSPIN}

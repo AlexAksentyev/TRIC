@@ -34,7 +34,7 @@
 \newcommand{\vp}[2]{#1\cdot10^{#2}}
 
 \begin{document}
-\title{Estimation of the total cross section and cross section asymmetry a transmission experiment}
+\title{Preparation for the Time Reversal Invariance experiment at COSY (TRIC)}
 \author{Aleksandr Aksentev}
 \affiliation{National Research Nuclear University ``MEPhI,'' Kashirskoe shosse, 31, Moscow, Russia, 115409}
 \affiliation{Forschungszentrum J\"ulich GmbH, Leo-Brandt-Straße,	52428 J\"ulich, Germany}
@@ -52,12 +52,12 @@
 	
 	
 \begin{abstractname}
- In this contribution we describe a possible procedure for estimating the total unpolarized cross section and cross section asymmetry from measurements of average beam current. We also present the estimates obtained for the cross sections $\CS[0]^{pp}$ and $\CS[0]^{pd}$ in the cases of $pp$ and $pd$ scattering, as well as the asymmetry $\Ayy$ in double-polarized $\vec{p}\vec{p}$ scattering, from data collected in September 2012 and June 2016 at the cooler synchrotron COSY-J\"ulich in the course of a preliminary experiment to the test of Time-Reversal Invariance at COSY (TRIC). 
+ In this contribution we describe a possible procedure for estimating the effective total unpolarized cross section and cross section asymmetry from measurements of average beam current. We also present the estimates obtained for the cross sections $\CS[0]^{pp}$ and $\CS[0]^{pd}$ in the cases of $pp$ and $pd$ scattering, as well as the asymmetry $\Ayy$ in double-polarized $\vec{p}\vec{p}$ scattering, from data collected in September 2012 and June 2016 at the cooler synchrotron COSY-J\"ulich in the course of a preliminary experiment to the test of Time-Reversal Invariance at COSY (TRIC). 
 \end{abstractname}
 
 \section{TRIC Experiment}
 
-TRIC (test of Time-Reversal Invariance at COSY) is a transmission experiment planned at the Cooler SYnchrotron COSY-J\"ulich for the purpose of testing Time-Reversal Invariance. Its physical foundation is the use of a genuine null-observale for T-symmetry, --- the total cross section asymmetry in double-polarized proton-deuteron scattering, --- whose existence is guaranteed by the optical theorem~\cite{Conzett}. TRIC is aimed at achieving the accuracy of $10^{-6}$ in the cross section asymmetry estimate $\Ayxz*$.
+TRIC (test of Time-Reversal Invariance at COSY) is a transmission experiment planned at the COoler SYnchrotron COSY-J\"ulich for the purpose of testing Time-Reversal Invariance. Its physical foundation is the use of a genuine null-observale for T-symmetry, --- the total cross section asymmetry in double-polarized proton-deuteron scattering, --- whose existence is guaranteed by the optical theorem~\cite{Conzett}. TRIC is aimed at achieving the accuracy of $10^{-6}$ in the cross section asymmetry estimate $\Ayxz*$.
 
 The total cross section in a double-polarized scattering involves a number of polarization-dependent terms:
 \begin{equation}\label{eq:PolCS}
@@ -140,7 +140,7 @@ In the 2012 experiment, the proton beam was scattered on the hydrogen target, bo
 
 In the 2016 experiment the proton beam was scattered on the deuteron target, both polarized; the beam had undergone RF-bunching and electron-cooling; the cycles lasted for 12 minutes, the first half of which the target was turned on, in the second off; the beam spin state alternated from spin up to spin down through no spin, while the target spin state remained constant (spin up). 
 
-In both experiments the target was produced by an Atomic Beam Source (ABS) capable of producing jets of polarized hydrogen and deuterium, and was concentrated within a storage cell located inside the PAX target chamber, described in more detail in~\cite{Weidemann}. The cycles for both experiments are presented in FIG.~\ref{fig:Cycles}. The measurements were made with a Bergoz Beam Current Transformer, and read out by a standard Siemens APC. In the 2012 experiment, the BCT offset was around 2300 a.u., in 2016, the offset it was about 4300 a.u. The zeroing of current before each cycle, that can be observed in the 2012 panel, is due to the overflow of the measurement system, since the beam current at injection lead to a voltage that is out of range for this ADC.
+In both experiments the target was produced by an Atomic Beam Source (ABS) capable of producing jets of polarized hydrogen and deuterium, and was concentrated within a storage cell located inside the PAX target chamber, described in more detail in~\cite{Weidemann}. The cycles for both experiments are presented in FIG.~\ref{fig:Cycles}. The measurements were made with a Bergoz Beam Current Transformer, and read out by a Siemens ADC (Simatic S7 6ES7331-7KF01-0AB0). In the 2012 experiment, the BCT offset was around 2300 a.u., in 2016, the offset it was about 4300 a.u. The zeroing of current before each cycle, that can be observed in the 2012 panel, is due to the overflow of the measurement system, since the beam current at injection lead to a voltage that is out of range for this ADC.
 
 \begin{figure}[h]
 	\centering
@@ -188,14 +188,10 @@ Even a constant offset must be removed in order to have a constant slope to esti
 
 After subtracting the offset, the linear model $\ln I_t = \ln I_0 + \slp t +\epsilon_t$ is fitted via the ordinary least squares method. The reduced chi-squares computed from model residuals deviate from one starting from the fourth decimal place; however, one should note that the data are likely to have structural slope changes, and do not pass linearity tests as well (see TABLE~\ref{tbl:CycleChars}). Because the model residuals exhibit serial correlation (FIG.~\ref{fig:Run969}), the slope estimates' standard errors are estimated with robust estimators. This procedure is applied to both data sets.
 
-
-%In FIG.~\ref{fig:SlpOnI0} we plotted the dependence of the slope estimate on the initial beam current, which was estimated by exponentiating the intercept of the fitted model. 
-%(If the initial current is also estimated as the median value of current within the second cycle minute, the two estimators are essentially perfectly correlated.) 
-%The figure for the 2016 estimates suggests there might be a dependence of the estimated slope on the initial beam current, although the p-values of the slopes of the fitted lines (obtained by robust least squares) are not statistically significant, with only the slope for the null spin state and the target turned off being significant at the 10\% confidence level (the p-value being 6\%). %However, one might notice that the effect of the initial current is stronger for the target-off slopes (the difference is especially noticeable in the unpolarized case), affirming the hypothesis that the beam current played a significant role in the experimental performance.
 \newcommand{\avg}[1]{\langle #1 \rangle}
-The fit results for all the slopes are summarized in TABLE~\ref{tbl:Slp-big}. The results contradict our expectations, because, for target-on slopes, the cross section is expected to increase when the beam spin is up, and decrease when it's down, i.e. $\slp^+ < \slp^0 < \slp^-$; the estimates, however, satisfy $\slp*^0 < \slp*^- < \slp*^+$. This might have suggested that the labeling of the spin states was done incorrectly. 
+The fit results for all the slopes are summarized in TABLE~\ref{tbl:Slp-big}. The results contradict our expectations, because, for target-on slopes, the effective cross section is expected to increase when the beam spin is up, and decrease when it's down, i.e. $\slp^+ < \slp^0 < \slp^-$; the estimates, however, satisfy $\slp*^0 < \slp*^- < \slp*^+$. This might have suggested that the labeling of the spin states was done incorrectly. 
 
-Using the pull distribution $p(a,b) = \frac{\avg{a}-\avg{b}}{\sqrt{\SE{a}^2+\SE{b}^2}}$, we conducted a hypothesis test for the equality of the sample means, and concluded that the spin states aren't statistically different with respect to the slope means (the T-test P-values are: 72\% (Up-Down), 73\% (Up-Null), 47\% (Null-Down)). For this reason, we assume that the spin states are labeled correctly.
+We checked this hypothesis by using the pull distribution $p(a,b) = \frac{\avg{a}-\avg{b}}{\sqrt{\SE{a}^2+\SE{b}^2}}$, and testing whether the sample means are different depending on the beam spin state. The conclusion is that they are not (the T-test P-values are: 72\% (Up-Down), 73\% (Up-Null), 47\% (Null-Down)); for this reason, we assume that the spin states are labeled correctly.
 
 \begin{threeparttable}[h]
 	\centering
@@ -223,20 +219,14 @@ Using the pull distribution $p(a,b) = \frac{\avg{a}-\avg{b}}{\sqrt{\SE{a}^2+\SE{
 \caption{Some diagnostic plots for a typical 2016 cycle. a) The plot of the model residuals against the fitted values. The red line indicates that the linear model systematically underestimates the beam current at the cycle start and end, and overestimates it in mid-cycle. b) The plot of the partial correlation coefficients between the model residuals and lags of themselves. The dashed horizontal lines mark the 95\% confidence interval that the correlation is statistically insignificant.\label{fig:Run969}}
 \end{figure}
 
-\section{Cross section}
-After the slopes are estimated from the raw measurement data, one can estimate the cross section. In this analysis, we used only the estimates from adjacent cycles, so as to minimize the effect of drifts of environmental variables such as target thickness (which is estimated to increase by $0.5~ \sfrac{\%}{\mathrm{hour}}$). The thickness by which the slope differences are divided, assumed constant, was provided by a Schottky measurement. Those estimates whose computation involved at least one slope which is deemed an outlier according to Tukey's range test are labeled unsound in TABLE~\ref{tbl:CS-all}. There are two outlier slopes in the 2012 experiment, and one in the 2016 experiment; all three are from target-off cycles.
+\section{Effective cross section}
+After the slopes are estimated from the raw measurement data, one can estimate the effective cross section. In this analysis, we used only the estimates from adjacent cycles, so as to minimize the effect of drifts of environmental variables such as target thickness (which is estimated to increase by $0.5~ \sfrac{\%}{\mathrm{hour}}$). The thickness by which the slope differences are divided, assumed constant, was provided by a Schottky measurement, made once during the experiment. Those estimates whose computation involved at least one slope which is deemed an outlier according to Tukey's range test are labeled unsound in TABLE~\ref{tbl:CS-all}. There are two outlier slopes in the 2012 experiment, and one in the 2016 experiment; all three are from target-off cycles. This may have been caused by problems with the target chopper, discovered during the 2016 experiment.
 
-%\begin{figure}
-%\centering
-%\includegraphics[scale=\scl]{img/Slope_VS_Current.eps}
-%\caption{Slope estimates plotted against the cycle's initial beam current estimated as the exponentiated intercept of the fitted model. Off/On refer to the presence of the target, Up/Down/Null to the beam spin state. In the 2012 \label{fig:SlpOnI0}}
-%\end{figure}
-
-The cross section estimate's standard error (SE) is estimated by adding the squared standard errors of the paired slopes, not taking account of the covariance term. This is done so because depending on whether an on-slope is paired with the preceding or succeeding off-slope, the covariance term changes sign. Since there does not seem to be a reasonable criterion favoring either of the two mappings, the covariance term was omitted.
+The effective cross section estimate's standard error (SE) is estimated by adding the squared standard errors of the paired slopes, not taking account of the covariance term. This is done so because depending on whether an on-slope is paired with the preceding or succeeding off-slope, the covariance term changes sign. Since there does not seem to be a reasonable criterion favoring either of the two mappings, the covariance term was omitted.
 
 \section{Asymmetry}
 
-The asymmetry was estimated as in equation~\eqref{eq:AyyEst}. In that expression, we used the target thickness as estimated using the Schottky measurements method~\cite{Stein} ($1.1\cdot 10^{14}$ cm$^{-2}$, measured once), and our own best estimate for the unpolarized cross section (411 mb, see TABLE~\ref{tbl:CS-all}).\\
+The asymmetry was estimated as in equation~\eqref{eq:AyyEst}. In that expression, we used the target thickness as estimated using the Schottky measurements method~\cite{Stein} ($1.1\cdot 10^{14}$ cm$^{-2}$, measured once), and our own best estimate for the effective unpolarized cross section (411 mb, see TABLE~\ref{tbl:CS-all}).
 
 \section{Results}
 \begin{table}
@@ -268,12 +258,22 @@ Year						& Soundness		& Closeness		& \#		& Mean\tnote{a} [a.u.]	& SE [a.u.] \\
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=.35]{img/Ayy_dens.eps}
-	\caption{Gaussian kernel density estimate of the double-polarized cross section asymmetry in proton-deuteron scattering.\label{fig:AyyDensity}}
+	\caption{Distribution of the Double-polarized cross section asymmetry estimate $\Ayy*$ in proton-deuteron scattering.\label{fig:AyyDensity}}
 \end{figure}
 
-Our best estimate for the $pp$ cross section is $\CS[0]^{pp} = 507 \pm 7$ a.u., that for the $pd$ reaction is $\CS[0]^{pd} = 411 \pm 48$. The asymmetry $\Ayy = \vp{(2 \pm 4)}{-2}$. The Quantile-Quantile plot shows that the estimate is distributed normally (see FIG.~\ref{fig:AyyDensity}); however the distribution's reduced chi-square $\chi^2_{red} = 7.8$. The upper limit of $\Ayy$ at the 95\% confidence level is 10\%.
+Our best estimate for the effective $pp$ cross section is $\CS[0]^{pp} = 507 \pm 7$ a.u., that for the $pd$ reaction is $\CS[0]^{pd} = 411 \pm 48$. The asymmetry $\Ayy = \vp{(2 \pm 4)}{-2}$. The Quantile-Quantile plot shows that the estimate is distributed normally (see FIG.~\ref{fig:AyyDensity}); however the distribution's reduced chi-square $\chi^2_{red} = 7.8$. The upper limit of $\Ayy$ at the 95\% confidence level is 0.1.
 
-There is a 31\% chance that our estimator of the asymmetry is zero in expectation. Considering that, as was stated in section~\ref{sec:Slope}, the slope means' dependence on the beam spin state is not statistically significant, we find it likely that this is the case. 
+There is a 31\% chance that our estimator of the asymmetry is zero in expectation. Considering that, as was explained in section~\ref{sec:Slope}, the slope means' dependence on the beam spin state is not statistically significant, we find it likely that this is the case. 
+
+\section{Conclusion}
+
+To improve the results, the following measures would be helpful:
+\begin{inparaenum}
+	\item a more frequent monitoring of the target thickness, to improve the effective cross section estimates;
+	\item more stable vacuum conditions in the target chamber and also in the accelerator ring, which would help with the structural of the cycles;
+	\item less variation in the CT offset, to avoid the introduction of an endogeneity bias; and also,
+	\item more frequent polarimetry measurements, for the same reason as with the target thickness.
+\end{inparaenum}
 
 \begin{thebibliography}{9}
 \bibitem{Conzett}

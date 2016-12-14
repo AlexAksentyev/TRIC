@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  13 DEC 2016 18:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  14 DEC 2016 13:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -706,10 +706,10 @@ ne 218.
 (pdftex.def)             Requested size: 210.38226pt x 232.86588pt.
  [3 <./img/DiagPlot_969-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <img/Ayy_dens.eps>
-(epstopdf)                    date: 2016-12-13 18:09:07
+(epstopdf)                    date: 2016-12-14 09:46:13
 (epstopdf)                    size: 6579 bytes
 (epstopdf)             Output file: <img/Ayy_dens-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-12-13 18:09:11
+(epstopdf)                    date: 2016-12-14 09:46:13
 (epstopdf)                    size: 8922 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/Ayy_dens-eps-converted
 -to.pdf img/Ayy_dens.eps>

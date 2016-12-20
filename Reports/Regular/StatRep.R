@@ -42,4 +42,16 @@ ggplot(df, aes(h, SDQI, col=Resolution)) + geom_line() + theme_bw() +
   scale_x_continuous(name="h (sec)", minor_breaks=seq(100,3600,100)) +
   theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt))
 
+#### slope variation from rho ####
+Rho.ini = Rho.on
+rate = 1.157e-6
 
+ldply(seq(3600), function(n){
+  Rho <- c(Rho.ini , Rho.ini * cumprod(1 - rnorm(n-1, mean = 1*rate, sd = 1*rate)))
+  lam = Sigma0*d*nu*Rho
+  c("h" = n, "vb" = var(lam))
+}) -> df
+
+ggplot(df, aes(h,vb)) + geom_line() + theme_bw() + 
+  scale_y_log10(limits=c(1e-24, 1e-16)) + labs(x="h (sec)", y=expression(sigma[beta]^2~(sec^-2))) +
+  theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt))

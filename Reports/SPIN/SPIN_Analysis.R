@@ -8,6 +8,8 @@ library(ggfortify); library(cowplot)
 
 registerDoParallel(detectCores())
 
+lblfnt = 20
+
 #### getting data ####
 get2012Data() -> Data12
 slopes12 <- Data12$Slopes; Data12 <- Data12$Data
@@ -29,10 +31,14 @@ Data12 %>% transmute(
 ) -> Data
 
 ggplot(filter(Data, Year==2012), aes(Clock, BCT2, col=Target)) + geom_point() + labs(y="I (a.u.)") +
-  theme_bw() + theme(legend.position="top") + scale_color_manual(values=c("black","red")) -> p12
+  theme_bw() + 
+  theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + 
+  scale_color_manual(values=c("black","red")) -> p12
 ggplot(filter(Data, Year==2016), aes(Clock, BCT2, col=`Beam Spin`)) + geom_point() + labs(y="I (a.u.)") +
-  theme_bw() + theme(legend.position="top") + scale_color_manual(values=c("blue","black","red")) -> p16
-plot_grid(p12, p16, ncol=1, labels=c("2012","2016"))
+  theme_bw() + 
+  theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + 
+  scale_color_manual(values=c("blue","black","red")) -> p16
+plot_grid(p12, p16, ncol=1, labels=c("2012","2016"), label_size=lblfnt)
 
 ##################################
 ## shows that BCT2 = 0 is just stack overflow ##
@@ -60,11 +66,14 @@ ggplot(df, aes(Fit, Res)) + geom_point() +
   geom_smooth(method="loess", span=.8, se=FALSE, col="red") + 
   geom_hline(yintercept=0, linetype=2, col="gray") + 
   theme_bw() + 
+  theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + 
   labs(x=expression(hat(alpha) + hat(beta)*t), y=expression(ln~I[t] - group("(",list(hat(alpha) +hat(beta)*t),")") )) -> prf
 ggplot(xdf, aes(Lag, pACF)) + geom_bar(stat="identity", width=.3) + 
   geom_hline(yintercept=c(-1,+1)*1.96/sqrt(x$n.used), col="blue", linetype=2) +
-  theme_bw() + labs(y="Partial Auto-Correlation Function") -> ppacf
-plot_grid(prf, ppacf, ncol=1, labels=c("a)","b)"))
+  theme_bw() + 
+  theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + 
+  labs(y="PACF") -> ppacf
+plot_grid(prf, ppacf, ncol=1, labels=c("a)","b)"), label_size=lblfnt)
 
 library(lmtest); library(strucchange); library(compute.es)
 f = log(BCT1)~uts
@@ -142,7 +151,7 @@ slopes12<-mutate(slopes12, B.Spin=factor(1, labels = "Null"))
 ggplot(slopes12, aes(I0, Estimate)) + geom_pointrange(aes(ymin=Estimate-SE,ymax=Estimate+SE)) + 
   scale_y_continuous(labels=fancy_scientific)+
   facet_grid(B.Spin~Targ, scale="free_x", label=as_labeller(c("Chopper"="Off", "On"="On", "Null" = "Null"))) + 
-  theme_bw() + theme(legend.position="none") +
+  theme_bw() + theme(legend.position="top") + 
   labs(x=expression(I[0]~"(a.u.)"), y=expression(hat(beta))) -> p12
 ggplot(slopes16, aes(I0, Estimate, col=B.Spin)) + geom_point() + 
   scale_y_continuous(labels=fancy_scientific) +
@@ -168,4 +177,6 @@ thick = 1.1e14; dP = -diff(Pb); cs0est = (cs0mb16 %>% filter(Soundness=="Sound",
   mutate(Estimate = Estimate/(dP*nu*Pt*thick*cs0est), SE = SE/(dP*nu*Pt*thick*cs0est)) -> Ayy
 
 Ayy%>%WMN
-ggplot(Ayy, aes(Estimate)) + geom_histogram(binwidth=.15, fill='white', col='black') + theme_bw() + labs(x=expression(hat(A)[yy]))
+ggplot(Ayy, aes(Estimate)) + geom_histogram(binwidth=.15, fill='white', col='black') + 
+  theme_bw() + labs(x=expression(hat(A)[yy])) +
+  theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt))

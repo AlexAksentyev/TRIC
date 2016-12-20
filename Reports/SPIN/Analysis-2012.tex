@@ -26,7 +26,7 @@
 
 \DeclareDocumentCommand{\ADCcode}{O{ }}{unit{#1}}
 
-\newcommand{\scl}{.4}
+\newcommand{\scl}{.45}
 
 \DeclareDocumentCommand{\Ayy}{s}{\IfBooleanT{#1}{\hat}A_{y,y}}
 \DeclareDocumentCommand{\Ayxz}{s}{\IfBooleanT{#1}{\hat}A_{y,xz}}
@@ -216,7 +216,7 @@ We checked this hypothesis by using the pull distribution $p(a,b) = \frac{\avg{a
 \begin{figure}
 \centering
 \includegraphics[scale=\scl]{img/DiagPlot_969.eps}
-\caption{Some diagnostic plots for a typical 2016 cycle. a) The plot of the model residuals against the fitted values. The red line indicates that the linear model systematically underestimates the beam current at the cycle start and end, and overestimates it in mid-cycle. b) The plot of the partial correlation coefficients between the model residuals and lags of themselves. The dashed horizontal lines mark the 95\% confidence interval that the correlation is statistically insignificant.\label{fig:Run969}}
+\caption{Some diagnostic plots for a typical 2016 cycle. a) Plot of the model residuals against the fitted values. The red line indicates that the linear model systematically underestimates the beam current at the cycle start and end, and overestimates it in mid-cycle. b) Plot of the Partial Auto-Correlation Function; the dashed horizontal lines mark the 95\% confidence interval that the correlation is statistically insignificant.\label{fig:Run969}}
 \end{figure}
 
 \section{Effective cross section}
@@ -257,8 +257,8 @@ Year						& Soundness		& Closeness		& \#		& Mean\tnote{a} [a.u.]	& SE [a.u.] \\
 \end{table}
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=.35]{img/Ayy_dens.eps}
-	\caption{Distribution of the Double-polarized cross section asymmetry estimate $\Ayy*$ in proton-deuteron scattering.\label{fig:AyyDensity}}
+	\includegraphics[scale=\scl]{img/Ayy_dens.eps}
+	\caption{Distribution of the double-polarized cross section asymmetry estimate $\Ayy*$ in proton-deuteron scattering.\label{fig:AyyDensity}}
 \end{figure}
 
 Our best estimate for the effective $pp$ cross section is $\CS[0]^{pp} = 507 \pm 7$ a.u., that for the $pd$ reaction is $\CS[0]^{pd} = 411 \pm 48$. The asymmetry $\Ayy = \vp{(2 \pm 4)}{-2}$. The Quantile-Quantile plot shows that the estimate is distributed normally (see FIG.~\ref{fig:AyyDensity}); however the distribution's reduced chi-square $\chi^2_{red} = 7.8$. The upper limit of $\Ayy$ at the 95\% confidence level is 0.1.

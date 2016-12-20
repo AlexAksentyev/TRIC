@@ -25,49 +25,49 @@ ggplot(Data16, aes(Clock, BCT2, col=`Beam Spin`)) + geom_point() +
 Data16 <- filter(Data16, eCool=="Acc", !is.na(`Target State`), T.Spin==1)
 slopes16 <- filter(slopes16, T.Spin==1)
 
-if(FALSE){
-  ## slopes vs time
-  ggplot(slopes16, aes(Clock, Estimate, shape=`Target State`, col=`Beam Spin`)) + geom_point() + 
-    facet_grid(`Beam Spin`~`Target State`) + 
-    theme_bw() + 
-    theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + 
-    labs(y=expression(hat(beta))) +
-    geom_smooth(method="lm", se=FALSE, show.legend=FALSE, size=.4, linetype=3)
-  
-  ## autocorrelation density curve
-  Data16 %>% ddply(.(`Beam Spin`, `Target State`, Unit), function(s) dwtest(lm(log(BCT2)~I(UTS-UTS[1]), data=s))$statistic/2) -> x
-  ggplot(x, aes(DW, col=`Beam Spin`)) + geom_density() + facet_grid(`Target State`~.) + 
-    theme_bw() + 
-    theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + 
-    labs(x="Autocorrelation function at lag 1")
-  
-  ## breakpoint density curve
-  library(strucchange)
-  f = log(BCT2) ~ uts
-  Data16 %>% ddply(.(`Beam Spin`, `Target State`, Unit), function(s) data.frame("BP" = Fstats(f, data=mutate(s,uts=UTS-UTS[1]))$breakpoint)) -> x
-  ggplot(x, aes(BP, col=`Beam Spin`)) + geom_density() + facet_grid(`Target State`~.) +
-    theme_bw() + 
-    theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) +
-    labs(x = "Breakpoint (seconds from start)")
-  
-  ## linear model fit ####
-  filter(Data16, Unit==17) %>% filter(eCool=="Acc",`Target State`=="On") %>% mutate(uts = UTS-UTS[1]) -> TRun
-  ggplot(TRun, aes(Clock, BCT2)) + geom_line() + theme_bw() + theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + labs(y="I (a.u.)")
-  library(ggfortify)
-  lm(f, data = TRun) -> m
-  autoplot(m,1) + ggtitle("") + theme_bw() + theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + labs(x = expression(hat(y)~"="~ hat(alpha) + hat(beta)*t), y=expression(y - hat(y)))
-  library(lmtest)
-  lmtest::bptest(m)
-  lmtest::dwtest(m)
-  
-  ## slopes vs current
-  ggplot(slopes16, aes(I0, Estimate, col=`Beam Spin`, shape=`Target State`)) + geom_point() +
-    facet_grid(`Beam Spin`~.) +
-    theme_bw() + 
-    theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + 
-    labs(x=expression(I[0]~"(a.u.)"), y=expression(hat(beta))) +
-    geom_smooth(method="lm",se=FALSE,show.legend=FALSE, aes(linetype=`Target State`), size=.4)
-}
+
+## slopes vs time
+ggplot(slopes16, aes(Clock, Estimate, shape=`Target State`, col=`Beam Spin`)) + geom_point() + 
+  facet_grid(`Beam Spin`~`Target State`) + 
+  theme_bw() + 
+  theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + 
+  labs(y=expression(hat(beta))) +
+  geom_smooth(method="lm", se=FALSE, show.legend=FALSE, size=.4, linetype=3)
+
+## autocorrelation density curve
+Data16 %>% ddply(.(`Beam Spin`, `Target State`, Unit), function(s) dwtest(lm(log(BCT2)~I(UTS-UTS[1]), data=s))$statistic/2) -> x
+ggplot(x, aes(DW, col=`Beam Spin`)) + geom_density() + facet_grid(`Target State`~.) + 
+  theme_bw() + 
+  theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + 
+  labs(x="Autocorrelation function at lag 1")
+
+## breakpoint density curve
+library(strucchange)
+f = log(BCT2) ~ uts
+Data16 %>% ddply(.(`Beam Spin`, `Target State`, Unit), function(s) data.frame("BP" = Fstats(f, data=mutate(s,uts=UTS-UTS[1]))$breakpoint)) -> x
+ggplot(x, aes(BP, col=`Beam Spin`)) + geom_density() + facet_grid(`Target State`~.) +
+  theme_bw() + 
+  theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) +
+  labs(x = "Breakpoint (seconds from start)")
+
+## linear model fit ####
+filter(Data16, Unit==17) %>% filter(eCool=="Acc",`Target State`=="On") %>% mutate(uts = UTS-UTS[1]) -> TRun
+ggplot(TRun, aes(Clock, BCT2)) + geom_line() + theme_bw() + theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + labs(y="I (a.u.)")
+library(ggfortify)
+lm(f, data = TRun) -> m
+autoplot(m,1) + ggtitle("") + theme_bw() + theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + labs(x = expression(hat(y)~"="~ hat(alpha) + hat(beta)*t), y=expression(y - hat(y)))
+library(lmtest)
+lmtest::bptest(m)
+lmtest::dwtest(m)
+
+## slopes vs current
+ggplot(slopes16, aes(I0, Estimate, col=`Beam Spin`, shape=`Target State`)) + geom_point() +
+  facet_grid(`Beam Spin`~.) +
+  theme_bw() + 
+  theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + 
+  labs(x=expression(I[0]~"(a.u.)"), y=expression(hat(beta))) +
+  geom_smooth(method="lm",se=FALSE,show.legend=FALSE, aes(linetype=`Target State`), size=.4)
+
 
 ## estimates ####
 .sumstat <- function(x){
@@ -113,8 +113,3 @@ ggplot(Ayy%>%filter(Sound=="Yes"), aes(Estimate,col=Close, alpha=.2)) + geom_den
   theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) +
   labs(x=expression(hat(A)[yy]~"(a.u.)"), y="Rectangular kernel density estimate") + guides(alpha=FALSE)
 .sumstat(Ayy)
-
-
-## testing if current-dependent error fit fits better ####
-# library(nlme)
-# gls(f, data=TRun, correlation = corAR1(.6, ~uts)) ->mgls

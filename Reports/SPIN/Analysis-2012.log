@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  21 DEC 2016 09:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  21 DEC 2016 09:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -671,17 +671,12 @@ Package epstopdf Info: Source file: <img/Cycles_12--16.eps>
 (epstopdf)                    date: 2016-12-21 09:15:10
 (epstopdf)                    size: 1495136 bytes
 (epstopdf)             Output file: <img/Cycles_12--16-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-12-21 09:11:16
-(epstopdf)                    size: 3260804 bytes
+(epstopdf)                    date: 2016-12-21 09:15:15
+(epstopdf)                    size: 3260799 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/Cycles_12--16-eps-conv
 erted-to.pdf img/Cycles_12--16.eps>
 (epstopdf)             \includegraphics on input line 147.
-runsystem(repstopdf --outfile=img/Cycles_12--16-eps-converted-to.pdf img/Cycles
-_12--16.eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <img/Cycles_12--16-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-12-21 09:15:15
-(epstopdf)                    size: 3260799 bytes.
+Package epstopdf Info: Output file is already uptodate.
 
 <img/Cycles_12--16-eps-converted-to.pdf, id=17, 560.0925pt x 582.175pt>
 File: img/Cycles_12--16-eps-converted-to.pdf Graphic file (type pdf)
@@ -721,7 +716,7 @@ Overfull \hbox (6.03929pt too wide) in paragraph at lines 218--219
 
 [3 <./img/DiagPlot_969-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <img/Ayy_dens.eps>
-(epstopdf)                    date: 2016-12-20 11:11:00
+(epstopdf)                    date: 2016-12-21 09:59:03
 (epstopdf)                    size: 6580 bytes
 (epstopdf)             Output file: <img/Ayy_dens-eps-converted-to.pdf>
 (epstopdf)                    date: 2016-12-20 11:11:03
@@ -729,7 +724,12 @@ Package epstopdf Info: Source file: <img/Ayy_dens.eps>
 (epstopdf)             Command: <repstopdf --outfile=img/Ayy_dens-eps-converted
 -to.pdf img/Ayy_dens.eps>
 (epstopdf)             \includegraphics on input line 260.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=img/Ayy_dens-eps-converted-to.pdf img/Ayy_dens.ep
+s)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <img/Ayy_dens-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-12-21 09:59:16
+(epstopdf)                    size: 8915 bytes.
 
 <img/Ayy_dens-eps-converted-to.pdf, id=55, 560.0925pt x 582.175pt>
 File: img/Ayy_dens-eps-converted-to.pdf Graphic file (type pdf)
@@ -789,7 +789,7 @@ hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on Analysis-2012.pdf (5 pages, 3694113 bytes).
+Output written on Analysis-2012.pdf (5 pages, 3694120 bytes).
 PDF statistics:
  121 PDF objects out of 1000 (max. 8388607)
  85 compressed objects within 1 object stream

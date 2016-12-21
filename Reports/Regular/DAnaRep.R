@@ -6,7 +6,10 @@ rm(list = ls(all=TRUE))
   ) 
 }
 
-lblfnt = 16
+lblfnt = 18
+thm = theme_bw() + 
+  theme(axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt), 
+        legend.title=element_text(size=lblfnt), legend.text=element_text(size=lblfnt), legend.position="top")
 ###############################################################################################
 library(parallel); library(doParallel); registerDoParallel(detectCores())
 source("DataAna.R")
@@ -15,10 +18,6 @@ slopes16 <- Data16$Slopes; Data16 <- Data16$Data
 
 .rename4plot(slopes16) -> slopes16
 .rename4plot(Data16) -> Data16
-
-thm = theme_bw() + 
-  theme(axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt), 
-            legend.title=element_text(size=lblfnt), legend.text=element_text(size=lblfnt), legend.position="top")
 
 ## all cycles
 ggplot(Data16, aes(Clock, BCT2, col=`Beam Spin`)) + geom_point() + thm + labs(y = "I (a.u.)")

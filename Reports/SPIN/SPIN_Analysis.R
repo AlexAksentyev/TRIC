@@ -30,14 +30,12 @@ Data12 %>% transmute(
   )
 ) -> Data
 
+thm = theme_bw() + theme(axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt), 
+            legend.title=element_text(size=lblfnt), legend.text=element_text(size=lblfnt), legend.position="top")
 ggplot(filter(Data, Year==2012), aes(Clock, BCT2, col=Target)) + geom_point() + labs(y="I (a.u.)") +
-  theme_bw() + 
-  theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + 
-  scale_color_manual(values=c("black","red")) -> p12
+  thm + scale_color_manual(values=c("black","red")) -> p12
 ggplot(filter(Data, Year==2016), aes(Clock, BCT2, col=`Beam Spin`)) + geom_point() + labs(y="I (a.u.)") +
-  theme_bw() + 
-  theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + 
-  scale_color_manual(values=c("blue","black","red")) -> p16
+  thm + scale_color_manual(values=c("blue","black","red")) -> p16
 plot_grid(p12, p16, ncol=1, labels=c("2012","2016"), label_size=lblfnt)
 
 ##################################
@@ -177,6 +175,4 @@ thick = 1.1e14; dP = -diff(Pb); cs0est = (cs0mb16 %>% filter(Soundness=="Sound",
   mutate(Estimate = Estimate/(dP*nu*Pt*thick*cs0est), SE = SE/(dP*nu*Pt*thick*cs0est)) -> Ayy
 
 Ayy%>%WMN
-ggplot(Ayy, aes(Estimate)) + geom_histogram(binwidth=.15, fill='white', col='black') + 
-  theme_bw() + labs(x=expression(hat(A)[yy])) +
-  theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt))
+ggplot(Ayy, aes(Estimate)) + geom_histogram(binwidth=.15, fill='white', col='black') + thm + labs(x=expression(hat(A)[yy])) 

@@ -16,11 +16,12 @@ slopes16 <- Data16$Slopes; Data16 <- Data16$Data
 .rename4plot(slopes16) -> slopes16
 .rename4plot(Data16) -> Data16
 
+thm = theme_bw() + 
+  theme(axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt), 
+            legend.title=element_text(size=lblfnt), legend.text=element_text(size=lblfnt), legend.position="top")
+
 ## all cycles
-ggplot(Data16, aes(Clock, BCT2, col=`Beam Spin`)) + geom_point() + 
-  theme_bw() + 
-  theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + 
-  labs(y = "I (a.u.)")
+ggplot(Data16, aes(Clock, BCT2, col=`Beam Spin`)) + geom_point() + thm + labs(y = "I (a.u.)")
 
 Data16 <- filter(Data16, eCool=="Acc", !is.na(`Target State`), T.Spin==1)
 slopes16 <- filter(slopes16, T.Spin==1)
@@ -29,33 +30,28 @@ slopes16 <- filter(slopes16, T.Spin==1)
 ## slopes vs time
 ggplot(slopes16, aes(Clock, Estimate, shape=`Target State`, col=`Beam Spin`)) + geom_point() + 
   facet_grid(`Beam Spin`~`Target State`) + 
-  theme_bw() + 
-  theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + 
-  labs(y=expression(hat(beta))) +
+  thm + labs(y=expression(hat(beta))) +
   geom_smooth(method="lm", se=FALSE, show.legend=FALSE, size=.4, linetype=3)
 
 ## autocorrelation density curve
+library(lmtest)
 Data16 %>% ddply(.(`Beam Spin`, `Target State`, Unit), function(s) dwtest(lm(log(BCT2)~I(UTS-UTS[1]), data=s))$statistic/2) -> x
 ggplot(x, aes(DW, col=`Beam Spin`)) + geom_density() + facet_grid(`Target State`~.) + 
-  theme_bw() + 
-  theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + 
-  labs(x="Autocorrelation function at lag 1")
+  thm + labs(x="Autocorrelation function at lag 1")
 
 ## breakpoint density curve
 library(strucchange)
 f = log(BCT2) ~ uts
 Data16 %>% ddply(.(`Beam Spin`, `Target State`, Unit), function(s) data.frame("BP" = Fstats(f, data=mutate(s,uts=UTS-UTS[1]))$breakpoint)) -> x
 ggplot(x, aes(BP, col=`Beam Spin`)) + geom_density() + facet_grid(`Target State`~.) +
-  theme_bw() + 
-  theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) +
-  labs(x = "Breakpoint (seconds from start)")
+  thm + labs(x = "Breakpoint (seconds from start)")
 
 ## linear model fit ####
 filter(Data16, Unit==17) %>% filter(eCool=="Acc",`Target State`=="On") %>% mutate(uts = UTS-UTS[1]) -> TRun
 ggplot(TRun, aes(Clock, BCT2)) + geom_line() + theme_bw() + theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + labs(y="I (a.u.)")
 library(ggfortify)
 lm(f, data = TRun) -> m
-autoplot(m,1) + ggtitle("") + theme_bw() + theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + labs(x = expression(hat(y)~"="~ hat(alpha) + hat(beta)*t), y=expression(y - hat(y)))
+autoplot(m,1) + ggtitle("") + thm + labs(x = expression(hat(y)~"="~ hat(alpha) + hat(beta)*t), y=expression(y - hat(y)))
 library(lmtest)
 lmtest::bptest(m)
 lmtest::dwtest(m)
@@ -63,9 +59,7 @@ lmtest::dwtest(m)
 ## slopes vs current
 ggplot(slopes16, aes(I0, Estimate, col=`Beam Spin`, shape=`Target State`)) + geom_point() +
   facet_grid(`Beam Spin`~.) +
-  theme_bw() + 
-  theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + 
-  labs(x=expression(I[0]~"(a.u.)"), y=expression(hat(beta))) +
+  thm + labs(x=expression(I[0]~"(a.u.)"), y=expression(hat(beta))) +
   geom_smooth(method="lm",se=FALSE,show.legend=FALSE, aes(linetype=`Target State`), size=.4)
 
 
@@ -95,8 +89,7 @@ filter(slopes16, B.Spin =="N") %>% dlply("`Target State`") %>% dbeta.(c("FOut", 
          Close = derivedFactor("Yes" = abs(as.numeric(Clock.Off)- as.numeric(Clock.On))/60 <= 40, .default="No")
         ) -> cs0mb
 
-ggplot(cs0mb%>%filter(Sound=="Yes"), aes(Estimate,col=Close, alpha=.2)) + geom_density(kernel="rect") + theme_bw() + 
-  theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) + 
+ggplot(cs0mb%>%filter(Sound=="Yes"), aes(Estimate,col=Close, alpha=.2)) + geom_density(kernel="rect") + thm + 
   labs(x=expression(hat(sigma)[0]~"(a.u.)"), y="Rectangular kernel density estimate") + guides(alpha=FALSE)
 .sumstat(cs0mb)
 
@@ -109,7 +102,6 @@ a = -nu*cs0est*thick*Pt*diff(Pb[1:2])
          Close = derivedFactor("Yes" = abs(as.numeric(Clock.D)- as.numeric(Clock.U))/60 <= 40, .default="No")
       ) %>% ddply("Close", function(s) mutate(s, Estimate = Estimate/a[Close[1]], SE = SE/a[Close[1]])) -> Ayy
 
-ggplot(Ayy%>%filter(Sound=="Yes"), aes(Estimate,col=Close, alpha=.2)) + geom_density(kernel="rect") + theme_bw() + 
-  theme(legend.position="top", axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt)) +
+ggplot(Ayy%>%filter(Sound=="Yes"), aes(Estimate,col=Close, alpha=.2)) + geom_density(kernel="rect") + thm + 
   labs(x=expression(hat(A)[yy]~"(a.u.)"), y="Rectangular kernel density estimate") + guides(alpha=FALSE)
 .sumstat(Ayy)

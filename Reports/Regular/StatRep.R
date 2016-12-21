@@ -5,7 +5,7 @@ source("Utilities.R")
 
 library(reshape2)
 
-lblfnt = 20
+lblfnt = 18
 thm = theme_bw() + 
   theme(axis.text=element_text(size=lblfnt), axis.title=element_text(size=lblfnt), 
         legend.title=element_text(size=lblfnt), legend.text=element_text(size=lblfnt), legend.position="top")

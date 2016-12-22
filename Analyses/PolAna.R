@@ -3,6 +3,7 @@ library(ggplot2); library(plotly); library(reshape2)
 library(lattice)
 library(mosaic)
 
+source("EstiStats.R")
 
 if(TRUE){
   read.table("./Stats/FitRes.txt", sep = "\t", quote="")[,1:5] -> crcomdata
@@ -33,10 +34,11 @@ read.table("./Stats/Pol_data.txt", sep = "\t", quote="")[,1:4] -> poldata
 names(poldata) <- c("Run","Ring", "P0", "SEP0")
 poldata%>%mutate(rSEP0 = SEP0/P0, Run = factor(Run), Ring=factor(Ring)) -> poldata
 
-ggplot(poldata, aes(Run, P0, col=Ring)) + 
+poldata %>% .markOutliers("SEP0") %>% filter(FOut == "F") %>%
+ggplot(aes(Run, P0, col=Ring)) + 
   geom_pointrange(aes(ymin=P0-SEP0, ymax=P0+SEP0)) +
   ggtitle("Polarization") + 
-  theme_bw() + theme(axis.text.x=element_text(angle=60))
+  theme_bw() + theme(axis.text.x=element_text(angle=90))
   
 
 
@@ -44,10 +46,20 @@ read.table("./Stats/CR_data.txt", sep = "\t", quote="")[,1:6] -> crdata
 names(crdata) <- c("Run","Ring", "CR0", "SECR0", "CRB", "SECRB")
 crdata%>%mutate(CRLT = -1/CRB, SECRLT = CRLT^2*SECRB, rSECRLT = SECRLT/CRLT, rSECR0 = SECR0/CR0, Run = factor(Run), Ring=factor(Ring)) -> crdata
 
-ggplot(filter(crdata, Run==7114, Ring%in%c(4:15)), aes(Ring, CR0)) + geom_point() + ggtitle("Cross-Ratio")
+crdata %>% 
+  filter(Run %in% 7105:7121, Ring%in%9:12) %>%
+  .markOutliers("CRLT") %>% filter(FOut == "F") %>%
+  ggplot(aes(Run,CRLT, col=Ring)) + geom_pointrange(aes(ymin=CRLT-SECRLT, ymax=CRLT+SECRLT)) + ggtitle("Cross-Ratio") + scale_y_log10() +
+  theme_bw() + theme(axis.text.x=element_text(angle=90)) +
+  facet_grid(Ring~.)
 
-join(crdata, poldata) -> Data
+join(poldata, MD) -> Data
 
-Data %>%
-  filter(!Ring %in% c(15:11)) %>% #Run%in%c(7107, 7114)) %>%
-  ggplot(aes(CR0, P0, col=Ring)) + geom_point() + geom_text(aes(label=Ring, vjust=-.5))
+Data%>%filter(MQU26<1, Ring%in%c(9:12))%>%ggplot(aes(MQU26/10, P0, col=Ring)) + geom_pointrange(aes(ymin=P0-SEP0, ymax=P0+SEP0)) + theme_bw() +
+  facet_grid(Ring~.)
+
+Data%>%filter(Ring%in%9:12, !is.na(MQU26))->dat
+acast(dat, MQU15~MQU26, value.var = "P0", fun.aggregate = mean) -> dat_xyz
+# plot_ly(z=dat_xyz, type="surface")
+levelplot(P0 ~ MQU15*MQU26|Ring, data=dat, pretty=TRUE, drape=TRUE)
+# persp(as.numeric(rownames(dat_xyz)), as.numeric(colnames(dat_xyz)), dat_xyz, phi=30, theta=-120)

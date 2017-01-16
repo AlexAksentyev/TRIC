@@ -57,7 +57,6 @@ utime = rep(2, 8)
 
 MD = data.frame(Run=run, BTime=btime, UTime=utime)
 join(poldata,MD)%>%filter(!is.na(BTime)) -> x
-x%>% -> x
 xyplot(P0~BTime|Ring, data=filter(x, Ring%in%9:15))
 lmer(P0~BTime + (BTime|Ring), data=x) -> m3
 summary(m3)

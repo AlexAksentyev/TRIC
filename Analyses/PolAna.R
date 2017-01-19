@@ -3,6 +3,9 @@ library(ggplot2); library(reshape2)
 library(lattice)
 library(mosaic)
 
+# right now I don't have the data to do the qu15/qu26 analysis
+# only polarization life-time analysis
+
 source("EstiStats.R")
 
 getPolData <- function(){
@@ -27,28 +30,34 @@ data.frame(Run = run, MQU15 = mqu15, MQU26 = mqu26) -> MD
 #### Polarizarion data ####
 poldata <- getPolData()
 
-poldata %>% .markOutliers("SEP0") %>% filter(FOut == "F") %>%
-ggplot(aes(Run, P0, col=Ring)) + 
-  geom_pointrange(aes(ymin=P0-SEP0, ymax=P0+SEP0)) +
-  ggtitle("Polarization") + 
-  theme_bw() + theme(axis.text.x=element_text(angle=90))
+if(FALSE){
+  poldata %>% .markOutliers("SEP0") %>% filter(FOut == "F") %>%
+    ggplot(aes(Run, P0, col=Ring)) + 
+    geom_pointrange(aes(ymin=P0-SEP0, ymax=P0+SEP0)) +
+    ggtitle("Polarization") + 
+    theme_bw() + theme(axis.text.x=element_text(angle=90))
   
-join(poldata, MD) -> poldata
+  join(poldata, MD) -> poldata
+  
+  poldata%>%filter(MQU26<1, Ring%in%c(9:12))%>%ggplot(aes(MQU26/10, P0, col=Ring)) + geom_pointrange(aes(ymin=P0-SEP0, ymax=P0+SEP0)) + theme_bw() +
+    facet_grid(Ring~.)
+  
+  poldata%>%filter(Ring%in%9:12, !is.na(MQU26))->dat
+  levelplot(P0 ~ MQU15*MQU26|Ring, data=dat, pretty=TRUE, drape=TRUE)
+}
 
-poldata%>%filter(MQU26<1, Ring%in%c(9:12))%>%ggplot(aes(MQU26/10, P0, col=Ring)) + geom_pointrange(aes(ymin=P0-SEP0, ymax=P0+SEP0)) + theme_bw() +
-  facet_grid(Ring~.)
-
-poldata%>%filter(Ring%in%9:12, !is.na(MQU26))->dat
-levelplot(P0 ~ MQU15*MQU26|Ring, data=dat, pretty=TRUE, drape=TRUE)
 
 #### Cross ratio data ####
 crdata <- getCRData()
 
-crdata %>% filter(Run %in% 7105:7121, Ring%in%9:12) %>%
-  .markOutliers("CRLT") %>% filter(FOut == "F") %>%
-  ggplot(aes(Run,CRLT, col=Ring)) + geom_pointrange(aes(ymin=CRLT-SECRLT, ymax=CRLT+SECRLT)) + ggtitle("Cross-Ratio") + scale_y_log10() +
-  theme_bw() + theme(axis.text.x=element_text(angle=90)) +
-  facet_grid(Ring~.)
+if(FALSE){
+  crdata %>% filter(Run %in% 7105:7121, Ring%in%9:12) %>%
+    .markOutliers("CRLT") %>% filter(FOut == "F") %>%
+    ggplot(aes(Run,CRLT, col=Ring)) + geom_pointrange(aes(ymin=CRLT-SECRLT, ymax=CRLT+SECRLT)) + ggtitle("Cross-Ratio") + scale_y_log10() +
+    theme_bw() + theme(axis.text.x=element_text(angle=90)) +
+    facet_grid(Ring~.)
+}
+
 
 #### lifetime analysis ####
 run=7129:7136
@@ -58,13 +67,11 @@ utime = rep(2, 8)
 MD = data.frame(Run=run, BTime=btime, UTime=utime)
 join(poldata,MD)%>%filter(!is.na(BTime)) -> x
 xyplot(P0~BTime|Ring, data=filter(x, Ring%in%9:15))
+library(lme4)
 lmer(P0~BTime + (BTime|Ring), data=x) -> m3
 summary(m3)
 coef(summary(m3))[2,1:2] -> b
 lt = -1/b[1]; selt = lt^2*b[2]
 
-
-run = 7138:
-ampl = c(0, 8, 4, -4, 2)
 
   

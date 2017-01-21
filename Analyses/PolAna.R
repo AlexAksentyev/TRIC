@@ -66,12 +66,12 @@ utime = rep(2, 8)
 
 MD = data.frame(Run=run, BTime=btime, UTime=utime)
 join(poldata,MD)%>%filter(!is.na(BTime)) -> x
-xyplot(P0~BTime|Ring, data=filter(x, Ring%in%9:15))
+
 library(lme4)
 lmer(P0~BTime + (BTime|Ring), data=x) -> m3
 summary(m3)
 coef(summary(m3))[2,1:2] -> b
 lt = -1/b[1]; selt = lt^2*b[2]
 
-
-  
+xyplot(P0~BTime|Ring, data=filter(x, Ring%in%9:15))
+xyplot(P0~Ring|BTime, data=mutate(x, BTime = as.factor(BTime)))

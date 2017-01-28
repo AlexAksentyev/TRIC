@@ -65,13 +65,26 @@ btime = seq(3, 4.75, .25)
 utime = rep(2, 8)
 
 MD = data.frame(Run=run, BTime=btime, UTime=utime)
-join(poldata,MD)%>%filter(!is.na(BTime)) -> x
+join(crdata,MD)%>%filter(!is.na(BTime)) -> x
+
+mutate(x, G = derivedFactor(
+  "D" = BTime <= 4,
+  .default = "U"
+)) -> x
 
 library(lme4)
-lmer(P0~BTime + (BTime|Ring), data=x) -> m3
+lmer(CR0~BTime + (BTime|Ring) + (BTime|G), data=x) -> m3
 summary(m3)
 coef(summary(m3))[2,1:2] -> b
 lt = -1/b[1]; selt = lt^2*b[2]
 
-xyplot(P0~BTime|Ring, data=filter(x, Ring%in%9:15))
-xyplot(P0~Ring|BTime, data=mutate(x, BTime = as.factor(BTime)))
+mutate(x, Run=as.numeric(Run), Ring=as.numeric(Ring)) ->x
+kmfit <- kmeans(x[,1:3], 8)
+mutate(x, KClus = as.factor(kmfit$cluster))->x
+library(cluster)
+clusplot(dplyr::select(x,Run,Ring, CR0), kmfit$cluster, color=TRUE, shade=TRUE, lines=0, stan=TRUE)
+
+prcomp(dplyr::select(x,Run,Ring, CR0)) -> xpca
+
+xyplot(CR0~BTime|Ring, data=filter(x, Ring%in%9:15))
+xyplot(CR0~Ring|Run, data=mutate(x, BTime = as.factor(BTime)))#, groups=KClus)

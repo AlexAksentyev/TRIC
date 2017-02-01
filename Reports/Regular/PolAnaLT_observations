@@ -7,3 +7,4 @@
 7) Looks like up until 4s, cr decreases with lifetime 16.7s, and after that grows with the lifetime of 3s.
 8) When plotted against ring number, cr grows (robust least squares) with ring number for almost all runs, except 7132, 7134 and 7136 (slope t-value resp. 1.362 (p=10.5%), .208 (42%) and .128 (45%)).
 9) K-means clustering, Run+Ring explain 88.25% of variability; three clusters overlap significantly, the rest seem to be identified okay.
+10) Grouping by CR constant, CR slope, and their standard errors, PCA attributes 99.8% of variation to the first two components; three groups are identified.

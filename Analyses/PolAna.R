@@ -76,10 +76,12 @@ mutate(x, G = derivedFactor(
   .default = "U"
 )) %>% mutate(G=as.numeric(G)) -> x
 
-cmts = c("CRB", "CR0","BTime")
-
-kmfit <- kmeans(x[,cmts], 8)
-mutate(x, KClus = as.factor(kmfit$cluster))->x
+cmts = c("CR0","CRB","SECR0","SECRB")
+ddply(x, "Run", function(s) 
+  mutate(s, 
+         KClus = as.factor(kmeans(s[,cmts],3)$cluster)
+  )
+) -> x
 autoplot(kmfit, data=x, frame=TRUE) + theme_bw()
 
 prcomp(x[,cmts]) -> xpca; summary(xpca)

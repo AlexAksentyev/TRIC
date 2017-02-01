@@ -1,7 +1,9 @@
 library(dplyr); library(plyr)
 library(ggplot2); library(reshape2)
+library(ggfortify)
 library(lattice)
 library(mosaic)
+library(cluster)
 
 # right now I don't have the data to do the qu15/qu26 analysis
 # only polarization life-time analysis
@@ -11,12 +13,12 @@ source("EstiStats.R")
 getPolData <- function(){
   read.table("./Stats/Pol_data.txt", sep = "\t", quote="")[,1:4] -> poldata
   names(poldata) <- c("Run","Ring", "P0", "SEP0")
-  poldata%>%mutate(rSEP0 = SEP0/P0, Run = factor(Run), Ring=factor(Ring))
+  poldata%>%mutate(rSEP0 = SEP0/P0, Run = factor(Run))
 }
 getCRData <- function(){
   read.table("./Stats/CR_data.txt", sep = "\t", quote="")[,1:6] -> crdata
   names(crdata) <- c("Run","Ring", "CR0", "SECR0", "CRB", "SECRB")
-  crdata%>%mutate(CRLT = -1/CRB, SECRLT = CRLT^2*SECRB, rSECRLT = SECRLT/CRLT, rSECR0 = SECR0/CR0, Run = factor(Run), Ring=factor(Ring))
+  crdata%>%mutate(CRLT = -1/CRB, SECRLT = CRLT^2*SECRB, rSECRLT = SECRLT/CRLT, rSECR0 = SECR0/CR0, Run = factor(Run))
 }
 
 #### metadata prep ####
@@ -30,6 +32,7 @@ data.frame(Run = run, MQU15 = mqu15, MQU26 = mqu26) -> MD
 #### Polarizarion data ####
 poldata <- getPolData()
 
+## QU15, QU26 analysis
 if(FALSE){
   poldata %>% .markOutliers("SEP0") %>% filter(FOut == "F") %>%
     ggplot(aes(Run, P0, col=Ring)) + 
@@ -50,6 +53,7 @@ if(FALSE){
 #### Cross ratio data ####
 crdata <- getCRData()
 
+## QU15, QU26 analysis
 if(FALSE){
   crdata %>% filter(Run %in% 7105:7121, Ring%in%9:12) %>%
     .markOutliers("CRLT") %>% filter(FOut == "F") %>%
@@ -70,21 +74,15 @@ join(crdata,MD)%>%filter(!is.na(BTime)) -> x
 mutate(x, G = derivedFactor(
   "D" = BTime <= 4,
   .default = "U"
-)) -> x
+)) %>% mutate(G=as.numeric(G)) -> x
 
-library(lme4)
-lmer(CR0~BTime + (BTime|Ring) + (BTime|G), data=x) -> m3
-summary(m3)
-coef(summary(m3))[2,1:2] -> b
-lt = -1/b[1]; selt = lt^2*b[2]
+cmts = c("CRB", "CR0","BTime")
 
-mutate(x, Run=as.numeric(Run), Ring=as.numeric(Ring)) ->x
-kmfit <- kmeans(x[,1:3], 8)
+kmfit <- kmeans(x[,cmts], 8)
 mutate(x, KClus = as.factor(kmfit$cluster))->x
-library(cluster)
-clusplot(dplyr::select(x,Run,Ring, CR0), kmfit$cluster, color=TRUE, shade=TRUE, lines=0, stan=TRUE)
+autoplot(kmfit, data=x, frame=TRUE) + theme_bw()
 
-prcomp(dplyr::select(x,Run,Ring, CR0)) -> xpca
+prcomp(x[,cmts]) -> xpca; summary(xpca)
 
-xyplot(CR0~BTime|Ring, data=filter(x, Ring%in%9:15))
-xyplot(CR0~Ring|Run, data=mutate(x, BTime = as.factor(BTime)))#, groups=KClus)
+xyplot(CR0~BTime|factor(Ring, labels=9:15), data=filter(x), groups = KClus)
+xyplot(CR0~Ring|Run, data=mutate(x, BTime = as.factor(BTime)), groups=KClus)

@@ -86,5 +86,5 @@ autoplot(kmfit, data=x, frame=TRUE) + theme_bw()
 
 prcomp(x[,cmts]) -> xpca; summary(xpca)
 
-xyplot(CR0~BTime|factor(Ring, labels=9:15), data=filter(x), groups = KClus)
-xyplot(CR0~Ring|Run, data=mutate(x, BTime = as.factor(BTime)), groups=KClus)
+xyplot(CRLT~BTime|factor(Ring, labels=9:15), data=filter(x), groups = KClus)
+xyplot(CRLT~Ring|Run, data=mutate(x, BTime = as.factor(BTime)), groups=KClus)

@@ -1,44 +1,90 @@
 library(dplyr); library(plyr)
-library(ggplot2); library(plotly); library(reshape2)
+library(ggplot2); library(reshape2)
+library(ggfortify)
 library(lattice)
+library(mosaic)
+library(cluster)
 
+# right now I don't have the data to do the qu15/qu26 analysis
+# only polarization life-time analysis
+
+source("EstiStats.R")
+
+getPolData <- function(){
+  read.table("./Stats/Pol_data.txt", sep = "\t", quote="")[,1:4] -> poldata
+  names(poldata) <- c("Run","Ring", "P0", "SEP0")
+  poldata%>%mutate(rSEP0 = SEP0/P0, Run = factor(Run))
+}
+getCRData <- function(){
+  read.table("./Stats/CR_data.txt", sep = "\t", quote="")[,1:6] -> crdata
+  names(crdata) <- c("Run","Ring", "CR0", "SECR0", "CRB", "SECRB")
+  crdata%>%mutate(CRLT = -1/CRB, SECRLT = CRLT^2*SECRB, rSECRLT = SECRLT/CRLT, rSECR0 = SECR0/CR0, Run = factor(Run))
+}
+
+#### metadata prep ####
+run = 7080:7102 %>% c(7105:7121)
+mqu15 = c(20, 30, 40, 50, 50, 60, 70, 80, 30, 40, 50, 60, 70, 80, 90, 20, 30, 40, 50, 60, 70, 90, 20) %>%
+  c(rep(50, 17))
+mqu26 = c(10, 6, 3, 0, 10, 20, 30, 40, 10, 6, 3, 10, 20, 30, 40, 6, 3, 0, 20, 30, 40, 40, 10) %>%
+  c(c(-5:5, -4.5:.5))
+data.frame(Run = run, MQU15 = mqu15, MQU26 = mqu26) -> MD
+
+#### Polarizarion data ####
+poldata <- getPolData()
+
+## QU15, QU26 analysis
 if(FALSE){
-  read.table("./Stats/FitRes.txt", sep = "\t", quote="")[,1:5] -> poldata
+  poldata %>% .markOutliers("SEP0") %>% filter(FOut == "F") %>%
+    ggplot(aes(Run, P0, col=Ring)) + 
+    geom_pointrange(aes(ymin=P0-SEP0, ymax=P0+SEP0)) +
+    ggtitle("Polarization") + 
+    theme_bw() + theme(axis.text.x=element_text(angle=90))
   
-  names(poldata) <- c("Run", "P0", "SEP0", "B", "SEB")
+  join(poldata, MD) -> poldata
   
-  mutate(poldata, LT = -1/B, SELT = LT^2*SEB) %>% 
-    filter(!Run %in% c(7103, 7104, 7122)) -> poldata; poldata
+  poldata%>%filter(MQU26<1, Ring%in%c(9:12))%>%ggplot(aes(MQU26/10, P0, col=Ring)) + geom_pointrange(aes(ymin=P0-SEP0, ymax=P0+SEP0)) + theme_bw() +
+    facet_grid(Ring~.)
   
-  run = 7080:7102 %>% c(7105:7121)
-  mqu15 = c(20, 30, 40, 50, 50, 60, 70, 80, 30, 40, 50, 60, 70, 80, 90, 20, 30, 40, 50, 60, 70, 90, 20) %>%
-    c(rep(50, 17))
-  mqu26 = c(10, 6, 3, 0, 10, 20, 30, 40, 10, 6, 3, 10, 20, 30, 40, 6, 3, 0, 20, 30, 40, 40, 10) %>%
-    c(c(-5:5, -4.5:.5))
-  data.frame(Run = run, MQU15 = mqu15, MQU26 = mqu26) -> MD
-  
-  dat = filter(poldata, Run %in% MD$Run)%>%cbind(MD%>%dplyr::select(-Run))%>%filter(Run!=7101)
-  dat%>%mutate(RSELT = SELT/LT * 100) %>% dplyr::arrange(sign(RSELT), RSELT)
-  
-  acast(dat, MQU15~MQU26, value.var = "LT", fun.aggregate = mean) -> dat_xyz
-  plot_ly(z=dat_xyz, type="surface")
-  wireframe(LT ~ MQU15*MQU26, data=dat)
+  poldata%>%filter(Ring%in%9:12, !is.na(MQU26))->dat
+  levelplot(P0 ~ MQU15*MQU26|Ring, data=dat, pretty=TRUE, drape=TRUE)
 }
 
 
+#### Cross ratio data ####
+crdata <- getCRData()
 
-read.table("./Stats/Pol_data.txt", sep = "\t", quote="")[,1:6] -> poldata
-names(poldata) <- c("Run","Ring", "A", "SEA", "B", "SEB")
-poldata%>%mutate(LT = -1/B, SELT = LT^2*SEB) -> poldata
+## QU15, QU26 analysis
+if(FALSE){
+  crdata %>% filter(Run %in% 7105:7121, Ring%in%9:12) %>%
+    .markOutliers("CRLT") %>% filter(FOut == "F") %>%
+    ggplot(aes(Run,CRLT, col=Ring)) + geom_pointrange(aes(ymin=CRLT-SECRLT, ymax=CRLT+SECRLT)) + ggtitle("Cross-Ratio") + scale_y_log10() +
+    theme_bw() + theme(axis.text.x=element_text(angle=90)) +
+    facet_grid(Ring~.)
+}
 
-ggplot(filter(poldata, Ring>3, Run==7079), aes(Ring, LT, col=Run)) + 
-  geom_pointrange(aes(ymin=LT-SELT, ymax=LT+SELT)) +
-  ggtitle("Polarization")
-  
 
+#### lifetime analysis ####
+run=7129:7136
+btime = seq(3, 4.75, .25)
+utime = rep(2, 8)
 
-read.table("./Stats/CR_data.txt", sep = "\t", quote="")[,1:6] -> crdata
-names(crdata) <- c("Run","Ring", "A", "SEA", "B", "SEB")
-crdata%>%mutate(LT = -1/B, SELT = LT^2*SEB) -> crdata
+MD = data.frame(Run=run, BTime=btime, UTime=utime)
+join(crdata,MD)%>%filter(!is.na(BTime)) -> x
 
-ggplot(filter(crdata, Run==7079, Ring>3), aes(Ring, LT)) + geom_point() + ggtitle("Cross-Ratio")
+mutate(x, G = derivedFactor(
+  "D" = BTime <= 4,
+  .default = "U"
+)) %>% mutate(G=as.numeric(G)) -> x
+
+cmts = c("CR0","CRB","SECR0","SECRB")
+ddply(x, "Run", function(s) 
+  mutate(s, 
+         KClus = as.factor(kmeans(s[,cmts],3)$cluster)
+  )
+) -> x
+autoplot(kmfit, data=x, frame=TRUE) + theme_bw()
+
+prcomp(x[,cmts]) -> xpca; summary(xpca)
+
+xyplot(CRLT~BTime|factor(Ring, labels=9:15), data=filter(x), groups = KClus)
+xyplot(CRLT~Ring|Run, data=mutate(x, BTime = as.factor(BTime)), groups=KClus)

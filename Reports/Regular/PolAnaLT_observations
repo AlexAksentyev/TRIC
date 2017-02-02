@@ -1,0 +1,10 @@
+1) I have data from runs 7129--7136, rings 9--15. 
+2) From run to run, the extraction begin time changes from 3 seconds to 4.75 seconds by .25 seconds; uptime is 2 seconds in each case.
+3) At each extraction setting (excluding run 7132) the polarization data varies from ring to ring; run 7132 (extraction begin time 3.75 s) --- all rings yield polarization 0 with probability 75%.
+4) K-nearest neighbor w/8 clusters clustering. Data = (Run, Ring, P0), Run+Ring explain 85% of the point variability.
+5) PCA shows that all the variability of the polarization data can be explained by the Run and Ring variables; Run explains 57% of the data variance, Ring 43%.
+6) Cross-ratio data behave better: when plotted against extraction time, between 3 and 4 seconds, cr0 seems to fall for all rings; from 4 seconds onward, cr0 grows rapidly for all rings.
+7) Looks like up until 4s, cr decreases with lifetime 16.7s, and after that grows with the lifetime of 3s.
+8) When plotted against ring number, cr grows (robust least squares) with ring number for almost all runs, except 7132, 7134 and 7136 (slope t-value resp. 1.362 (p=10.5%), .208 (42%) and .128 (45%)).
+9) K-means clustering, Run+Ring explain 88.25% of variability; three clusters overlap significantly, the rest seem to be identified okay.
+10) Grouping by CR constant, CR slope, and their standard errors, PCA attributes 99.8% of variation to the first two components; three groups are identified.

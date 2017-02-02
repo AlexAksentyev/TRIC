@@ -174,5 +174,8 @@ thick = 1.1e14; dP = -diff(Pb); cs0est = (cs0mb16 %>% filter(Soundness=="Sound",
 (slopes16 %>% filter(FABS=="T", B.Spin != "N") %>% dlply("B.Spin"))[c("D","U")] %>% dbeta. %>% 
   mutate(Estimate = Estimate/(dP*nu*Pt*thick*cs0est), SE = SE/(dP*nu*Pt*thick*cs0est)) -> Ayy
 
-Ayy%>%WMN
-ggplot(Ayy, aes(Estimate)) + geom_histogram(binwidth=.15, fill='white', col='black') + thm + labs(x=expression(hat(A)[yy]), y="Count") 
+se <- function(x) sd(x$Estimate)/sqrt(nrow(x))
+(Ayy)%>%WMN
+se(Ayy)
+ggplot((Ayy), aes(Estimate)) + geom_histogram(binwidth=.15, fill='white', col='black') + thm + labs(x=expression(hat(A)[yy]), y="Count") +
+  geom_density()

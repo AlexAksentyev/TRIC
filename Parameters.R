@@ -1,6 +1,6 @@
 source("TestParameters.R")
 
-Pb = c(U = .82, D = -.66); Pt = .88;
+Pb = c(U = .4, D = -.4); Pt = .88;
 d = 40; L = 18400 #target and accelerator lengths in cm
 schottky = 1.1e14
 Rho.on = schottky/d; rate = 1.157e-6 # target density dissipation rate

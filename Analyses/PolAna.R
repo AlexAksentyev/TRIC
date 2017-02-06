@@ -5,15 +5,12 @@ library(lattice)
 library(mosaic)
 library(cluster)
 
-# right now I don't have the data to do the qu15/qu26 analysis
-# only polarization life-time analysis
-
 source("EstiStats.R")
 
 getPolData <- function(){
-  read.table("./Stats/Pol_data.txt", sep = "\t", quote="")[,1:4] -> poldata
-  names(poldata) <- c("Run","Ring", "P0", "SEP0")
-  poldata%>%mutate(rSEP0 = SEP0/P0, Run = factor(Run))
+  read.table("./Stats/Pol_data.txt", sep = "\t", quote="")[,1:6] -> poldata
+  names(poldata) <- c("Run","Ring", "P0", "SEP0", "PB","SEPB")
+  poldata%>%mutate(rSEP0 = SEP0/P0, PLT = -1/PB, SEPLT = PLT^2*SEPB,Run = factor(Run))
 }
 getCRData <- function(){
   read.table("./Stats/CR_data.txt", sep = "\t", quote="")[,1:6] -> crdata
@@ -64,27 +61,53 @@ if(FALSE){
 
 
 #### lifetime analysis ####
-run=7129:7136
-btime = seq(3, 4.75, .25)
-utime = rep(2, 8)
+## runs 7129--36 are not useful for that!
+if(FALSE){
+  run=7129:7136
+  btime = seq(3, 4.75, .25)
+  utime = rep(2, 8)
+  
+  MD = data.frame(Run=run, BTime=btime, UTime=utime)
+  join(crdata,MD)%>%filter(!is.na(BTime)) -> x
+  
+  mutate(x, G = derivedFactor(
+    "D" = BTime <= 4,
+    .default = "U"
+  )) %>% mutate(G=as.numeric(G)) -> x
+  
+  cmts = c("CR0","CRB","SECR0","SECRB")
+  ddply(x, "Run", function(s) 
+    mutate(s, 
+           KClus = as.factor(kmeans(s[,cmts],3)$cluster)
+    )
+  ) -> x
+  autoplot(kmfit, data=x, frame=TRUE) + theme_bw()
+  
+  prcomp(x[,cmts]) -> xpca; summary(xpca)
+  
+  xyplot(CRLT~BTime|factor(Ring, labels=9:15), data=filter(x), groups = KClus)
+  xyplot(CRLT~Ring|Run, data=mutate(x, BTime = as.factor(BTime)), groups=KClus)
+  
+}
 
-MD = data.frame(Run=run, BTime=btime, UTime=utime)
-join(crdata,MD)%>%filter(!is.na(BTime)) -> x
+data = join(crdata,poldata, c("Run", "Ring"))
+melt(data, id.vars = c("Run","Ring")) -> mdata
+ggplot(filter(mdata,variable%in%c("CRLT","PLT"))) + 
+  geom_histogram(aes(value), fill="white",col="black") + 
+  facet_grid(.~variable, scales = "free_x") + theme_bw()
 
-mutate(x, G = derivedFactor(
-  "D" = BTime <= 4,
-  .default = "U"
-)) %>% mutate(G=as.numeric(G)) -> x
+wch = "CR0"
+filter(crdata,!Ring%in%c(10,15)) %>% 
+  ggplot(aes_string("Ring", wch)) + 
+  geom_pointrange(aes_string(ymin=paste0(wch,"-",paste0("SE",wch)), 
+                             ymax=paste0(wch,"+",paste0("SE",wch))
+                  )
+  ) + 
+  theme_bw()
 
-cmts = c("CR0","CRB","SECR0","SECRB")
-ddply(x, "Run", function(s) 
-  mutate(s, 
-         KClus = as.factor(kmeans(s[,cmts],3)$cluster)
-  )
-) -> x
-autoplot(kmfit, data=x, frame=TRUE) + theme_bw()
-
-prcomp(x[,cmts]) -> xpca; summary(xpca)
-
-xyplot(CRLT~BTime|factor(Ring, labels=9:15), data=filter(x), groups = KClus)
-xyplot(CRLT~Ring|Run, data=mutate(x, BTime = as.factor(BTime)), groups=KClus)
+mutate(crdata, Ring=as.factor(Ring)) %>%
+  filter(!Ring%in%c(10,15)) %>%
+  ggplot(aes(CR0,CRLT, col=Ring)) + geom_point() +
+  theme_bw() +
+  geom_errorbar(aes(ymin=CRLT-SECRLT,ymax=CRLT+SECRLT)) +
+  geom_errorbarh(aes(xmin=CR0-SECR0,xmax=CR0+SECR0))

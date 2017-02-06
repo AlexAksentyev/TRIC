@@ -105,9 +105,12 @@ filter(crdata,!Ring%in%c(10,15)) %>%
   ) + 
   theme_bw()
 
-mutate(crdata, Ring=as.factor(Ring)) %>%
-  filter(!Ring%in%c(10,15)) %>%
+mutate(crdata, Ring=as.factor(Ring)) -> crdata
+filter(crdata, !Ring%in%c(10,15)) %>%
   ggplot(aes(CR0,CRLT, col=Ring)) + geom_point() +
   theme_bw() +
   geom_errorbar(aes(ymin=CRLT-SECRLT,ymax=CRLT+SECRLT)) +
   geom_errorbarh(aes(xmin=CR0-SECR0,xmax=CR0+SECR0))
+
+filter(crdata, !Ring%in%c(10,15)) %>% ggplot(aes(CRLT)) + 
+  geom_density(kernel="gaus") +geom_rug(aes(col=Ring)) + theme_bw() +theme(legend.position="top")

@@ -109,10 +109,11 @@ mutate(data, Ring=as.factor(Ring)) -> data
 filter(data, !Ring%in%c(10,15)) %>%
   ggplot(aes(CR0,CRLT, col=Ring)) + geom_point() +
   theme_bw() + theme(legend.position="") +
+  labs(x=expression(CR[0]), y=expression(hat(tau)[CR]))+
   geom_errorbar(aes(ymin=CRLT-SECRLT,ymax=CRLT+SECRLT)) +
   geom_errorbarh(aes(xmin=CR0-SECR0,xmax=CR0+SECR0)) -> corplot
 
-filter(data, !Ring%in%c(10,15)) %>% ggplot(aes(CRLT)) + 
+filter(data, !Ring%in%c(10,15)) %>% ggplot(aes(CRLT)) + labs(x=expression(hat(tau)[CR]))
   geom_density(kernel="gaus") +geom_rug(aes(col=Ring)) + theme_bw() +theme(legend.position="top") -> dplot
 
 library(cowplot)

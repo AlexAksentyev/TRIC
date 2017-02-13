@@ -8,9 +8,9 @@ library(cluster)
 source("EstiStats.R")
 
 getPolData <- function(){
-  read.table("./Stats/Pol_data.txt", sep = "\t", quote="")[,1:6] -> poldata
-  names(poldata) <- c("Run","Ring", "P0", "SEP0", "PB","SEPB")
-  poldata%>%mutate(rSEP0 = SEP0/P0, PLT = -1/PB, SEPLT = PLT^2*SEPB,Run = factor(Run))
+  read.table("./Stats/Pol_data.txt", sep = "\t", quote="")[,1:4] -> poldata
+  names(poldata) <- c("Run","Ring", "P0", "SEP0")
+  poldata%>%mutate(Run = factor(Run))
 }
 getCRData <- function(){
   read.table("./Stats/CR_data.txt", sep = "\t", quote="")[,1:6] -> crdata
@@ -96,8 +96,8 @@ ggplot(filter(mdata,variable%in%c("CRLT","PLT"))) +
   geom_histogram(aes(value), fill="white",col="black") + 
   facet_grid(.~variable, scales = "free_x") + theme_bw()
 
-wch = "CR0"
-filter(crdata,!Ring%in%c(10,15)) %>% 
+wch = "P0"
+filter(data,!Ring%in%c(10,15)) %>% 
   ggplot(aes_string("Ring", wch)) + 
   geom_pointrange(aes_string(ymin=paste0(wch,"-",paste0("SE",wch)), 
                              ymax=paste0(wch,"+",paste0("SE",wch))
@@ -105,14 +105,14 @@ filter(crdata,!Ring%in%c(10,15)) %>%
   ) + 
   theme_bw()
 
-mutate(crdata, Ring=as.factor(Ring)) -> crdata
-filter(crdata, !Ring%in%c(10,15)) %>%
+mutate(data, Ring=as.factor(Ring)) -> data
+filter(data, !Ring%in%c(10,15)) %>%
   ggplot(aes(CR0,CRLT, col=Ring)) + geom_point() +
   theme_bw() + theme(legend.position="") +
   geom_errorbar(aes(ymin=CRLT-SECRLT,ymax=CRLT+SECRLT)) +
   geom_errorbarh(aes(xmin=CR0-SECR0,xmax=CR0+SECR0)) -> corplot
 
-filter(crdata, !Ring%in%c(10,15)) %>% ggplot(aes(CRLT)) + 
+filter(data, !Ring%in%c(10,15)) %>% ggplot(aes(CRLT)) + 
   geom_density(kernel="gaus") +geom_rug(aes(col=Ring)) + theme_bw() +theme(legend.position="top") -> dplot
 
 library(cowplot)

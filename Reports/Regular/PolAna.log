@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  13 FEB 2017 17:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.29)  13 FEB 2017 17:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -755,18 +755,18 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 42.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 44.
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./PolAna-ROOT-all.png>]
 [2 <./PolAna-CRLTvsCR0.png (PNG copy)>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 42.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 44.
  (./PolAna.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 42.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 42.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 44.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 44.
 Package rerunfilecheck Info: File `PolAna.out' has not changed.
 (rerunfilecheck)             Checksum: 6B69CDE12DD89B195BC9B516F875CFBC;53.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 42.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 44.
  ) 
 Here is how much of TeX's memory you used:
  14238 strings out of 494466
@@ -784,7 +784,7 @@ f-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmsy10.pfb>
-Output written on PolAna.pdf (2 pages, 134659 bytes).
+Output written on PolAna.pdf (2 pages, 135041 bytes).
 PDF statistics:
  64 PDF objects out of 1000 (max. 8388607)
  49 compressed objects within 1 object stream

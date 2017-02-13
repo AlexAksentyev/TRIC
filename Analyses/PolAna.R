@@ -113,7 +113,7 @@ filter(data, !Ring%in%c(10,15)) %>%
   geom_errorbar(aes(ymin=CRLT-SECRLT,ymax=CRLT+SECRLT)) +
   geom_errorbarh(aes(xmin=CR0-SECR0,xmax=CR0+SECR0)) -> corplot
 
-filter(data, !Ring%in%c(10,15)) %>% ggplot(aes(CRLT)) + labs(x=expression(hat(tau)[CR]))
+filter(data, !Ring%in%c(10,15)) %>% ggplot(aes(CRLT)) + labs(x=expression(hat(tau)[CR])) +
   geom_density(kernel="gaus") +geom_rug(aes(col=Ring)) + theme_bw() +theme(legend.position="top") -> dplot
 
 library(cowplot)

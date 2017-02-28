@@ -8,14 +8,16 @@ library(cluster)
 source("EstiStats.R")
 
 getPolData <- function(){
-  read.table("./Stats/Pol_data.txt", sep = "\t", quote="")[,1:4] -> poldata
-  names(poldata) <- c("Run","Ring", "P0", "SEP0")
+  read.table("./Stats/Pol_data.txt", sep = "\t", quote="")[,1:6] -> poldata
+  names(poldata) <- c("Run","Ring", "P0", "SEP0", "Chi2", "NDF")
   poldata%>%mutate(Run = factor(Run))
 }
 getCRData <- function(){
-  read.table("./Stats/CR_data.txt", sep = "\t", quote="")[,1:6] -> crdata
-  names(crdata) <- c("Run","Ring", "CR0", "SECR0", "CRB", "SECRB")
-  crdata%>%mutate(CRLT = -1/CRB, SECRLT = CRLT^2*SECRB, rSECRLT = SECRLT/CRLT, rSECR0 = SECR0/CR0, Run = factor(Run))
+  read.table("./Stats/CR_data.txt", sep = "\t", quote="")[,1:8] -> crdata
+  names(crdata) <- c("Run","Ring", "CR0", "SECR0", "CRB", "SECRB", "Chi2", "NDF")
+  crdata%>%mutate(CRLT = -1/CRB, SECRLT = CRLT^2*SECRB, 
+                  rSECRLT = SECRLT/CRLT, rSECR0 = SECR0/CR0,
+                  Chi2red = Chi2/NDF, Run = factor(Run))
 }
 
 #### metadata prep ####

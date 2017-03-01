@@ -10,14 +10,15 @@ source("EstiStats.R")
 getPolData <- function(){
   read.table("./Stats/Pol_data.txt", sep = "\t", quote="")[,1:6] -> poldata
   names(poldata) <- c("Run","Ring", "P0", "SEP0", "Chi2", "NDF")
-  poldata%>%mutate(Run = factor(Run))
+  poldata%>%mutate(Run = factor(Run), Ring=Ring+14)
 }
 getCRData <- function(){
   read.table("./Stats/CR_data.txt", sep = "\t", quote="")[,1:8] -> crdata
   names(crdata) <- c("Run","Ring", "CR0", "SECR0", "CRB", "SECRB", "Chi2", "NDF")
   crdata%>%mutate(CRLT = -1/CRB, SECRLT = CRLT^2*SECRB, 
                   rSECRLT = SECRLT/CRLT, rSECR0 = SECR0/CR0,
-                  Chi2red = Chi2/NDF, Run = factor(Run))
+                  Chi2red = Chi2/NDF, 
+                  Run = factor(Run), Ring=Ring+14)
 }
 
 #### metadata prep ####
@@ -92,30 +93,17 @@ if(FALSE){
   
 }
 
-data = join(crdata,poldata, c("Run", "Ring"))
-melt(data, id.vars = c("Run","Ring")) -> mdata
-ggplot(filter(mdata,variable%in%c("CRLT","PLT"))) + 
-  geom_histogram(aes(value), fill="white",col="black") + 
-  facet_grid(.~variable, scales = "free_x") + theme_bw()
-
-wch = "P0"
-filter(data,!Ring%in%c(10,15)) %>% 
-  ggplot(aes_string("Ring", wch)) + 
-  geom_pointrange(aes_string(ymin=paste0(wch,"-",paste0("SE",wch)), 
-                             ymax=paste0(wch,"+",paste0("SE",wch))
-                  )
-  ) + 
-  theme_bw()
+data = join(crdata,poldata%>%dplyr::select(-Chi2,-NDF), c("Run", "Ring"))
 
 mutate(data, Ring=as.factor(Ring)) -> data
-filter(data, !Ring%in%c(10,15)) %>%
+filter(data, !Ring%in%c(24,29)) %>%
   ggplot(aes(CR0,CRLT, col=Ring)) + geom_point() +
   theme_bw() + theme(legend.position="") +
   labs(x=expression(CR[0]), y=expression(hat(tau)[CR]))+
   geom_errorbar(aes(ymin=CRLT-SECRLT,ymax=CRLT+SECRLT)) +
   geom_errorbarh(aes(xmin=CR0-SECR0,xmax=CR0+SECR0)) -> corplot
 
-filter(data, !Ring%in%c(10,15)) %>% ggplot(aes(CRLT)) + labs(x=expression(hat(tau)[CR])) +
+filter(data, !Ring%in%c(24,29)) %>% ggplot(aes(CRLT)) + labs(x=expression(hat(tau)[CR])) +
   geom_density(kernel="gaus") +geom_rug(aes(col=Ring)) + theme_bw() +theme(legend.position="top") -> dplot
 
 library(cowplot)

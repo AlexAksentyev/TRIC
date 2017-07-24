@@ -25,7 +25,7 @@ ldply(Prec, function(p) c("Precision" = p, BeamTime(Res, Tint, C, h0, p)/3600/24
 ggplot(df0, aes(Precision, BeamTime, col=Resolution)) + geom_line() + thm +
   scale_y_log10(name="H (days)", minor_breaks=c(1:10%o%10^(-4:+4)), labels=fancy_scientific) +
   scale_x_log10(name=expression(sigma[EA[yy]]~"(a.u.)"), minor_breaks=Prec, labels=fancy_scientific) +
-  scale_color_discrete(labels=fancy_scientific)
+  scale_color_discrete(labels=fancy_scientific) -> p.BT.stat
 
 #### State Time ####
 vmbe <- function(var.meas,var.slope,h){
@@ -47,7 +47,7 @@ ggplot(df, aes(h, SDQI, col=Resolution)) + geom_line() + thm +
   scale_x_continuous(name="h (sec)", minor_breaks=seq(100,3600,100)) +
   scale_color_discrete(labels=fancy_scientific) +
   geom_vline(data=hmin, aes(xintercept=Time, col=Resolution), lty=2,show.legend = FALSE) +
-  geom_text(data=hmin, aes(x=Time+20, y=5e-5, label=round(Time)),show.legend = FALSE)
+  geom_text(data=hmin, aes(x=Time+20, y=5e-5, label=round(Time)),show.legend = FALSE) -> p.ST
 #### slope variation from rho ####
 Rho.ini = Rho.on
 rate = 1.157e-6
@@ -59,7 +59,7 @@ ldply(seq(3600), function(n){
 }) -> df
 
 ggplot(df, aes(h,vb)) + geom_line() + thm + labs(x="h (sec)", y=expression(sigma[beta]^2~(sec^-2))) +
-  scale_y_log10(limits=c(1e-24, 1e-16), labels=fancy_scientific)
+  scale_y_log10(limits=c(1e-24, 1e-16), labels=fancy_scientific) -> p.vB.Rho
 
 #### BEAM TIME STATISTICS + SYSTEMATICS ####
 vb = 1e-15
@@ -76,4 +76,8 @@ df <- rbind(df0,dfd)
 ggplot(df, aes(Precision, BeamTime, col=Resolution,linetype=Term)) + geom_line() + thm +
   scale_y_log10(name="H (days)", minor_breaks=c(1:10%o%10^(-6:+6)), labels=fancy_scientific) +
   scale_x_log10(name=expression(sigma[EA[]]~"(a.u.)"), minor_breaks=Prec, labels=fancy_scientific) +
-  scale_color_discrete(labels=fancy_scientific)
+  scale_color_discrete(labels=fancy_scientific) -> p.BT.both
+
+print(p.ST)
+print(p.vB.Rho)
+print(p.BT.both)

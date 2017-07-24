@@ -29,11 +29,11 @@ For the mean statistic, its precision depends on the precision of the slope esti
 \end{equation}
 where $H$ is the beam time, $h$ the cycle length, and so the maximum number of estimate pairs $N = \sfrac{H}{2h}$.
 
-Under the Gauss-Markov conditions, the Ordinary Least Squares estimator of the slope is zero-bias minimum-variance, and has a standard error of
+Under the Gauss-Markov conditions, the Ordinary Least Squares estimator of the slope is zero-bias, minimum-variance, and has a standard error of
 \begin{equation}\label{eq:SlpVarGM}
 \SE{\slp*} = \frac{\SE{\delta^I}}{\sqrt{\sum_{k=1}^K (t_k - \avg{t})^2}},
 \end{equation}
-where $\SE{\delta^I}$ is the measurement resolution, $K$ is the sample size, and $t_k$ is the measurement time. For samples taken uniformly in time with step $\Tint$, at sample sizes $K = h/\Tint \gg 1$, the denominator can be expressed in physical terms as
+where $\SE{\delta^I}$ is termed the measurement resolution, $K$ is the sample size, and $t_k$ is the measurement time. For samples taken uniformly in time with step $\Tint$, at sample sizes $K = h/\Tint \gg 1$, the denominator can be expressed in physical terms as
 \[
 \sqrt{\sum_{k=1}^K (t_k - \avg{t})^2} \approx \frac{h\sqrt{h}}{2\sqrt{3}\sqrt{\Tint}},
 \]
@@ -67,26 +67,24 @@ from which the required measurement resolution can be estimated for the given pr
 \end{table}
 
 \section{Resolution lower bound}
-[ => cycle duration => plot resolution vs precision for several beam times.]
-
-If, during measurement, the beam current slope varies (due to such factors as the variation of the target thickness), that variation will influence the standard error of the estimate in accordance with the law of total variance:
+If, during measurement, the beam current slope varies (due to such factors as the variation of the target thickness, or drifting current transformer offset), that variation will influence the standard error of the estimate in accordance with the law of total variance:
 \begin{equation}\label{eq:VarSlpLTV}
 \v{\slp*} = \Xpct[\slp]{\v{\slp*}[\slp]} + \v[\slp]{\Xpct{\slp*}[\slp]}.
 \end{equation}
 Here, 
 \begin{align}
 \Xpct{\slp*}[\slp] 	&= \slp, \notag\\
-\v{\slp*}[\slp] 	&= 12\frac{\Tint}{h}\frac{\v{\err}}{h^2}, \tag{eq.~\eqref{eq:SlpVar}}
+\v{\slp*}[\slp] 	&= 12\frac{\Tint}{h}\frac{\v{\delta^I}}{h^2}, \tag{eq.~\eqref{eq:SlpVar}}
 \shortintertext{and hence}
-\v{\avg{\A*}}		&= \frac{4 C^2}{H}\bkt{12\Tint\cdot\frac{\v{\err}}{h^2} + h\cdot\v{\slp}}.\label{eq:SEA}
+\v{\avg{\A*}}		&= \frac{4 C^2}{H}\bkt{12\Tint\cdot\frac{\v{\delta^I}}{h^2} + h\cdot\v{\slp}}.\label{eq:SEA}
 \end{align}
 
-In the last equation, the first term describes the statistical precision of the estimate, the second its accuracy. The accuracy term will ultimately determine the lower effective bound on the measurement resolution, as can be observed in Figure~\ref{fig:SEA_varb}.
+In the last equation, the first term describes the statistical precision of the estimate, the second its accuracy. The accuracy term constrains our ability to improve precision by reducing measurement resolution; this can be observed in Figure~\ref{fig:SEA_varb}.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=.8]{APrec_vs_h_for_resol}
-	\caption{The standard error of the mean $\A$ estimate as a function of cycle length when the inherent slope variation $\v{\slp} = 1\cdot10^{-15}$. The inherent variation limits the accuracy of the estimate.\label{fig:SEA_varb}}
+	\caption{The standard error of the mean $\A$ estimate as a function of cycle length when the inherent slope variation $\v{\slp} = 10^{-15}$. The inherent variation limits the accuracy of the estimate.\label{fig:SEA_varb}}
 \end{figure}
 
 From equation~\eqref{eq:SEA}, the best variance is achieved at
